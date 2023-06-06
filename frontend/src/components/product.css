@@ -6,10 +6,12 @@
 
 .postImage {
     height: 500px; /* Adjust the height value to your preference */
-    width: auto; /* Adjust the width value to maintain aspect ratio */
+    width: 100%; /* Adjust the width value to maintain aspect ratio */
     aspect-ratio: 4/3;
     object-fit: contain;
     mix-blend-mode: color-burn;
+    padding: 15px;
+    margin-top: 75px;
   }
 
   .carousel-container {

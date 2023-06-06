@@ -8,7 +8,7 @@ const SplashPage = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 1000);
+    }, 500);
 
     return () => {
       clearTimeout(timer);
@@ -18,8 +18,14 @@ const SplashPage = () => {
   return (
     <div className="splash-page">
       {loading ? (
-        <div className="loading-spinner">
-          Loading...
+        // <div className="loading-spinner">
+        //   {/* Loading... */}
+        // </div>
+        <div class="container">
+          <div class="content">
+
+          </div>
+          <div class="loading-spinner"></div>
         </div>
       ) : (
       <ImageCarousel/>
