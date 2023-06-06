@@ -1,0 +1,7 @@
+.content{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 10px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
