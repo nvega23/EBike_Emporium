@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import myImage from '../assets/bike_icon.png';
 import { Link } from 'react-router-dom';
 import './navbar.css';
@@ -9,6 +9,16 @@ const NavBar = () => {
   const handleClick = () => {
     setIsActive(!isActive);
   };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsActive(false);
+    }, 500);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
 
   return (
     <>

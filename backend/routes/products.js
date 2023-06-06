@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 // Import the product model/schema
-// const Product = require('../models/Product');
+const Product = require('../models/Product');
 
 // Create a new product
 router.post('/', async (req, res) => {
@@ -19,6 +19,7 @@ router.get('/', async (req, res) => {
   try {
     const products = await Product.find();
     res.json(products);
+    console.log("i am in the router")
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

@@ -55,7 +55,7 @@
     align-items: center;
   }
 
-  a {
+  .content {
     display: inline-block;
     animation: bounce 2s ease-in;
     margin: 15px;
@@ -73,6 +73,9 @@
     }
   }
 
+#navMenu{
+  cursor: pointer;
+}
 
 #navMenu > span{
     display: block;

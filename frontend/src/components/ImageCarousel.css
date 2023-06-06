@@ -1,17 +1,21 @@
 .carousel .slide img {
     max-height: auto; /* Adjust the max-height value to make the images smaller */
     width: 100%; /* Adjust the width value to maintain aspect ratio */
+    border-radius: 10px;
 
   }
 
-.postImage {
-    height: 500px; /* Adjust the height value to your preference */
-    width: 100%; /* Adjust the width value to maintain aspect ratio */
-    aspect-ratio: 4/3;
-    object-fit: contain;
+  .postImage {
+    width: 100%; /* Take up the full width */
+    height: auto; /* Automatically adjust the height to maintain aspect ratio */
+    object-fit: cover; /* Fit the image inside the container while maintaining aspect ratio */
+    object-position: center; /* Center the image within the container */
     mix-blend-mode: color-burn;
     padding: 15px;
     margin-top: 75px;
+    filter: drop-shadow(8px 6px 4px #000);
+    border-radius: 10px;
+    /* filter: box-shadow(8px 6px 4px #000); */
   }
 
   .carousel-container {

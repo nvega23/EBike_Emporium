@@ -19,7 +19,7 @@ function App() {
       <BrowserRouter>
         <ScrollToTop />
         <NavBar/>
-        <SplashPage/>
+        {/* <SplashPage/> */}
       </BrowserRouter>
     </div>
   );
