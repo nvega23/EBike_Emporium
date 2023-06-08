@@ -20,7 +20,9 @@ const productSchema = new Schema({
         required: true,
         min: 0,
     }
+},{
+    timestamps: true
 });
 
 const Product = mongoose.model('Product', productSchema);
-module.export = Product
+module.exports = Product
