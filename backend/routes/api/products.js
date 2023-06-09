@@ -3,9 +3,13 @@ var router = express.Router();
 
 // Import the product model/schema
 
+/* GET tweets listing. */
 router.get('/', function(req, res, next) {
-  res.send('This is the products');
+  res.json({
+    message: "GET /api/products"
+  });
 });
+
 
 // Create a new product
 router.post('/', async (req, res) => {
