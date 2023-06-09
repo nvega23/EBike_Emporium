@@ -7,6 +7,8 @@ const cors = require('cors');
 const csurf = require('csurf');
 const { isProduction } = require('./config/keys');
 
+require('./models/Users');
+
 const usersRouter = require('./routes/api/users'); // update the import file path
 const productRouter = require('./routes/api/products');
 const csrfRouter = require('./routes/api/csrf');
