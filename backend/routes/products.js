@@ -1,14 +1,18 @@
-const express = require('express');
-const router = express.Router();
+var express = require('express');
+var router = express.Router();
 
 // Import the product model/schema
-const Product = require('../models/Product');
+
+router.get('/', function(req, res, next) {
+  res.send('This is the products');
+});
 
 // Create a new product
 router.post('/', async (req, res) => {
   try {
     const newProduct = await Product.create(req.body);
     res.status(201).json(newProduct);
+    res.send("New Product?");
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -19,6 +23,7 @@ router.get('/', async (req, res) => {
   try {
     const products = await Product.find();
     res.json(products);
+    res.send("this is products");
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

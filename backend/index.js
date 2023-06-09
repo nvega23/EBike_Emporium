@@ -5,7 +5,7 @@ require('dotenv').config();
 
 
 // Use the product routes
-app.use('/api/products', productRoutes);
+app.use('/products', productRoutes);
 
 // Set up middleware to parse request bodies
 app.use(express.json());
