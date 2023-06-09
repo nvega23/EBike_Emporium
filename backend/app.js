@@ -8,12 +8,15 @@ const csurf = require('csurf');
 const { isProduction } = require('./config/keys');
 
 require('./models/Users');
+require('./config/passport'); // <-- ADD THIS LINE
+const passport = require('passport'); // <-- ADD THIS LINE
 
 const usersRouter = require('./routes/api/users'); // update the import file path
 const productRouter = require('./routes/api/products');
 const csrfRouter = require('./routes/api/csrf');
 
 const app = express();
+app.use(passport.initialize());
 
 app.use(logger('dev')); // log request components (URL/method) to terminal
 app.use(express.json()); // parse JSON request body
