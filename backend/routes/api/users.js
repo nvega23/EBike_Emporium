@@ -4,6 +4,8 @@ const bcrypt = require('bcryptjs');
 const mongoose = require('mongoose');
 const User = mongoose.model('User');
 const passport = require('passport');
+const { loginUser, restoreUser } = require('../../config/passport');
+const { isProduction } = require('../../config/keys');
 
 router.get('/', function(req, res, next) {
   res.json({
@@ -11,6 +13,7 @@ router.get('/', function(req, res, next) {
   });
 });
 
+// POST /api/users/register
 router.post('/register', async (req, res, next) => {
   // Check to make sure no one has already registered with the proposed email or
   // username.
@@ -19,7 +22,7 @@ router.post('/register', async (req, res, next) => {
   });
 
   if (user) {
-    // Throw a 400 error if the email address and/or email already exists
+    // Throw a 400 error if the email address and/or username already exists
     const err = new Error("Validation Error");
     err.statusCode = 400;
     const errors = {};
@@ -33,10 +36,10 @@ router.post('/register', async (req, res, next) => {
     return next(err);
   }
 
+  // Otherwise create a new user
   const newUser = new User({
     username: req.body.username,
-    email: req.body.email,
-    profileImageUrl,
+    email: req.body.email
   });
 
   bcrypt.genSalt(10, (err, salt) => {
@@ -46,15 +49,16 @@ router.post('/register', async (req, res, next) => {
       try {
         newUser.hashedPassword = hashedPassword;
         const user = await newUser.save();
-        return res.json(await loginUser(user));
+        return res.json(await loginUser(user)); // <-- THIS IS THE CHANGED LINE
       }
-      catch (err) {
+      catch(err) {
         next(err);
       }
     })
   });
 });
 
+// POST /api/users/login
 router.post('/login', async (req, res, next) => {
   passport.authenticate('local', async function(err, user) {
     if (err) return next(err);
@@ -64,7 +68,7 @@ router.post('/login', async (req, res, next) => {
       err.errors = { email: "Invalid credentials" };
       return next(err);
     }
-    return res.json({ user });
+    return res.json(await loginUser(user)); // <-- THIS IS THE CHANGED LINE
   })(req, res, next);
 });
 

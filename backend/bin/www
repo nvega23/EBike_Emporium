@@ -27,21 +27,25 @@ var server = http.createServer(app);
  * Listen on provided port, on all network interfaces.
  */
 
-// mongoose
-//   .connect(db, { useNewUrlParser: true })
+/**
+ * Connect to Mongo database, then allow the server to listen for requests
+ */
 mongoose
   .connect(db, { useNewUrlParser: true })
   .then(() => {
-    // Use `debug` instead of `dbLogger` if you did not split the debug
-    // console into `dbLogger` and `serverLogger` above.
-    debug("Connected to MongoDB successfully");
+    debug('Connected to MongoDB successfully');
+
+    /**
+     * Listen on provided port, on all network interfaces.
+     */
+
     server.listen(port);
   })
-  // Use `debug` instead of `serverLogger` if you did not split the debug
-  // console into `dbLogger` and `serverLogger` above.
   .catch(err => debug(err));
-server.listen(port);
+
 server.on('error', onError);
+server.on('listening', onListening);
+
 server.on('listening', onListening);
 
 /**
