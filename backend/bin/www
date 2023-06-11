@@ -34,7 +34,6 @@ mongoose
   .connect(db, { useNewUrlParser: true })
   .then(() => {
     debug('Connected to MongoDB successfully');
-
     /**
      * Listen on provided port, on all network interfaces.
      */
