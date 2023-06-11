@@ -1,81 +1,75 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+const mongoose = require('mongoose');
+const User = mongoose.model('User');
+const Tweet = mongoose.model('Tweet');
+const { requireUser } = require('../../config/passport');
+const validateTweetInput = require('../../validations/tweets');
 
-// Import the product model/schema
-
-/* GET tweets listing. */
-router.get('/', function(req, res, next) {
-  res.json({
-    message: "GET /api/products"
-  });
-});
-
-
-// Create a new product
-router.post('/', async (req, res) => {
-  try {
-    const newProduct = await Product.create(req.body);
-    res.status(201).json(newProduct);
-    res.send("New Product?");
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
-
-// Get all products
 router.get('/', async (req, res) => {
   try {
-    const products = await Product.find();
-    res.json(products);
-    res.send("this is products");
-  } catch (error) {
-    res.status(500).json({ error: error.message });
+    const tweets = await Tweet.find()
+                              .populate("author", "_id, username")
+                              .sort({ createdAt: -1 });
+    return res.json(tweets);
+  }
+  catch(err) {
+    return res.json([]);
   }
 });
 
-// Get a specific product by ID
-router.get('/:id', async (req, res) => {
+router.get('/user/:userId', async (req, res, next) => {
+  let user;
   try {
-    const product = await Product.findById(req.params.id);
-    if (product) {
-      res.json(product);
-    } else {
-      res.status(404).json({ message: 'Product not found' });
-    }
-  } catch (error) {
-    res.status(500).json({ error: error.message });
+    user = await User.findById(req.params.userId);
+  } catch(err) {
+    const error = new Error('User not found');
+    error.statusCode = 404;
+    error.errors = { message: "No user found with that id" };
+    return next(error);
+  }
+  try {
+    const tweets = await Tweet.find({ author: user._id })
+                              .sort({ createdAt: -1 })
+                              .populate("author", "_id, username");
+    return res.json(tweets);
+  }
+  catch(err) {
+    return res.json([]);
+  }
+})
+
+router.get('/:id', async (req, res, next) => {
+  try {
+    const tweet = await Tweet.findById(req.params.id)
+                             .populate("author", "id, username");
+    return res.json(tweet);
+  }
+  catch(err) {
+    const error = new Error('Tweet not found');
+    error.statusCode = 404;
+    error.errors = { message: "No tweet found with that id" };
+    return next(error);
   }
 });
 
-// Update a product by ID
-router.put('/:id', async (req, res) => {
+// Attach requireUser as a middleware before the route handler to gain access
+// to req.user. (requireUser will return an error response if there is no
+// current user.) Also attach validateTweetInput as a middleware before the
+// route handler.
+router.post('/', requireUser, validateTweetInput, async (req, res, next) => {
   try {
-    const updatedProduct = await Product.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      { new: true }
-    );
-    if (updatedProduct) {
-      res.json(updatedProduct);
-    } else {
-      res.status(404).json({ message: 'Product not found' });
-    }
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
+    const newTweet = new Tweet({
+      text: req.body.text,
+      author: req.user._id
+    });
 
-// Delete a product by ID
-router.delete('/:id', async (req, res) => {
-  try {
-    const deletedProduct = await Product.findByIdAndRemove(req.params.id);
-    if (deletedProduct) {
-      res.json({ message: 'Product deleted' });
-    } else {
-      res.status(404).json({ message: 'Product not found' });
-    }
-  } catch (error) {
-    res.status(500).json({ error: error.message });
+    let tweet = await newTweet.save();
+    tweet = await tweet.populate('author', '_id, username');
+    return res.json(tweet);
+  }
+  catch(err) {
+    next(err);
   }
 });
 
