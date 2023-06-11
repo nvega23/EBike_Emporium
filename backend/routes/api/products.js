@@ -2,16 +2,16 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const User = mongoose.model('User');
-const Tweet = mongoose.model('Tweet');
+const Product = mongoose.model('Product');
 const { requireUser } = require('../../config/passport');
-const validateTweetInput = require('../../validations/tweets');
+const validateProductInput = require('../../validations/products');
 
 router.get('/', async (req, res) => {
   try {
-    const tweets = await Tweet.find()
+    const products = await Product.find()
                               .populate("author", "_id, username")
                               .sort({ createdAt: -1 });
-    return res.json(tweets);
+    return res.json(products);
   }
   catch(err) {
     return res.json([]);
@@ -29,10 +29,10 @@ router.get('/user/:userId', async (req, res, next) => {
     return next(error);
   }
   try {
-    const tweets = await Tweet.find({ author: user._id })
+    const products = await Product.find({ author: user._id })
                               .sort({ createdAt: -1 })
                               .populate("author", "_id, username");
-    return res.json(tweets);
+    return res.json(products);
   }
   catch(err) {
     return res.json([]);
@@ -41,32 +41,32 @@ router.get('/user/:userId', async (req, res, next) => {
 
 router.get('/:id', async (req, res, next) => {
   try {
-    const tweet = await Tweet.findById(req.params.id)
+    const products = await Product.findById(req.params.id)
                              .populate("author", "id, username");
-    return res.json(tweet);
+    return res.json(products);
   }
   catch(err) {
-    const error = new Error('Tweet not found');
+    const error = new Error('Product not found');
     error.statusCode = 404;
-    error.errors = { message: "No tweet found with that id" };
+    error.errors = { message: "No product found with that id" };
     return next(error);
   }
 });
 
 // Attach requireUser as a middleware before the route handler to gain access
 // to req.user. (requireUser will return an error response if there is no
-// current user.) Also attach validateTweetInput as a middleware before the
+// current user.) Also attach validateProductInput as a middleware before the
 // route handler.
-router.post('/', requireUser, validateTweetInput, async (req, res, next) => {
+router.post('/', requireUser, validateProductInput, async (req, res, next) => {
   try {
-    const newTweet = new Tweet({
+    const newProduct = new Product({
       text: req.body.text,
       author: req.user._id
     });
 
-    let tweet = await newTweet.save();
-    tweet = await tweet.populate('author', '_id, username');
-    return res.json(tweet);
+    let product = await newProduct.save();
+    product = await product.populate('author', '_id, username');
+    return res.json(product);
   }
   catch(err) {
     next(err);
