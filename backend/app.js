@@ -8,7 +8,7 @@ const csurf = require('csurf');
 const { isProduction } = require('./config/keys');
 
 require('./models/Users');
-require('./models/Passport');
+require('./models/Product');
 require('./config/passport'); // <-- ADD THIS LINE
 const passport = require('passport'); // <-- ADD THIS LINE
 
