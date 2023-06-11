@@ -6,6 +6,7 @@ const { secretOrKey } = require('./keys');
 const mongoose = require('mongoose');
 const User = mongoose.model('User');
 const { Strategy: JwtStrategy, ExtractJwt } = require('passport-jwt');
+exports.requireUser = passport.authenticate('jwt', { session: false });
 
 passport.use(new LocalStrategy({
     session: false,
@@ -69,6 +70,7 @@ exports.requireUser = passport.authenticate('jwt', { session: false });
 // user
 exports.restoreUser = (req, res, next) => {
   return passport.authenticate('jwt', { session: false }, function(err, user) {
+    if (err) return next(err);
     if (user) req.user = user;
     next();
   })(req, res, next);
