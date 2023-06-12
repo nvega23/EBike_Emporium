@@ -1,15 +1,16 @@
-import { Route, Redirect } from 'react-router-dom';
+import { Route, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 export const AuthRoute = ({ component: Component, path, exact }) => {
   const loggedIn = useSelector(state => !!state.session.user);
+  const navigate = useNavigate();
 
   return (
     <Route path={path} exact={exact} render={(props) => (
       !loggedIn ? (
         <Component {...props} />
       ) : (
-        <Redirect to="/tweets" />
+        navigate('/tweets')
       )
     )} />
   );
@@ -17,6 +18,7 @@ export const AuthRoute = ({ component: Component, path, exact }) => {
 
 export const ProtectedRoute = ({ component: Component, ...rest }) => {
   const loggedIn = useSelector(state => !!state.session.user);
+  const navigate = useNavigate();
 
   return (
     <Route
@@ -25,7 +27,7 @@ export const ProtectedRoute = ({ component: Component, ...rest }) => {
         loggedIn ? (
           <Component {...props} />
         ) : (
-          <Redirect to="/login" />
+          navigate('/login')
         )
       }
     />

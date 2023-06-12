@@ -13,6 +13,13 @@ const receiveCurrentUser = currentUser => ({
   currentUser
 });
 
+// Dispatch getCurrentUser to receive the current user
+export const getCurrentUser = () => async dispatch => {
+  const res = await jwtFetch('/api/users/current');
+  const user = await res.json();
+  return dispatch(receiveCurrentUser(user));
+};
+
 // Dispatch receiveErrors to show authentication errors on the frontend.
 const receiveErrors = errors => ({
   type: RECEIVE_SESSION_ERRORS,
@@ -55,6 +62,7 @@ export const logout = () => dispatch => {
 const initialState = {
     user: undefined
 };
+
 const nullErrors = null;
 
 const sessionReducer = (state = nullErrors, action) => {
