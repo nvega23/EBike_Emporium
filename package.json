@@ -1,7 +1,7 @@
 {
-    "name": "mern-twitter",
+    "name": "mern-bikes",
     "version": "1.0.0",
-    "description": "A Twitter clone built with the MERN stack",
+    "description": "An E-commerce application built with the MERN stack",
     "engines": {
         "node": "16.x"
     },
@@ -14,9 +14,10 @@
         "build": "npm run backend-install && npm run frontend-install && npm run frontend-build"
     },
     "keywords": [],
-    "author": "App Academy",
+    "author": "Nestor Vega",
     "license": "ISC",
     "dependencies": {
+        "@faker-js/faker": "^8.0.2",
         "express-validator": "^7.0.1"
     }
 }
