@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import myImage from '../assets/bike_icon.png';
+import myImage from '../../assets/bike_icon.png';
 import { Link } from 'react-router-dom';
-import './navbar.css';
+import './NavBar.css';
 
 const NavBar = () => {
   const [isActive, setIsActive] = useState(false);
@@ -46,3 +46,47 @@ const NavBar = () => {
 };
 
 export default NavBar;
+
+// import { Link } from 'react-router-dom';
+// import { useSelector, useDispatch } from 'react-redux';
+// import './NavBar.css';
+// import { logout } from '../../store/session';
+
+// function NavBar () {
+//   const loggedIn = useSelector(state => !!state.session.user);
+//   const dispatch = useDispatch();
+
+//   const logoutUser = e => {
+//       e.preventDefault();
+//       dispatch(logout());
+//   }
+
+//   const getLinks = () => {
+//     if (loggedIn) {
+//       return (
+//         <div className="links-nav">
+//           <Link to={'/product'}>All Tweets</Link>
+//           <Link to={'/profile'}>Profile</Link>
+//           <Link to={'/product/new'}>Write a Tweet</Link>
+//           <button onClick={logoutUser}>Logout</button>
+//         </div>
+//       );
+//     } else {
+//       return (
+//         <div className="links-auth">
+//           <Link to={'/signup'}>Signup</Link>
+//           <Link to={'/login'}>Login</Link>
+//         </div>
+//       );
+//     }
+//   }
+
+//   return (
+//     <>
+//       <h1>Biker</h1>
+//       { getLinks() }
+//     </>
+//   );
+// }
+
+// export default NavBar;
