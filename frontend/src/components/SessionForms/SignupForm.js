@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { IoIosCheckmarkCircle } from  "react-icons/io"
 import { RiCheckboxBlankCircleLine } from "react-icons/ri"
 import { signup, clearSessionErrors } from '../../store/session';
+import { BiHide, BiShow } from "react-icons/bi";
 import './SessionForm.css';
 
 function SignupForm () {
@@ -10,6 +11,7 @@ function SignupForm () {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmedPassword] = useState('');
+  const [passwordVisible, setPasswordVisible] = useState(false);
   const errors = useSelector(state => state.errors.session);
   const dispatch = useDispatch();
 
@@ -18,6 +20,10 @@ function SignupForm () {
       dispatch(clearSessionErrors());
     };
   }, [dispatch]);
+
+  const togglePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible);
+  };
 
   const passwordRequirements = () => {
     if (password.length > 0) {
@@ -46,7 +52,7 @@ function SignupForm () {
     }
   }
 
-  const update = field => {
+  const update = (field) => {
     let setState;
 
     switch (field) {
@@ -120,9 +126,6 @@ function SignupForm () {
               className='field'
               />
           </label>
-          <div className="errors">
-            {password !== confirmPassword && 'Confirm Password field must match'}
-          </div>
           <label>
             {/* <span>Confirm Password</span> */}
             <input type="password"
@@ -131,6 +134,14 @@ function SignupForm () {
               placeholder="Confirm Password"
               className='field'
               />
+          <br/>
+          <div className="passwordErrors">
+            {password !== confirmPassword && 'Confirm Password field must match'}
+          </div>
+          {/* <button className='toggleButton' onClick={togglePasswordVisibility}>
+            {passwordVisible ? <BiHide /> : <BiShow />}
+          </button> */}
+          <br/>
           </label>
           <br/>
           <input

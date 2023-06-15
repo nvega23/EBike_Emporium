@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { BiHide, BiShow } from "react-icons/bi";
 import './SessionForm.css';
 
 import { login, clearSessionErrors } from '../../store/session';
 
 function LoginForm () {
+  const [passwordVisible, setPasswordVisible] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const errors = useSelector(state => state.errors.session);
@@ -15,6 +17,10 @@ function LoginForm () {
       dispatch(clearSessionErrors());
     };
   }, [dispatch]);
+
+  const togglePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible);
+  };
 
   const update = (field) => {
     const setState = field === 'email' ? setEmail : setPassword;
@@ -55,7 +61,7 @@ function LoginForm () {
         <div className="errors">{errors?.password}</div>
 
         <label className="custom-field">
-          <input type="password"
+          <input type={passwordVisible ? "text" : "password"}
             value={password}
             onChange={update('password')}
             placeholder="Password"
@@ -63,6 +69,9 @@ function LoginForm () {
             required/>
 
         </label>
+        <button className='toggleButton' onClick={togglePasswordVisibility}>
+          {passwordVisible ? <BiHide /> : <BiShow />}
+        </button>
         <div class="field">
         <input
           className="field"

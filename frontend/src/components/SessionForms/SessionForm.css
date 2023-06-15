@@ -176,3 +176,13 @@ form .buttonField:active {
 #remember-me{
     cursor: pointer;
 }
+
+.toggleButton{
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.passwordErrors{
+    color: red;
+}
