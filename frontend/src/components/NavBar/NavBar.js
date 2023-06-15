@@ -1,49 +1,52 @@
 import React, { useState, useEffect } from 'react';
+import { Route, Routes, useLocation } from 'react-router-dom'
+import LoginForm from '../SessionForms/LoginForm';
+import SignupForm from '../SessionForms/SignupForm';
 import myImage from '../../assets/bike_icon.png';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './NavBar.css';
 
-const NavBar = () => {
+function NavBar() {
   const [isActive, setIsActive] = useState(false);
 
   const handleClick = () => {
     setIsActive(!isActive);
   };
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsActive(false);
-    }, 500);
+  const navigate = useNavigate();
 
-    return () => {
-      clearTimeout(timer);
-    };
-  }, []);
+  const handleLoginClick = () => {
+    navigate('/login');
+  };
+
+  const handleSignupClick = () => {
+    navigate('/signup');
+  };
 
   return (
     <>
-        <div className='navBar'>
-            <Link to="/" className='content'>
-                <img src={myImage} alt="Bike Icon" />
-            </Link>
-            <div id='navMenu' className={isActive ? 'active' : ''} onClick={handleClick}>
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            {isActive && (
-                <div className="menu">
-                    <Link to="/">Home</Link>
-                    <Link to="/about">About</Link>
-                    <Link to="/contact">Contact</Link>
-                    {/* <Link to="/signup">signup</Link>
-                    <Link to="/login">login</Link> */}
-                </div>
-            )}
+      <div className='navBar'>
+        <Link to="/" className='content'>
+          <img src={myImage} alt="Bike Icon" />
+        </Link>
+        <div id='navMenu' className={isActive ? 'active' : ''} onClick={handleClick}>
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
+        {isActive && (
+          <div className="menu">
+            {/* <button onClick={handleLoginClick}>Login</button> */}
+            {/* <button onClick={handleSignupClick}>Sign Up</button> */}
+            <Link to="/">Home</Link>
+            <Link to="/about">About</Link>
+            <Link to="/contact">Contact</Link>
+          </div>
+        )}
+      </div>
     </>
   );
-};
+}
 
 export default NavBar;
 

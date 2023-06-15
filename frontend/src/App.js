@@ -84,7 +84,6 @@ const ScrollToTop = () => {
   }, [pathname]);
   return null;
 };
-
 // import { getCurrentUser } from './store/session';
 
 function App() {
@@ -92,8 +91,8 @@ function App() {
   return (
     <>
       <div>
-        <NavBar />
-        {/* <ProductGrid/>/ */}
+        {/* <NavBar />
+        <ProductGrid/>/ */}
         {/* <SplashPage/> */}
         <Routes>
 

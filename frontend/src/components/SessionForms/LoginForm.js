@@ -26,33 +26,67 @@ function LoginForm () {
     dispatch(login({ email, password }));
   }
 
+  const handleDemo =(e) => {
+    e.preventDefault()
+    dispatch(login({email:"demo@user.io", password: "password"}))
+  }
+
   return (
-    <form className="session-form" onSubmit={handleSubmit}>
-      <h2>Log In Form</h2>
-      <div className="errors">{errors?.email}</div>
-      <label>
-        <span>Email</span>
-        <input type="text"
-          value={email}
-          onChange={update('email')}
-          placeholder="Email"
-        />
-      </label>
-      <div className="errors">{errors?.password}</div>
-      <label>
-        <span>Password</span>
-        <input type="password"
-          value={password}
-          onChange={update('password')}
-          placeholder="Password"
-        />
-      </label>
-      <input
-        type="submit"
-        value="Log In"
-        disabled={!email || !password}
-      />
-    </form>
+    <div id="outer">
+
+    <div className="wrapper">
+      <div class="title">
+            Login Form
+      </div>
+      <form action='#' onSubmit={handleSubmit}>
+        {/* <h2 className="title">Login</h2> */}
+
+        <div className="errors">{errors?.email}</div>
+        <label className="custom-field">
+          <input type="email"
+            value={email}
+            onChange={update('email')}
+            placeholder="Email"
+            className="field"
+            required/>
+
+        </label>
+
+        <div className="errors">{errors?.password}</div>
+
+        <label className="custom-field">
+          <input type="password"
+            value={password}
+            onChange={update('password')}
+            placeholder="Password"
+            className="field"
+            required/>
+
+        </label>
+        <div class="field">
+        <input
+          className="field"
+          type="submit"
+          value="Login"
+          disabled={!email || !password}
+          />
+        </div>
+        <br/>
+        <button type='submit' className='buttonField' onClick={handleDemo}>Demo Login</button>
+        <div class="content">
+              <div class="checkbox">
+                <input type="checkbox" id="remember-me"/>
+                <label for="remember-me">Remember me</label>
+              </div>
+              <div class="pass-link">
+                <a href="#">Forgot password?</a>
+              </div>
+        </div>
+
+      </form>
+      {/* <div className='rightImage'></div> */}
+    </div>
+  </div>
   );
 }
 

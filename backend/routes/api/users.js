@@ -51,7 +51,7 @@ router.post('/register', validateRegisterInput, async (req, res, next) => {
       try {
         newUser.hashedPassword = hashedPassword;
         const user = await newUser.save();
-        return res.json(await loginUser(user)); // <-- THIS IS THE CHANGED LINE
+        return res.json(await loginUser(user));
       }
       catch(err) {
         next(err);
@@ -62,6 +62,9 @@ router.post('/register', validateRegisterInput, async (req, res, next) => {
 
 // POST /api/users/login
 router.post('/login', validateLoginInput, async (req, res, next) => {
+  res.json({
+    message: "GET /api/users/login"
+  });
   passport.authenticate('local', async function(err, user) {
     if (err) return next(err);
     if (!user) {
@@ -70,7 +73,7 @@ router.post('/login', validateLoginInput, async (req, res, next) => {
       err.errors = { email: "Invalid credentials" };
       return next(err);
     }
-    return res.json(await loginUser(user)); // <-- THIS IS THE CHANGED LINE
+    return res.json(await loginUser(user));
   })(req, res, next);
 });
 
