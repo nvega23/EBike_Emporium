@@ -41,7 +41,7 @@ function LoginForm () {
     <div id="outer">
 
     <div className="wrapper">
-      <div class="title">
+      <div className="title">
             Login Form
       </div>
       <form action='#' onSubmit={handleSubmit}>
@@ -72,7 +72,7 @@ function LoginForm () {
         <button className='toggleButton' onClick={togglePasswordVisibility}>
           {passwordVisible ? <BiHide /> : <BiShow />}
         </button>
-        <div class="field">
+        <div className="field">
         <input
           className="field"
           type="submit"
@@ -82,12 +82,12 @@ function LoginForm () {
         </div>
         <br/>
         <button type='submit' className='buttonField' onClick={handleDemo}>Demo Login</button>
-        <div class="content">
-              <div class="checkbox">
+        <div className="content">
+              <div className="checkbox">
                 <input type="checkbox" id="remember-me"/>
-                <label for="remember-me">Remember me</label>
+                <label htmlFor="remember-me">Remember me</label>
               </div>
-              <div class="pass-link">
+              <div className="pass-link">
                 <a href="#">Forgot password?</a>
               </div>
         </div>
