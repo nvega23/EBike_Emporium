@@ -7,12 +7,12 @@ const cors = require('cors');
 const csurf = require('csurf');
 const { isProduction } = require('./config/keys');
 
-require('./models/Users');
+require('./models/User');
 require('./models/Product');
-require('./config/passport'); // <-- ADD THIS LINE
-const passport = require('passport'); // <-- ADD THIS LINE
+require('./config/passport');
+const passport = require('passport');
 
-const usersRouter = require('./routes/api/users'); // update the import file path
+const userRouter = require('./routes/api/users');
 const productRouter = require('./routes/api/products');
 const csrfRouter = require('./routes/api/csrf');
 
@@ -45,7 +45,7 @@ app.use(
 );
 
 // Attach Express routers
-app.use('/api/users', usersRouter); // update the path
+app.use('/api/users', userRouter);
 app.use('/api/products', productRouter);
 app.use('/api/csrf', csrfRouter);
 
@@ -54,7 +54,6 @@ app.use((req, res, next) => {
     err.statusCode = 404;
     next(err);
 });
-
 
 const serverErrorLogger = debug('backend:error');
 

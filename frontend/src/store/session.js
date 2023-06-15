@@ -31,20 +31,22 @@ export const signup = user => startSession(user, 'api/users/register');
 export const login = user => startSession(user, 'api/users/login');
 
 const startSession = (userInfo, route) => async dispatch => {
-    try {
-      const res = await jwtFetch(route, {
-        method: "POST",
-        body: JSON.stringify(userInfo)
-      });
-      const { user, token } = await res.json();
-      localStorage.setItem('jwtToken', token);
-      return dispatch(receiveCurrentUser(user));
-    } catch(err) {
+  try {
+    const res = await jwtFetch(route, {
+      method: "POST",
+      body: JSON.stringify(userInfo)
+    });
+    const { user, token } = await res.json();
+    localStorage.setItem('jwtToken', token);
+    return dispatch(receiveCurrentUser(user));
+  } catch (err) {
+    if (err instanceof Response) {
       const res = await err.json();
       if (res.statusCode === 400) {
         return dispatch(receiveErrors(res.errors));
       }
     }
+  }
 };
 
 export const fetchCurrentUser = () => async dispatch => {

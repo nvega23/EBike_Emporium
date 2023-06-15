@@ -36,7 +36,8 @@ function LoginForm () {
     e.preventDefault()
     dispatch(login({email:"demo@user.io", password: "password"}))
   }
-
+  // email: 'demo-user@appacademy.io',
+  // hashedPassword: bcrypt.hashSync('starwars', 10)
   return (
     <div id="outer">
 
@@ -44,7 +45,7 @@ function LoginForm () {
       <div className="title">
             Login Form
       </div>
-      <form action='#' onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         {/* <h2 className="title">Login</h2> */}
 
         <div className="errors">{errors?.email}</div>

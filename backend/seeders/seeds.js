@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
 const { mongoURI: db } = require('../config/keys.js');
-const User = require('../models/Users.js');
+const User = require('../models/User.js');
 const Product = require('../models/Product.js');
 const bcrypt = require('bcryptjs');
 // const { faker } = require('@faker-js/faker');
-const faker = require('faker');
+const {faker} = require('faker');
 require('dotenv').config()
 
 const NUM_SEED_USERS = 10;
@@ -18,6 +18,15 @@ users.push(
     username: 'demo-user',
     email: 'demo-user@appacademy.io',
     hashedPassword: bcrypt.hashSync('starwars', 10)
+  })
+)
+
+
+users.push(
+  new User({
+    username: 'demo-user',
+    email: 'demo@user.io',
+    hashedPassword: bcrypt.hashSync('password', 10)
   })
 )
 
