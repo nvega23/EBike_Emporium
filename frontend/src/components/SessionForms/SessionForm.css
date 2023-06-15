@@ -11,7 +11,7 @@ html,body{
   width: 100%;
   place-items: center;
   background: #f2f2f2;
-  background: linear-gradient(-135deg, #c850c0, #4158d0);
+  /* background: linear-gradient(-135deg, #c850c0, #4158d0); */
 }
 ::selection{
   background: #4158d0;
@@ -21,7 +21,7 @@ html,body{
   width: 380px;
   background: #fff;
   border-radius: 15px;
-  box-shadow: 0px 15px 20px rgba(0,0,0,0.1);
+  box-shadow: -10px 15px 20px rgba(0, 0, 0, 0.41);
 }
 .wrapper .title{
   font-size: 35px;
@@ -171,4 +171,8 @@ form .buttonField {
 
 form .buttonField:active {
     transform: scale(0.95);
+}
+
+#remember-me{
+    cursor: pointer;
 }
