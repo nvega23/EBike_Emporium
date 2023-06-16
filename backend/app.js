@@ -45,7 +45,7 @@ app.use(
 );
 
 // Attach Express routers
-app.use('/api/users', userRouter);
+app.use('/api/users', require('./routes/api/users'));
 app.use('/api/products', productRouter);
 app.use('/api/csrf', csrfRouter);
 
