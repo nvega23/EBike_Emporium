@@ -21,11 +21,11 @@ const SplashPage = () => {
         // <div className="loading-spinner">
         //   {/* Loading... */}
         // </div>
-        <div class="container">
-          <div class="content">
+        <div className="container">
+          <div className="content">
 
           </div>
-          <div class="loading-spinner"></div>
+          <div className="loading-spinner"></div>
         </div>
       ) : (
       <ImageCarousel/>

@@ -91,7 +91,7 @@ function SignupForm () {
     <div className='outer'>
     <div className="wrapper">
 
-      <div class="title">
+      <div className="title">
             Sign up
       </div>
         <form action='#' onSubmit={usernameSubmit}>
