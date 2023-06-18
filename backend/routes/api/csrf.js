@@ -5,8 +5,6 @@ const { isProduction } = require('../../config/keys');
 
 // Cross-site Request Forgery, csrf
 if (!isProduction) {
-  // In development, allow developers to access the CSRF token to test the
-  // server endpoints in Postman.
   router.get("/restore", (req, res) => {
     const csrfToken = req.csrfToken();
     res.status(200).json({

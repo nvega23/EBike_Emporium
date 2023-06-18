@@ -3,19 +3,25 @@ const Schema = mongoose.Schema;
 
 const userSchema = Schema({
     username: {
-      type: String,
-      required: [true, 'Please add a username']
+        type: String,
+        required: true
     },
     email: {
-      type: String,
-      required: true
+        type: String,
+        required: true
     },
     hashedPassword: {
-      type: String,
-      required: true
-    }
-  }, {
-    timestamps: true
-});
+        type: String,
+        required: true
+    },
 
-module.exports = mongoose.model('User', userSchema);
+    cart: {
+        type: Array,
+        default: [],
+      },
+},
+    {
+        timestamps: true
+    })
+
+module.exports = mongoose.model('User', userSchema)

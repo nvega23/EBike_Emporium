@@ -1,8 +1,10 @@
-import { combineReducers } from 'redux';
-import { clearSessionErrors } from './session';
-import { productErrorsReducer } from './products';
+import { sessionErrorReducer } from './session'
+import { combineReducers } from 'redux'
+import { reviewErrorReducer } from './review'
+import { postErrorReducer } from './post'
 
 export default combineReducers({
-  session: clearSessionErrors,
-  products: productErrorsReducer
-});
+    session: sessionErrorReducer,
+    review: reviewErrorReducer,
+    post: postErrorReducer
+})
