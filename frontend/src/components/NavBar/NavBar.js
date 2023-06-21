@@ -7,6 +7,7 @@ import { logout } from '../../store/session';
 import './NavBar.css';
 import { Badge } from 'antd';
 import SearchBar from '../SearchBar.js/SearchBar';
+import myImage from '../../assets/bike_icon.png';
 
 function NavBar() {
     const [isActive, setIsActive] = useState(false);
@@ -60,16 +61,24 @@ function NavBar() {
 
     return (
         <>
-        <div id='navMenu' className={isActive ? 'active' : ''} onClick={handleClick}>
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <div id="navbarOuter">
-            <NavLink exact to="/" id="title">
-            </NavLink>
-            {/* <SearchBar/> */}
-        </div>
+            <div className='navBar'>
+                <Link to="/" className='content'>
+                <img src={myImage} alt="Bike Icon" />
+                </Link>
+                <SearchBar/>
+                <div id='navMenu' className={isActive ? 'active' : ''} onClick={handleClick}>
+                <span></span>
+                <span></span>
+                <span></span>
+                </div>
+                {isActive && (
+                    <div className="menu">
+                    <div className='login-something'>  <Link to="/" className='login-links'> Home </Link></div>
+                    <div className='login-something'>  <Link to="/login" className='login-links'> Log In</Link></div>
+                    <div className='login-something'><Link to="/signup" className='login-links'>Sign Up</Link></div>
+                </div>
+                )}
+            </div>
         </>
     )
 }

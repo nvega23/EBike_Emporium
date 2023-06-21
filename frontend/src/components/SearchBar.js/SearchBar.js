@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import './SearchBar.css'
 
 const SearchBar = () => {
     const navigate = useNavigate();
@@ -11,7 +12,7 @@ const SearchBar = () => {
 
     return (
         <div id='searchbar-wrapper'>
-            <input placeholder='Search...' onKeyDown={handleSearch} id='searchbar'></input>
+            <input placeholder='Search...' onKeyDown={handleSearch} id='searchbar'/>
         </div>
     )
 }

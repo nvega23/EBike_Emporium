@@ -1,0 +1,13 @@
+#searchbar {
+    border: 1px solid black;
+    display: inline-block;
+    padding: 0 10px;
+    margin-top: -10px;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: text;
+    border-radius: 15px;
+    color: red;
+    transition: all 0.3s ease;
+    width: 100%;
+}

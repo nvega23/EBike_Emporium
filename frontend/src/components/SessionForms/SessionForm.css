@@ -22,6 +22,7 @@ html,body{
   background: #fff;
   border-radius: 15px;
   box-shadow: -10px 15px 20px rgba(0, 0, 0, 0.41);
+  margin-top: 70px;
 }
 .wrapper .title{
   font-size: 35px;
@@ -31,7 +32,8 @@ html,body{
   color: #fff;
   user-select: none;
   border-radius: 15px 15px 0 0;
-  background: linear-gradient(-135deg, #c850c0, #4158d0);
+  /* background: linear-gradient(-135deg, #c850c0, #4158d0); */
+  background: linear-gradient(-135deg, #c850c0, red);
 }
 .wrapper form{
   padding: 10px 30px 50px 30px;
@@ -145,7 +147,8 @@ form .field input[type="submit"] {
     cursor: pointer;
     border: none;
     border-radius: 5px;
-    background: linear-gradient(-135deg, #c850c0, #4158d0);
+    /* background: linear-gradient(-135deg, #c850c0, #4158d0); */
+    background: linear-gradient(-135deg, #c850c0, red);
     color: #fff;
     transition: all 0.3s ease;
 }
@@ -163,7 +166,8 @@ form .buttonField {
     cursor: pointer;
     border: none;
     border-radius: 5px;
-    background: linear-gradient(-135deg, #c850c0, #4158d0);
+    /* background: linear-gradient(-135deg, #c850c0, #4158d0); */
+    background: linear-gradient(-135deg, #c850c0, red);
     color: #fff;
     transition: all 0.3s ease;
     width: 100%;

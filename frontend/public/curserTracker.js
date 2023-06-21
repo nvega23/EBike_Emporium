@@ -4,7 +4,7 @@ let trackerX = 0
 let trackerY = 0
 let mouseX = 0
 let mouseY = 0
-const speed = 0.05
+const speed = 0.15
 let visible = false
 
 document.addEventListener('mousemove', e => {

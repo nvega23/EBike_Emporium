@@ -43,9 +43,9 @@ function App() {
   return (
     <>
     <div>
-      {/* <SplashPage/> */}
-
     <NavBar />
+    <SplashPage/>
+
     <Routes>
       <Route exact path="/" element={<MainPage/>} />
       <Route exact path="/login" element={<LoginForm/>} />
