@@ -15,12 +15,11 @@
     margin-top: 75px;
     filter: drop-shadow(8px 6px 4px #000);
     border-radius: 10px;
-    /* filter: box-shadow(8px 6px 4px #000); */
   }
 
   .carousel-container {
     height: 100px; /* Adjust the height value to your preference */
-    margin-top: -175px;
+    margin-top: -0.5vh;
   }
 
   .product-grid {

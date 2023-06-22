@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 import { clearReviewErrors, deleteReview, fetchReview, updateReview } from '../../store/review'
+import './ReviewUpdate.css'
 
 function ReviewUpdate() {
     const { reviewId, userId } = useParams()

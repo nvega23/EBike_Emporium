@@ -1,6 +1,28 @@
 .login-option{
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    flex-direction: row;
+    padding-top: 200px;
 }
+
+.login-links{
+    font-family: 'Poppins', sans-serif;
+    font-size: xx-large;
+    margin-top: 100px;
+    color: #4158d0;
+    text-decoration: none;
+}
+
+
+.login-something{
+    margin-top: 50px;
+}
+
+.project-title{
+    display: flex;
+    flex-direction: column;
+    font-size:50px;
+    font-family: 'Poppins', sans-serif;
+    color: #4158d0;
+}
+/* background: linear-gradient(-135deg, #c850c0, #4158d0); */

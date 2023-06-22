@@ -1,4 +1,3 @@
-import { useHistory } from 'react-router-dom';
 import jwtFetch from './jwt'
 
 const RECEIVE_NEW_REVIEW = "review/RECEIVE_NEW_REVIEW"
@@ -40,16 +39,26 @@ const receiveNewReview = (reviews) => ({
 
 
 
-export const deleteReview = (id,key, userId) => async dispatch => {
-    const res = await jwtFetch(`/api/reviews/${id}`, {
-        method: 'DELETE'
-    });
-
-    if(res.ok){
-       dispatch(removeReview(id, key))
-       dispatch(fetchUsersReview(userId))
-
-    }
+export const deleteReview = (id, key, userId) => async dispatch => {
+    // try{
+    //     const res = await jwtFetch(`/api/reviews/${id}`, {
+    //         method: 'DELETE'
+    //     });
+    // } catch{
+    //     if(res.ok){
+    //         dispatch(removeReview(id, key))
+    //         dispatch(fetchUsersReview(userId))
+    //     }
+    // }
+    try {
+        const res = await jwtFetch(`/api/reviews/${id}`, {
+          method: 'DELETE'
+        })
+        dispatch(removeReview(id, key))
+      } catch(err) {
+        const resBody = await err.json();
+        return dispatch(receiveErrors(resBody.errors));
+      }
 }
 
 

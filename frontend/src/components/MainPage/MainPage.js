@@ -6,7 +6,7 @@ function MainPage() {
     return (
         <>
             <div className='login-option'>
-                {/* <div className='login-something'>  <Link to="/login" className='login-links'> Log In</Link></div>
+                {/* <div className='login-something'>  <Link to="/login" className='login-links'> Login</Link></div>
                 <div className='login-something'><Link to="/signup" className='login-links'>Sign Up</Link></div> */}
             </div>
         </>

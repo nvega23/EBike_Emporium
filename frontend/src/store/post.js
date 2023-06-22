@@ -45,12 +45,23 @@ export const getPost = (postId) => (store) => {
 }
 
 export const deletePost = (postId, key) => async (dispatch) => {
-    const response = await jwtFetch(`/api/post/${postId}`, {
-        method: "DELETE"
-    });
-    if (response.ok) {
-        dispatch(removePost(postId, key));
-    }
+    console.log(postId, key, 'I am trying to delete a post')
+    // const response = await jwtFetch(`/api/post/${postId}`, {
+    //     method: "DELETE"
+    // });
+    // if (response.ok) {
+    //     dispatch(removePost(postId, key));
+    // }
+    try {
+        const res = await jwtFetch(`/api/post/${postId}`, {
+          method: 'DELETE'
+        })
+        dispatch(removePost(postId, key))
+        console.log(res)
+      } catch(err) {
+        const resBody = await err.json();
+        return dispatch(receiveErrors(resBody.errors));
+      }
 }
 
 export const updatePost = (body, images, postId) => async (dispatch) => {
@@ -101,11 +112,11 @@ export const updatePost = (body, images, postId) => async (dispatch) => {
 // export const fetchPosts = () => async (dispatch) => {
 
 
-export const fetchPosts = ({query}) => async (dispatch) => {
+export const fetchPosts = (options = {}) => async (dispatch) => {
+    const { query = '' } = options;
 
-    query ||= ''
     try {
-        const res = await jwtFetch(`/api/post` + query);
+        const res = await jwtFetch(`/api/post${query}`);
         const posts = await res.json();
         dispatch(recievePosts(posts));
     } catch (err) {
@@ -218,7 +229,7 @@ export const removeLike = (id) => async dispatch => {
 
 
 const initialState = {}
-const postReducer = (state = initialState, action) => {
+export const postReducer = (state = initialState, action) => {
     let newState = {...state};
     switch (action.type) {
         case RECEIVE_POSTS:
@@ -226,6 +237,8 @@ const postReducer = (state = initialState, action) => {
         case REMOVE_POST:
             delete newState[action.key];
             return newState;
+        case 'post/RECEIVE_POST_ERRORS':
+            return state;
         case UPDATE_POST:
         case RECEIVE_NEW_POST:
             return {...newState, [newState.length+1]: {...action.post}}
@@ -240,7 +253,7 @@ const postReducer = (state = initialState, action) => {
     }
 }
 
-export default postReducer;
+// export default postReducer;
 
 
 const nullErrors = null;

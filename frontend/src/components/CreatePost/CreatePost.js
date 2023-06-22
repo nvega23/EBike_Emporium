@@ -2,17 +2,15 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useLocation } from 'react-router-dom';
 import { clearPostErrors, composePost, fetchPosts } from '../../store/post';
-
+import './CreatePost.css';
 
 function CreatePost() {
-
-
     const [body, setBody] = useState("")
     const author = useSelector(state => state.session.user)
     const [images, setImages] = useState([]);
     const [imageUrls, setImageUrls] = useState([]);
-    const [reciepeName, setReciepeName] = useState();
-    const [price, setPrice] = useState();
+    const [reciepeName, setReciepeName] = useState('');
+    const [price, setPrice] = useState('');
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const location = useLocation();
@@ -46,27 +44,25 @@ function CreatePost() {
 
 
     useEffect(() => {
-        // return () => {
         dispatch(clearPostErrors());
-        //};
     }, [dispatch]);
 
 
-    let imgUploadTxt = "Click here to Upload Image";
+    let imgUploadTxt = "";
     if (images.length > 0) imgUploadTxt = images[0].name;
 
   return (
-    <div id="outer">
-
-        <form onSubmit={handleSubmit} className="form">
+    <div id="outerItem">
+        <h1 className='postTitle'>Sell your bike!</h1>
+        <form onSubmit={handleSubmit} className="PostForm">
             <input
             value= {body}
-            placeholder="Body"
+            placeholder="Bike Name"
             onChange={(e) => setBody(e.target.value)}
             rows="5"
             cols="33"
-            className="review-style-inputs"/>
-            <label>Body</label>
+            className="sellItemInput"/>
+            {/* <label>What are you selling?</label> */}
 
               <label className="entireUpload">
                   {imgUploadTxt} &nbsp;
@@ -79,28 +75,33 @@ function CreatePost() {
                       />
               </label>
 
+                {/* Display the image preview */}
+                {imageUrls.length > 0 && (
+                    <img src={imageUrls[0]} alt="Preview" className="imagePreview" />
+                )}
+
                <input
                   value= {reciepeName}
-                  placeholder="Reciepe Name"
+                  placeholder="Bike Bio"
                   onChange={(e) => setReciepeName(e.target.value)}
-                  className="review-style-inputs"
-                  id='recipie-name'
+                  className="sellItemInput"
+                  id='itemBio'
                   />
-                  <label>Reciepe Name</label>
+                  {/* <label>Bio</label> */}
               <div className="errors">{errors?.price}</div>
                 <input
                   type='text'
                   value= {price}
                   placeholder="Price"
                   onChange={(e) => setPrice(e.target.value)}
-                  className="review-style-inputs"/>
-                  <label>Price</label>
+                  className="sellItemInput"/>
+                  {/* <label>Price</label> */}
 
 
               <input type='submit'
                     value="Post"
                     disabled={!body}
-                    className="submitButton"
+                    className="itemSubmitButton"
                 />
 
         </form>

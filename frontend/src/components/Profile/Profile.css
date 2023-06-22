@@ -1,0 +1,96 @@
+.post-container {
+    padding-bottom: 10px;
+    margin: 40px;
+    background-color: transparent;
+    border-radius: 10px;
+    font-family: DejaVu Sans Mono, monospace;
+    box-shadow: -10px 15px 20px rgba(0, 0, 0, 0.41);
+}
+
+.post-main-content {
+    padding: 10px;
+}
+
+.post-body-text {
+    padding-top: 10px;
+
+}
+
+.review-title{
+    margin-top: 20px;
+    font-size: 30px;
+}
+
+.review-body{
+    padding-top: 15px;
+    margin-left: 30px;
+}
+
+.review-rating{
+    margin-left: 30px;
+
+}
+
+#profileLink{
+    background: linear-gradient(-135deg, #c850c0, red);
+    color: white;
+    padding: 3px;
+    text-decoration: none;
+    text-transform: uppercase;
+    border-radius: 5px;
+}
+
+#profileLink:hover {
+    background-color: #fff;
+}
+
+#ProfileUsername{
+    font-family: DejaVu Sans Mono, monospace;
+    font-size: 60px;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    text-shadow: 5px 2px 5px #c850c0;
+}
+
+#ProfilePostsTitle{
+    font-family: DejaVu Sans Mono, monospace;
+    margin-bottom: -30px;
+    margin-left: 15px;
+    font-size: 30px;
+}
+
+#user-button-group {
+    width: 70%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 10px;
+    cursor: pointer;
+    font-family: DejaVu Sans Mono, monospace;
+}
+
+.user-button-group-button {
+    border: 2px solid #ba3b0a;
+    padding: 10px;
+}
+
+#user-button-group-button-left {
+    border-right: none;
+    border-top-left-radius: 10px;
+}
+
+#user-button-group-button-right {
+    border-left: none;
+    border-bottom-right-radius: 10px;
+}
+
+.user-button-group-button:hover {
+   background: #F5CDAC;
+}
+
+
+.reviewButton:hover{
+    cursor: pointer;
+}

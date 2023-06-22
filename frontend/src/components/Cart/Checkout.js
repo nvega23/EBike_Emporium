@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useN, useNavigate } from "react-router-dom";
+import './Checkout.css'
 
 
 const Checkout = ({ setShowModal }) => {
@@ -15,7 +16,6 @@ const emptyCart = () => {
         payload: [],
     })
 }
-
     return (
         <div className="checkout23">
             <i className="fa-solid fa-xmark" onClick={emptyCart} id="xmark23"></i>

@@ -1,160 +1,110 @@
-import { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { IoIosCheckmarkCircle } from  "react-icons/io"
-import { RiCheckboxBlankCircleLine } from "react-icons/ri"
-import { signup, clearSessionErrors } from '../../store/session';
-import { BiHide, BiShow } from "react-icons/bi";
-import './SessionForm.css';
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import './SessionForm.css'
+import { signup, clearSessionErrors  } from '../../store/session'
 
-function SignupForm () {
-  const [email, setEmail] = useState('');
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmedPassword] = useState('');
-  const [passwordVisible, setPasswordVisible] = useState(false);
-  const errors = useSelector(state => state.errors.session);
-  const dispatch = useDispatch();
 
-  useEffect(() => {
-    return () => {
-      dispatch(clearSessionErrors());
-    };
-  }, [dispatch]);
+function SignupForm() {
+  const [email, setEmail] = useState("")
+  const [username, setUsername] = useState("")
+  const [password, setPassword] = useState("")
+  const [password2, setPassword2] = useState("")
 
-  const togglePasswordVisibility = () => {
-    setPasswordVisible(!passwordVisible);
-  };
+  const dispatch = useDispatch()
+  const errors = useSelector(state => state.errors.session)
 
-  const passwordRequirements = () => {
-    if (password.length > 0) {
-        return (
-            <div id="Password-Requirements">
-                {passwordLengthReq()}
-                {passwordMatchReq()}
-            </div>
-        )
-    }
-  }
+  useEffect(()=> {
+    dispatch(clearSessionErrors());
+  }, [dispatch])
 
-  const passwordMatchReq = () => {
-    if (password === confirmPassword) {
-        return (<span className="green"><div className="Pass-Req-Icon-Container"><IoIosCheckmarkCircle style={{fontSize: '14px'}} /></div>Passwords must match</span>)
-    } else {
-        return (<span className="red"><div className="Pass-Req-Icon-Container"><RiCheckboxBlankCircleLine style={{ fontSize: '13px' }} /></div>Passwords must match</span>)
-    }
-  }
-
-  const passwordLengthReq = () => {
-    if (password.length >= 6) {
-        return (<span className="green"><div className="Pass-Req-Icon-Container"><IoIosCheckmarkCircle style={{ fontSize: '14px' }} /></div>Password must be at least 6 characters</span>)
-    }else{
-        return (<span className="red"><div className="Pass-Req-Icon-Container"><RiCheckboxBlankCircleLine style={{ fontSize: '13px' }} /></div>Password must be at least 6 characters</span>)
-    }
-  }
-
-  const update = (field) => {
-    let setState;
-
-    switch (field) {
-      case 'email':
-        setState = setEmail;
-        break;
-      case 'username':
-        setState = setUsername;
-        break;
-      case 'password':
-        setState = setPassword;
-        break;
-      case 'confirmPassword':
-        setState = setConfirmedPassword;
-        break;
-      default:
-        throw Error('Unknown field in Signup Form');
-    }
-
-    return e => setState(e.currentTarget.value);
-  }
-
-  const usernameSubmit = e => {
-    e.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault()
     const user = {
       email,
       username,
       password
-    };
-
-    dispatch(signup(user));
+    }
+    dispatch(signup(user))
   }
 
-  return (
-    <>
-    <div className='outer'>
-    <div className="wrapper">
 
-      <div className="title">
-            Sign up
-      </div>
-        <form action='#' onSubmit={usernameSubmit}>
-          {/* <h2>Sign Up Form</h2> */}
-          <div className="errors">{errors?.email}</div>
-          <label>
-            {/* <span>Email</span> */}
-            <input type="text"
-              value={email}
-              onChange={update('email')}
-              placeholder="Email"
-              className='field'
-              />
-          </label>
-          <div className="errors">{errors?.username}</div>
-          <label>
-            {/* <span>Username</span> */}
-            <input type="text"
-              value={username}
-              onChange={update('username')}
-              placeholder="Username"
-              className='field'
-              />
-          </label>
-          <div className="errors">{errors?.password}</div>
-          <label>
-            {/* <span>Password</span> */}
-            <input type="password"
-              value={password}
-              onChange={update('password')}
-              placeholder="Password"
-              className='field'
-              />
-          </label>
-          <label>
-            {/* <span>Confirm Password</span> */}
-            <input type="password"
-              value={confirmPassword}
-              onChange={update('confirmPassword')}
-              placeholder="Confirm Password"
-              className='field'
-              />
-          <br/>
-          <div className="passwordErrors">
-            {password !== confirmPassword && 'Confirm Password field must match'}
-          </div>
-          {/* <button className='toggleButton' onClick={togglePasswordVisibility}>
-            {passwordVisible ? <BiHide /> : <BiShow />}
-          </button> */}
-          <br/>
-          </label>
-          <br/>
+  return (
+    <div id="outer">
+
+<div className="wrapper">
+  <div className="title">
+        Signup Form
+  </div>
+    <div className="outerBox">
+      <form className='session-form' onSubmit={handleSubmit}>
+
+
+      <div className='errors'>{errors?.username}</div>
+      <label className="custom-field">
           <input
-            type="submit"
-            value="Sign Up"
-            className='buttonField'
-            disabled={!email || !username || !password || password !== confirmPassword}
+            value={username}
+            placeholder="Username"
+            onChange={(e) => setUsername(e.target.value)}
+            className='field'
             />
-        </form>
-        </div>
-      </div>
-    </>
-  );
+      </label>
+
+        <div className='errors'>{errors?.email}</div>
+        <label className="custom-field">
+          <input
+            value={email}
+            placeholder="Email"
+            onChange={(e) => setEmail(e.target.value)}
+            className='field'
+          />
+        </label>
+
+
+      <div className='errors'>{errors?.password}</div>
+      <label className="custom-field">
+          <input
+          type="password"
+          value={password}
+          placeholder="Password"
+          onChange={(e) => setPassword(e.target.value)}
+          className='field'
+          />
+      </label>
+
+
+        <div className='errors'>{password !== password2 && "Confirm Password must match"}</div>
+        <label className="custom-field">
+          <input
+            type="password"
+            value={password2}
+            placeholder="Password"
+            onChange={(e) => setPassword2(e.target.value)}
+            className='field'
+            />
+        </label>
+
+        <input
+          className="buttonField"
+          type="submit"
+          value="Sign Up"
+          disabled={!email || !username || !password || password !== password2}
+          />
+          <div className="content">
+              {/* <div className="checkbox"> */}
+                {/* <input type="checkbox" id="remember-me"/> */}
+                {/* <label htmlFor="remember-me">Remember me</label> */}
+              {/* </div> */}
+              <div className="pass-link">
+                <a href="/login">Have an account?</a>
+              </div>
+          </div>
+
+      </form>
+    </div>
+
+  </div>
+    </div>
+  )
 }
 
 export default SignupForm;

@@ -1,8 +1,5 @@
-import SplashPage from '../src/components/splashPage.js'
-import { useLocation } from 'react-router-dom';
-// import ProductGrid from './components/ImageCarousel';
-import { Route, Routes } from 'react-router-dom'
-import { AuthRoute, ProtectedRoute } from './components/Routes/routes';
+// import SplashPage from '../src/components/splashPage.js'
+import { Route } from 'react-router-dom'
 import PostIndex from './components/PostIndex/PostIndex';
 import MainPage from './components/MainPage/MainPage'
 import LoginForm from './components/SessionForms/LoginForm'
@@ -17,35 +14,38 @@ import NavBar from './components/NavBar/NavBar'
 import Profile from './components/Profile/Profile';
 import { fetchCurrentUser } from './store/session';
 import { useEffect, useState } from 'react';
+import { Routes } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 import Cart from './components/Cart/Cartitem';
 import Checkout from './components/Cart/Checkout';
 import ReviewIndexItem from './components/ReviewIndexItem/ReviewIndexItem';
 import ReviewUpdate from './components/ReviewUpdate/ReviewUpdate';
 // import Message from './components/Message/Message';
 
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
+
 function App() {
   const [loaded, setLoaded] = useState(false)
   const dispatch = useDispatch();
 
-  const ScrollToTop = () => {
-  const { pathname } = useLocation();
-    useEffect(() => {
-      window.scrollTo(0, 0);
-    }, [pathname]);
-    return null;
-  };
-
   useEffect(() => {
     dispatch(fetchCurrentUser()).then(() => setLoaded(true))
-  }, [dispatch, ScrollToTop])
+  }, [dispatch])
 
-  return (
+  return loaded && (
     <>
-    <div>
+    <ScrollToTop/>
     <NavBar />
-    <SplashPage/>
-
+    {/* <SplashPage/> */}
     <Routes>
       <Route exact path="/" element={<MainPage/>} />
       <Route exact path="/login" element={<LoginForm/>} />
@@ -61,7 +61,6 @@ function App() {
       <Route exact path='/checkout' element={<Checkout/>} />
       {/* <ProtectedRoute exact path='/Message' component={Message} /> */}
     </Routes>
-    </div>
     </>
   );
 }

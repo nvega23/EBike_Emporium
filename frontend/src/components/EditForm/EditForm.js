@@ -4,16 +4,12 @@ import { useParams } from 'react-router-dom';
 import { updatePost } from '../../store/post';
 
 function EditForm() {
-
     const { postId } = useParams();
     const [body, setBody] = useState("")
     const author = useSelector(state => state.session.user)
     const [images, setImages] = useState([]);
     const [imageUrls, setImageUrls] = useState([]);
     const dispatch = useDispatch();
-
-
-
 
     const updateFiles = async e => {
         const files = e.target.files;
@@ -34,7 +30,6 @@ function EditForm() {
         else setImageUrls([]);
     }
 
-
     const handleSubmit = e => {
         e.preventDefault();
         dispatch(updatePost(body, images, postId)); //
@@ -42,9 +37,6 @@ function EditForm() {
         setImageUrls([]);
         setBody('');
     };
-
-
-
 
   return (
     <div id="outer">
@@ -74,11 +66,7 @@ function EditForm() {
                     disabled={!body}
                     className="submitButton"
                 />
-
         </form>
-
-
-
     </div>
   )
 }

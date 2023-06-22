@@ -1,0 +1,67 @@
+.cartContainer{
+    /* border: 5px solid black; */
+    width: 120vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+.cartTitle{
+    font-size: 5vh;
+    font-family: 900;
+    font-family: 'Poppins', sans-serif;
+    margin: 1vh;
+}
+
+.cartImg{
+    /* border: 5px solid yellowgreen; */
+    width: 50vh;
+}
+
+.cartDescription{
+    /* border: 5px solid pink; */
+    font-family: 'Poppins', sans-serif;
+    margin: 5vh;
+    height: 33.8vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+}
+
+.removeCartItem{
+    padding: 10px 20px;
+    margin-bottom: 2vh;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    color: black;
+    transition: all 0.3s ease;
+    text-decoration: underline;
+    width: 100%;
+}
+
+.summaryContainer{
+    /* border: 3px solid blue; */
+    height: 33.8vh;
+    width: 25vh;
+}
+
+.cartSub{
+    text-decoration: underline;
+    margin-bottom: 5vh;
+}
+
+.cartPrice{
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    text-decoration: overline;
+    text-decoration: underline;
+}

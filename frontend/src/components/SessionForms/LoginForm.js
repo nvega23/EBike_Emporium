@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { BiHide, BiShow } from "react-icons/bi";
 import './SessionForm.css';
@@ -6,21 +6,21 @@ import './SessionForm.css';
 import { login, clearSessionErrors } from '../../store/session';
 
 function LoginForm () {
-  const [passwordVisible, setPasswordVisible] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const errors = useSelector(state => state.errors.session);
   const dispatch = useDispatch();
+  const [passwordVisible, setPasswordVisible] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible);
+  };
 
   useEffect(() => {
     return () => {
       dispatch(clearSessionErrors());
     };
   }, [dispatch]);
-
-  const togglePasswordVisibility = () => {
-    setPasswordVisible(!passwordVisible);
-  };
 
   const update = (field) => {
     const setState = field === 'email' ? setEmail : setPassword;
@@ -36,8 +36,7 @@ function LoginForm () {
     e.preventDefault()
     dispatch(login({email:"demo@user.io", password: "password"}))
   }
-  // email: 'demo-user@appacademy.io',
-  // hashedPassword: bcrypt.hashSync('starwars', 10)
+
   return (
     <div id="outer">
 
@@ -56,8 +55,8 @@ function LoginForm () {
             placeholder="Email"
             className="field"
             required/>
-
         </label>
+
 
         <div className="errors">{errors?.password}</div>
 
@@ -89,12 +88,11 @@ function LoginForm () {
                 <label htmlFor="remember-me">Remember me</label>
               </div>
               <div className="pass-link">
-                <a href="#">Forgot password?</a>
+                <a href="/signup">Need an Account?</a>
               </div>
         </div>
 
       </form>
-      {/* <div className='rightImage'></div> */}
     </div>
   </div>
   );

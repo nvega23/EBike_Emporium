@@ -8,7 +8,7 @@ const User = require('../../models/User')
 const { requireUser } = require('../../config/passport');
 const validatePostInput = require('../../validations/post');
 
-// const { multipleFilesUpload, multipleMulterUpload } = require("../../awsS3");
+const { multipleFilesUpload, multipleMulterUpload } = require("../../awsS3");
 
 router.get('/', async (req, res) => {
     try {
@@ -87,9 +87,9 @@ router.get('/:id', async (req, res, next) => {
     }
 });
 
-router.post('/', requireUser, validatePostInput, async (req, res, next) => {
+router.post('/', multipleMulterUpload("images"), requireUser, validatePostInput, async (req, res, next) => {
 
-//   const imageUrls = await multipleFilesUpload({ files: req.files, public: true });
+  const imageUrls = await multipleFilesUpload({ files: req.files, public: true });
 
     try {
       const newPost = new Post({
@@ -114,24 +114,46 @@ router.post('/', requireUser, validatePostInput, async (req, res, next) => {
 });
 
 
-router.delete('/:id', requireUser, async (req, res)=>{
+// router.delete('/:id', requireUser, async (req, res)=>{
+//   try {
+
+//     const post = await Post.findById(req.params.id);
+
+//     if (post.author._id.toString() !== req.user._id.toString()){
+
+//       return res.status(401).json({msg: 'User not authorized'});
+//     }
+
+//     await post.remove();
+
+//     res.json({msg: 'Post removed' });
+//   }catch(err){
+//     console.error(err.message)
+//     res.status(500).send('Server Error');
+//   };
+// })
+
+// Delete a post by ID
+router.delete('/:id', async (req, res) => {
   try {
+    const postId = req.params.id;
+    const post = await Post.findById(postId);
+    console.log(post)
 
-    const post = await Post.findById(req.params.id);
-
-    if (post.author._id.toString() !== req.user._id.toString()){
-
-      return res.status(401).json({msg: 'User not authorized'});
+    if (!post) {
+      return res.status(404).json({ error: 'Post not found' });
     }
 
-    await post.remove();
+    // Perform any necessary authorization checks here
 
-    res.json({msg: 'Post removed' });
-  }catch(err){
-    console.error(err.message)
-    res.status(500).send('Server Error');
-  };
-})
+    await post.deleteOne();
+
+    return res.json({ message: 'Post deleted successfully' });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: 'Server error' });
+  }
+});
 
 router.put("/like/:id", requireUser, async (req, res) => {
   try{

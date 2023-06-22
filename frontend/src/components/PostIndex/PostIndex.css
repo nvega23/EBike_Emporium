@@ -1,0 +1,60 @@
+#post-index-page {
+    display: flex;
+    margin-bottom: 80px;
+}
+
+#post-index-container {
+    margin: 15px auto;
+    width: -50%;
+}
+
+#post-item-list{
+    display: flex;
+    /* margin-top: 150vh; */
+    margin-top: 1vh;
+}
+#post-index-sidebar-active {
+    width: 300px;
+    padding-left: 20px;
+    border-left: 2px solid #ba3b0a;
+}
+
+#post-index-sidebar {
+    display: none;
+}
+
+#sidebar-title {
+
+    font-family: DejaVu Sans Mono, monospace;
+
+    font-size: 24px;
+}
+
+#sidebar-content {
+    padding-top: 10px;
+    top: 110px;
+    text-align: center;
+    position: sticky;
+    font-family: DejaVu Sans Mono, monospace;
+}
+
+#x-icon {
+    width: 20px;
+    height: 20px;
+    size: 10px;
+    cursor: pointer;
+    float: left;
+    color: transparent;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAUhJREFUaEPtmOEOgjAMhMuTqk+mvqmpcckyB+x6Nwyx/BW67+vNsrDYya/l5PyWAr9OMBPIBMgO5BYiG0g//pcJXM3sQbeuXwCujSbg4JePwE0sEaqNCHh37hW0L6iSKPClvNcdShkR8OLtQgqJtubTzLxZQxcqoJag4B0mIqCSoOEZAVZCAs8KRCVk8AoBVEIKrxIYlZDDKwX2JKbAqwXWJHzS+du7XNCc33sZRMfoVt222/W9UvgZCRTYnoQc/mgBxbHjK/mjt5BcQi3QmzbetfpPLJVQCmyNyhmn2Pd2UgmMzPkpEgqBEfi16URvJ1YAgZ8iwQhE4OUSUQEGXioREVDAyyRQASW8RAIRaD+rKM82h39WUcK3SUC1kQTKQvDnv70zffU7XDsiAPDMvzUF5vd4e4VMIBMgO5BbiGwg/XgmQLeQLPACAzxiMbcB4aEAAAAASUVORK5CYII=);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.splashPageImage{
+    margin-top: 2vh;
+    width: 100%;
+    height: 70vh;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    max-width: 100%;
+}

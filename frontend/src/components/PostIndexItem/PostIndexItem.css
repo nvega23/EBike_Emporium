@@ -1,0 +1,212 @@
+.post-container {
+    padding-bottom: 10px;
+    margin: 40px;
+    list-style: none;
+    border: 2px solid transparent;
+    background-color: #fff;
+    border-radius: 10px;
+    font-family: DejaVu Sans Mono, monospace;
+    box-shadow: -10px 15px 20px rgba(0, 0, 0, 0.41);
+}
+
+.post-main-content {
+    padding: 10px;
+}
+
+.reviewButton{
+    font-family: 'Poppins', sans-serif;
+    padding: 5px 10px;
+    border-radius: 25px;
+    border: 3px solid lightgray;
+    background-color: transparent;
+    color: black;
+    font-size: 20px;
+    cursor: pointer;
+    text-decoration: none;
+    height: 50px;
+}
+
+.reviewButton:hover{
+    background: linear-gradient(-135deg, #c850c0, red);
+    color: white;
+    border: 3px solid transparent;
+}
+
+
+#dateButtons {
+    display: flex;
+   justify-content: space-between;
+
+}
+
+.post-body-text {
+    margin-left: 10px;
+    margin-top: 10px;
+    font-size: 5vh;
+    font-family: 'Poppins', sans-serif;
+}
+
+.sidebar-toggle {
+    text-align: center;
+    padding: 5px 0px;
+    border-top: 2px solid #ba3b0a;
+    border-bottom: 2px solid #ba3b0a;
+    width: 100%;
+    background-color: #F5CDAC;
+    cursor: pointer;
+    color: #ba3b0a;
+}
+
+.sidebar-toggle:hover {
+    background-color: #F5A563;
+}
+
+#profileLink{
+    background: linear-gradient(-135deg, #c850c0, red);
+    color: white;
+    padding: 3px;
+    text-decoration: none;
+    text-transform: uppercase;
+    border:#ba3b0a;
+    border: 1px solid;
+    border-color: #F57114;
+    border-radius: 5px;
+    font-family: 'Poppins', sans-serif;
+}
+
+#profileLink:hover {
+    background-color: #fff;
+}
+
+.EditDeleteButton{
+    background-color: black;
+    color: #fff;
+    padding: 3px;
+    text-decoration: none;
+    text-transform: uppercase;
+    border:#ba3b0a;
+    border: 1px solid;
+    border-color: #F57114;
+    border-radius: 5px;
+}
+
+.EditDeleteButton:hover{
+    background-color: #F5A563;
+}
+
+.images{
+    border-radius: 10px;
+    width: 40vh;
+    object-fit: cover;
+    height: 20vh;
+    display: flex;
+    margin-right: auto;
+}
+
+.Add-to-cart{
+    font-family: 'Poppins', sans-serif;
+    padding: 5px 10px;
+    border-radius: 25px;
+    border: 3px solid lightgray;
+    background-color: transparent;
+    color: black;
+    font-size: 2vh;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.Add-to-cart:hover{
+    background: linear-gradient(-135deg, #c850c0, red);
+    color: white;
+    border: 3px solid transparent;
+}
+
+.Add-to-cart1{
+    margin-top: 10px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+#titleandEdit{
+    display: flex;
+    justify-content: space-between;
+}
+
+.likesButton {
+    font-size: 44px;
+    border: none;
+    background: none;
+    box-shadow: none;
+    /* color: linear-gradient(-135deg, #c850c0, red); */
+    margin-bottom: 13px;
+    margin-right: -700px;
+
+  }
+  #receiptTitle{
+    /* font-size: 30px; */
+    margin-left: 5vh;
+  }
+  .likesButton:hover{
+    color: red;
+  }
+
+.likesButton:checked{
+    color: #c850c0;
+}
+
+.likesNum{
+    margin-left: 115px;
+    width: 50vh;
+    text-decoration: underline;
+    font-size: 25px;
+    margin-top: 41px;
+}
+
+.price-Addtocart {
+    display: flex;
+    justify-content: space-between;
+    padding: 2vh;
+}
+
+#likesNumandText{
+    display: flex;
+    justify-content: left;
+    margin-top: 50px;
+}
+
+#thumbAndText{
+    display: flex;
+    justify-content: space-between;
+    margin-right: 20px;
+}
+
+.likesText{
+    margin-top: 50px;
+}
+
+.likesButton{
+    cursor: pointer;
+    height: 50px;
+    width: 50px;
+}
+
+.EditDeleteButton{
+    cursor: pointer;
+    background: linear-gradient(-135deg, #c850c0, red);
+    color: white;
+    margin: -1vh;
+}
+
+.divAroundImgLike{
+    display: inline-block;
+}
+
+.priceForItem{
+    font-family: Helvetica, sans-serif;
+}
+
+#liked{
+    width: 100%;
+    margin-left: 43.5vh;
+    margin-bottom: -5vh;
+}

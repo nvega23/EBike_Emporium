@@ -4,6 +4,8 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import CartInCheckout from "./CartInCheckout";
 import { useNavigate } from "react-router-dom";
+import "./cart.css"
+import "./Cartitem.css";
 
 const Cart = () => {
   const { cart } = useSelector((state) => ({ ...state }));
@@ -11,11 +13,6 @@ const Cart = () => {
   const navigate = useNavigate();
   const emptyCart = () => {
     navigate("/checkout");
-
-
-
-
-
 
     return (
           <div id ="outerforcar">
@@ -31,13 +28,10 @@ const Cart = () => {
                     <p>{c.post.body} x {c.quantity} = $total</p>
                 </div>
             ))}
-
             <button disabled={!cart.length}>Proceed to Checkout</button>
         </div>
     )
-
 }
-
 
   const showCartitems = () => (
     <>
@@ -50,8 +44,6 @@ const Cart = () => {
   return (
     <>
       <div className="cart1">
-        {/* <h1>Cart</h1> */}
-
         <div >
           {!cart.length ? (
         <div>
@@ -70,7 +62,7 @@ const Cart = () => {
           )}
           <button
             disabled={!cart.length}
-            className="button"
+            className="checkoutButton"
             onClick={emptyCart}
           >
             Proceed to Checkout

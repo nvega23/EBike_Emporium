@@ -1,5 +1,5 @@
 #searchbar {
-    border: 1px solid black;
+    border: 0.3vh solid rgb(170, 168, 168);
     display: inline-block;
     padding: 0 10px;
     margin-top: -10px;
@@ -7,7 +7,11 @@
     font-weight: 500;
     cursor: text;
     border-radius: 15px;
-    color: red;
+    color: black;
     transition: all 0.3s ease;
     width: 100%;
+}
+
+#searchbar:hover{
+    /* border: 0.4vh solid red; */
 }

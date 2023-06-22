@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
 *{
   margin: 0;
   padding: 0;
@@ -11,7 +12,6 @@ html,body{
   width: 100%;
   place-items: center;
   background: #f2f2f2;
-  /* background: linear-gradient(-135deg, #c850c0, #4158d0); */
 }
 ::selection{
   background: #4158d0;
@@ -32,16 +32,15 @@ html,body{
   color: #fff;
   user-select: none;
   border-radius: 15px 15px 0 0;
-  /* background: linear-gradient(-135deg, #c850c0, #4158d0); */
   background: linear-gradient(-135deg, #c850c0, red);
 }
 .wrapper form{
-  padding: 10px 30px 50px 30px;
+  padding: 5px 10px 0 10px;
 }
+
 .wrapper form .field{
   height: 50px;
   width: 100%;
-  margin-top: 20px;
   position: relative;
 }
 .wrapper form .field input{
@@ -131,6 +130,7 @@ form .signup-link{
 form .pass-link a,
 form .signup-link a{
   color: #4158d0;
+  font-family: Helvetica, sans-serif;
   text-decoration: none;
 }
 form .pass-link a:hover,
@@ -147,7 +147,6 @@ form .field input[type="submit"] {
     cursor: pointer;
     border: none;
     border-radius: 5px;
-    /* background: linear-gradient(-135deg, #c850c0, #4158d0); */
     background: linear-gradient(-135deg, #c850c0, red);
     color: #fff;
     transition: all 0.3s ease;
@@ -160,13 +159,12 @@ form .field input[type="submit"]:active {
 form .buttonField {
     display: inline-block;
     padding: 10px 20px;
-    margin-top: -10px;
+    margin-bottom: 2vh;
     font-size: 20px;
     font-weight: 500;
     cursor: pointer;
     border: none;
     border-radius: 5px;
-    /* background: linear-gradient(-135deg, #c850c0, #4158d0); */
     background: linear-gradient(-135deg, #c850c0, red);
     color: #fff;
     transition: all 0.3s ease;

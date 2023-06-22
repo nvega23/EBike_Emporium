@@ -3,6 +3,7 @@ import thunk from 'redux-thunk';
 import session from './session';
 import errors from './errors'
 import post from './post';
+import {postReducer} from './post';
 import profile from './profile';
 import review from './review';
 import { cartReducer } from './cart';
@@ -11,11 +12,10 @@ import { cartReducer } from './cart';
 const rootReducer = combineReducers({
     session,
     errors,
-    post,
+    post: postReducer, // Make sure the updated postReducer is used here
     profile,
     review,
-    cart: cartReducer
-
+    cart: cartReducer,
 })
 
 let enhancer;

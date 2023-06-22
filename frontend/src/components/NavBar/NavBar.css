@@ -1,14 +1,14 @@
-.navBar {
+#navbarOuter {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* margin: 15px; */
   z-index: 1;
   position: fixed;
-  top: 0; /* Stick the navbar to the top of the viewport */
+  top: 0;
+  left: 0;
   background-color: rgb(255, 255, 255);
   width: 100%;
-  left: 0;
+  height: 50px;
 }
 
   .content {
@@ -17,7 +17,7 @@
   }
 
   #navMenu {
-    margin-right: 10px; /* Adjust the spacing as needed */
+    margin-right: 10px;
     top: 0;
   }
 
@@ -36,23 +36,27 @@
     display: flex;
     flex-direction: column;
     margin: 15px;
-    height: 250px;
     width: 250px;
   }
+
   .menu a{
     text-decoration: none;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     margin: 15px;
-    /* background-color: #000000a4; */
-    background-color: #fa541c;
-    color: #e8e8e8;
+    /* background: linear-gradient(-135deg, rgb(136, 0, 255), #c850c0); */
+    background-color: transparent;
+    color: rgb(255, 255, 255);
     border-radius: 10px;
-    height: 30px;
+    height: 5vh;
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
+.menu a:hover{
+  background-color: white;
+  color: black;
+}
   .content {
     display: inline-block;
     animation: bounce 2s ease-in;
@@ -93,7 +97,7 @@
 
 #navMenu.active{
     transition-delay: 0.8s;
-    transform: rotate(45deg);
+    /* transform: rotate(45deg); */
 }
 #navMenu.active > span:nth-child(2){
     width: 0;
@@ -107,4 +111,36 @@
 }
 #navMenu.active > span:nth-child(3){
     transform: translateY(-9px) rotate(90deg);
+}
+
+#logoutButton {
+  font-family: 'Poppins', sans-serif;
+  padding: 3px 8px;
+  border-radius: 10px;
+  background: linear-gradient(-135deg, red, #c850c0);
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+#logoutButton:hover {
+  background-color: #fff;
+  color: white;
+  background: linear-gradient(90deg, red, #c850c0);
+}
+
+.rightNav{
+  /* margin-top: 10px; */
+  margin-left: 10px;
+  margin-right: 25px;
+  font-family: 'Poppins', sans-serif;
+  padding: 3px 8px;
+  border-radius: 10px;
+  /* background: linear-gradient(-135deg, #9a50c8, rgb(255, 162, 0)); */
+  background-color: #e8e8e8;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  text-decoration: none;
 }

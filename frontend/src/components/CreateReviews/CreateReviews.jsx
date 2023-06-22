@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate, igate, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { clearReviewErrors, composeReview } from '../../store/review'
+import './CreateReview.css'
 
 function CreateReviews() {
     const navigate = useNavigate()
@@ -10,10 +11,7 @@ function CreateReviews() {
     const [body, setBody] = useState('')
     const [rating, setRating] = useState('')
     const errors = useSelector(state => state.errors.review);
-
     const {postId, userId} = useParams()
-
-
 
     const handleClick = (e) => {
         e.preventDefault()
@@ -27,14 +25,10 @@ function CreateReviews() {
           console.log("none")
           // navigate.push('/posts')
         }
-
     }
 
-
   useEffect(() => {
-    // return () => {
       dispatch(clearReviewErrors());
-    //};
   }, [dispatch]);
 
 

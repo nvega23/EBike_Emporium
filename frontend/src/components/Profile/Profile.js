@@ -2,13 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { fetchUserPosts } from '../../store/post'
-import { fetchUserProfile, getProfile } from '../../store/profile'
-import { fetchUsersReview, getUserReviews } from '../../store/review';
-import ProfilePostIndex from '../Profile/ProfilePostIndex';
+import { fetchUserProfile } from '../../store/profile'
+import { fetchUsersReview} from '../../store/review';
+// import ProfilePostIndex from '../Profile/ProfilePostIndex';
 import PostIndexItem from '../PostIndexItem/PostIndexItem';
 import ReviewIndexItem from '../ReviewIndexItem/ReviewIndexItem'
-
-
+import './Profile.css'
 
 function Profile() {
     const dispatch = useDispatch()
@@ -18,15 +17,11 @@ function Profile() {
     const reviews = Object.values(useSelector(state => state.review))
     const [contentState,setContentState] = useState('reviews');
 
-
-
-
-
     useEffect(()=> {
         dispatch(fetchUserProfile(userId));
         dispatch(fetchUserPosts(userId));
        dispatch(fetchUsersReview(userId));
-    }, [dispatch])
+    }, [dispatch, userId])
 
     let profileContent;
     if (contentState === 'posts') {
@@ -47,13 +42,6 @@ function Profile() {
             </div>
         )
     }
-    // else {
-    //     profileContent = (
-    //         <div>
-    //             <h1 id="ProfilePostsTitle">Contact:</h1>
-    //         </div>
-    //     )
-    // }
 
     return (
     <div id="outer">
@@ -61,7 +49,6 @@ function Profile() {
         <div id='user-button-group'>
             <div id='user-button-group-button-left' className='user-button-group-button' onClick={()=>setContentState('reviews')}>Reviews</div>
             <div className='user-button-group-button' onClick={()=>setContentState('posts')}>Posts</div>
-            {/* <div id='user-button-group-button-right' className='user-button-group-button' onClick={()=>setContentState('contact')}>Contact</div> */}
         </div>
         {profileContent}
     </div>
