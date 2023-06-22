@@ -113,26 +113,6 @@ router.post('/', multipleMulterUpload("images"), requireUser, validatePostInput,
     }
 });
 
-
-// router.delete('/:id', requireUser, async (req, res)=>{
-//   try {
-
-//     const post = await Post.findById(req.params.id);
-
-//     if (post.author._id.toString() !== req.user._id.toString()){
-
-//       return res.status(401).json({msg: 'User not authorized'});
-//     }
-
-//     await post.remove();
-
-//     res.json({msg: 'Post removed' });
-//   }catch(err){
-//     console.error(err.message)
-//     res.status(500).send('Server Error');
-//   };
-// })
-
 // Delete a post by ID
 router.delete('/:id', async (req, res) => {
   try {

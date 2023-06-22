@@ -1,10 +1,10 @@
 .cartContainer{
-    /* border: 5px solid black; */
     width: 120vh;
     display: flex;
     justify-content: center;
     align-items: center;
     font-family: 'Poppins', sans-serif;
+    margin-top: 5vh;
 }
 
 .cartTitle{
@@ -16,18 +16,19 @@
 
 .cartImg{
     /* border: 5px solid yellowgreen; */
+    border-radius: 1vh 0 0 0;
     width: 50vh;
 }
 
 .cartDescription{
-    /* border: 5px solid pink; */
     font-family: 'Poppins', sans-serif;
     margin: 5vh;
+    font-weight: 300;
     height: 33.8vh;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    justify-content: space-around;
+    align-items: start;
+    text-align: start;
     flex-direction: column;
 }
 
@@ -46,7 +47,7 @@
 }
 
 .summaryContainer{
-    /* border: 3px solid blue; */
+    font-weight: 500;
     height: 33.8vh;
     width: 25vh;
 }
@@ -64,4 +65,13 @@
     text-align: center;
     text-decoration: overline;
     text-decoration: underline;
+}
+
+.cartQuantityInput{
+    width: 6vh;
+    border: none;
+}
+
+.boldText{
+    font-weight: 600;
 }

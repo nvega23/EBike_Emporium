@@ -49,13 +49,24 @@ const CartInCheckout = ({ p }) => {
 
   return (
     <>
-      <h1 className="cartTitle">Bag</h1>
       <div className="cartContainer">
         <img className="cartImg" src={p.post.imageUrls[0]}/>
         <div className="cartDescription">
-        <h1 className="cart5">Bike Name: {p.post.body.toUpperCase()}</h1>
-        <h1 className="cart5">Bike Bio: {p.post.reciepeName.toUpperCase()}</h1>
-          <p className="cart7">Quantity:<input className="cart9"
+        <h1 className="cartText">
+          <h1 className="boldText">
+            Bike Name:
+          </h1>
+          {p.post.body.toUpperCase()}</h1>
+        <h1 className="cartText">
+          <h1 className="boldText">
+            Bike Bio:
+          </h1>
+          {p.post.reciepeName.toUpperCase()}</h1>
+          <p className="cartQuantity">
+            <h1 className="boldText">
+              Quantity:
+            </h1>
+            <input className="cartQuantityInput"
             type="number"
             value={p.quantity}
             onChange={handleQuantityChange}
@@ -68,8 +79,7 @@ const CartInCheckout = ({ p }) => {
         </div>
         <div className="summaryContainer">
           <h1 className="cartSub">Subtotal</h1>
-          {/* <h3 className="">Estimated Tax</h3> */}
-          <p className="cartPrice">Price: ${p.post.price * p.quantity}</p>
+          <p className="cartPrice">Total: ${(p.post.price * p.quantity).toLocaleString()}</p>
         </div>
       </div>
     </>

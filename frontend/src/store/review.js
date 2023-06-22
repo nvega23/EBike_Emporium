@@ -29,9 +29,6 @@ const removeReview = (reviewId ) => ({
 
 });
 
-
-
-
 const receiveNewReview = (reviews) => ({
     type: RECEIVE_NEW_REVIEW,
     reviews
@@ -40,16 +37,6 @@ const receiveNewReview = (reviews) => ({
 
 
 export const deleteReview = (id, key, userId) => async dispatch => {
-    // try{
-    //     const res = await jwtFetch(`/api/reviews/${id}`, {
-    //         method: 'DELETE'
-    //     });
-    // } catch{
-    //     if(res.ok){
-    //         dispatch(removeReview(id, key))
-    //         dispatch(fetchUsersReview(userId))
-    //     }
-    // }
     try {
         const res = await jwtFetch(`/api/reviews/${id}`, {
           method: 'DELETE'
@@ -60,7 +47,6 @@ export const deleteReview = (id, key, userId) => async dispatch => {
         return dispatch(receiveErrors(resBody.errors));
       }
 }
-
 
 export const updateReview = (title, body, rating, reviewId) => async dispatch => {
 
@@ -73,8 +59,6 @@ export const updateReview = (title, body, rating, reviewId) => async dispatch =>
                 rating: rating
             })
         })
-
-       // const review = await res.json()
     } catch (err) {
         const res = await err.json()
 
@@ -147,16 +131,12 @@ export const fetchPostReviews = (postId) => async (dispatch) =>{
 }
 
 export const fetchReview = (reviewId) => async (dispatch) => {
-
-
     const res = await jwtFetch(`/api/reviews/review/${reviewId}`)
-
 
     if(res.ok){
         const review = await res.json()
         return dispatch(receiveNewReview(review))
     } else{
-        //console.log("no")
     }
 }
 

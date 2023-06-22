@@ -210,3 +210,8 @@
     margin-left: 43.5vh;
     margin-bottom: -5vh;
 }
+
+.buttonLinkImages{
+    border: none;
+    cursor: pointer;
+}

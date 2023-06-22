@@ -99,7 +99,11 @@ const PostIndexItem = ({ post, key1, updateSidebarContent }) => {
                 {/* <button className='likesButton' onClick={sendLike}>
                     {post.likes.map(user => user.user).includes(userId.toString()) ? <div id="liked"><img src={unLikeImg}/></div> : <div id="liked"><img src={likeImg}/></div>}
                 </button> */}
-                <img className='images' loading='lazy' src={post.imageUrls[0]}/>
+                <button className='buttonLinkImages' >
+                    <Link to={`/profile/${post.author._id}`}>
+                        <img className='images' loading='lazy' src={post.imageUrls[0]}/>
+                    </Link>
+                </button>
                 </div>
             </div>
             <h1 className='post-body-text'>{post.body}</h1>

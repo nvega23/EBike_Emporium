@@ -31,9 +31,6 @@ function formatReviews(reviews) {
     return returnData;
 }
 
-
-
-
 router.get('/user/:userId', (req, res) => {
     User.findById(req.params.userId)
     .then(user => {
@@ -55,19 +52,12 @@ router.get('/post/:postId', (req, res) => {
         }).catch(err => res.status(404).json({ nouserfound: 'No post found with that ID' }))
 });
 
-
 router.get('/review/:reviewId', (req, res) => {
-
     Review.findById(req.params.reviewId)
         .then(review => {
             res.json(formatReview(review))
         }).catch(err => res.status(404).json({ noreviewfound: 'no review found with that ID' }))
 })
-
-
-
-
-
 
 //create review
 router.post('/:postId/:userId', requireUser, validateReviewInput, async (req, res, next)=> {
@@ -102,19 +92,10 @@ router.post('/:postId/:userId', requireUser, validateReviewInput, async (req, re
 router.patch('/:id', requireUser, validateReviewInput, async(req, res, next)=>{
     try{
         let review = await Review.findById(req.params.id)
-
-
-    //     if (review.reviewer.toString() !== req.user.id.toString()) {
-    //         res.status().json({ notowned: 'Current user does not own this review' })
-    // } else {
         review.title = req.body.title;
         review.body = req.body.body;
         review.rating = req.body.rating;
         review.save()
-        //let newreview = await review.save();
-
-        // return res.json(newreview);
-    //}
     }
     catch (err){
         const error = new Error("Something went wrong");
@@ -125,12 +106,9 @@ router.patch('/:id', requireUser, validateReviewInput, async(req, res, next)=>{
 
 router.delete('/:id', requireUser, async(req, res, next)=>{
     try{
-        // const posts = await Post.findById(req.params.id);
         const review = await Review.findById(req.params.id);
-        // const user = await User.findById(req.params.id);
-        //sf
-        review.remove()
 
+        await review.deleteOne();
         res.json({ msg: 'Review removed' });
     }
     catch (err){
@@ -141,7 +119,3 @@ router.delete('/:id', requireUser, async(req, res, next)=>{
 }})
 
 module.exports = router;
-
-
-
-

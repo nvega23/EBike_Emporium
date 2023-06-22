@@ -1,7 +1,6 @@
-import { useDispatch, useSelector } from "react-redux";
-import { Link, useN, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 import './Checkout.css'
-
 
 const Checkout = ({ setShowModal }) => {
     const dispatch = useDispatch();
@@ -17,20 +16,15 @@ const emptyCart = () => {
     })
 }
     return (
-        <div className="checkout23">
-            <i className="fa-solid fa-xmark" onClick={emptyCart} id="xmark23"></i>
-
-                <br /><br />
-                <h1>Thank you!</h1>
-                <br /><br />
-                <p>
-                    {"for checking out our website!".toUpperCase()}
-                </p>
-                    <br />
-                    <button  onClick={emptyCart}>
-                        HOME PAGE
-                    </button>
-
+        <div className="purchaseContainer">
+            <br /><br />
+            <h1>
+                Your new bike will arrive shortly!
+            </h1>
+            <br />
+            <button className="checkoutButton"  onClick={emptyCart}>
+                Continue Shopping
+            </button>
         </div>
     );
 }
