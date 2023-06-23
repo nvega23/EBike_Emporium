@@ -20,8 +20,8 @@ import { useLocation } from 'react-router-dom';
 import Cart from './components/Cart/Cartitem';
 import Checkout from './components/Cart/Checkout';
 import ReviewIndexItem from './components/ReviewIndexItem/ReviewIndexItem';
+import ItemDescription from './components/ItemDescription/ItemDescription';
 import ReviewUpdate from './components/ReviewUpdate/ReviewUpdate';
-// import Message from './components/Message/Message';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -58,6 +58,7 @@ function App() {
       <Route exact path="/profile/:userId" element={<ReviewIndexItem/>} />
       <Route exact path='/review/update/:reviewId/:userId' element={<ReviewUpdate/>} />
       <Route exact path='/cart' element={<Cart/>} />
+      <Route exact path='/item' element={<ItemDescription/>} />
       <Route exact path='/checkout' element={<Checkout/>} />
       {/* <ProtectedRoute exact path='/Message' component={Message} /> */}
     </Routes>

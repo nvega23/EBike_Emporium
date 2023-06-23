@@ -1,6 +1,5 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import CartInCheckout from "./CartInCheckout";
 import { useNavigate } from "react-router-dom";
@@ -49,15 +48,17 @@ const Cart = () => {
         <div>
 
             <h1>
-              Your Cart is Empty.
+              Your cart is Empty
             </h1>
-            <button className="cart2">
-            <Link to="/posts" className="link">ADD ITEMS</Link>
+            <button className="emptyCartLink">
+            <Link to="/posts" className="emptyCartLink">
+              <h1 className="emptyCartText">
+                Shop today's deals
+              </h1>
+            </Link>
             </button>
         </div>
-
           ) : (
-
             showCartitems()
           )}
           <button

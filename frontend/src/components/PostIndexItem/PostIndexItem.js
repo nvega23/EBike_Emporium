@@ -1,26 +1,24 @@
 import './PostIndexItem.css';
-import { deletePost, fetchPosts} from '../../store/post';
-import { NavLink } from "react-router-dom";
+import { deletePost} from '../../store/post';
 import {ShoppingCartOutlined} from "@ant-design/icons"
-import _, { set } from "lodash"
-import {Badge} from "antd"
-import { useLocation } from 'react-router-dom';
+// import _, { set } from "lodash"
+// import { useLocation } from 'react-router-dom';
 import { Link, useNavigate } from 'react-router-dom';
-import { addLike, removeLike } from '../../store/post';
+// import { addLike, removeLike } from '../../store/post';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
-import unLikeImg from '../../assets/red_heart.png'
-import likeImg from '../../assets/white_heart.png'
+// import { useState } from 'react';
+// import unLikeImg from '../../assets/red_heart.png'
+// import likeImg from '../../assets/white_heart.png'
 
-const PostIndexItem = ({ post, key1, updateSidebarContent }) => {
+const PostIndexItem = ({ post, key1 }) => {
     const currentUser = useSelector(state => state.session.user);
     const dispatch = useDispatch();
-    const userId = useSelector(state => state.session.user._id)
+    // const userId = useSelector(state => state.session.user._id)
     const navigate = useNavigate()
-    const [likeCount, setlikeCount] = useState(post.likes.length)
-    const location = useLocation();
-    const query = location.search;
-    const [isLiked, setIsLiked] = useState(post.likes.map(like => like.user).includes(userId.toString()) || true)
+    // const [likeCount, setlikeCount] = useState(post.likes.length)
+    // const location = useLocation();
+    // const query = location.search;
+    // const [isLiked, setIsLiked] = useState(post.likes.map(like => like.user).includes(userId.toString()) || true)
     // const convertDate = (date) => {
     //     const d = new Date(date);
     //     return d.toDateString();
@@ -41,18 +39,18 @@ const PostIndexItem = ({ post, key1, updateSidebarContent }) => {
             )
         }
     }
-    const sendLike = (e) => {
-        e.preventDefault();
-        if (isLiked) {
-            setIsLiked(false)
-            dispatch(removeLike(post._id))
-        } else {
-            setIsLiked(true)
-            dispatch(addLike(post._id))
-        }
-        return dispatch(fetchPosts({ query }))
-    }
-    const {cart} = useSelector((state) => ({...state}));
+    // const sendLike = (e) => {
+    //     e.preventDefault();
+    //     if (isLiked) {
+    //         setIsLiked(false)
+    //         dispatch(removeLike(post._id))
+    //     } else {
+    //         setIsLiked(true)
+    //         dispatch(addLike(post._id))
+    //     }
+    //     return dispatch(fetchPosts({ query }))
+    // }
+    // const {cart} = useSelector((state) => ({...state}));
     const handleAddToCart = () => {
         let quantityChange = false
         let cart = []
@@ -60,9 +58,9 @@ const PostIndexItem = ({ post, key1, updateSidebarContent }) => {
             if (localStorage.getItem('cart')){
                 cart = JSON.parse(localStorage.getItem('cart'))
             }
-            const postNew = post
+            // const postNew = post
             cart.forEach(food => {
-                if (food.post._id == post._id){
+                if (food.post._id === post._id){
                     quantityChange = true
 
                     food.quantity += 1
@@ -100,8 +98,9 @@ const PostIndexItem = ({ post, key1, updateSidebarContent }) => {
                     {post.likes.map(user => user.user).includes(userId.toString()) ? <div id="liked"><img src={unLikeImg}/></div> : <div id="liked"><img src={likeImg}/></div>}
                 </button> */}
                 <button className='buttonLinkImages' >
-                    <Link to={`/profile/${post.author._id}`}>
-                        <img className='images' loading='lazy' src={post.imageUrls[0]}/>
+                    {/* <Link to={`/profile/${post.author._id}`}> */}
+                    <Link to={'/item'}>
+                        <img className='images' loading='lazy' src={post.imageUrls[0]} alt='urls'/>
                     </Link>
                 </button>
                 </div>

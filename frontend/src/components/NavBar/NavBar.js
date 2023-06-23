@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { NavLink } from "react-router-dom";
 import { logout } from '../../store/session';
 import './NavBar.css';
@@ -9,7 +9,8 @@ import SearchBar from '../SearchBar.js/SearchBar';
 import myImage from '../../assets/bike_icon.png';
 
 function NavBar() {
-    const [isActive, setIsActive] = useState(false)
+    // const [isActive, setIsActive] = useState(false)
+    const navigate = useNavigate();
     const loggedIn = useSelector(state => !!state.session.user)
     const {cart} = useSelector(state => ({...state}))
     const dispatch = useDispatch()
@@ -21,13 +22,14 @@ function NavBar() {
 
     const currentUserId = useSelector(state=> state.session.user?._id)
 
-    const handleClick = () => {
-       setIsActive(!isActive);
-    };
+    // const handleClick = () => {
+    //    setIsActive(!isActive);
+    // };
 
     const logoutUser = (e) => {
         e.preventDefault()
         dispatch(logout())
+        navigate('/')
     }
 
     let navbar;

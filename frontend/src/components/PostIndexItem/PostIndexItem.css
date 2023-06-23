@@ -96,7 +96,7 @@
 
 .images{
     border-radius: 10px;
-    width: 40vh;
+    width: 58vh;
     object-fit: cover;
     height: 20vh;
     display: flex;
@@ -194,7 +194,7 @@
     cursor: pointer;
     background: linear-gradient(-135deg, #c850c0, red);
     color: white;
-    margin: -1vh;
+    margin: 1vh;
 }
 
 .divAroundImgLike{

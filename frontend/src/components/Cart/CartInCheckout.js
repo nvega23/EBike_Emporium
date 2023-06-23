@@ -1,11 +1,10 @@
 import React from "react";
 import "./Cartitem.css";
 import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
-import {CloseOutlined} from "@ant-design/icons"
+// import { useSelector } from "react-redux";
 
 const CartInCheckout = ({ p }) => {
-  const { cart } = useSelector((state) => ({ ...state }));
+  // const { cart } = useSelector((state) => ({ ...state }));
   const dispatch = useDispatch();
 
   const handleQuantityChange = (e) => {
@@ -16,7 +15,7 @@ const CartInCheckout = ({ p }) => {
         cart = JSON.parse(localStorage.getItem("cart"));
       }
       cart.map((post, i) => {
-        if ((post.post._id.toString()) == (p.post._id).toString()) {
+        if ((post.post._id.toString()) === (p.post._id).toString()) {
             cart[i].quantity = quantity
         }
       });
@@ -35,7 +34,7 @@ const CartInCheckout = ({ p }) => {
         cart = JSON.parse(localStorage.getItem("cart"));
       }
       cart.map((post, i) => {
-        if ((post.post._id.toString()) == (p.post._id).toString()) {
+        if ((post.post._id.toString()) === (p.post._id).toString()) {
             cart.splice(i, 1)
         }
       });
@@ -50,7 +49,7 @@ const CartInCheckout = ({ p }) => {
   return (
     <>
       <div className="cartContainer">
-        <img className="cartImg" src={p.post.imageUrls[0]}/>
+        <img className="cartImg" src={p.post.imageUrls[0]} alt="url"/>
         <div className="cartDescription">
         <h1 className="cartText">
           <h1 className="boldText">

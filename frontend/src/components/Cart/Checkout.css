@@ -27,3 +27,13 @@
 .cartText{
     width: 45vh;
 }
+
+.emptyCartLink{
+    text-decoration: none;
+    border: none;
+}
+
+.emptyCartText{
+    border: none;
+    color: #007185;
+}

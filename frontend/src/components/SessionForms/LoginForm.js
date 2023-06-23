@@ -4,11 +4,13 @@ import { BiHide, BiShow } from "react-icons/bi";
 import './SessionForm.css';
 
 import { login, clearSessionErrors } from '../../store/session';
+import { useNavigate } from 'react-router';
 
 function LoginForm () {
   const [email, setEmail] = useState('');
+  const navigate = useNavigate()
   const [password, setPassword] = useState('');
-  const errors = useSelector(state => state.errors.session);
+  const errors = useSelector(state => state.session.errors);
   const dispatch = useDispatch();
   const [passwordVisible, setPasswordVisible] = useState(false);
 
@@ -35,6 +37,7 @@ function LoginForm () {
   const handleDemo =(e) => {
     e.preventDefault()
     dispatch(login({email:"demo@user.io", password: "password"}))
+    navigate("/posts");
   }
 
   return (
