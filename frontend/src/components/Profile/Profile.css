@@ -3,7 +3,7 @@
     margin: 40px;
     background-color: transparent;
     border-radius: 10px;
-    font-family: DejaVu Sans Mono, monospace;
+    font-family: 'Poppins', sans-serif;
     box-shadow: -10px 15px 20px rgba(0, 0, 0, 0.41);
 }
 
@@ -45,16 +45,16 @@
 }
 
 #ProfileUsername{
-    font-family: DejaVu Sans Mono, monospace;
+    font-family: 'Poppins', sans-serif;
     font-size: 60px;
     display: flex;
     justify-content: center;
     margin-top: 10px;
-    text-shadow: 5px 2px 5px #c850c0;
+    /* text-shadow: 5px 2px 5px #c850c0; */
 }
 
 #ProfilePostsTitle{
-    font-family: DejaVu Sans Mono, monospace;
+    font-family: 'Poppins', sans-serif;
     margin-bottom: -30px;
     margin-left: 15px;
     font-size: 30px;
@@ -68,11 +68,10 @@
     justify-content: center;
     padding: 10px;
     cursor: pointer;
-    font-family: DejaVu Sans Mono, monospace;
+    font-family: 'Poppins', sans-serif;
 }
 
 .user-button-group-button {
-    border: 2px solid #ba3b0a;
     padding: 10px;
 }
 
@@ -87,7 +86,7 @@
 }
 
 .user-button-group-button:hover {
-   background: #F5CDAC;
+    box-shadow: -5px 12px 10px rgba(0, 0, 0, 0.41);
 }
 
 

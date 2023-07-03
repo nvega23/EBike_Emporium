@@ -23,6 +23,10 @@ function Profile() {
        dispatch(fetchUsersReview(userId));
     }, [dispatch, userId])
 
+    const capitalizedUsername = currentProfileUser?.username ?
+    currentProfileUser.username.charAt(0).toUpperCase() + currentProfileUser.username.slice(1).toLowerCase()
+    : '';
+
     let profileContent;
     if (contentState === 'posts') {
         profileContent = (
@@ -37,7 +41,7 @@ function Profile() {
     else if (contentState === 'reviews') {
         profileContent = (
             <div>
-                <h1 id="ProfilePostsTitle">{reviews ? "Reviews:" : "This user does not have any reviews."}</h1>
+                <h1 id="ProfilePostsTitle">{reviews ? "Reviews" : "This user does not have any reviews."}</h1>
                 {reviews?.map((review, i) => review.rating ? <ReviewIndexItem key={i} review={review} /> : <></>)}
             </div>
         )
@@ -45,7 +49,7 @@ function Profile() {
 
     return (
     <div id="outer">
-        <h1 id="ProfileUsername">{currentProfileUser?.username}</h1>
+        <h1 id="ProfileUsername">{capitalizedUsername}</h1>
         <div id='user-button-group'>
             <div id='user-button-group-button-left' className='user-button-group-button' onClick={()=>setContentState('reviews')}>Reviews</div>
             <div className='user-button-group-button' onClick={()=>setContentState('posts')}>Posts</div>
