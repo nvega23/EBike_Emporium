@@ -1,13 +1,11 @@
+import React from "react";
 import ItemDescription from "./ItemDescription";
 
-const Item = ({post}) => {
-    return (
-        <>
-        {post.map((p) => (
-            <ItemDescription key={p._id} p={p} />
-        ))}
-        </>
-    )
-}
+const Item = ({ post, postId }) => {
+  console.log(post, "im in the Item component");
+  return (
+    <ItemDescription itemPost={post} postId={postId} />
+  );
+};
 
 export default Item;

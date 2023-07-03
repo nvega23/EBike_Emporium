@@ -81,6 +81,11 @@ const PostIndexItem = ({ post, key1 }) => {
         }
     }
 
+    const handlePostImageClick = () => {
+        navigate(`/item/${post._id}`, { state: { post, postId: post.id } });
+        console.log(post, post.id, "I'm the post handler in postindexitem");
+      };
+
     let p = post.price
     return (
         <>
@@ -97,18 +102,15 @@ const PostIndexItem = ({ post, key1 }) => {
                 {/* <button className='likesButton' onClick={sendLike}>
                     {post.likes.map(user => user.user).includes(userId.toString()) ? <div id="liked"><img src={unLikeImg}/></div> : <div id="liked"><img src={likeImg}/></div>}
                 </button> */}
-                <button className='buttonLinkImages' >
                     {/* <Link to={`/profile/${post.author._id}`}> */}
-                    <Link to={'/item'}>
-                        <img className='images' loading='lazy' src={post.imageUrls[0]} alt='urls'/>
-                    </Link>
+                <button className='buttonLinkImages' onClick={handlePostImageClick}>
+                    <img className='images' loading='lazy' src={post.imageUrls[0]} alt='post-image'/>
                 </button>
                 </div>
             </div>
             <h1 className='post-body-text'>{post.body}</h1>
             <div id="thumbAndText">
                 <p id ="receiptTitle">{post.reciepeName}</p>
-                {/* <button onClick={e => navigate(`/review/new/${post._id}/${post.author._id}`)} className="reviewButton">Leave a Review</button> */}
 
                 {/* <div id="likesNumandText">
                     <p className='likesNum' >{post.likes.length} </p>

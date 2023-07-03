@@ -1,4 +1,3 @@
-// import SplashPage from '../src/components/splashPage.js'
 import { Route } from 'react-router-dom'
 import PostIndex from './components/PostIndex/PostIndex';
 import MainPage from './components/MainPage/MainPage'
@@ -58,7 +57,7 @@ function App() {
       <Route exact path="/profile/:userId" element={<ReviewIndexItem/>} />
       <Route exact path='/review/update/:reviewId/:userId' element={<ReviewUpdate/>} />
       <Route exact path='/cart' element={<Cart/>} />
-      <Route exact path='/item' element={<ItemDescription/>} />
+      <Route exact path='/item/:id' element={<ItemDescription/>} />
       <Route exact path='/checkout' element={<Checkout/>} />
       {/* <ProtectedRoute exact path='/Message' component={Message} /> */}
     </Routes>
