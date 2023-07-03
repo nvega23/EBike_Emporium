@@ -83,8 +83,8 @@ const PostIndexItem = ({ post, key1 }) => {
 
     const handlePostImageClick = () => {
         navigate(`/item/${post._id}`, { state: { post, postId: post.id } });
-        console.log(post, post.id, "I'm the post handler in postindexitem");
-      };
+        console.log(post, post._id, "I'm the post handler in postindexitem");
+    };
 
     let p = post.price
     return (
@@ -95,7 +95,7 @@ const PostIndexItem = ({ post, key1 }) => {
                 <span className='post-info-span'>
                     {/* <Link to={`/profile/${post.author._id}`} id="profileLink">{post.author.username}</Link> */}
                     {/* - {convertDate(post.createdAt)} */}
-                    </span>
+                </span>
                 {editDeleteButton(post)}
              </div>
                 <div className='divAroundImgLike'>
