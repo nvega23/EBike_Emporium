@@ -6,11 +6,18 @@ const ItemDescription = ({ post, postId }) => {
   // console.log(posts, postId);
 
   const handlePost = () => {
-    const selectedPost = posts.find((post) => post._id === postId);
+    const selectedPost = posts.find((post) => postId === postId);
     console.log(selectedPost, 'im the selected post')
     if (selectedPost) {
-      return <p>{selectedPost.body}</p>;
-    }
+      return (
+        <>
+          <div>
+            <p>{selectedPost.body}</p>
+            <p>{selectedPost.reciepeName}</p>
+          </div>
+        </>
+        )
+      }
     return null;
   };
 
