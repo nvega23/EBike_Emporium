@@ -12,6 +12,7 @@ const ItemDescription = ({ post, postId }) => {
       return (
         <>
           <div>
+            {/* <img className='images' loading='lazy' src={post.imageUrls[0]} alt='post-image'/> */}
             <p>{selectedPost.body}</p>
             <p>{selectedPost.reciepeName}</p>
           </div>
