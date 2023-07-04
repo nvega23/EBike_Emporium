@@ -2,6 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { deleteReview } from '../../store/review';
+import './reviewIndexItem.css'
 
 function ReviewIndexItem({review, key}) {
     const currentUser = useSelector(state => state.session.user);

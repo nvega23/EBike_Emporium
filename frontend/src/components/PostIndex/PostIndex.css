@@ -12,7 +12,9 @@
     display: flex;
     /* margin-top: 150vh; */
     margin-top: 1vh;
+    flex-wrap: wrap;
 }
+
 #post-index-sidebar-active {
     width: 300px;
     padding-left: 20px;

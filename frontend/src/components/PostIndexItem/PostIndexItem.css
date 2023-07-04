@@ -103,24 +103,6 @@
     margin-right: auto;
 }
 
-.Add-to-cart{
-    font-family: 'Poppins', sans-serif;
-    padding: 5px 10px;
-    border-radius: 25px;
-    border: 3px solid lightgray;
-    background-color: transparent;
-    color: black;
-    font-size: 2vh;
-    cursor: pointer;
-    text-decoration: none;
-}
-
-.Add-to-cart:hover{
-    background: linear-gradient(-135deg, #c850c0, red);
-    color: white;
-    border: 3px solid transparent;
-}
-
 .Add-to-cart1{
     margin-top: 10px;
     margin-left: 10px;
@@ -165,7 +147,8 @@
 .price-Addtocart {
     display: flex;
     justify-content: space-between;
-    padding: 2vh;
+    padding: inherit;
+    flex-direction: inherit;
 }
 
 #likesNumandText{
