@@ -39,6 +39,7 @@ const PostIndexItem = ({ post, key1 }) => {
             )
         }
     }
+
     // const sendLike = (e) => {
     //     e.preventDefault();
     //     if (isLiked) {
@@ -51,35 +52,6 @@ const PostIndexItem = ({ post, key1 }) => {
     //     return dispatch(fetchPosts({ query }))
     // }
     // const {cart} = useSelector((state) => ({...state}));
-    const handleAddToCart = () => {
-        let quantityChange = false
-        let cart = []
-        if (typeof window !== 'undefined') {
-            if (localStorage.getItem('cart')){
-                cart = JSON.parse(localStorage.getItem('cart'))
-            }
-            // const postNew = post
-            cart.forEach(food => {
-                if (food.post._id === post._id){
-                    quantityChange = true
-
-                    food.quantity += 1
-                }
-            });
-            if(!quantityChange){
-                cart.push({
-                    post,
-                    quantity: 1
-                });
-
-            }
-            localStorage.setItem('cart', JSON.stringify(cart))
-            dispatch({
-                type: "ADD_TO_CART",
-                payload: cart,
-            })
-        }
-    }
 
     const handlePostImageClick = () => {
         navigate(`/item/${post._id}`, { state: { post, postId: post.id } });
@@ -93,8 +65,6 @@ const PostIndexItem = ({ post, key1 }) => {
             <div className='post-main-content'>
             <div id="titleandEdit">
                 <span className='post-info-span'>
-                    {/* <Link to={`/profile/${post.author._id}`} id="profileLink">{post.author.username}</Link> */}
-                    {/* - {convertDate(post.createdAt)} */}
                 </span>
                 {editDeleteButton(post)}
              </div>
@@ -102,7 +72,6 @@ const PostIndexItem = ({ post, key1 }) => {
                 {/* <button className='likesButton' onClick={sendLike}>
                     {post.likes.map(user => user.user).includes(userId.toString()) ? <div id="liked"><img src={unLikeImg}/></div> : <div id="liked"><img src={likeImg}/></div>}
                 </button> */}
-                    {/* <Link to={`/profile/${post.author._id}`}> */}
                 <button className='buttonLinkImages' onClick={handlePostImageClick}>
                     <img className='images' loading='lazy' src={post.imageUrls[0]} alt='post-image'/>
                 </button>
@@ -111,17 +80,10 @@ const PostIndexItem = ({ post, key1 }) => {
             <h1 className='post-body-text'>{post.body}</h1>
             <div id="thumbAndText">
                 <p id ="receiptTitle">{post.reciepeName}</p>
-
                 {/* <div id="likesNumandText">
                     <p className='likesNum' >{post.likes.length} </p>
                     <p className='likesText'>Likes</p>
                 </div> */}
-            </div>
-             <div className='price-Addtocart'>
-                <p className='priceForItem'>Price: {p === "undefined" ? "N/A" : `$${post.price}`}</p>
-                {post.price === "undefined" ? "": <a onClick={handleAddToCart} className='Add-to-cart'>
-                <ShoppingCartOutlined className='Add-to-cart1'/>Add to Cart</a>}
-                <button onClick={e => navigate(`/review/new/${post._id}/${post.author._id}`)} className="reviewButton">Leave a Review</button>
             </div>
         </li>
         </>
