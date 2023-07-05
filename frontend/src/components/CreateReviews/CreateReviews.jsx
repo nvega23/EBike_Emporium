@@ -34,15 +34,9 @@ function CreateReviews() {
 
   return (
     <>
-
         <div>Create Review</div>
-
-
-        <form  className = "review-form" onSubmit={handleClick}>
-
+        <form  className = "reviewForm" onSubmit={handleClick}>
             <div className='review-inputs'>
-
-
                 <div className='inner-div'>
                 <div className="errors">{errors?.title}</div>
                 <input
