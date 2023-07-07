@@ -1,3 +1,18 @@
-.reviewUpdate{
-    border: 3px solid black;
+form .updateReviewButton {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-bottom: 2vh;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(-135deg, #c850c0, red);
+    color: #fff;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+form .updateReviewButton:active {
+    transform: scale(0.95);
 }
