@@ -51,33 +51,33 @@ function LoginForm () {
         {/* <h2 className="title">Login</h2> */}
 
         <div className="errors">{errors?.email}</div>
-        <label className="custom-field">
+        <label className="customFieldLogin">
           <input type="email"
             value={email}
             onChange={update('email')}
             placeholder="Email"
-            className="field"
+            className="loginField"
             required/>
         </label>
 
 
         <div className="errors">{errors?.password}</div>
 
-        <label className="custom-field">
+        <label className="custom-loginField">
           <input type={passwordVisible ? "text" : "password"}
             value={password}
             onChange={update('password')}
             placeholder="Password"
-            className="field"
+            className="loginField"
             required/>
 
         </label>
         <button className='toggleButton' onClick={togglePasswordVisibility}>
           {passwordVisible ? <BiHide /> : <BiShow />}
         </button>
-        <div className="field">
+        <div className="divLoginField">
         <input
-          className="field"
+          className="loginFields"
           type="submit"
           value="Login"
           disabled={!email || !password}

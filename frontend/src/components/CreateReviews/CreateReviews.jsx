@@ -34,47 +34,45 @@ function CreateReviews() {
 
   return (
     <>
-        <div>Create Review</div>
+        {/* <div>Create Review</div> */}
         <form  className = "reviewForm" onSubmit={handleClick}>
-            <div className='review-inputs'>
-                <div className='inner-div'>
+            <div className='reviewInputs'>
                 <div className="errors">{errors?.title}</div>
                 <input
-                className='review-style-inputs'
-                type="text"
-                value={title}
-                onChange={(e)=> setTitle(e.target.value)}
-                placeholder= "title"
+                  className='reviewStyleInputs'
+                  type="text"
+                  value={title}
+                  onChange={(e)=> setTitle(e.target.value)}
+                  placeholder= "title"
+                  id='review-body'
                 />
-                      <label> Title </label>
-                  </div>
 
                 <div className="errors">{errors?.body}</div>
                 <input
-                    className='review-style-inputs'
+                    className='reviewStyleInputs'
                     type="text"
                     value={body}
                     onChange={(e)=> setBody(e.target.value)}
                     placeholder="body"
                     id='review-body'
                 />
-                  <label> Body </label>
+                  {/* <label> Body </label> */}
 
 
                  <div className="errors">{errors?.rating}</div>
                 <input
                     type="text"
-                    className='review-style-inputs'
+                    className='reviewStyleInputs'
                     value={rating}
                     onChange={(e)=> setRating(e.target.value)}
                     placeholder="rating"
                     required
                 />
-                  <label> Rating </label>
+                  {/* <label> Rating </label> */}
 
 
               <input type='submit'
-                    className='review-style-inputs'
+                  className='createReviewButton'
                   value="Review"
                   disabled={!body || !title || !rating}
               />

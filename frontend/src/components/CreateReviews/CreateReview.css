@@ -1,97 +1,50 @@
 .reviewForm{
     margin-top: 200px;
-    border: 3px solid black;
+    width: 100vh;
+    height: auto;
 }
 
-.review-inputs{
-    margin-left: 50px;
+.reviewInputs{
     display: flex;
     flex-direction: column;
 }
 
-.style-buttons {
-
-    border: solid;
-
-
+.review-style-inputs{
+    cursor: text;
 }
 
-input.review-style-inputs,
-label,
-textarea.review-style-inputs {
-    font-family: 'Ubuntu', sans-serif;
-    display: block;
-    margin: 10px;
-    padding: 5px;
+.reviewStyleInputs{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 10px 20px;
+    border-radius: 10px;
     border: none;
     font-size: 22px;
+    cursor: text;
+    margin: 5vh;
 }
 
-input.review-style-inputs,
-textarea.review-style-inputs {
-    font-size: 48px;
-    font-weight: 300;
-    border-radius: 2px;
-    margin: 0;
-    border: none;
-    width: 80%;
-    background: rgba(0, 0, 0, 0);
-    transition: padding-top 0.2s ease, margin-top 0.2s ease;
-    overflow-x: hidden;
+.innerDivReview{
+    border: 3px solid pink;
 }
 
-input.review-style-inputs+label,
-textarea.review-style-inputs+label {
-    display: block;
-    position: relative;
-    white-space: nowrap;
-    padding: 0;
-    margin: 0;
-    width: 10%;
-    border-top: 1px solid red;
-    -webkit-transition: width 0.4s ease;
-    transition: width 0.4s ease;
-    height: 0px;
-}
-
-input.review-style-inputs:focus+label,
-textarea.review-style-inputs:focus+label {
-    width: 80%;
-}
-
-input.review-style-inputs:focus,
-input.review-style-inputs:valid {
-    padding-top: 35px;
-}
-
-textarea.review-style-inputs:valid,
-textarea.review-style-inputs:focus {
-    margin-top: 35px;
-}
-
-textarea.review-style-inputs:focus,
-input.review-style-inputs:focus {
-    outline: 0;
-}
-
-input.review-style-inputs:focus,
-input.review-style-inputs:valid {
-    padding-top: 35px;
-}
-
-
-
-
-#review-body {
-    resize: none;
-    height: fit-content;
-}
-
-
-.errors{
-    margin-top: 30px;
-}
-
-.review-style-inputs{
+.createReviewButton{
+    font-family: 'Poppins', sans-serif;
+    padding: 5px 10px;
+    border-radius: 25px;
+    border: 3px solid lightgray;
+    background-color: transparent;
+    color: black;
+    font-size: 20px;
     cursor: pointer;
+    text-decoration: none;
+    height: 50px;
+}
+
+.createReviewButton:hover{
+    background: linear-gradient(-135deg, #c850c0, red);
+    color: white;
+    border: 3px solid transparent;
 }

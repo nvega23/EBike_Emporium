@@ -95,7 +95,7 @@ router.patch('/:id', requireUser, validateReviewInput, async(req, res, next)=>{
         review.title = req.body.title;
         review.body = req.body.body;
         review.rating = req.body.rating;
-        review.save()
+        await review.save()
     }
     catch (err){
         const error = new Error("Something went wrong");
@@ -107,7 +107,6 @@ router.patch('/:id', requireUser, validateReviewInput, async(req, res, next)=>{
 router.delete('/:id', requireUser, async(req, res, next)=>{
     try{
         const review = await Review.findById(req.params.id);
-
         await review.deleteOne();
         res.json({ msg: 'Review removed' });
     }

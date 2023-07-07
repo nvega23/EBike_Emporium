@@ -36,7 +36,6 @@ function ReviewUpdate() {
       <div className='reviewUpdate'>
       <form className="reviewForm" onSubmit={handleClick}>
         <div className='reviewInputs'>
-          <div className='innerDiv'>
             <div className="errors">{errors?.title}</div>
             <input
               className='reviewStyleInputs'
@@ -46,8 +45,7 @@ function ReviewUpdate() {
               placeholder={review.title}
               />
 
-            <label> Title </label>
-          </div>
+            <label> New Title </label>
 
           <div className="errors">{errors?.body}</div>
           <input
@@ -58,7 +56,7 @@ function ReviewUpdate() {
             placeholder={review.body}
             id='review-body'
             />
-          <label> Body </label>
+          <label> New Body </label>
 
 
           <div className="errors">{errors?.rating}</div>
@@ -70,12 +68,13 @@ function ReviewUpdate() {
             placeholder={review.rating}
             required
             />
-          <label> Rating </label>
+
+          <label> New Rating </label>
 
 
           <input type='submit'
-            className='reviewStyleInputs'
-            value="Review"
+            className='updateReviewButton'
+            value="Update!"
             disabled={!body || !title || !rating}
             />
 

@@ -42,7 +42,9 @@ html,body{
   height: 50px;
   width: 100%;
   position: relative;
+  margin-bottom: 5vh;
 }
+
 .wrapper form .field input{
   height: 100%;
   width: 100%;
@@ -53,6 +55,7 @@ html,body{
   border-radius: 25px;
   transition: all 0.3s ease;
 }
+
 .field{
     display: flex;
     justify-content: center;
@@ -82,6 +85,90 @@ form .field input:valid ~ label{
   background: #fff;
   transform: translateY(-50%);
 }
+
+.wrapper form .loginField{
+  height: 50px;
+  width: 100%;
+  position: relative;
+}
+
+.wrapper form .loginField input{
+  height: 100%;
+  width: 100%;
+  outline: none;
+  font-size: 17px;
+  padding-left: 20px;
+  border: 1px solid lightgrey;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+}
+
+/* .loginField{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+} */
+
+/* .wrapper form .loginField input:focus,
+form .loginField input:valid{
+  border-color: #4158d0;
+}
+.wrapper form .loginField label{
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  color: #999999;
+  font-weight: 400;
+  font-size: 17px;
+  pointer-events: none;
+  transform: translateY(-50%);
+  transition: all 0.3s ease;
+}
+form .loginField input:focus ~ label,
+form .loginField input:valid ~ label{
+  top: 0%;
+  font-size: 16px;
+  color: #4158d0;
+  background: #fff;
+  transform: translateY(-50%);
+} */
+
+form .loginField {
+  display: inline-block;
+  padding: .3vh 20px;
+  margin-bottom: 2vh;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: text;
+  border: none;
+  border-radius: 5px;
+  background: linear-gradient(-135deg, #c850c0, red);
+  color: #fff;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+form .loginFields {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-bottom: 2vh;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background: linear-gradient(-135deg, #c850c0, red);
+  color: #fff;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+form .loginField:active {
+  transform: scale(0.95);
+}
+
+
 form .content{
   display: flex;
   width: 100%;
@@ -177,6 +264,8 @@ form .buttonField:active {
 
 #remember-me{
     cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
 }
 
 .toggleButton{
