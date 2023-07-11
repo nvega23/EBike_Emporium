@@ -8,11 +8,12 @@ import { useNavigate } from 'react-router';
 
 function LoginForm () {
   const [email, setEmail] = useState('');
-  const navigate = useNavigate()
+  const [documentTitle, setDocumentTitle] = useState("EcoBike Emporium - Log in or Sign up");
+  const [passwordVisible, setPasswordVisible] = useState(false);
   const [password, setPassword] = useState('');
   const errors = useSelector(state => state.session.errors);
+  const navigate = useNavigate()
   const dispatch = useDispatch();
-  const [passwordVisible, setPasswordVisible] = useState(false);
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
@@ -21,8 +22,9 @@ function LoginForm () {
   useEffect(() => {
     return () => {
       dispatch(clearSessionErrors());
+      document.title = documentTitle
     };
-  }, [dispatch]);
+  }, [dispatch, documentTitle]);
 
   const update = (field) => {
     const setState = field === 'email' ? setEmail : setPassword;
@@ -31,12 +33,18 @@ function LoginForm () {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(login({ email, password }));
+    dispatch(login({ email, password }))
+      .then(()=>{
+        document.title = "EcoBike Emporium"
+      })
   }
 
   const handleDemo =(e) => {
     e.preventDefault()
     dispatch(login({email:"demo@user.io", password: "password"}))
+      .then(()=>{
+        document.title = "EcoBike Emporium"
+      })
     navigate("/posts");
   }
 

@@ -1,17 +1,16 @@
 #searchbar {
-    border: 0.3vh solid rgb(170, 168, 168);
+    border: 0.3vh solid rgba(170, 168, 168, 0.197);
+    background-color: white;
     display: inline-block;
     padding: 0 10px;
-    margin-top: -10px;
     font-size: 18px;
     font-weight: 500;
     cursor: text;
     border-radius: 15px;
-    color: black;
     transition: all 0.3s ease;
     width: 100%;
 }
 
 #searchbar:hover{
-    /* border: 0.4vh solid red; */
+    color: linear-gradient(-135deg, #c850c0, red);
 }

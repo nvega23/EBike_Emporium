@@ -1,28 +1,66 @@
-.login-option{
+.mainpageContainer{
+    width: 100%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    font-family: 'Poppins', sans-serif;
+    opacity: 0; /* Initially set the opacity to 0 */
+    transition: opacity 1.5s ease-in-out;
+    position: relative;
+}
+
+.mainpageContainer.animate {
+  opacity: 1; /* Change the opacity to 1 to reveal the text */
+}
+
+.mainImage{
+    display: flex;
+    background-image: url('https://images.unsplash.com/photo-1605271864611-58dd08d10547?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80');
+    width: 75vh;
+    height: 100vh;
+    background-repeat: no-repeat;
+    font-family: 'Poppins', sans-serif;
+}
+
+.rightTextPage{
+    display: flex;
+    justify-content: center;
     align-items: center;
-    padding-top: 200px;
-}
-
-.login-links{
-    font-family: 'Poppins', sans-serif;
-    font-size: xx-large;
-    margin-top: 100px;
-    color: #4158d0;
-    text-decoration: none;
-}
-
-
-.login-something{
-    margin-top: 50px;
-}
-
-.project-title{
-    display: flex;
+    text-align: center;
     flex-direction: column;
-    font-size:50px;
+    background-image: url('https://images.unsplash.com/photo-1593151578859-6de5911dbcb1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=686&q=80');
     font-family: 'Poppins', sans-serif;
-    color: #4158d0;
+    font-size: 3vh;
+    color: aliceblue;
+    position: relative;
 }
-/* background: linear-gradient(-135deg, #c850c0, #4158d0); */
+
+.smallText{
+    font-size: 2.5vh;
+    width: 350px;
+}
+
+.loginDiv{
+  position: absolute; /* Position the login div absolutely within the parent container */
+  top: 150px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2; /* Increase the z-index to bring the login div above the background images */
+  color: aliceblue;
+  display: flex;
+  justify-content: center;
+  font-family: 'Poppins', sans-serif;
+  font-size: 3vh;
+  /* border: 3px solid white; */
+  border-radius: 1vh;
+  height: 25vh;
+  background-color: rgba(0, 0, 0, 0.537);
+  box-shadow: -10px 15px 20px rgba(0, 0, 0, 0.41);
+}
+
+.letsLog{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 5;
+}
