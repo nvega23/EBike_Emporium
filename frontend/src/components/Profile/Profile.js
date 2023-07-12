@@ -7,9 +7,10 @@ import { fetchUsersReview} from '../../store/review';
 // import ProfilePostIndex from '../Profile/ProfilePostIndex';
 import PostIndexItem from '../PostIndexItem/PostIndexItem';
 import ReviewIndexItem from '../ReviewIndexItem/ReviewIndexItem'
+import { deletePost } from '../../store/post';
 import './Profile.css'
 
-function Profile() {
+function Profile({key1}) {
     const dispatch = useDispatch()
     const { userId } = useParams()
     let currentProfileUser = useSelector(state => state?.profile.profile);
@@ -20,8 +21,24 @@ function Profile() {
     useEffect(()=> {
         dispatch(fetchUserProfile(userId));
         dispatch(fetchUserPosts(userId));
-       dispatch(fetchUsersReview(userId));
+        dispatch(fetchUsersReview(userId));
     }, [dispatch, userId])
+
+    const handleClick = (post) => {
+        dispatch(deletePost(post._id, key1))
+    }
+
+    const editDeleteButton = (post) => {
+        if (currentProfileUser._id === post.author._id){
+            return(
+                <>
+                <div>
+                    <button onClick={()=> handleClick(post)} className="EditDeleteButton">Delete</button>
+                </div>
+                </>
+            )
+        }
+    }
 
     const capitalizedUsername = currentProfileUser?.username ?
     currentProfileUser.username.charAt(0).toUpperCase() + currentProfileUser.username.slice(1).toLowerCase()
@@ -32,9 +49,12 @@ function Profile() {
         profileContent = (
             <div>
                 <h1 id="ProfilePostsTitle">{posts ? "" : "This user does not have any posts."}</h1>
-                {/* {editDeleteButton(post)} */}
                 <div className='profilePosts'>
-                    {posts?.map((post, i)=> <PostIndexItem key={i} post= {post} />
+                    {posts?.map((post, i)=>
+                        <React.Fragment key={i}>
+                            <PostIndexItem key={`post-${i}`} post={post} />
+                            {editDeleteButton(post)}
+                        </React.Fragment>
                     )}
                 </div>
             </div>

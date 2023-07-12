@@ -18,7 +18,7 @@ const emptyCart = () => {
     return (
         <div className="purchaseContainer">
             <br /><br />
-            <h1>
+            <h1 className="textCheckout">
                 Your new bike will arrive shortly!
             </h1>
             <br />

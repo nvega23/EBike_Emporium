@@ -47,7 +47,7 @@ const Cart = () => {
           {!cart.length ? (
         <div>
 
-            <h1>
+            <h1 className="emptyText">
               Your cart is Empty
             </h1>
             <button className="emptyCartLink">

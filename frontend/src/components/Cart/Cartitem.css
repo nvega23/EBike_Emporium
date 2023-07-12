@@ -75,3 +75,8 @@
 .boldText{
     font-weight: 600;
 }
+
+.emptyText{
+    font-family: 'Poppins', sans-serif;
+    font-size: 5vh;
+}
