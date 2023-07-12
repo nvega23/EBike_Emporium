@@ -13,7 +13,11 @@ function MainPage() {
         <>
             <div className={`mainpageContainer ${animate ? 'animate' : ''}`}>
                 <div className='mainImage'></div>
-                <div className='loginDiv'><h1 className='letsLog'>Unlock Exclusive Access: Log in to Explore our Premium E-Bikes for Sale!</h1></div>
+                <div className='loginDiv'>
+                    <h1 className='letsLog'>
+                        Unlock Exclusive Access: Log in to Explore our Premium E-Bikes for Sale!
+                    </h1>
+                </div>
                 <div className='rightTextPage'>
                     <h1>Ride the Future: Powering Your Pedals!</h1>
                     <br/>
