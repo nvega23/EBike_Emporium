@@ -1,15 +1,15 @@
 .post-container {
     padding-bottom: 10px;
-    margin: 40px;
+    /* margin: 40px; */
     background-color: transparent;
     border-radius: 10px;
     font-family: 'Poppins', sans-serif;
-    box-shadow: -10px 15px 20px rgba(0, 0, 0, 0.41);
+    /* box-shadow: -10px 15px 20px rgba(0, 0, 0, 0.41); */
 }
 
-.post-main-content {
+/* .post-main-content {
     padding: 10px;
-}
+} */
 
 .post-body-text {
     padding-top: 10px;

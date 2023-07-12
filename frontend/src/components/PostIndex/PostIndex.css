@@ -13,6 +13,9 @@
     /* margin-top: 150vh; */
     margin-top: 1vh;
     flex-wrap: wrap;
+    width: -webkit-fill-available;
+    justify-content: center;
+    text-align: center;
 }
 
 #post-index-sidebar-active {
@@ -53,8 +56,8 @@
 }
 
 .splashPageImage{
-    margin-top: -2vh;
-    width: 100%;
+    margin-top: -3vh;
+    width: 50%;
     height: 70vh;
     background-repeat: no-repeat;
     background-size: 100%;

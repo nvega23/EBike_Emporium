@@ -31,9 +31,11 @@ function Profile() {
     if (contentState === 'posts') {
         profileContent = (
             <div>
-                <h1 id="ProfilePostsTitle">{posts ? "Posts:" : "This user does not have any posts."}</h1>
-                <div>
-                    {posts?.map((post, i)=> <PostIndexItem key={i} post= {post} />)}
+                <h1 id="ProfilePostsTitle">{posts ? "" : "This user does not have any posts."}</h1>
+                {/* {editDeleteButton(post)} */}
+                <div className='profilePosts'>
+                    {posts?.map((post, i)=> <PostIndexItem key={i} post= {post} />
+                    )}
                 </div>
             </div>
         )
@@ -42,10 +44,16 @@ function Profile() {
         profileContent = (
             <div>
                 <h1 id="ProfilePostsTitle">{reviews ? "Reviews" : "This user does not have any reviews."}</h1>
-                {reviews?.map((review, i) => review.rating ? <ReviewIndexItem key={i} review={review} /> : <></>)}
+                <div className='reviewDivs'>
+                    {reviews?.map((review, i) => review.rating ?
+                        <ReviewIndexItem key={i} review={review} /> :
+                        <></>
+                    )}
+                </div>
             </div>
         )
     }
+
 
     return (
     <div id="outer">

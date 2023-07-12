@@ -21,6 +21,7 @@ import Checkout from './components/Cart/Checkout';
 import ReviewIndexItem from './components/ReviewIndexItem/ReviewIndexItem';
 import ItemDescription from './components/ItemDescription/ItemDescription';
 import ReviewUpdate from './components/ReviewUpdate/ReviewUpdate';
+// import Footer from './components/Footer/Footer.js'
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -61,6 +62,7 @@ function App() {
       <Route exact path='/checkout' element={<Checkout/>} />
       {/* <ProtectedRoute exact path='/Message' component={Message} /> */}
     </Routes>
+    {/* <Footer/> */}
     </>
   );
 }

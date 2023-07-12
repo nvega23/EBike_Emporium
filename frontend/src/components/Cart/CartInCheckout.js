@@ -49,18 +49,18 @@ const CartInCheckout = ({ p }) => {
   return (
     <>
       <div className="cartContainer">
-        <img className="cartImg" src={p.post.imageUrls[0]} alt="url"/>
+        <img className="cartImg" src={p.post?.imageUrls[0]} alt="url"/>
         <div className="cartDescription">
         <h1 className="cartText">
           <h1 className="boldText">
             Bike Name:
           </h1>
-          {p.post.body.toUpperCase()}</h1>
+          {p.post?.body?.toUpperCase()}</h1>
         <h1 className="cartText">
           <h1 className="boldText">
             Bike Bio:
           </h1>
-          {p.post.reciepeName.toUpperCase()}</h1>
+          {p.post?.reciepeName.toUpperCase()}</h1>
           <p className="cartQuantity">
             <h1 className="boldText">
               Quantity:
@@ -78,7 +78,7 @@ const CartInCheckout = ({ p }) => {
         </div>
         <div className="summaryContainer">
           <h1 className="cartSub">Subtotal</h1>
-          <p className="cartPrice">Total: ${(p.post.price * p.quantity).toLocaleString()}</p>
+          <p className="cartPrice">Total: ${(p.post?.price * p.quantity).toLocaleString()}</p>
         </div>
       </div>
     </>

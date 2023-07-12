@@ -1,16 +1,13 @@
 .post-container {
     padding-bottom: 10px;
-    margin: 40px;
+    /* margin: 40px; */
+    margin: 15px;
     list-style: none;
     border: 2px solid transparent;
     background-color: #fff;
     border-radius: 10px;
-    font-family: DejaVu Sans Mono, monospace;
-    box-shadow: -10px 15px 20px rgba(0, 0, 0, 0.41);
-}
-
-.post-main-content {
-    padding: 10px;
+    --fa-style-family-classic: "Font Awesome 6 Pro";
+    /* box-shadow: -10px 15px 20px rgba(0, 0, 0, 0.41); */
 }
 
 .reviewButton{
@@ -42,7 +39,7 @@
 .post-body-text {
     margin-left: 10px;
     margin-top: 10px;
-    font-size: 5vh;
+    font-size: 2vh;
     font-family: 'Poppins', sans-serif;
 }
 
@@ -94,13 +91,18 @@
     background-color: #F5A563;
 }
 
-.images{
-    border-radius: 10px;
-    width: 58vh;
+.postImages{
+    /* border-radius: 10px; */
+    width: 65vh;
     object-fit: cover;
-    height: 20vh;
+    height: 45vh;
     display: flex;
     margin-right: auto;
+}
+
+.postImages:hover{
+    width: 65vh;
+    height: 50vh;
 }
 
 .Add-to-cart1{
@@ -119,15 +121,28 @@
     border: none;
     background: none;
     box-shadow: none;
+    cursor: pointer;
+    height: 50px;
+    width: 30px;
+    z-index: 1;
+    /* margin: -4vh;
+    margin-left: -5vh;
+    margin-top: inherit; */
     /* color: linear-gradient(-135deg, #c850c0, red); */
-    margin-bottom: 13px;
-    margin-right: -700px;
-
   }
   #receiptTitle{
-    /* font-size: 30px; */
-    margin-left: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: small;
+    font-weight: 100;
+    display: flex;
+    width: 100%;
+    margin: 2vh;
+    font-family: 'Poppins', sans-serif;
   }
+
   .likesButton:hover{
     color: red;
   }
@@ -167,12 +182,6 @@
     margin-top: 50px;
 }
 
-.likesButton{
-    cursor: pointer;
-    height: 50px;
-    width: 50px;
-}
-
 .EditDeleteButton{
     cursor: pointer;
     background: linear-gradient(-135deg, #c850c0, red);
@@ -190,11 +199,30 @@
 
 #liked{
     width: 100%;
-    margin-left: 43.5vh;
-    margin-bottom: -5vh;
+    /* margin-left: 43.5vh;
+    margin-bottom: -5vh; */
 }
 
 .buttonLinkImages{
     border: none;
     cursor: pointer;
+    display: flex;
+    background: transparent;
+    flex-direction: column;
+}
+
+.post-main-content{
+    background: white;
+    border-radius: 10px;
+    margin-top: inherit;
+}
+
+.profilePosts{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.reviewDivs{
+    height: auto;
+    margin: 5vh;
 }

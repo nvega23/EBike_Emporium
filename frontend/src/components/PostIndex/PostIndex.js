@@ -5,8 +5,10 @@ import { fetchPosts } from '../../store/post';
 import { fetchPostReviews } from '../../store/review';
 import PostIndexItem from '../PostIndexItem/PostIndexItem';
 import SplashPage from '../../components/splashPage'
-import bikeImg from '../../assets/heybike.jpeg'
+import bikeImg from '../../assets/bikes.avif'
+import bikeImg2 from '../../assets/heybike.jpeg'
 import './PostIndex.css'
+import Footer from '../Footer/Footer.js'
 
 const PostIndex = () => {
     const dispatch = useDispatch();
@@ -30,9 +32,11 @@ const PostIndex = () => {
     }
 
     return (
+        <>
         <div id='post-index-page'>
             <div id='post-index-container'>
                 <img className='splashPageImage' src={bikeImg}/>
+                <img className='splashPageImage' src={bikeImg2}/>
                 <ul id='post-item-list'>
                     {posts && posts.map((post,i)=><PostIndexItem key={i} key1={i} post={post} updateSidebarContent={updateSidebarContent}/>)}
                 </ul>
@@ -47,6 +51,8 @@ const PostIndex = () => {
                 </div>
             </div>
         </div>
+            <Footer/>
+        </>
     )
 }
 

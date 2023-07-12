@@ -37,6 +37,7 @@ function LoginForm () {
       .then(()=>{
         document.title = "EcoBike Emporium"
       })
+    navigate("/posts");
   }
 
   const handleDemo =(e) => {
