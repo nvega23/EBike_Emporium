@@ -1,5 +1,5 @@
 import './PostIndexItem.css';
-import { deletePost, fetchPosts} from '../../store/post';
+import { fetchPosts} from '../../store/post';
 import {ShoppingCartOutlined} from "@ant-design/icons"
 import _, { set } from "lodash"
 import { useLocation } from 'react-router-dom';
@@ -9,7 +9,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import unLikeImg from '../../assets/red_heart.png'
 import likeImg from '../../assets/white_heart.png'
-import Footer from '../Footer/Footer.js'
 
 const PostIndexItem = ({ post, key1 }) => {
     const currentUser = useSelector(state => state.session.user);
@@ -23,22 +22,6 @@ const PostIndexItem = ({ post, key1 }) => {
     const convertDate = (date) => {
         const d = new Date(date);
         return d.toDateString();
-    }
-
-    const handleClick = (post) => {
-        dispatch(deletePost(post._id, key1))
-    }
-
-    const editDeleteButton = (post) => {
-        if (currentUser._id === post.author._id){
-            return(
-                <>
-                <div>
-                    <button onClick={()=> handleClick(post)} className="EditDeleteButton">Delete</button>
-                </div>
-                </>
-            )
-        }
     }
 
     const sendLike = (e) => {
@@ -68,13 +51,12 @@ const PostIndexItem = ({ post, key1 }) => {
             <div id="titleandEdit">
                 <span className='post-info-span'>
                 </span>
-                {/* {editDeleteButton(post)} */}
              </div>
                 <div className='divAroundImgLike'>
                 <button className='buttonLinkImages' onClick={handlePostImageClick(post._id)}>
                     <img className='postImages' loading='lazy' src={post.imageUrls[0]} alt='post-image'/>
                     <button className='likesButton' onClick={sendLike}>
-                        {post.likes.map(user => user.user).includes(userId.toString()) ? <img id="liked" src={unLikeImg}/> :  <img id="liked" src={likeImg}/> }
+                        {!isLiked ? <img id="liked" src={unLikeImg} /> : <img id="liked" src={likeImg} /> }
                     </button>
                 </button>
                 </div>
@@ -82,10 +64,7 @@ const PostIndexItem = ({ post, key1 }) => {
             <h1 className='post-body-text'>{post.body}</h1>
             <div id="thumbAndText">
                 <p id ="receiptTitle">From: ${post.price}</p>
-                {/* <div id="likesNumandText">
-                    <p className='likesNum' >{post.likes.length} </p>
-                    <p className='likesText'>Likes</p>
-                </div> */}
+                {/* <p className='likesNum' >{post.likes.length} </p> */}
             </div>
         </li>
         </>
