@@ -230,28 +230,35 @@ export const removeLike = (id) => async dispatch => {
 
 const initialState = {}
 export const postReducer = (state = initialState, action) => {
-    let newState = {...state};
+    let newState = { ...state };
     switch (action.type) {
-        case RECEIVE_POSTS:
-            return { ...action.posts};
-        case REMOVE_POST:
-            delete newState[action.key];
-            return newState;
-        case 'post/RECEIVE_POST_ERRORS':
-            return state;
-        case UPDATE_POST:
-        case RECEIVE_NEW_POST:
-            return {...newState, [newState.length+1]: {...action.post}}
-        case UPDATE_LIKES:
-            return {
-                ...state,
-                //  posts: state.posts.map((post) => post._id === action.payload.id ? {...post, likes: action.payload.likes} :post)
-                 }
-        default:
-            return state
-
+      case RECEIVE_POSTS:
+        // Update posts with likes for each post
+        const postsWithLikes = action.posts.map((post) => {
+          const likes = post.likes.map((like) => like.user);
+          return { ...post, likes };
+        });
+        return { ...newState, ...postsWithLikes };
+      case REMOVE_POST:
+        delete newState[action.key];
+        return newState;
+      case 'post/RECEIVE_POST_ERRORS':
+        return state;
+      case UPDATE_POST:
+      case RECEIVE_NEW_POST:
+        return { ...newState, [newState.length + 1]: { ...action.post } };
+      case UPDATE_LIKES:
+        // Update likes for a specific post
+        const updatedPost = newState[action.payload.id];
+        if (updatedPost) {
+          updatedPost.likes = action.payload.likes;
+        }
+        return { ...newState };
+      default:
+        return state;
     }
-}
+  };
+
 
 // export default postReducer;
 

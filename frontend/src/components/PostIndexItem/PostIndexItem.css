@@ -81,9 +81,7 @@
     padding: 3px;
     text-decoration: none;
     text-transform: uppercase;
-    border:#ba3b0a;
-    border: 1px solid;
-    border-color: #F57114;
+    border: none;
     border-radius: 5px;
 }
 
@@ -186,7 +184,7 @@
     cursor: pointer;
     background: linear-gradient(-135deg, #c850c0, red);
     color: white;
-    margin: 1vh;
+    /* margin: 1vh; */
 }
 
 .divAroundImgLike{
@@ -220,6 +218,7 @@
 .profilePosts{
     display: flex;
     flex-wrap: wrap;
+    margin-top: 5vh;
 }
 
 .reviewDivs{

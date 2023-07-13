@@ -1,13 +1,18 @@
-import React from "react";
+import {React, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import './ItemDescription.css'
 import { Link, useNavigate } from "react-router";
 import {ShoppingCartOutlined} from "@ant-design/icons"
+import { fetchPosts } from "../../store/post";
 
 const ItemDescription = ({ post, postId }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const posts = useSelector(store => Object.values(store.post));
+
+  useEffect(() => {
+    fetchPosts(posts)
+  }, []);
 
   const handleAddToCart = () => {
     let quantityChange = false

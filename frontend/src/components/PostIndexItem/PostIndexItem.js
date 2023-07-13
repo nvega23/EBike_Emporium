@@ -6,7 +6,7 @@ import { useLocation } from 'react-router-dom';
 import { Link, useNavigate } from 'react-router-dom';
 import { addLike, removeLike } from '../../store/post';
 import { useDispatch, useSelector } from 'react-redux';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import unLikeImg from '../../assets/red_heart.png'
 import likeImg from '../../assets/white_heart.png'
 
@@ -18,7 +18,39 @@ const PostIndexItem = ({ post, key1 }) => {
     const [likeCount, setlikeCount] = useState(post.likes.length)
     const location = useLocation();
     const query = location.search;
-    const [isLiked, setIsLiked] = useState(post.likes.map(like => like.user).includes(userId.toString()) || true)
+    // const [isLiked, setIsLiked] = useState(post.likes.map(like => like.user).includes(userId.toString()) || true)
+    // const [isLiked, setIsLiked] = useState(false)
+
+      // Retrieve like status from local storage or default to false
+  const [isLiked, setIsLiked] = useState(() => {
+    const storedLikedPosts = localStorage.getItem('likedPosts');
+    if (storedLikedPosts) {
+      const likedPosts = JSON.parse(storedLikedPosts);
+      return likedPosts.includes(post._id);
+    }
+    return false;
+  });
+
+  useEffect(() => {
+    // Update local storage when like status changes
+    const storedLikedPosts = localStorage.getItem('likedPosts');
+    let likedPosts = [];
+    if (storedLikedPosts) {
+      likedPosts = JSON.parse(storedLikedPosts);
+    }
+
+    if (isLiked) {
+      likedPosts.push(post._id);
+    } else {
+      const index = likedPosts.indexOf(post._id);
+      if (index > -1) {
+        likedPosts.splice(index, 1);
+      }
+    }
+
+    localStorage.setItem('likedPosts', JSON.stringify(likedPosts));
+  }, [isLiked]);
+
     const convertDate = (date) => {
         const d = new Date(date);
         return d.toDateString();
@@ -56,7 +88,7 @@ const PostIndexItem = ({ post, key1 }) => {
                 <button className='buttonLinkImages' onClick={handlePostImageClick(post._id)}>
                     <img className='postImages' loading='lazy' src={post.imageUrls[0]} alt='post-image'/>
                     <button className='likesButton' onClick={sendLike}>
-                        {!isLiked ? <img id="liked" src={unLikeImg} /> : <img id="liked" src={likeImg} /> }
+                        {isLiked ? <img id="liked" src={unLikeImg} /> : <img id="liked" src={likeImg} /> }
                     </button>
                 </button>
                 </div>
