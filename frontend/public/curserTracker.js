@@ -18,8 +18,8 @@ document.addEventListener('mousemove', e => {
 })
 
 const updatePosition = () => {
-    const distanceX = mouseX - (trackerX + trackerSize / 2) * 1.2
-    const distanceY = mouseY - (trackerY + trackerSize / 2) * 1.2
+    const distanceX = mouseX - (trackerX + trackerSize / 2)
+    const distanceY = mouseY - (trackerY + trackerSize / 2) * 1.05
 
     trackerX += distanceX * speed
     trackerY += distanceY * speed

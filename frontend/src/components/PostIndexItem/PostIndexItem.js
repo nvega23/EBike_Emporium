@@ -37,7 +37,7 @@ const PostIndexItem = ({ post, key1 }) => {
     let likedPosts = [];
     if (storedLikedPosts) {
       likedPosts = JSON.parse(storedLikedPosts);
-    }
+    }   
 
     if (isLiked) {
       likedPosts.push(post._id);

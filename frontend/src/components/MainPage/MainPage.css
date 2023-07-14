@@ -1,39 +1,54 @@
+body {
+    margin: 0;
+    padding: 0;
+  }
 
-.mainpageContainer{
-    width: 100%;
+  .mainpageContainer {
+    width: 100vw; /* Use viewport units to ensure the container takes up the entire width of the viewport */
+    height: 100vh; /* Use viewport units to ensure the container takes up the entire height of the viewport */
     display: flex;
     flex-direction: row;
     font-family: 'Poppins', sans-serif;
-    opacity: 0; /* Initially set the opacity to 0 */
+    opacity: 0;
     transition: opacity 1.5s ease-in-out;
     position: relative;
-}
+  }
 
-.mainpageContainer.animate {
-  opacity: 1; /* Change the opacity to 1 to reveal the text */
-}
+  .mainpageContainer.animate {
+    opacity: 1;
+  }
 
-.mainImage{
-    display: flex;
-    background-image: url('https://images.unsplash.com/photo-1605271864611-58dd08d10547?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80');
-    width: 75vh;
-    height: 100vh;
-    background-repeat: no-repeat;
+  .mainImage {
+    flex: 1; /* Use flexbox to make the image container expand to fill the available space */
+    background-image: url(
+'https://images.unsplash.com/photo-1585159858644-a46316703903?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=717&q=80'
+    );
+    background-size: cover;
+    background-position: center; /* Center the background image within the container */
     font-family: 'Poppins', sans-serif;
-}
+  }
 
-.rightTextPage{
+  .rightTextPage {
+    flex: 1; /* Use flexbox to make the text container expand to fill the available space */
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     flex-direction: column;
-    background-image: url('https://images.unsplash.com/photo-1593151578859-6de5911dbcb1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=686&q=80');
-    background-repeat: no-repeat;
+    background-image: url(
+'https://shop.m2sbikes.com/cdn/shop/files/HT_Sport.jpg?v=1667921479&width=900'
+        );
+    background-size: cover;
+    background-position: center; /* Center the background image within the container */
     font-family: 'Poppins', sans-serif;
     font-size: 3vh;
     color: aliceblue;
     position: relative;
+  }
+
+
+.mainImage, .rightTextPage {
+  background-size: round;
 }
 
 .smallText{
@@ -45,7 +60,7 @@
   position: absolute; /* Position the login div absolutely within the parent container */
   top: 150px;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%);
   z-index: 2; /* Increase the z-index to bring the login div above the background images */
   color: aliceblue;
   display: flex;
@@ -54,9 +69,12 @@
   font-size: 3vh;
   /* border: 3px solid white; */
   border-radius: 1vh;
-  height: 25vh;
-  background-color: rgba(0, 0, 0, 0.537);
-  box-shadow: -10px 15px 20px rgba(0, 0, 0, 0.41);
+  height: 55vh;
+  width: 70%;
+  background-color: rgba(0, 0, 0, 0.326);
+  box-shadow: -10px 15px 20px rgba(0, 0, 0, 0.261);
+  flex-direction: column;
+  padding: 5vh;
 }
 
 .letsLog{
@@ -65,4 +83,35 @@
     align-items: center;
     text-align: center;
     z-index: 5;
+}
+
+.loginSomething{
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    width: 50%;
+}
+
+.loginLinks {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+  padding: 10px 20px;
+  margin: 1vh;
+  margin-bottom: 2vh;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background: linear-gradient(125deg, #5900ff, red);
+  color: #fff;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.loginLinks:active {
+  transform: scale(0.95);
 }
