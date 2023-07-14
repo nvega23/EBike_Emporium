@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { NavLink } from "react-router-dom";
@@ -7,6 +7,10 @@ import './NavBar.css';
 import { Badge } from 'antd';
 import SearchBar from '../SearchBar.js/SearchBar';
 import myImage from '../../assets/bike_icon.png';
+import myImageHome from '../../assets/home_icon.png';
+import myImageSell from '../../assets/sellIcon.png';
+import myImageProfile from '../../assets/windows_profile_pic.png';
+import myImageCart from '../../assets/cart.png';
 
 function NavBar() {
     // const [isActive, setIsActive] = useState(false)
@@ -15,6 +19,7 @@ function NavBar() {
     const {cart} = useSelector(state => ({...state}))
     const dispatch = useDispatch()
     const [showMenu, setShowMenu] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
 
     const toggleMenu = () => {
         setShowMenu(!showMenu);
@@ -32,12 +37,34 @@ function NavBar() {
         navigate('/')
     }
 
+    useEffect(() => {
+        const handleScroll = () => {
+          if (window.pageYOffset > 0) {
+            setIsScrolled(true);
+          } else {
+            setIsScrolled(false);
+          }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+          window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
     let navbar;
 
     if(loggedIn) {
         navbar=(
             <>
-            <div id='navMenu' className={showMenu ? 'active' : ''} onClick={toggleMenu}>
+        <div
+          id="navMenu"
+          className={`${showMenu ? 'active' : ''} ${
+            isScrolled ? 'scrolled' : ''
+          }`}
+          onClick={toggleMenu}
+        >
                 <span></span>
                 <span></span>
                 <span></span>
@@ -46,13 +73,14 @@ function NavBar() {
                 <div className={`menu ${showMenu ? 'active' : ''}`}>
                 <div className='links-nav'>
 
-                <Link to={'/posts'} className="rightNav"><i class="fa-solid fa-images"></i>Home</Link>
-                <Link to={`/profile/${currentUserId}`} className="rightNav"><i class="fa-sharp fa-solid fa-user"></i>Profile</Link>
-                <Link to={'/posts/new'} className="rightNav"><i class="fa-sharp fa-solid fa-square-plus">Sell</i></Link>
+                <Link to={'/posts'} className="rightNav"><img className='dropDownImage' src={myImageHome}/></Link>
+                <Link to={`/profile/${currentUserId}`} className="rightNav"><img className='dropDownImage' src={myImageProfile}/></Link>
+                <Link to={'/posts/new'} className="rightNav"><img className='dropDownImage' src={myImageSell}/></Link>
 
                 <Link to="/cart" className="rightNav">
                     <Badge count={cart.length} offset={[9, 0]} className="rightNav">
-                    </Badge> Cart
+                        <img className='dropDownImage' src={myImageCart}/>
+                    </Badge>
                 </Link>
                 <button onClick={logoutUser} id="logoutButton">Logout</button>
                 </div>
@@ -83,7 +111,7 @@ function NavBar() {
     return (
         <>
             <div id="navbarOuter">
-                <NavLink exact to="/posts" id="title">
+                <NavLink exact to="/" id="title">
                     <img className='content' src={myImage} alt='bike'/>
                 </NavLink>
                 <SearchBar/>

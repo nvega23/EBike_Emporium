@@ -248,7 +248,6 @@ export const postReducer = (state = initialState, action) => {
       case RECEIVE_NEW_POST:
         return { ...newState, [newState.length + 1]: { ...action.post } };
       case UPDATE_LIKES:
-        // Update likes for a specific post
         const updatedPost = newState[action.payload.id];
         if (updatedPost) {
           updatedPost.likes = action.payload.likes;
