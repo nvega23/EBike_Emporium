@@ -1,70 +1,59 @@
-# Getting Started with Create React App
+In order to start our backend, we run:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### `npm run dev`
 
-## Available Scripts
-
-In the project directory, you can run:
+To run our frontend we need:
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# Splash Page
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<img width="1440" alt="Screenshot 2023-07-13 at 11 50 05 PM" src="https://github.com/nvega23/bikes_for_sale/assets/93811834/f01137be-4342-40d7-9960-36213ac7bf26">
 
-### `npm test`
+# Login Page
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<img width="1440" alt="Screenshot 2023-07-11 at 6 08 20 PM" src="https://github.com/nvega23/bikes_for_sale/assets/93811834/8f8d7249-eb95-4422-969b-c4e31dbfd72f">
 
-### `npm run build`
+# Sign up Page
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<img width="1440" alt="Screenshot 2023-07-11 at 6 08 32 PM" src="https://github.com/nvega23/bikes_for_sale/assets/93811834/bfee9b89-b685-4a32-b925-557756cd6dfe">
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Main Page
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<img width="1440" alt="Screenshot 2023-07-13 at 11 50 47 PM" src="https://github.com/nvega23/bikes_for_sale/assets/93811834/efcf2d84-c4a4-4f64-9de4-f166fc0b6d3e">
 
-### `npm run eject`
+# Posts
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<img width="1440" alt="Screenshot 2023-07-13 at 11 51 08 PM" src="https://github.com/nvega23/bikes_for_sale/assets/93811834/6c9a7d13-425a-42f0-a544-83ccc94fe07c">
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Item Description
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+<img width="1440" alt="Screenshot 2023-07-13 at 11 56 28 PM" src="https://github.com/nvega23/bikes_for_sale/assets/93811834/7bde8b12-e5f8-4004-bc5a-7afb5dd7aabd">
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+# Profile Page/Reviews
 
-## Learn More
+<img width="1440" alt="Screenshot 2023-07-14 at 12 04 52 AM" src="https://github.com/nvega23/bikes_for_sale/assets/93811834/3771060a-fa1b-4eb4-8a59-769bf3e5d5a4">
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# Profile Page/Users Post
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<img width="1440" alt="Screenshot 2023-07-14 at 12 04 45 AM" src="https://github.com/nvega23/bikes_for_sale/assets/93811834/cc56ac4f-231a-4039-97c5-46bc893a4e42">
 
-### Code Splitting
+# Sell Items
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+<img width="1440" alt="Screenshot 2023-07-11 at 6 09 38 PM" src="https://github.com/nvega23/bikes_for_sale/assets/93811834/b49c87b9-3cfc-491a-8005-e08d14dcf83d">
 
-### Analyzing the Bundle Size
+# Empty Cart? 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+<img width="1440" alt="Screenshot 2023-07-14 at 12 10 38 AM" src="https://github.com/nvega23/bikes_for_sale/assets/93811834/939762ec-06a6-433e-b259-c8da512fb1f1">
 
-### Making a Progressive Web App
+# Cart
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+<img width="1440" alt="Screenshot 2023-07-14 at 12 01 26 AM" src="https://github.com/nvega23/bikes_for_sale/assets/93811834/07fdf26b-8db9-4cf1-8ed6-c54c4802eff7">
 
-### Advanced Configuration
+# Checkout 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+<img width="1440" alt="Screenshot 2023-07-14 at 12 08 15 AM" src="https://github.com/nvega23/bikes_for_sale/assets/93811834/b96bdf4e-3f37-4472-b417-d8265dd0040d">
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
