@@ -17,6 +17,7 @@ function MainPage() {
                     <h1 className='letsLog'>
                         Unlock Exclusive Access: Log in to Explore our Premium E-Bikes for Sale!
                     </h1>
+                    <br/>
                     <div className='loginSomething'>
                         <Link to="/login" className='loginLinks'>Login</Link>
                         <Link to="/signup" className='loginLinks'>Sign Up</Link>

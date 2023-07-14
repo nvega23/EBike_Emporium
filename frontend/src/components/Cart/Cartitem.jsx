@@ -20,7 +20,7 @@ const Cart = () => {
         </div>
 
         <div>
-           {!cart.length ? (<h1>Your Cart is Empty. <Link to="/posts">Add items to get started</Link></h1>) : ("show cart items")}
+           {!cart.length ? (<h1>Your Cart is Empty. <Link to="/posts" className="linkGetStarted">Add items to get started</Link></h1>) : ("show cart items")}
         </div>
             {cart.map((c, i) => (
                 <div key={i}>
@@ -42,7 +42,7 @@ const Cart = () => {
 
   return (
     <>
-      <div className="cart1">
+      <div className="cart1Container">
         <div >
           {!cart.length ? (
         <div>
@@ -50,6 +50,7 @@ const Cart = () => {
             <h1 className="emptyText">
               Your cart is Empty
             </h1>
+            <br/>
             <button className="emptyCartLink">
             <Link to="/posts" className="emptyCartLink">
               <h1 className="emptyCartText">

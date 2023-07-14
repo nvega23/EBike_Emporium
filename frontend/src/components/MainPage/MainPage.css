@@ -21,7 +21,7 @@ body {
   .mainImage {
     flex: 1; /* Use flexbox to make the image container expand to fill the available space */
     background-image: url(
-'https://images.unsplash.com/photo-1585159858644-a46316703903?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=717&q=80'
+'https://happyebikes.com/cdn/shop/files/Dan-Melody-Promo-SHot-Happy-Ebikes-Best-ebikes_1024x1024.jpg?v=1680715429'
     );
     background-size: cover;
     background-position: center; /* Center the background image within the container */
@@ -71,7 +71,7 @@ body {
   border-radius: 1vh;
   height: 55vh;
   width: 70%;
-  background-color: rgba(0, 0, 0, 0.326);
+  background-color: rgba(0, 0, 0, 0.73);
   box-shadow: -10px 15px 20px rgba(0, 0, 0, 0.261);
   flex-direction: column;
   padding: 5vh;
@@ -106,12 +106,20 @@ body {
   cursor: pointer;
   border: none;
   border-radius: 5px;
-  background: linear-gradient(125deg, #5900ff, red);
+  background: black;
   color: #fff;
   transition: all 0.3s ease;
   width: 100%;
+  box-shadow: -10px 15px 20px rgba(255, 255, 255, 0.069);
 }
 
 .loginLinks:active {
   transform: scale(0.95);
+}
+
+.loginLinks:hover {
+  transform: scale(0.95);
+  background: white;
+  color: black;
+  box-shadow: -10px 15px 20px rgba(255, 255, 255, 0);
 }

@@ -32,7 +32,8 @@ html,body{
   color: #fff;
   user-select: none;
   border-radius: 15px 15px 0 0;
-  background: linear-gradient(-135deg, #c850c0, red);
+  background: black;
+  font-family: 'Poppins', sans-serif;
 }
 .wrapper form{
   padding: 5px 10px 0 10px;
@@ -143,8 +144,9 @@ form .loginField {
   cursor: text;
   border: none;
   border-radius: 5px;
-  background: linear-gradient(-135deg, #c850c0, red);
-  color: #fff;
+  /* background: linear-gradient(-135deg, #c850c0, red); */
+  /* background: black; */
+  border: 0.2vw solid black;
   transition: all 0.3s ease;
   width: 100%;
 }
@@ -158,14 +160,21 @@ form .loginFields {
   cursor: pointer;
   border: none;
   border-radius: 5px;
-  background: linear-gradient(-135deg, #c850c0, red);
+  /* background: linear-gradient(-135deg, #c850c0, red); */
+  background: black;
   color: #fff;
   transition: all 0.3s ease;
   width: 100%;
 }
 
-form .loginField:active {
+form .loginFields:active {
   transform: scale(0.95);
+  color: white;
+}
+
+form .loginFields:hover {
+  background: white;
+  color: #262626;
 }
 
 
@@ -234,7 +243,8 @@ form .field input[type="submit"] {
     cursor: pointer;
     border: none;
     border-radius: 5px;
-    background: linear-gradient(-135deg, #c850c0, red);
+    /* background: linear-gradient(-135deg, #c850c0, red); */
+    background: black;
     color: #fff;
     transition: all 0.3s ease;
 }
@@ -252,7 +262,8 @@ form .buttonField {
     cursor: pointer;
     border: none;
     border-radius: 5px;
-    background: linear-gradient(-135deg, #c850c0, red);
+    /* background: linear-gradient(-135deg, #c850c0, red); */
+    background: black;
     color: #fff;
     transition: all 0.3s ease;
     width: 100%;

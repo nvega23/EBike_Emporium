@@ -24,6 +24,10 @@
     width: 100%;
 }
 
+.checkoutButton:hover{
+    font-size: 22px;
+}
+
 .cartText{
     width: 45vh;
 }
@@ -36,6 +40,10 @@
 .emptyCartText{
     border: none;
     color: #007185;
+}
+
+.emptyCartText:hover{
+    text-decoration: underline;
 }
 
 .textCheckout{

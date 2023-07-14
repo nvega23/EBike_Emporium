@@ -85,12 +85,12 @@ const ItemDescription = ({ post, postId }) => {
                 </button>
               </div>
               </div>
-              <div className="divAroundCartReview">
+              {/* <div className="divAroundCartReview">
                   {selectedPost?.price === "undefined" ? "": <a onClick={handleAddToCart} className='addToCart'>
                   <ShoppingCartOutlined className='addToCartButton'/>Add to Cart</a>}
                   <br/>
                   <button onClick={e => navigate(`/review/new/${selectedPost?._id}/${selectedPost?.author._id}`)} className="reviewButton">Leave a Review</button>
-              </div>
+              </div> */}
             </div>
           </div>
         </>

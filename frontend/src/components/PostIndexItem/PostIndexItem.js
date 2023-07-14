@@ -37,7 +37,7 @@ const PostIndexItem = ({ post, key1 }) => {
     let likedPosts = [];
     if (storedLikedPosts) {
       likedPosts = JSON.parse(storedLikedPosts);
-    }   
+    }
 
     if (isLiked) {
       likedPosts.push(post._id);
@@ -55,6 +55,36 @@ const PostIndexItem = ({ post, key1 }) => {
         const d = new Date(date);
         return d.toDateString();
     }
+
+
+  const handleAddToCart = () => {
+    let quantityChange = false
+    let cart = []
+    if (typeof window !== 'undefined') {
+        if (localStorage.getItem('cart')){
+            cart = JSON.parse(localStorage.getItem('cart'))
+        }
+        cart.forEach(food => {
+            if (food.post._id === post._id){
+                quantityChange = true
+
+                food.quantity += 1
+            }
+        });
+        if(!quantityChange){
+            cart.push({
+                post,
+                quantity: 1
+            });
+
+        }
+        localStorage.setItem('cart', JSON.stringify(cart))
+        dispatch({
+            type: "ADD_TO_CART",
+            payload: cart,
+        })
+    }
+}
 
     const sendLike = (e) => {
         e.preventDefault();
@@ -98,6 +128,12 @@ const PostIndexItem = ({ post, key1 }) => {
                 <p id ="receiptTitle">From: ${post.price}</p>
                 {/* <p className='likesNum' >{post.likes.length} </p> */}
             </div>
+            <div className="divAroundCartReview">
+                  {post?.price === "undefined" ? "": <a onClick={handleAddToCart} className='addToCart'>
+                  <ShoppingCartOutlined className='addToCartButton'/>Add to Cart</a>}
+                  <br/>
+                  <button onClick={e => navigate(`/review/new/${post?._id}/${post?.author._id}`)} className="reviewButton">Leave a Review</button>
+              </div>
         </li>
         </>
     )
