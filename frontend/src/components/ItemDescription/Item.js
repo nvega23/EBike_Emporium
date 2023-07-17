@@ -1,14 +1,17 @@
-import {React, useEffect } from "react";
+import { React, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import ItemDescription from "./ItemDescription";
+import { fetchPosts } from "../../store/post";
 
 const Item = ({ post, postId }) => {
-  useEffect(() => {
-    fetchPosts(post)
-  }, []);
+  const dispatch = useDispatch();
+  console.log(post, postId, 'im in the Item');
 
-  return (
-    <ItemDescription itemPost={post} postId={postId} />
-  );
+  useEffect(() => {
+    dispatch(fetchPosts(post));
+  }, [dispatch, post]);
+
+  return <ItemDescription post={post} postId={postId} />;
 };
 
 export default Item;
