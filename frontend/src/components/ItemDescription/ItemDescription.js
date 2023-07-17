@@ -8,11 +8,12 @@ import { fetchPosts } from "../../store/post";
 const ItemDescription = ({ post, postId }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const posts = useSelector(store => Object.values(store.post));
+  // const posts = useSelector(store => Object.values(store.post));
+  // const post = useSelector((store) => store.post[postId]);
 
   useEffect(() => {
-    fetchPosts(posts)
-  }, []);
+    dispatch(fetchPosts(postId));
+  }, [dispatch, postId]);
 
   const handleAddToCart = () => {
     let quantityChange = false
@@ -44,36 +45,34 @@ const ItemDescription = ({ post, postId }) => {
 }
 
   const usersProfilePage = () => {
-    const selectedPost = posts.find((post) => postId === postId);
-    navigate(`/profile/${selectedPost?.author._id}`)
+    // const selectedPost = posts.find((post) => postId === postId);
+    // const selectedPost = post.find((p) => p._id === postId);
+    navigate(`/profile/${post?.author._id}`)
   }
 
   const handlePost = () => {
-    const selectedPost = posts.find((post) => postId === postId);
-    // const usersProfilePage = () => {
-    //   navigate(`/profile/${selectedPost?.author._id}`)
-    // }
-    if (selectedPost) {
+    // const selectedPost = posts.find((post) => postId === postId);
+    if (post) {
       return (
         <>
           <div className="itemDescriptionContainer">
             <div className="borderAroundImage">
-              <img className='selectedPostImage' loading='lazy' src={selectedPost?.imageUrls[0]} alt='post-image'/>
+              <img className='selectedPostImage' loading='lazy' src={post?.imageUrls[0]} alt='post-image'/>
             </div>
             <div className="selectedBody">
               <div className="containerAroundSelectedBody">
 
               <p className="selectedBodyText">
-                  {selectedPost.body}
+                  {post?.body}
               </p>
               <br/>
               <br/>
               <p>
-                {selectedPost.reciepeName}
+                {post?.reciepeName}
               </p>
               <br/>
               <p className='priceForItem'>
-                Price: {selectedPost === "undefined" ? "N/A" : `$${selectedPost?.price}`}
+                Price: {post === "undefined" ? "N/A" : `$${post?.price}`}
               </p>
               <br/>
               <div className="divAroundUsername">
@@ -81,7 +80,7 @@ const ItemDescription = ({ post, postId }) => {
                   Sold by
                 </p>
                 <button onClick={usersProfilePage} className="userProfilePageButton">
-                  {selectedPost?.author?.username}
+                  {post?.author?.username}
                 </button>
               </div>
               </div>
@@ -96,7 +95,11 @@ const ItemDescription = ({ post, postId }) => {
         </>
         )
       }
-    return null;
+    else{
+      <>
+      <h1>Not working</h1>
+      </>
+    }
   };
 
   return (

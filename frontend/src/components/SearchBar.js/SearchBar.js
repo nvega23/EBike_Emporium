@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import './SearchBar.css'
+import searchIcon from '../../assets/searchBar.png'
 
 const SearchBar = () => {
     const navigate = useNavigate();
@@ -12,7 +13,9 @@ const SearchBar = () => {
 
     return (
         <div id='searchbar-wrapper'>
-            <input placeholder='Search...' onKeyDown={handleSearch} id='searchbar'/>
+                {/* <button><img src={searchIcon} alt='search' className='searchIcon'/> */}
+            <input placeholder='Search...' onKeyDown={handleSearch} className='search-bar'/>
+                {/* </button> */}
         </div>
     )
 }

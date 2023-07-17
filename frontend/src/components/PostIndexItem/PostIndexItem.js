@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import unLikeImg from '../../assets/red_heart.png'
 import likeImg from '../../assets/white_heart.png'
+import Item from '../ItemDescription/Item'
 
 const PostIndexItem = ({ post, key1 }) => {
     const currentUser = useSelector(state => state.session.user);
@@ -100,9 +101,14 @@ const PostIndexItem = ({ post, key1 }) => {
     }
     const {cart} = useSelector((state) => ({...state}));
 
-    const handlePostImageClick = (postId) => (e) => {
+    // const handlePostImageClick = () => {
+    //     navigate(`/item/${post._id}`, { state: { post, postId: post._id } });
+    // };
+
+    const handlePostImageClick = () => (e) => {
         e.stopPropagation();
-        navigate(`/item/${postId}`, { state: { post, postId } });
+        navigate(`/item/${post._id}`)
+        // navigate(`/item/${post._id}`, { state: { post, postId: post._id } });
     };
 
     let p = post.price
@@ -114,26 +120,34 @@ const PostIndexItem = ({ post, key1 }) => {
                 <span className='post-info-span'>
                 </span>
              </div>
-                <div className='divAroundImgLike'>
-                <button className='buttonLinkImages' onClick={handlePostImageClick(post._id)}>
-                    <img className='postImages' loading='lazy' src={post.imageUrls[0]} alt='post-image'/>
-                    <button className='likesButton' onClick={sendLike}>
-                        {isLiked ? <img id="liked" src={unLikeImg} /> : <img id="liked" src={likeImg} /> }
-                    </button>
+             <div className='divAroundImgLike'>
+             <button className='buttonLinkImages' onClick={handlePostImageClick}>
+                <img className='postImages' loading='lazy' src={post.imageUrls[0]} alt='post-image'/>
+                <button className='likesButton' onClick={sendLike}>
+                    {isLiked ? <img id="liked" src={unLikeImg} /> : <img id="liked" src={likeImg} /> }
                 </button>
-                </div>
+            </button>
+
+            {/* {location.pathname !== `/item/${post._id}` && (
+            )} */}
+            {/* {location.pathname !== `/item/${post._id}` ?
+                <Item post={post} postId={post._id} /> :
+                console.log("not working")
+            } */}
+</div>
             </div>
+            {/* <Item post={post} postId={post._id}/> */}
             <h1 className='post-body-text'>{post.body}</h1>
             <div id="thumbAndText">
                 <p id ="receiptTitle">From: ${post.price}</p>
                 {/* <p className='likesNum' >{post.likes.length} </p> */}
             </div>
-            <div className="divAroundCartReview">
+            {/* <div className="divAroundCartReview">
                   {post?.price === "undefined" ? "": <a onClick={handleAddToCart} className='addToCart'>
-                  <ShoppingCartOutlined className='addToCartButton'/>Add to Cart</a>}
+                  <ShoppingCartOutlined className='addToCartButton'/>Add to Cartsss</a>}
                   <br/>
                   <button onClick={e => navigate(`/review/new/${post?._id}/${post?.author._id}`)} className="reviewButton">Leave a Review</button>
-              </div>
+              </div> */}
         </li>
         </>
     )
