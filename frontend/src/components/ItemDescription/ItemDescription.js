@@ -5,16 +5,14 @@ import { Link, useNavigate, useParams } from "react-router";
 import { useLocation } from "react-router";
 import {ShoppingCartOutlined} from "@ant-design/icons"
 import { fetchPost } from "../../store/post";
+import ReviewIndexItem from "../ReviewIndexItem/ReviewIndexItem";
 
-const ItemDescription = () => {
+const ItemDescription = ({post}) => {
   const location = useLocation();
-  // const posts = useSelector(store => Object.values(store.post));
+  const reviews = Object.values(useSelector(state => state.review))
   const { id }  = useParams();
-  const post = useSelector((state) => state.post[id]);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  // const post = useSelector((state) => state.post.find((p) => p._id === id));
-  console.log(post, id, 'im the new post')
 
   useEffect(() => {
     dispatch(fetchPost(id));
@@ -52,7 +50,8 @@ const ItemDescription = () => {
   }
 
   const handlePost = () => {
-    if (id) {
+    // if (id) {
+    if (post?._id === id) {
       return (
         <>
           <div className="itemDescriptionContainer">
@@ -68,7 +67,7 @@ const ItemDescription = () => {
               <br/>
               <br/>
               <p>
-                {post?.bikeName}
+                {post.reciepeName}
               </p>
               <br/>
               <p className='priceForItem'>
@@ -91,6 +90,10 @@ const ItemDescription = () => {
                   <button onClick={e => navigate(`/review/new/${post?._id}/${post?.author._id}`)} className="reviewButton">Leave a Review</button>
               </div>
             </div>
+            {reviews?.map((review, i) => review.rating ?
+                <ReviewIndexItem key={i} review={review} /> :
+                <><h1>No reviews for this item yet, Be the first!</h1></>
+            )}
           </div>
         </>
         )

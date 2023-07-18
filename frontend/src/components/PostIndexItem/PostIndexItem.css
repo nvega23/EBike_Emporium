@@ -10,6 +10,12 @@
     /* box-shadow: -10px 15px 20px rgba(0, 0, 0, 0.41); */
 }
 
+.divAroundReviewButton{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .reviewButton{
     font-family: 'Poppins', sans-serif;
     padding: 5px 10px;
@@ -21,6 +27,7 @@
     cursor: pointer;
     text-decoration: none;
     height: 50px;
+    width: 15vw;
 }
 
 .reviewButton:hover{
@@ -215,6 +222,7 @@
     background: white;
     border-radius: 10px;
     margin-top: inherit;
+    font-family: 'Poppins', sans-serif;
 }
 
 .profilePosts{

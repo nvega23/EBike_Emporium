@@ -29,7 +29,7 @@ function Profile({key1}) {
     }
 
     const editDeleteButton = (post) => {
-        if (currentProfileUser._id === post.author._id){
+        if (currentProfileUser._id === post?.author?._id){
             return(
                 <>
                 <div>

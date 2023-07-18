@@ -60,7 +60,7 @@ const CartInCheckout = ({ p }) => {
           <h1 className="boldText">
             Bike Bio:
           </h1>
-          {p.post?.bikeName.toUpperCase()}</h1>
+          {p.post?.reciepeName.toUpperCase()}</h1>
           <p className="cartQuantity">
             <h1 className="boldText">
               Quantity:

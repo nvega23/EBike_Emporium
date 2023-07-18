@@ -83,6 +83,10 @@
     font-family: 'Poppins', sans-serif;
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
 }
 
 .containerAroundSelectedBody{
