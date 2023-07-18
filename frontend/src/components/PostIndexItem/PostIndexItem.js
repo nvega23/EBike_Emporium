@@ -16,7 +16,7 @@ const PostIndexItem = ({ post, key1 }) => {
     const dispatch = useDispatch();
     const userId = useSelector(state => state.session.user._id)
     const navigate = useNavigate()
-    const [likeCount, setlikeCount] = useState(post.likes.length)
+    // const [likeCount, setlikeCount] = useState(post.likes.length)
     const location = useLocation();
     const query = location.search;
 
@@ -24,7 +24,7 @@ const PostIndexItem = ({ post, key1 }) => {
         const storedLikedPosts = localStorage.getItem('likedPosts');
             if (storedLikedPosts) {
             const likedPosts = JSON.parse(storedLikedPosts);
-            return likedPosts.includes(post._id);
+            return likedPosts.includes(post?._id);
             }
         return false;
   });
@@ -38,9 +38,9 @@ const PostIndexItem = ({ post, key1 }) => {
     }
 
     if (isLiked) {
-      likedPosts.push(post._id);
+      likedPosts.push(post?._id);
     } else {
-      const index = likedPosts.indexOf(post._id);
+      const index = likedPosts.indexOf(post?._id);
       if (index > -1) {
         likedPosts.splice(index, 1);
       }
@@ -98,7 +98,7 @@ const PostIndexItem = ({ post, key1 }) => {
         console.log(post, post._id, "I'm the post handler in postindexitem");
     };
 
-    let p = post.price
+    let p = post?.price
     return (
         <>
         <li className='post-container'>
@@ -108,19 +108,18 @@ const PostIndexItem = ({ post, key1 }) => {
                     </span>
                 </div>
                 <div className='divAroundImgLike'>
-                    <Link to={`/item/${post._id}`} className='buttonLinkImages' onClick={handlePostImageClick}>
-                        <img className='postImages' loading='lazy' src={post.imageUrls[0]} alt='post-image' />
+                    <Link to={`/item/${post?._id}`} className='buttonLinkImages' onClick={handlePostImageClick}>
+                        <img className='postImages' loading='lazy' src={post?.imageUrls[0]} alt='post-image' />
                         <button className='likesButton' onClick={sendLike}>
                             {isLiked ? <img id="liked" src={unLikeImg} /> : <img id="liked" src={likeImg} />}
                         </button>
                     </Link>
                 </div>
             </div>
-            <h1 className='post-body-text'>{post.body}</h1>
+            <h1 className='post-body-text'>{post?.body}</h1>
             <div id="thumbAndText">
-                <p id ="receiptTitle">From: ${post.price}</p>
+                <p id ="receiptTitle">From: ${post?.price}</p>
             </div>
-            <Item post={post} postId={post._id} />
         </li>
         </>
     )

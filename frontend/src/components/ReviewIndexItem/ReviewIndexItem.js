@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { deleteReview } from '../../store/review';
 import { fetchUserProfile } from '../../store/profile';
+import StarReview from './StarReview.js';
 
 function ReviewIndexItem({review, key}) {
     const currentUser = useSelector(state => state.session.user);
@@ -48,20 +49,30 @@ function ReviewIndexItem({review, key}) {
       <div className='post-container'>
           <div className='post-main-content'>
               <span className='post-info-span'>
-                  {convertDate(review.postedAt)}</span>
+                  {convertDate(review.postedAt)}
+              </span>
               <br />
               {/* <h1>{review.reviewer !== currentUser.id ? <h1>{review?.reviewer}</h1> : <div></div>}</h1> */}
               {/* <h1>{review.reviewer.username}</h1> this is the reviewers ID */}
               <h1>{review.reviewee?.username}</h1>
                {/* this is the users profile ID */}
-              <h1 className='review-title'>{review.title}</h1>
-              <div className='review-body'>Comment:<hr/>{review.body}</div>
+              <h1 className='review-title'>
+                {/* {review.rating} */}
+                <StarReview rating={review.rating} />
+                {review.title}
+              </h1>
+              <div className='review-body'>
+                <hr/>
+                {review.body}
+              </div>
               <br/>
               <div className='review-rating'>Rating: {review.rating}</div>
               <br/>
               <br/>
-              {review.reviewer === currentUser._id ?  <button  className='reviewButton' onClick={handleDelete}>Delete</button> : <div></div> }
-              {review.reviewer === currentUser._id ? <button onClick={handleClick} className="reviewButton" >edit</button> : <></>}
+              <div className='divAroundReviewButton'>
+                {review.reviewer === currentUser._id ?  <button  className='reviewButton' onClick={handleDelete}>Delete</button> : <div></div> }
+                {review.reviewer === currentUser._id ? <button onClick={handleClick} className="reviewButton" >edit</button> : <></>}
+              </div>
           </div>
           <br />
       </div>

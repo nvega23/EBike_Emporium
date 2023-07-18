@@ -273,6 +273,11 @@ form .buttonField:active {
     transform: scale(0.95);
 }
 
+form .buttonField:hover {
+  background: white;
+  color: black;
+}
+
 #remember-me{
     cursor: pointer;
     font-family: 'Poppins', sans-serif;
