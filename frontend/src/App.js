@@ -11,22 +11,12 @@ import Profile from './components/Profile/Profile';
 import { fetchCurrentUser } from './store/session';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useLocation } from 'react-router-dom';
 import Cart from './components/Cart/Cartitem';
 import Checkout from './components/Cart/Checkout';
 import ReviewIndexItem from './components/ReviewIndexItem/ReviewIndexItem';
 import ReviewUpdate from './components/ReviewUpdate/ReviewUpdate';
 import ItemDescription from './components/ItemDescription/ItemDescription';
-
-function ScrollToTop() {
-  const { pathname } = useLocation();
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
-
-  return null;
-}
+import Item from './components/ItemDescription/Item';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -38,7 +28,6 @@ function App() {
 
   return loaded && (
     <>
-      <ScrollToTop />
       <NavBar />
       <Routes>
         <Route exact path="/" element={<MainPage />} />
@@ -52,7 +41,8 @@ function App() {
         <Route exact path="/profile/:userId" element={<ReviewIndexItem />} />
         <Route exact path="/review/update/:reviewId/:userId" element={<ReviewUpdate />} />
         <Route exact path="/cart" element={<Cart />} />
-        <Route exact path="/item/:id" element={<ItemDescription />} />
+        {/* <Route exact path="/item/:id" element={<ItemDescription />} /> */}
+        <Route exact path="/item/:id" element={<Item />} />
       </Routes>
     </>
   );

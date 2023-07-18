@@ -1,17 +1,19 @@
 import { React, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import ItemDescription from "./ItemDescription";
-import { fetchPosts } from "../../store/post";
+import { fetchPost, fetchPosts } from "../../store/post";
+import { useParams } from "react-router";
 
-const Item = ({ post, postId }) => {
+const Item = () => {
   const dispatch = useDispatch();
-  console.log(post, postId, 'im in the Item');
+  const {id} = useParams();
+  // console.log(post, postId, 'im in the Item');
 
   useEffect(() => {
-    dispatch(fetchPosts(post));
-  }, [dispatch, post]);
+    dispatch(fetchPost(id));
+  }, [dispatch, id]);
 
-  return <ItemDescription post={post} postId={postId} />;
+  return <ItemDescription />;
 };
 
 export default Item;

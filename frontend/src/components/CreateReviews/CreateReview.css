@@ -44,7 +44,8 @@
 }
 
 .createReviewButton:hover{
-    background: linear-gradient(-135deg, #c850c0, red);
+    /* background: linear-gradient(-135deg, #c850c0, red); */
+    background-color: black;
     color: white;
     border: 3px solid transparent;
 }

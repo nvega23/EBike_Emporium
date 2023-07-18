@@ -96,7 +96,7 @@ router.post('/', multipleMulterUpload("images"), requireUser, validatePostInput,
 
         body: req.body.body,
         imageUrls,
-        reciepeName: req.body.reciepeName,
+        bikeName: req.body.bikeName,
         price: req.body.price,
         author: req.user._id
       });

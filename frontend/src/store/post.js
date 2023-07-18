@@ -1,6 +1,7 @@
 import jwtFetch from './jwt'
 
 export const RECEIVE_POSTS = 'post/RECEIVE_POSTS';
+export const RECEIVE_POST = 'post/RECEIVE_POST';
 export const REMOVE_POST = 'post/REMOVE_POST';
 export const UPDATE_POST = 'post/UPDATE_POST';
 const RECEIVE_NEW_POST = "post/RECEIVE_NEW_POST"
@@ -13,14 +14,22 @@ const recievePosts = (posts) => ({
     posts
 });
 
+// const receivePost = (post) => ({
+//     type: RECEIVE_POST,
+//     post
+// })
+
+export const receivePost = payload => ({
+    type: RECEIVE_POST,
+    payload
+})
+
 
 const removePost = (postId, key) => ({
     type: REMOVE_POST,
     postId,
     key
 });
-
-
 
 const receiveErrors = errors => ({
     type: RECEIVE_POST_ERRORS,
@@ -45,13 +54,6 @@ export const getPost = (postId) => (store) => {
 }
 
 export const deletePost = (postId, key) => async (dispatch) => {
-    console.log(postId, key, 'I am trying to delete a post')
-    // const response = await jwtFetch(`/api/post/${postId}`, {
-    //     method: "DELETE"
-    // });
-    // if (response.ok) {
-    //     dispatch(removePost(postId, key));
-    // }
     try {
         const res = await jwtFetch(`/api/post/${postId}`, {
           method: 'DELETE'
@@ -70,47 +72,18 @@ export const updatePost = (body, images, postId) => async (dispatch) => {
 
     Array.from(images).forEach(image => formData.append("images", image));
 
-
     const res = await jwtFetch(`/api/post/${postId}`, {
         method: 'PATCH',
         body: formData
     });
-
         if(res.ok){
 
         } else{
 
         }
-
-
         const post = await res.json();
-
         dispatch(receiveNewPost(post));
-
-    // } catch(err){
-    //     const resBody = await err.json();
-    //     if (resBody.statusCode === 400) {
-    //         return dispatch(receiveErrors(resBody.errors));
-    //     }
-    // }
-
-    // const response = await jwtFetch(`/api/post/${postId}`, {
-    //     method: "PATCH",
-    //     body: formData,
-    // });
-
-    // if (response.ok){
-    //     let data = await response.json();
-    //     // console.log(response)
-    //     dispatch(receiveNewPost(data));
-    // }
-
 }
-
-
-
-// export const fetchPosts = () => async (dispatch) => {
-
 
 export const fetchPosts = (options = {}) => async (dispatch) => {
     const { query = '' } = options;
@@ -127,6 +100,20 @@ export const fetchPosts = (options = {}) => async (dispatch) => {
     }
 }
 
+export const fetchPost = (postId) => async (dispatch) => {
+    console.log(postId, 'fetch ID')
+    try{
+        const res = await jwtFetch(`/api/post/${postId}`);
+        const post = await res.json()
+        dispatch(receivePost(post))
+        console.log(post, 'fetch post')
+    } catch (err) {
+        const newPost = await err.json();
+        if (newPost.statusCode === 400){
+        }
+    }
+}
+
 export const searchPosts = () => async (dispatch) => {
     try {
         const res = await jwtFetch(`/api/post/search`);
@@ -137,17 +124,13 @@ export const searchPosts = () => async (dispatch) => {
     }
 }
 
-export const composePost = (body, images, reciepeName, price, query) => async dispatch => {
-
+export const composePost = (body, images, bikeName, price, query) => async dispatch => {
     const formData = new FormData();
     formData.append("body", body);
-    formData.append("reciepeName", reciepeName);
+    formData.append("bikeName", bikeName);
     formData.append("price", price);
     Array.from(images).forEach(image => formData.append("images", image))
-
     console.log(formData)
-
-
    try{
        const res = await jwtFetch('/api/post/', {
            method: 'POST',
@@ -234,11 +217,14 @@ export const postReducer = (state = initialState, action) => {
     switch (action.type) {
       case RECEIVE_POSTS:
         // Update posts with likes for each post
+        // modify state, ID be a key for item at that id, 0 => 3124123tf1we
         const postsWithLikes = action.posts.map((post) => {
           const likes = post.likes.map((like) => like.user);
           return { ...post, likes };
         });
         return { ...newState, ...postsWithLikes };
+      case RECEIVE_POST:
+        return {...newState, [action.payload.post]: action.payload.post}
       case REMOVE_POST:
         delete newState[action.key];
         return newState;

@@ -8,7 +8,7 @@
     height: 60vh;
     width: 140vh;
     flex-direction: row;
-    padding: 5vh;
+    /* padding: 5vh; */
 }
 
 .handlePostFactor{
@@ -16,7 +16,7 @@
 }
 
 .borderAroundImage{
-    box-shadow: -5px 15px 20px rgba(0, 0, 0, 0.41);
+    /* box-shadow: -5px 15px 20px rgba(0, 0, 0, 0.41); */
     border-radius: 5vh ;
     height: -webkit-fill-available;
     width: inherit;
@@ -31,10 +31,10 @@
     flex-direction: column;
     height: inherit;
     width: inherit;
-    border-radius: 5vh;
+    /* border-radius: 5vh; */
     margin: 1vh;
     padding: 1vh;
-    box-shadow: -5px 15px 20px rgba(58, 58, 58, 0.41);
+    /* box-shadow: -5px 15px 20px rgba(58, 58, 58, 0.41); */
 }
 
 .selectedBodyText{
@@ -47,16 +47,16 @@
     display: flex;
     justify-content: space-between;
     padding: inherit;
-    flex-direction: inherit;
+    flex-direction: column;
 }
 
 .addToCart{
     font-family: 'Poppins', sans-serif;
     padding: 15px 10px;
-    border-radius: 25px;
-    border: 3px solid lightgray;
-    background-color: transparent;
-    color: black;
+    border-radius: 15px;
+    border: 3px solid transparent;
+    background-color: black;
+    color: white;
     font-size: 2vh;
     cursor: pointer;
     text-decoration: none;
@@ -65,8 +65,9 @@
 }
 
 .addToCart:hover{
-    background: linear-gradient(-135deg, #c850c0, red);
-    color: white;
+    /* background: linear-gradient(-135deg, #c850c0, red); */
+    background-color: white;
+    color: black;
     border: 3px solid transparent;
 }
 
@@ -97,5 +98,11 @@
 .selectedPostImage{
     width: auto;
     height: inherit;
-    border-radius: 5vh;
+    /* border-radius: 5vh; */
+    margin: auto;
+}
+
+.notWorking{
+    color: black;
+    border: 5vh solid blue;
 }

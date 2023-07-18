@@ -19,17 +19,14 @@ const PostIndexItem = ({ post, key1 }) => {
     const [likeCount, setlikeCount] = useState(post.likes.length)
     const location = useLocation();
     const query = location.search;
-    // const [isLiked, setIsLiked] = useState(post.likes.map(like => like.user).includes(userId.toString()) || true)
-    // const [isLiked, setIsLiked] = useState(false)
 
-      // Retrieve like status from local storage or default to false
-  const [isLiked, setIsLiked] = useState(() => {
-    const storedLikedPosts = localStorage.getItem('likedPosts');
-    if (storedLikedPosts) {
-      const likedPosts = JSON.parse(storedLikedPosts);
-      return likedPosts.includes(post._id);
-    }
-    return false;
+    const [isLiked, setIsLiked] = useState(() => {
+        const storedLikedPosts = localStorage.getItem('likedPosts');
+            if (storedLikedPosts) {
+            const likedPosts = JSON.parse(storedLikedPosts);
+            return likedPosts.includes(post._id);
+            }
+        return false;
   });
 
   useEffect(() => {
@@ -52,12 +49,6 @@ const PostIndexItem = ({ post, key1 }) => {
     localStorage.setItem('likedPosts', JSON.stringify(likedPosts));
   }, [isLiked]);
 
-    const convertDate = (date) => {
-        const d = new Date(date);
-        return d.toDateString();
-    }
-
-
   const handleAddToCart = () => {
     let quantityChange = false
     let cart = []
@@ -65,11 +56,11 @@ const PostIndexItem = ({ post, key1 }) => {
         if (localStorage.getItem('cart')){
             cart = JSON.parse(localStorage.getItem('cart'))
         }
-        cart.forEach(food => {
-            if (food.post._id === post._id){
+        cart.forEach(item => {
+            if (item.post._id === post._id){
                 quantityChange = true
 
-                food.quantity += 1
+                item.quantity += 1
             }
         });
         if(!quantityChange){
@@ -101,14 +92,10 @@ const PostIndexItem = ({ post, key1 }) => {
     }
     const {cart} = useSelector((state) => ({...state}));
 
-    // const handlePostImageClick = () => {
-    //     navigate(`/item/${post._id}`, { state: { post, postId: post._id } });
-    // };
-
     const handlePostImageClick = () => (e) => {
         e.stopPropagation();
-        navigate(`/item/${post._id}`)
-        // navigate(`/item/${post._id}`, { state: { post, postId: post._id } });
+        navigate(`/item/${post._id}`, { state: { post, postId: post.id } });
+        console.log(post, post._id, "I'm the post handler in postindexitem");
     };
 
     let p = post.price
@@ -116,38 +103,24 @@ const PostIndexItem = ({ post, key1 }) => {
         <>
         <li className='post-container'>
             <div className='post-main-content'>
-            <div id="titleandEdit">
-                <span className='post-info-span'>
-                </span>
-             </div>
-             <div className='divAroundImgLike'>
-             <button className='buttonLinkImages' onClick={handlePostImageClick}>
-                <img className='postImages' loading='lazy' src={post.imageUrls[0]} alt='post-image'/>
-                <button className='likesButton' onClick={sendLike}>
-                    {isLiked ? <img id="liked" src={unLikeImg} /> : <img id="liked" src={likeImg} /> }
-                </button>
-            </button>
-
-            {/* {location.pathname !== `/item/${post._id}` && (
-            )} */}
-            {/* {location.pathname !== `/item/${post._id}` ?
-                <Item post={post} postId={post._id} /> :
-                console.log("not working")
-            } */}
-</div>
+                <div id="titleandEdit">
+                    <span className='post-info-span'>
+                    </span>
+                </div>
+                <div className='divAroundImgLike'>
+                    <Link to={`/item/${post._id}`} className='buttonLinkImages' onClick={handlePostImageClick}>
+                        <img className='postImages' loading='lazy' src={post.imageUrls[0]} alt='post-image' />
+                        <button className='likesButton' onClick={sendLike}>
+                            {isLiked ? <img id="liked" src={unLikeImg} /> : <img id="liked" src={likeImg} />}
+                        </button>
+                    </Link>
+                </div>
             </div>
-            {/* <Item post={post} postId={post._id}/> */}
             <h1 className='post-body-text'>{post.body}</h1>
             <div id="thumbAndText">
                 <p id ="receiptTitle">From: ${post.price}</p>
-                {/* <p className='likesNum' >{post.likes.length} </p> */}
             </div>
-            {/* <div className="divAroundCartReview">
-                  {post?.price === "undefined" ? "": <a onClick={handleAddToCart} className='addToCart'>
-                  <ShoppingCartOutlined className='addToCartButton'/>Add to Cartsss</a>}
-                  <br/>
-                  <button onClick={e => navigate(`/review/new/${post?._id}/${post?.author._id}`)} className="reviewButton">Leave a Review</button>
-              </div> */}
+            <Item post={post} postId={post._id} />
         </li>
         </>
     )
