@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import './SearchBar.css'
-import searchIcon from '../../assets/searchBar.png'
+// import searchIcon from '../../assets/searchBar.png'
 
 const SearchBar = () => {
     const navigate = useNavigate();

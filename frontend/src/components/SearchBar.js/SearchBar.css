@@ -13,10 +13,6 @@
     align-items: center;
 }
 
-.searchIcon {
-    width: 2.8vw;
-    margin-left: 10px; /* Add margin to create space between the input and the image */
-}
 *:focus {
     outline: none;
 }
@@ -33,10 +29,6 @@
     height: 3.5vw;
     font-family: 'Poppins', sans-serif;
 }
-/*
-.search-bar:hover{
-    font-size: 25px;
-} */
 
 .search-bar input{
     background: transparent;
