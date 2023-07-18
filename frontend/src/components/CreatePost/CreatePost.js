@@ -9,7 +9,7 @@ function CreatePost() {
     const author = useSelector(state => state.session.user)
     const [images, setImages] = useState([]);
     const [imageUrls, setImageUrls] = useState([]);
-    const [reciepeName, setReciepeName] = useState('');
+    const [bikeName, setBikeName] = useState('');
     const [price, setPrice] = useState('');
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -38,7 +38,7 @@ function CreatePost() {
 
     const handleSubmit = e => {
         e.preventDefault();
-        dispatch(composePost(body, images, reciepeName, price, query)); //
+        dispatch(composePost(body, images, bikeName, price, query)); //
         // navigate.push('/posts')
     };
 
@@ -81,9 +81,9 @@ function CreatePost() {
                 )}
 
                <input
-                  value= {reciepeName}
+                  value= {bikeName}
                   placeholder="Bike Bio"
-                  onChange={(e) => setReciepeName(e.target.value)}
+                  onChange={(e) => setBikeName(e.target.value)}
                   className="sellItemInput"
                   id='itemBio'
                   />

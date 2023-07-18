@@ -6,7 +6,7 @@ author: {
     type: Schema.Types.ObjectId,
     ref: 'User'
 },
-reciepeName: {
+bikeName: {
     type: String,
     required: false
 },
