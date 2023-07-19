@@ -16,7 +16,6 @@ const PostIndexItem = ({ post, key1 }) => {
     const dispatch = useDispatch();
     const userId = useSelector(state => state.session.user._id)
     const navigate = useNavigate()
-    // const [likeCount, setlikeCount] = useState(post.likes.length)
     const location = useLocation();
     const query = location.search;
 
@@ -30,7 +29,6 @@ const PostIndexItem = ({ post, key1 }) => {
   });
 
   useEffect(() => {
-    // Update local storage when like status changes
     const storedLikedPosts = localStorage.getItem('likedPosts');
     let likedPosts = [];
     if (storedLikedPosts) {
@@ -49,35 +47,6 @@ const PostIndexItem = ({ post, key1 }) => {
     localStorage.setItem('likedPosts', JSON.stringify(likedPosts));
   }, [isLiked]);
 
-  const handleAddToCart = () => {
-    let quantityChange = false
-    let cart = []
-    if (typeof window !== 'undefined') {
-        if (localStorage.getItem('cart')){
-            cart = JSON.parse(localStorage.getItem('cart'))
-        }
-        cart.forEach(item => {
-            if (item.post._id === post._id){
-                quantityChange = true
-
-                item.quantity += 1
-            }
-        });
-        if(!quantityChange){
-            cart.push({
-                post,
-                quantity: 1
-            });
-
-        }
-        localStorage.setItem('cart', JSON.stringify(cart))
-        dispatch({
-            type: "ADD_TO_CART",
-            payload: cart,
-        })
-    }
-}
-
     const sendLike = (e) => {
         e.preventDefault();
         e.stopPropagation();
@@ -95,7 +64,6 @@ const PostIndexItem = ({ post, key1 }) => {
     const handlePostImageClick = () => (e) => {
         e.stopPropagation();
         navigate(`/item/${post._id}`, { state: { post, postId: post.id } });
-        console.log(post, post._id, "I'm the post handler in postindexitem");
     };
 
     let p = post?.price

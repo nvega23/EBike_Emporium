@@ -16,9 +16,16 @@
 
 }
 
+.reviewImage{
+    border: 3px solid blue;
+}
+
 .review-title{
     margin-top: 20px;
     font-size: 30px;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Poppins';
 }
 
 .review-body{

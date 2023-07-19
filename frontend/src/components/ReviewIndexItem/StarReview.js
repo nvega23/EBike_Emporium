@@ -5,6 +5,7 @@ import halfStar from '../../assets/halfStar.png';
 import halfGold from '../../assets/halfGold.png';
 import halfStarWhite from '../../assets/whiteStar.png';
 import goldOutline from '../../assets/goldOutline.png';
+import './StarReview.css'
 
 const StarReview = ({ rating }) => {
   const renderStars = () => {
