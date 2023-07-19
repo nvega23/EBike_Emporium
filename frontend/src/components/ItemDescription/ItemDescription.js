@@ -8,9 +8,10 @@ import { fetchPost } from "../../store/post";
 import ReviewIndexItem from "../ReviewIndexItem/ReviewIndexItem";
 
 const ItemDescription = ({post}) => {
+  const { id }  = useParams();
   const location = useLocation();
   const reviews = Object.values(useSelector(state => state.review))
-  const { id }  = useParams();
+  const specificReview = reviews.find(review => review?.post === id && review.reviewer === post?._id);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -90,10 +91,12 @@ const ItemDescription = ({post}) => {
                   <button onClick={e => navigate(`/review/new/${post?._id}/${post?.author._id}`)} className="reviewButton">Leave a Review</button>
               </div>
             </div>
-            {reviews?.map((review, i) => review.rating ?
-                <ReviewIndexItem key={i} review={review} /> :
-                <><h1>No reviews for this item yet, Be the first!</h1></>
-            )}
+            <div>
+              {specificReview?.map((review, i) => review?.rating ?
+                  <ReviewIndexItem key={i} review={review} /> :
+                  <><h1>No reviews for this item yet, Be the first!</h1></>
+              )}
+            </div>
           </div>
         </>
         )

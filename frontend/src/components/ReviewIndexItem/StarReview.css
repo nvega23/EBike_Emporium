@@ -2,7 +2,6 @@
     display: inline-block;
 }
 
-.starImage{
-    width: 1vw;
-    height: 1vw;
+img{
+    width: 3vh;
 }

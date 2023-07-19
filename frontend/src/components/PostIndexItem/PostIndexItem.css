@@ -23,11 +23,11 @@
     border: 3px solid transparent;
     background-color: black;
     color: white;
-    font-size: 20px;
+    /* font-size: 20px; */
     cursor: pointer;
     text-decoration: none;
     height: 50px;
-    width: 15vw;
+    /* width: 15vw; */
 }
 
 .reviewButton:hover{
@@ -234,4 +234,6 @@
 .reviewDivs{
     height: auto;
     margin: 5vh;
+    display: flex;
+    flex-direction: column-reverse;
 }

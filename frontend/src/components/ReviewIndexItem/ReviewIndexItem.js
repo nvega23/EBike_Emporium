@@ -9,9 +9,7 @@ function ReviewIndexItem({review, key}) {
     const currentUser = useSelector(state => state.session.user);
     const dispatch = useDispatch();
     const navigate = useNavigate()
-    // const reviewer = useSelector(state => Object.values(state.review))
     const { userId } = useParams()
-    // const location = useLocation()
     const reviewer = useSelector((state) => {
         const profile = state.profile[review.reviewer];
         return profile ? profile.username : '';
@@ -52,17 +50,15 @@ function ReviewIndexItem({review, key}) {
                   {convertDate(review.postedAt)}
               </span>
               <br />
-              {/* <h1>{review.reviewer !== currentUser.id ? <h1>{review?.reviewer}</h1> : <div></div>}</h1> */}
-              {/* <h1>{review.reviewer.username}</h1> this is the reviewers ID */}
-              <h1>{review.reviewee?.username}</h1>
-               {/* this is the users profile ID */}
+              <h1>{review.reviewer !== currentUser.id ? <h1>{review?.reviewer.username}</h1> : <div></div>}</h1>
+              {/* <h1>{review.reviewee?.username}</h1> */}
               <h1 className='review-title'>
-                {/* {review.rating} */}
                 <StarReview rating={review.rating} />
                 {review.title}
               </h1>
               <div className='review-body'>
                 <hr/>
+                {review?.imageUrls}
                 {review.body}
               </div>
               <br/>
