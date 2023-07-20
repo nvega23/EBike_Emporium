@@ -53,7 +53,9 @@ function CreatePost() {
 
   return (
     <div id="outerItem">
-        <h1 className='postTitle'>Sell your bike!</h1>
+        <h1 className='postTitle'>
+            Spark the Future: Trade-Up Your Ride!"
+        </h1>
         <form onSubmit={handleSubmit} className="PostForm">
             <input
             value= {body}

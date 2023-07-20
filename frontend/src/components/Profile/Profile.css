@@ -12,8 +12,10 @@
 } */
 
 .post-body-text {
+    font-family: 'Poppins', sans-serif;
     padding-top: 10px;
-
+    display: flex;
+    justify-content: center;
 }
 
 .reviewImage{
@@ -21,16 +23,18 @@
 }
 
 .review-title{
-    margin-top: 20px;
+    /* margin-top: 20px; */
     font-size: 30px;
     display: flex;
     flex-direction: column;
-    font-family: 'Poppins';
+    font-family: 'Poppins', sans-serif;
 }
 
 .review-body{
     padding-top: 15px;
     margin-left: 30px;
+    margin: 2vw;
+    font-family: 'Poppins', sans-serif;
 }
 
 .review-rating{
@@ -52,10 +56,17 @@
 }
 
 #ProfileUsername{
+    /* background-color: rgba(255, 0, 0, 0.856); */
+    background-color: white;
+    height: 25vh;
+    width: auto;
+    border-radius: 5vw;
     font-family: 'Poppins', sans-serif;
     font-size: 60px;
     display: flex;
     justify-content: center;
+    align-items: center;
+    text-align: center;
     margin-top: 20vh;
     /* text-shadow: 5px 2px 5px #c850c0; */
 }
@@ -72,19 +83,28 @@
     margin: auto;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-around;
     padding: 10px;
-    cursor: pointer;
+    /* cursor: pointer; */
     font-family: 'Poppins', sans-serif;
 }
 
 .user-button-group-button {
+    display: flex;
+    justify-content: space-around;
     padding: 10px;
+    border-radius: 0.8vw;
+    border: none;
+    background-color: black;
+    color: white;
+    width: 15vw;
+    cursor: pointer;
 }
 
 #user-button-group-button-left {
-    border-right: none;
+    /* border-right: none; */
     border-top-left-radius: 10px;
+    border: none;
 }
 
 #user-button-group-button-right {
@@ -93,9 +113,10 @@
 }
 
 .user-button-group-button:hover {
-    box-shadow: -5px 12px 10px rgba(0, 0, 0, 0.41);
+    /* box-shadow: -5px 12px 10px rgba(0, 0, 0, 0.41); */
+    background-color: white;
+    color: black;
 }
-
 
 .reviewButton:hover{
     cursor: pointer;

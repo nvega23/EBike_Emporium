@@ -32,9 +32,9 @@ function Profile({key1}) {
         if (currentProfileUser._id === post?.author?._id){
             return(
                 <>
-                <div>
-                    <button onClick={()=> handleClick(post)} className="EditDeleteButton">Delete</button>
-                </div>
+                    <div>
+                        <button onClick={()=> handleClick(post)} className="EditDeleteButton">Delete</button>
+                    </div>
                 </>
             )
         }
@@ -63,7 +63,7 @@ function Profile({key1}) {
     else if (contentState === 'reviews') {
         profileContent = (
             <div>
-                <h1 id="ProfilePostsTitle">{reviews ? "Reviews" : "This user does not have any reviews."}</h1>
+                <h1 id="ProfilePostsTitle">{reviews ? "" : "This user does not have any reviews."}</h1>
                 <div className='reviewDivs'>
                     {reviews?.map((review, i) => review.rating ?
                         <ReviewIndexItem key={i} review={review} /> :
@@ -79,7 +79,7 @@ function Profile({key1}) {
     <div id="outer">
         <h1 id="ProfileUsername">{capitalizedUsername}</h1>
         <div id='user-button-group'>
-            <div id='user-button-group-button-left' className='user-button-group-button' onClick={()=>setContentState('reviews')}>Reviews</div>
+            <div id='divAroundReviewButton' className='user-button-group-button' onClick={()=>setContentState('reviews')}>Reviews</div>
             <div className='user-button-group-button' onClick={()=>setContentState('posts')}>Posts</div>
         </div>
         {profileContent}

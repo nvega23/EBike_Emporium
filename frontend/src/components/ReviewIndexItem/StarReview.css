@@ -1,5 +1,6 @@
 .starReview {
-    display: inline-block;
+    display: flex;
+    justify-content: flex-end;
 }
 
 img{

@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { deleteReview } from '../../store/review';
 import { fetchUserProfile } from '../../store/profile';
 import StarReview from './StarReview.js';
+import './reviewIndexItem.css'
 
 function ReviewIndexItem({review, key}) {
     const currentUser = useSelector(state => state.session.user);
@@ -54,6 +55,8 @@ function ReviewIndexItem({review, key}) {
               {/* <h1>{review.reviewee?.username}</h1> */}
               <h1 className='review-title'>
                 <StarReview rating={review.rating} />
+              <br/>
+              <div className='reviewRating'>Rating: {review.rating}</div>
                 {review.title}
               </h1>
               <div className='review-body'>
@@ -62,12 +65,9 @@ function ReviewIndexItem({review, key}) {
                 {review.body}
               </div>
               <br/>
-              <div className='review-rating'>Rating: {review.rating}</div>
-              <br/>
-              <br/>
               <div className='divAroundReviewButton'>
-                {review.reviewer === currentUser._id ?  <button  className='reviewButton' onClick={handleDelete}>Delete</button> : <div></div> }
-                {review.reviewer === currentUser._id ? <button onClick={handleClick} className="reviewButton" >edit</button> : <></>}
+                {review.reviewer === currentUser._id ?  <button  className='reviewButtonDelete' onClick={handleDelete}>Delete</button> : <div></div> }
+                {review.reviewer === currentUser._id ? <button onClick={handleClick} className="reviewButtonEditDelete" >Edit</button> : <></>}
               </div>
           </div>
           <br />
