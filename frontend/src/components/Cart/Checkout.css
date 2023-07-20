@@ -30,6 +30,7 @@
 
 .cartText{
     width: 45vh;
+    font-size: 0.9vw;
 }
 
 .emptyCartLink{
@@ -40,6 +41,7 @@
 .emptyCartText{
     border: none;
     color: #007185;
+    padding: 5vh;
 }
 
 .emptyCartText:hover{

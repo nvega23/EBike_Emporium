@@ -15,7 +15,6 @@
 }
 
 .cartImg{
-    /* border: 5px solid yellowgreen; */
     border-radius: 1vh 0 0 0;
     width: 50vh;
 }
@@ -81,3 +80,9 @@
     font-size: 5vh;
 }
 
+.cart1Container{
+    margin-top: 35vh;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}

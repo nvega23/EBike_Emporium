@@ -34,9 +34,11 @@ const Cart = () => {
 
   const showCartitems = () => (
     <>
-      {cart.map((p) => (
-        <CartInCheckout key={p._id} p={p} />
-      ))}
+      <div className="divAroundCartItem">
+        {cart.map((p) => (
+          <CartInCheckout key={p._id} p={p} />
+        ))}
+      </div>
     </>
   );
 
