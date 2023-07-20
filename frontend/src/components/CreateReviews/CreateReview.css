@@ -24,16 +24,17 @@
     font-size: 22px;
     cursor: text;
     margin: 5vh;
+    border: 3px solid rgba(211, 211, 211, 0.407);
 }
 
-.innerDivReview{
-    border: 3px solid pink;
+.reviewStyleInputs:hover{
+    border: 3px solid transparent;
 }
 
 .createReviewButton{
     font-family: 'Poppins', sans-serif;
     padding: 5px 10px;
-    border-radius: 25px;
+    border-radius: 15px;
     border: 3px solid lightgray;
     background-color: transparent;
     color: black;
