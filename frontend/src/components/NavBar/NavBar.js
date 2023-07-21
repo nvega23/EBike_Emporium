@@ -127,7 +127,7 @@ function NavBar() {
   return (
     <>
       <div id="navbarOuter">
-        <NavLink exact to="/" id="title">
+        <NavLink exact to="/posts" id="title">
           <img className='content' src={myImage} alt='bike' />
         </NavLink>
         <SearchBar />

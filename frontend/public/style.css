@@ -4,6 +4,10 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
+#root{
+    background-color: white;
+}
+
 .curser-tracker{
     position: fixed;
     top: 0;

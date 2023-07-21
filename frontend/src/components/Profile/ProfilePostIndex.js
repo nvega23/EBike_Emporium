@@ -16,7 +16,7 @@ const ProfilePostIndex = ({post}) => {
                         - {convertDate(post.createdAt)}</span>
                     <p className='reviewImage'>{post?.imageUrls[0]}</p>
                     <p className='post-body-text'>{post.body}</p>
-                    <p>{post.reciepeName}</p>
+                    <p>{post.bikeName}</p>
                     <p>{post.price}</p>
                 </div>
             </li>
