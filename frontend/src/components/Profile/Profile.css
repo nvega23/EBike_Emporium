@@ -4,12 +4,7 @@
     background-color: transparent;
     border-radius: 10px;
     font-family: 'Poppins', sans-serif;
-    /* box-shadow: -10px 15px 20px rgba(0, 0, 0, 0.41); */
 }
-
-/* .post-main-content {
-    padding: 10px;
-} */
 
 .post-body-text {
     font-family: 'Poppins', sans-serif;
@@ -60,6 +55,7 @@
     /* background-color: rgba(255, 0, 0, 0.856); */
     background-color: white;
     height: 25vh;
+    /* width: 100vh; */
     width: auto;
     border-radius: 5vw;
     font-family: 'Poppins', sans-serif;
@@ -88,6 +84,7 @@
     padding: 10px;
     /* cursor: pointer; */
     font-family: 'Poppins', sans-serif;
+    gap: 10px;
 }
 
 .user-button-group-button {

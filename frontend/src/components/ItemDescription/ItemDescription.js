@@ -14,6 +14,7 @@ const ItemDescription = ({post}) => {
   const specificReview = reviews.find(review => review?.post === id && review.reviewer === post?._id);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const postPrice = post?.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   useEffect(() => {
     dispatch(fetchPost(id));
@@ -61,18 +62,22 @@ const ItemDescription = ({post}) => {
             </div>
             <div className="selectedBody">
               <div className="containerAroundSelectedBody">
-
               <p className="selectedBodyText">
                   {post?.body}
               </p>
               <br/>
               <br/>
-              <p>
-                {post.reciepeName}
+              <p className="bikeBioItem">
+                {post.reciepeName ? post.reciepeName : post.bikeName}
               </p>
               <br/>
               <p className='priceForItem'>
-                Price: {post === "undefined" ? "N/A" : `$${post?.price}`}
+                {post === "undefined" ? "N/A" :
+
+                  <h1 className="postPriceItem">
+                    ${postPrice}
+                  </h1>
+                }
               </p>
               <br/>
               <div className="divAroundUsername">
@@ -85,8 +90,13 @@ const ItemDescription = ({post}) => {
               </div>
               </div>
               <div className="divAroundCartReview">
-                  {post?.price === "undefined" ? "": <a onClick={handleAddToCart} className='addToCart'>
-                  <ShoppingCartOutlined className='addToCartButton'/>Add to Cart</a>}
+                  {postPrice === "undefined"
+                    ?
+                      ""
+                    :
+                    <a onClick={handleAddToCart} className='addToCart'>
+                    <ShoppingCartOutlined className='addToCartButton'/>Add to Cart</a>
+                  }
                   <br/>
                   <button onClick={e => navigate(`/review/new/${post?._id}/${post?.author._id}`)} className="reviewButton">Leave a Review</button>
               </div>

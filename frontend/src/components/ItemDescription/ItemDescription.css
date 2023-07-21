@@ -47,7 +47,8 @@
     display: flex;
     justify-content: space-between;
     padding: inherit;
-    flex-direction: column;
+    flex-direction: row;
+    gap: 10px;
 }
 
 .addToCart{
@@ -70,6 +71,27 @@
     color: black;
     border: 3px solid transparent;
 }
+
+.reviewButton{
+    font-family: 'Poppins', sans-serif;
+    padding: 5px 10px;
+    border-radius: 15px;
+    border: 3px solid transparent;
+    background-color: black;
+    color: white;
+    /* font-size: 20px; */
+    cursor: pointer;
+    text-decoration: none;
+    height: 50px;
+}
+
+.reviewButton:hover{
+    /* background: linear-gradient(-135deg, #c850c0, red); */
+    background: white;
+    color: black;
+    border: 3px solid transparent;
+}
+
 
 .userProfilePageButton{
     border: none;
@@ -102,11 +124,20 @@
 .selectedPostImage{
     width: auto;
     height: inherit;
-    /* border-radius: 5vh; */
     margin: auto;
 }
 
 .notWorking{
     color: black;
     border: 5vh solid blue;
+}
+
+.postPriceItem{
+    font-family: system-ui;
+    font-weight: 500;
+    /* margin-top: 15vh; */
+}
+
+.bikeBioItem{
+    font-family: 'Poppins', sans-serif;
 }
