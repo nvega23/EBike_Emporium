@@ -55,12 +55,14 @@ const CartInCheckout = ({ p }) => {
           <h1 className="boldText">
             Bike Name:
           </h1>
-          {p.post?.body?.toUpperCase()}</h1>
+          {p.post?.body}</h1>
         <h1 className="cartText">
           <h1 className="boldText">
             Bike Bio:
           </h1>
-          {p.post?.bikeName.toUpperCase()}</h1>
+            {/* {p.post?.bikeName : p.post?.bikeName ? p.post?.bikeName} */}
+            {p.post?.reciepeName ? p.post?.reciepeName : p.post?.bikeName}
+          </h1>
           <p className="cartQuantity">
             <h1 className="boldText">
               Quantity:

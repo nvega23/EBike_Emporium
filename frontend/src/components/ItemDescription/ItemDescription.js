@@ -9,9 +9,10 @@ import ReviewIndexItem from "../ReviewIndexItem/ReviewIndexItem";
 
 const ItemDescription = ({post}) => {
   const { id }  = useParams();
+  const postUserId = post?.author?._id
   const location = useLocation();
   const reviews = Object.values(useSelector(state => state.review))
-  const specificReview = reviews.find(review => review?.post === id && review.reviewer === post?._id);
+  const specificReview = reviews.find(review => postUserId === id && review.reviewer === post?._id);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const postPrice = post?.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -48,11 +49,10 @@ const ItemDescription = ({post}) => {
 }
 
   const usersProfilePage = () => {
-    navigate(`/profile/${post?.author._id}`)
+    navigate(`/profile/${post?.author?._id}`)
   }
 
   const handlePost = () => {
-    // if (id) {
     if (post?._id === id) {
       return (
         <>

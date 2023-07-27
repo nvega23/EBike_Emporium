@@ -16,6 +16,7 @@
     width: -webkit-fill-available;
     justify-content: center;
     text-align: center;
+    background-color: white;
 }
 
 #post-index-sidebar-active {

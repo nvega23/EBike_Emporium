@@ -94,6 +94,16 @@
     height: 50vh;
 }
 
+@media only screen and (max-width: 500px) {
+    .post-container{
+        width: 100%;
+    }
+    .postImages{
+        width: 25vh;
+    }
+}
+
+
 .Add-to-cart1{
     margin-top: 10px;
     margin-left: 10px;

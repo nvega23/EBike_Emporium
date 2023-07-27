@@ -26,6 +26,11 @@ function Profile({key1}) {
 
     const handleClick = (post) => {
         dispatch(deletePost(post._id, key1))
+        // if (!editDeleteButton, window.confirm("this is an alert to remove a product"))
+        //     setTimeout(function(){
+        //         alert(`Product is now removed!!`);
+        //     },1000);
+        // }
     }
 
     const editDeleteButton = (post) => {
@@ -49,11 +54,15 @@ function Profile({key1}) {
         profileContent = (
             <div>
                 <h1 id="ProfilePostsTitle">{posts ? "" : "This user does not have any posts."}</h1>
-                <div className='profilePosts'>
+                <div className='profilePostsProfilePage'>
                     {posts?.map((post, i)=>
                         <React.Fragment key={i}>
-                            <PostIndexItem key={`post-${i}`} post={post} />
-                            {editDeleteButton(post)}
+                            <div className='editDeleteButtonProfilePage'>
+                                {editDeleteButton(post)}
+                            </div>
+                            <div className='PostIndexItemProfilePage'>
+                                <PostIndexItem key={`post-${i}`} post={post} />
+                            </div>
                         </React.Fragment>
                     )}
                 </div>

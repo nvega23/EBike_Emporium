@@ -34,15 +34,20 @@
 .removeCartItem{
     padding: 10px 20px;
     margin-bottom: 2vh;
-    font-size: 20px;
+    font-size: 13px;
     font-weight: 500;
     cursor: pointer;
     border: none;
     border-radius: 5px;
     color: black;
     transition: all 0.3s ease;
-    text-decoration: underline;
+    /* text-decoration: underline; */
     width: 100%;
+}
+
+.removeCartItem:hover{
+    background-color: red;
+    color: white;
 }
 
 .summaryContainer{

@@ -73,6 +73,7 @@
     margin-bottom: -30px;
     margin-left: 15px;
     font-size: 30px;
+    width: 5vh;
 }
 
 #user-button-group {
@@ -118,4 +119,23 @@
 
 .reviewButton:hover{
     cursor: pointer;
+}
+
+.editDeleteButtonProfilePage{
+    display: flex;
+    width: -webkit-fill-available;
+    margin: 5vh;
+}
+
+.PostIndexItemProfilePage{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.profilePostsProfilePage{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    flex-wrap: wrap;
 }
