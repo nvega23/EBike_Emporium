@@ -118,8 +118,6 @@ router.delete('/:id', async (req, res) => {
   try {
     const postId = req.params.id;
     const post = await Post.findById(postId);
-    console.log(post)
-
     if (!post) {
       return res.status(404).json({ error: 'Post not found' });
     }

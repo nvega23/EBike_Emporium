@@ -59,7 +59,6 @@ export const deletePost = (postId, key) => async (dispatch) => {
           method: 'DELETE'
         })
         dispatch(removePost(postId, key))
-        console.log(res)
       } catch(err) {
         const resBody = await err.json();
         return dispatch(receiveErrors(resBody.errors));
@@ -101,12 +100,10 @@ export const fetchPosts = (options = {}) => async (dispatch) => {
 }
 
 export const fetchPost = (postId) => async (dispatch) => {
-    console.log(postId, 'fetch ID')
     try{
         const res = await jwtFetch(`/api/post/${postId}`);
         const post = await res.json()
         dispatch(receivePost(post))
-        console.log(post, 'fetch post')
     } catch (err) {
         const newPost = await err.json();
         if (newPost.statusCode === 400){
@@ -130,21 +127,15 @@ export const composePost = (body, images, bikeName, price, query) => async dispa
     formData.append("bikeName", bikeName);
     formData.append("price", price);
     Array.from(images).forEach(image => formData.append("images", image))
-    console.log(formData)
    try{
        const res = await jwtFetch('/api/post/', {
            method: 'POST',
            body: formData
        });
 
-
-       const post = await res.json();
-       console.log(post)
-
-        dispatch(fetchPosts({query}));
+       dispatch(fetchPosts({query}));
        dispatch(clearPostErrors())
        window.location.href = '/posts';
-    //    dispatch(receiveNewPost(post));
    } catch(err){
        const res = await err.json()
 
