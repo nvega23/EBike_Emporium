@@ -146,7 +146,7 @@ form .loginField {
   border-radius: 5px;
   /* background: linear-gradient(-135deg, #c850c0, red); */
   /* background: black; */
-  border: 0.2vw solid black;
+  border: 0.13vw solid black;
   transition: all 0.3s ease;
   width: 100%;
 }
