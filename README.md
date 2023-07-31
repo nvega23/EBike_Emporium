@@ -12,11 +12,11 @@ To run our frontend we need:
 
 # Login Page
 
-<img width="1440" alt="Screenshot 2023-07-11 at 6 08 20 PM" src="https://github.com/nvega23/bikes_for_sale/assets/93811834/8f8d7249-eb95-4422-969b-c4e31dbfd72f">
+<img width="1440" alt="Screenshot 2023-07-31 at 3 22 35 PM" src="https://github.com/nvega23/EBike_Emporium/assets/93811834/1d40cf25-7ea4-4d7b-ba0c-25b922b2b314">
 
 # Sign up Page
 
-<img width="1440" alt="Screenshot 2023-07-11 at 6 08 32 PM" src="https://github.com/nvega23/bikes_for_sale/assets/93811834/bfee9b89-b685-4a32-b925-557756cd6dfe">
+<img width="1440" alt="Screenshot 2023-07-31 at 3 23 20 PM" src="https://github.com/nvega23/EBike_Emporium/assets/93811834/3ace0d18-4b12-4c1c-9e13-c83a91090cde">
 
 # Main Page
 
