@@ -44,7 +44,7 @@ To run our frontend we need:
 
 # Empty Cart? 
 
-<img width="1440" alt="Screenshot 2023-07-14 at 12 10 38 AM" src="https://github.com/nvega23/bikes_for_sale/assets/93811834/939762ec-06a6-433e-b259-c8da512fb1f1">
+<img width="1440" alt="Screenshot 2023-07-31 at 3 20 42 PM" src="https://github.com/nvega23/EBike_Emporium/assets/93811834/c728ef5f-0a11-4cdc-ae18-34891a4f2d57">
 
 # Cart
 
