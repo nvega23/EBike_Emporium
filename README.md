@@ -8,7 +8,7 @@ To run our frontend we need:
 
 # Splash Page
 
-<img width="1440" alt="Screenshot 2023-07-13 at 11 50 05 PM" src="https://github.com/nvega23/bikes_for_sale/assets/93811834/f01137be-4342-40d7-9960-36213ac7bf26">
+<img width="1440" alt="Screenshot 2023-07-31 at 3 10 57 PM" src="https://github.com/nvega23/EBike_Emporium/assets/93811834/b09becb1-cbc3-476c-820a-dbf48fa55c15">
 
 # Login Page
 
@@ -22,17 +22,17 @@ To run our frontend we need:
 
 <img width="1440" alt="Screenshot 2023-07-13 at 11 50 47 PM" src="https://github.com/nvega23/bikes_for_sale/assets/93811834/efcf2d84-c4a4-4f64-9de4-f166fc0b6d3e">
 
-# Posts
+# Posts/Likes
 
-<img width="1440" alt="Screenshot 2023-07-13 at 11 51 08 PM" src="https://github.com/nvega23/bikes_for_sale/assets/93811834/6c9a7d13-425a-42f0-a544-83ccc94fe07c">
+<img width="1440" alt="Screenshot 2023-07-31 at 3 11 46 PM" src="https://github.com/nvega23/EBike_Emporium/assets/93811834/819bbd7b-7204-4feb-86b9-81bc833786ca">
 
 # Item Description
 
-<img width="1440" alt="Screenshot 2023-07-13 at 11 56 28 PM" src="https://github.com/nvega23/bikes_for_sale/assets/93811834/7bde8b12-e5f8-4004-bc5a-7afb5dd7aabd">
+<img width="1440" alt="itemDescription" src="https://github.com/nvega23/EBike_Emporium/assets/93811834/80f8af49-8f3e-4eda-b675-818007a99292">
 
 # Profile Page/Reviews
 
-<img width="1440" alt="Screenshot 2023-07-14 at 12 04 52 AM" src="https://github.com/nvega23/bikes_for_sale/assets/93811834/3771060a-fa1b-4eb4-8a59-769bf3e5d5a4">
+<img width="1440" alt="Screenshot 2023-07-31 at 3 13 19 PM" src="https://github.com/nvega23/EBike_Emporium/assets/93811834/d789f59e-36ab-4bc1-8aaa-064c34e32da8">
 
 # Profile Page/Users Post
 
@@ -40,7 +40,7 @@ To run our frontend we need:
 
 # Sell Items
 
-<img width="1440" alt="Screenshot 2023-07-11 at 6 09 38 PM" src="https://github.com/nvega23/bikes_for_sale/assets/93811834/b49c87b9-3cfc-491a-8005-e08d14dcf83d">
+<img width="1440" alt="Screenshot 2023-07-31 at 3 16 01 PM" src="https://github.com/nvega23/EBike_Emporium/assets/93811834/5080b6c1-4c52-46b3-bc73-12a79ffce83c">
 
 # Empty Cart? 
 
