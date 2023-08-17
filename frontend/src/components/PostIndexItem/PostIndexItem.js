@@ -6,18 +6,21 @@ import { useLocation } from 'react-router-dom';
 import { Link, useNavigate } from 'react-router-dom';
 import { addLike, removeLike } from '../../store/post';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import unLikeImg from '../../assets/red_heart.png'
 import likeImg from '../../assets/white_heart.png'
 import Item from '../ItemDescription/Item'
 
 const PostIndexItem = ({ post, key1 }) => {
+    const [animate, setAnimate] = useState(false);
     const currentUser = useSelector(state => state.session.user);
     const dispatch = useDispatch();
     const userId = useSelector(state => state.session.user._id)
     const navigate = useNavigate()
     const location = useLocation();
     const query = location.search;
+    const [isRevealed, setIsRevealed] = useState(false); // State to track reveal status
+    const containerRef = useRef(null);
 
     const [isLiked, setIsLiked] = useState(() => {
         const storedLikedPosts = localStorage.getItem('likedPosts');
@@ -45,6 +48,30 @@ const PostIndexItem = ({ post, key1 }) => {
     }
 
     localStorage.setItem('likedPosts', JSON.stringify(likedPosts));
+
+    const options = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 1, // Adjust this threshold as needed
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        const [entry] = entries;
+        if (entry.isIntersecting) {
+          setIsRevealed(true);
+          observer.unobserve(entry.target); // Stop observing after revealing
+        }
+      }, options);
+
+      if (containerRef.current) {
+        observer.observe(containerRef.current); // Start observing the container
+      }
+
+      return () => {
+        if (containerRef.current) {
+          observer.unobserve(containerRef.current); // Stop observing on unmount
+        }
+      };
   }, [isLiked]);
 
     const sendLike = (e) => {
@@ -63,6 +90,7 @@ const PostIndexItem = ({ post, key1 }) => {
 
     const handlePostImageClick = () => (e) => {
         e.stopPropagation();
+        setAnimate(true)
         navigate(`/item/${post._id}`, { state: { post, postId: post.id } });
     };
 
@@ -77,7 +105,10 @@ const PostIndexItem = ({ post, key1 }) => {
                 </div>
                 <div className='divAroundImgLike'>
                     <Link to={`/item/${post?._id}`} className='buttonLinkImages' onClick={handlePostImageClick}>
-                        <img className='postImages' loading='lazy' src={post?.imageUrls[0]} alt='post-image' />
+                        <img
+                            className={`postImages ${animate && isRevealed ? 'animate__animated animate__slideInUp': ''}`}
+                            loading='lazy' src={post?.imageUrls[0]} alt='post-image'
+                        />
                         <button className='likesButton' onClick={sendLike}>
                             {isLiked ? <img id="liked" src={unLikeImg} /> : <img id="liked" src={likeImg} />}
                         </button>
