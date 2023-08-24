@@ -5,7 +5,6 @@
     "engines": {
         "node": "16.x"
     },
-
     "scripts": {
         "backend-install": "npm install --prefix backend",
         "backend": "npm run dev --prefix backend",
@@ -15,7 +14,6 @@
         "build": "npm run backend-install && npm run frontend-install && npm run frontend-build",
         "start": "node backend/bin/www"
     },
-    "main": "index.js",
     "repository": {
         "type": "git",
         "url": "https://github.com/nvega23/EBike_Emporium"
