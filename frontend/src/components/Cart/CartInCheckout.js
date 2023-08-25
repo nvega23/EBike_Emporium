@@ -48,7 +48,7 @@ const CartInCheckout = ({ p }) => {
 
   return (
     <>
-      <div className="cartContainer">
+      <div className="cartContainerCheckout">
         <img className="cartImg" src={p.post?.imageUrls[0]} alt="Cart Image"/>
         <div className="cartDescription">
         <h1 className="cartText">

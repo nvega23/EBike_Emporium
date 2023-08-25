@@ -1,10 +1,14 @@
-.cartContainer{
+.cartContainerCheckout{
     width: 120vh;
     display: flex;
     justify-content: center;
     align-items: center;
     font-family: 'Poppins', sans-serif;
     margin-top: 5vh;
+}
+
+.divAroundCartItem{
+    background-color: white;
 }
 
 .cartTitle{
