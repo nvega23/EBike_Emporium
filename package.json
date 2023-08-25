@@ -1,7 +1,7 @@
 {
     "name": "mern-bikes",
     "version": "1.0.0",
-    "description": "An E-commerce application built with the MERN stack",
+    "description": "An E-commerce application built with the MERN stack...",
     "engines": {
         "node": "16.x"
     },
