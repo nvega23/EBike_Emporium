@@ -25,5 +25,5 @@
         "@faker-js/faker": "^8.0.2",
         "express-validator": "^7.0.1"
     },
-    "homepage": "https://github.com/nvega23/EBike_Emporium#readme"
+    "homepage": "."
 }
