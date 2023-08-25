@@ -12,7 +12,7 @@ let store = configureStore({})
 function Root() {
   return (
     <Provider store={store}>
-      <HashRouter>
+      <HashRouter baseline='/'>
         < App />
       </HashRouter>
     </Provider>
