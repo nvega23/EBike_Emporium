@@ -52,20 +52,16 @@
 }
 
 #ProfileUsername{
-    /* background-color: rgba(255, 0, 0, 0.856); */
     background-color: white;
-    height: 25vh;
-    /* width: 100vh; */
-    width: auto;
-    border-radius: 5vw;
+    height: 35vh;
+    width: 100vw;
     font-family: 'Poppins', sans-serif;
     font-size: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    margin-top: 20vh;
-    /* text-shadow: 5px 2px 5px #c850c0; */
+    margin-top: 5vh;
 }
 
 #ProfilePostsTitle{
