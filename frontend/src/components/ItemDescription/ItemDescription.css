@@ -67,6 +67,7 @@
 
 .addToCart:hover{
     /* background: linear-gradient(-135deg, #c850c0, red); */
+    /* background: linear-gradient(-135deg, #5333ed, #2cd4d9, #6E7076); */
     background-color: white;
     color: black;
     border: 3px solid transparent;

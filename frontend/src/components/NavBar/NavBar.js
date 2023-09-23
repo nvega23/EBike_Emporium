@@ -6,14 +6,16 @@ import { logout } from '../../store/session';
 import './NavBar.css';
 import { Badge } from 'antd';
 import SearchBar from '../SearchBar.js/SearchBar';
-import myImage from '../../assets/bike_icon.png';
 import myImageHome from '../../assets/home_icon.png';
 import myImageSell from '../../assets/sellIcon.png';
 import myImageProfile from '../../assets/windows_profile_pic.png';
 import myImageCart from '../../assets/cart.png';
+import image1 from '../../assets/gray_bike.png'; 
+import image2 from '../../assets/white_bike.png';
 
 function NavBar() {
   const [isActive, setIsActive] = useState(false);
+  const [currentImage, setCurrentImage] = useState(image1);
   const navigate = useNavigate();
   const loggedIn = useSelector(state => !!state.session.user);
   const { cart } = useSelector(state => ({ ...state }));
@@ -48,21 +50,33 @@ function NavBar() {
   };
 
 
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.pageYOffset > 0) {
         setIsScrolled(true);
+        const spans = document.querySelectorAll('.menu-span');
+        spans.forEach((span) => {
+          span.classList.add('scrolled');
+        });
+        setCurrentImage(image2);
       } else {
         setIsScrolled(false);
+        const spans = document.querySelectorAll('.menu-span');
+        spans.forEach((span) => {
+          span.classList.remove('scrolled');
+        });
+        setCurrentImage(image1);
       }
     };
-
+  
     window.addEventListener('scroll', handleScroll);
-
+  
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+  
 
   useEffect(() => {
     document.addEventListener('mousedown', handleOutsideClick);
@@ -83,9 +97,9 @@ function NavBar() {
           }`}
           onClick={toggleMenu}
         >
-          <span></span>
-          <span></span>
-          <span></span>
+          <span className='menu-span' id='span1'></span>
+          <span className='menu-span' id='span2'></span>
+          <span className='menu-span' id='span3'></span>
         </div>
         {showMenu && (
           <div className={`menu ${showMenu ? 'active' : ''}`} ref={menuRef}>
@@ -128,7 +142,7 @@ function NavBar() {
     <>
       <div id="navbarOuter">
         <NavLink exact to="/posts" id="title">
-          <img className='content' src={myImage} alt='bike' />
+          <img className='content' src={currentImage} alt='bike' />
         </NavLink>
         <SearchBar />
         {navbar}
