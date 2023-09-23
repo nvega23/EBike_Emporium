@@ -16,7 +16,7 @@
     height: 43vh;
     width: inherit;
     display: flex;
-    justify-content: inherit;
+    gap: 1vh;
     flex-direction: column;
     font-size: 13px;
 }
@@ -96,7 +96,7 @@
     font-size: 20px;
     cursor: pointer;
     text-decoration: none;
-    height: 50px;
+    height: 6vh;
     z-index: 9999;
 }
 
@@ -104,8 +104,8 @@
     background: #007185;
     border: none;
     color: white;
-    height: 60px;
-    width: 50%;
+    /* height: 7vh; */
+    /* width: 50%; */
 }
 
 .emailMeButton:active {
