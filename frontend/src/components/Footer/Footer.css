@@ -97,7 +97,7 @@
     cursor: pointer;
     text-decoration: none;
     height: 6vh;
-    z-index: 9999;
+    /* z-index: 9999; */
 }
 
 .emailMeButton:hover{

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import './SessionForm.css'
 import { signup, clearSessionErrors  } from '../../store/session'
+import signUpBike from "../../assets/signUpBike.mp4"
 
 
 function SignupForm() {
@@ -30,6 +31,9 @@ function SignupForm() {
 
   return (
     <div id="outer">
+      <video autoPlay loop muted className="background-video" playbackRate={0.5}>
+        <source src={signUpBike} />
+      </video>
 
 <div className="wrapper">
   <div className="title">
@@ -95,7 +99,7 @@ function SignupForm() {
                 {/* <label htmlFor="remember-me">Remember me</label> */}
               {/* </div> */}
               <div className="pass-link">
-                <a href="/login">Have an account?</a>
+                <a href="/login#/login">Have an account?</a>
               </div>
           </div>
 

@@ -146,9 +146,9 @@
   padding: 3px 8px;
   border-radius: 10px;
   /* background: linear-gradient(-135deg, red, #c850c0); */
-  background: black;
+  background: #1f2934;
   border: none;
-  color: white;
+  color: #757575;
   font-size: 20px;
   cursor: pointer;
   display: flex;
@@ -157,9 +157,10 @@
 }
 
 #logoutButton:hover {
-  background-color: #fff;
+  background-color: black;
   color: white;
-  background: linear-gradient(-135deg, red, #c850c0);
+  /* background: linear-gradient(-135deg, red, #c850c0); */
+  /* background: #1f2934; */
   /* width: 15vw; */
 }
 

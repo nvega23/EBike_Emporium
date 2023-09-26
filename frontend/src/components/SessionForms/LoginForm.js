@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { BiHide, BiShow } from "react-icons/bi";
+import bikeVideo from "../../assets/ebikeVid.mp4"
 import './SessionForm.css';
 
 import { login, clearSessionErrors } from '../../store/session';
@@ -51,6 +52,9 @@ function LoginForm () {
 
   return (
     <div id="outer">
+      <video autoPlay loop muted className="background-video">
+        <source src={bikeVideo} />
+      </video>
 
     <div className="wrapper">
       <div className="title">
@@ -82,7 +86,15 @@ function LoginForm () {
 
         </label>
         <button className='toggleButton' onClick={togglePasswordVisibility}>
-          {passwordVisible ? <BiHide /> : <BiShow />}
+        {passwordVisible ? (
+          <>
+            <BiHide /> Hide Password
+          </>
+        ) : (
+          <>
+            <BiShow /> Show Password
+          </>
+        )}
         </button>
         <div className="divLoginField">
         <input
@@ -100,7 +112,7 @@ function LoginForm () {
                 <label htmlFor="remember-me">Remember me</label>
               </div>
               <div className="pass-link">
-                <a href="/signup">Need an Account?</a>
+                <a href="/signup#/signup">Need an Account?</a>
               </div>
         </div>
 

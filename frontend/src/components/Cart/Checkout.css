@@ -18,7 +18,8 @@
     cursor: pointer;
     border: none;
     border-radius: 0 0 1vh 1vh;
-    background: linear-gradient(-135deg, #c850c0, red);
+    /* background: linear-gradient(-135deg, #c850c0, red); */
+    background-color: #1f2934;
     color: #fff;
     transition: all 0.3s ease;
     width: 100%;
