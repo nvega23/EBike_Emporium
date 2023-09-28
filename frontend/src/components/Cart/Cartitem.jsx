@@ -12,7 +12,6 @@ const Cart = () => {
   const navigate = useNavigate();
   const emptyCart = () => {
     navigate("/checkout");
-
     return (
           <div id ="outerforcar">
         <div>

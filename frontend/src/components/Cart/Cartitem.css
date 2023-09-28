@@ -9,6 +9,7 @@
 
 .divAroundCartItem{
     background-color: white;
+    padding: 5vh;
 }
 
 .cartTitle{
@@ -90,7 +91,7 @@
 }
 
 .cart1Container{
-    margin-top: 35vh;
+    /* margin-top: 35vh; */
     display: flex;
     justify-content: center;
     text-align: center;
