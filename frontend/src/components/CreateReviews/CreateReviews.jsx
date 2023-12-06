@@ -34,7 +34,6 @@ function CreateReviews() {
 
   return (
     <>
-        {/* <div>Create Review</div> */}
         <form  className = "reviewForm" onSubmit={handleClick}>
             <div className='reviewInputs'>
                 <div className="errors">{errors?.title}</div>

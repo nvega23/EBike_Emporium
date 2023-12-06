@@ -78,7 +78,8 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    padding: 10px;
+    /* padding: 10px; */
+    padding: 35px;
     /* cursor: pointer; */
     font-family: 'Poppins', sans-serif;
     gap: 10px;
@@ -134,4 +135,13 @@
     align-content: center;
     text-align: center;
     flex-wrap: wrap;
+}
+
+.profileNameContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    margin-top: auto;
 }

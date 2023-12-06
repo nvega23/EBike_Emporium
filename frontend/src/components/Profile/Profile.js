@@ -52,7 +52,7 @@ function Profile({key1}) {
     let profileContent;
     if (contentState === 'posts') {
         profileContent = (
-            <div>
+            <div className='profileContainer'>
                 <h1 id="ProfilePostsTitle">{posts ? "" : "This user does not have any posts."}</h1>
                 <div className='profilePostsProfilePage'>
                     {posts?.map((post, i)=>
@@ -71,7 +71,7 @@ function Profile({key1}) {
     }
     else if (contentState === 'reviews') {
         profileContent = (
-            <div>
+            <div className='profileContainerReviews'>
                 <h1 id="ProfilePostsTitle">{reviews ? "" : "This user does not have any reviews."}</h1>
                 <div className='reviewDivs'>
                     {reviews?.map((review, i) => review.rating ?
@@ -86,12 +86,14 @@ function Profile({key1}) {
 
     return (
     <div id="outer">
-        <h1 id="ProfileUsername">{capitalizedUsername}</h1>
-        <div id='user-button-group'>
-            <div id='divAroundReviewButton' className='user-button-group-button' onClick={()=>setContentState('reviews')}>Reviews</div>
-            <div className='user-button-group-button' onClick={()=>setContentState('posts')}>Posts</div>
+        <div className='profileNameContainer'>
+            <h1 id="ProfileUsername">{capitalizedUsername}</h1>
+            <div id='user-button-group'>
+                <div id='divAroundReviewButton' className='user-button-group-button' onClick={()=>setContentState('reviews')}>Reviews</div>
+                <div className='user-button-group-button' onClick={()=>setContentState('posts')}>Posts</div>
+            </div>
+            {profileContent}
         </div>
-        {profileContent}
     </div>
   )
 }

@@ -10,6 +10,7 @@
 .divAroundCartItem{
     background-color: white;
     padding: 5vh;
+    margin-top: 10vh;
 }
 
 .cartTitle{
@@ -44,9 +45,9 @@
     cursor: pointer;
     border: none;
     border-radius: 5px;
-    color: black;
+    color: white;
+    background-color: #1f2934;
     transition: all 0.3s ease;
-    /* text-decoration: underline; */
     width: 100%;
 }
 
