@@ -148,7 +148,8 @@
   /* background: linear-gradient(-135deg, red, #c850c0); */
   background: #1f2934;
   border: none;
-  color: #757575;
+  /* color: #757575; */
+  color: white;
   font-size: 20px;
   cursor: pointer;
   display: flex;

@@ -52,7 +52,8 @@
 }
 
 #ProfileUsername{
-    background-color: white;
+    background-color: black;
+    color: white;
     height: 35vh;
     width: 100vw;
     font-family: 'Poppins', sans-serif;
@@ -144,4 +145,11 @@
     text-align: center;
     flex-direction: column;
     margin-top: auto;
+}
+
+.profileContainerReviews{
+    border: 3px solid black;
+    width: 100vh;
+    display: flex;
+    
 }
