@@ -1,8 +1,10 @@
 services:
   - name: backend
     type: web
-    buildCommand: cd /opt/render/project/backend && npm install && npm run dev
+    buildCommand: npm install && npm run dev
+    workDir: /opt/render/project/backend
 
   - name: frontend
     type: web
-    buildCommand: cd /opt/render/project/frontend && npm install && npm run start
+    buildCommand: npm install && npm run start
+    workDir: /opt/render/project/frontend
