@@ -7,4 +7,4 @@ services:
   - name: frontend
     type: web
     buildCommand: npm install
-    startCommand: npm start
+    startCommand: npm run start
