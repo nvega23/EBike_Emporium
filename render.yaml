@@ -1,8 +1,14 @@
 services:
   - name: backend
     type: web
-    buildCommand: cd Backend && npm install && npm run dev
+    buildCommand: |
+      cd backend
+      npm install
+      npm run dev
 
   - name: frontend
     type: web
-    buildCommand: cd Frontend && npm install && npm run start
+    buildCommand: |
+      cd frontend
+      npm install
+      npm run start
