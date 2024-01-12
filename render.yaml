@@ -1,0 +1,10 @@
+services:
+  - name: backend
+    type: web
+    buildCommand: npm install
+    startCommand: npm run dev
+
+  - name: frontend
+    type: web
+    buildCommand: npm install
+    startCommand: npm start
