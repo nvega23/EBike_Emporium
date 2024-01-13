@@ -1,0 +1,23 @@
+
+{
+    "name": "mern-bikes",
+    "version": "1.0.0",
+    "description": "An E-commerce application built with the MERN stack",
+    "engines": {
+        "node": "16.x"
+    },
+    "scripts": {
+        "backend": "cd backend && npm start",
+        "frontend": "cd frontend && npm start",
+        "frontend-build": "cd frontend && npm run build",
+        "build": "npm run backend-install && npm run frontend-install && npm run frontend-build"
+    },
+    "keywords": [],
+    "author": "Nestor Vega",
+    "license": "ISC",
+    "dependencies": {
+        "@faker-js/faker": "^8.0.2",
+        "express-validator": "^7.0.1"
+    }
+}
+
