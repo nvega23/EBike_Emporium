@@ -7,7 +7,7 @@
         "node": "16.x"
     },
     "scripts": {
-        "backend": "cd backend && npm start",
+        "backend": "cd backend && npm run dev",
         "frontend": "cd frontend && npm start",
         "frontend-build": "cd frontend && npm run build",
         "build": "npm run backend-install && npm run frontend-install && npm run frontend-build"
