@@ -52,8 +52,8 @@ function LoginForm () {
 
   return (
     <div id="outer">
-      <video autoPlay loop muted className="background-video">
-        <source src={bikeVideo} />
+      <video src={bikeVideo} autoPlay loop muted className="background-video">
+        {/* <source src={bikeVideo} /> */}
       </video>
 
     <div className="wrapper">
