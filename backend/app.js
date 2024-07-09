@@ -1,5 +1,5 @@
 const express = require('express');
-// const path = require('path');
+const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require("cors")
@@ -42,6 +42,7 @@ app.use(csurf({
   }
 }))
 
+app.use(express.static(path.resolve("../frontend/build")));
 app.use('/api/users', usersRouter);
 app.use('/api/post', postsRouter)
 app.use('/api/csrf', csrfRouter)
@@ -58,8 +59,7 @@ if (isProduction) {
     });
 
     // Serve the static assets in the frontend's build folder
-    app.use(express.static(path.resolve("../frontend/build")));
-
+    
     // Serve the frontend's index.html file at all other routes NOT starting with /api
     app.get(/^(?!\/?api).*/, (req, res) => {
       res.cookie('CSRF-Token', req.csrfToken());
@@ -67,7 +67,8 @@ if (isProduction) {
         path.resolve(__dirname, '../frontend', 'build', 'index.html')
       );
     });
-}
+  }
+
 
 app.use((req, res, next) => {
     const err = new Error("not found")

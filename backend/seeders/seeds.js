@@ -12,14 +12,6 @@ const NUM_SEED_POSTS = 30;
 const users = [];
 
 users.push(
-  new User ({
-    username: 'demo-user',
-    email: 'demo-user@appacademy.io',
-    hashedPassword: bcrypt.hashSync('starwars', 10),
-  })
-)
-
-users.push(
   new User({
     username: 'demo-user',
     email: 'demo@user.io',
