@@ -6,7 +6,7 @@ function MainPage() {
     const [animate, setAnimate] = useState(false);
 
     useEffect(() => {
-      setAnimate(true); // Add the animate class after the component mounts
+      setAnimate(true);
     }, []);
 
     return (

@@ -46,7 +46,7 @@ export const getPost = (postId) => (store) => {
 
 export const deletePost = (postId, key) => async (dispatch) => {
   try {
-    await jwtFetch(`/api/post/${postId}`, {
+    await jwtFetch(`/api/posts/${postId}`, {
       method: 'DELETE'
     });
     dispatch(removePost(postId, key));
@@ -62,7 +62,7 @@ export const updatePost = (body, images, postId) => async (dispatch) => {
 
   Array.from(images).forEach(image => formData.append("images", image));
 
-  const res = await jwtFetch(`/api/post/${postId}`, {
+  const res = await jwtFetch(`/api/posts/${postId}`, {
     method: 'PATCH',
     body: formData
   });
@@ -75,7 +75,7 @@ export const fetchPosts = (options = {}) => async (dispatch) => {
   const { query = '' } = options;
 
   try {
-    const res = await jwtFetch(`/api/post${query}`);
+    const res = await jwtFetch(`/api/posts${query}`);
     const posts = await res.json();
     dispatch(receivePosts(posts));
   } catch (err) {
@@ -100,7 +100,7 @@ export const fetchPost = (postId) => async dispatch => {
 
 export const fetchUserPosts = (userId) => async (dispatch) => {
   try {
-    const res = await jwtFetch(`/api/post/user/${userId}`);
+    const res = await jwtFetch(`/api/posts/user/${userId}`);
     const posts = await res.json();
     dispatch(receivePosts(posts));
   } catch (err) {
@@ -113,7 +113,7 @@ export const fetchUserPosts = (userId) => async (dispatch) => {
 
 export const addLike = (id) => async dispatch => {
   try {
-    const res = await jwtFetch(`/api/post/like/${id}`, {
+    const res = await jwtFetch(`/api/posts/like/${id}`, {
       method: 'PUT'
     });
     dispatch({
@@ -130,7 +130,7 @@ export const addLike = (id) => async dispatch => {
 
 export const removeLike = (id) => async dispatch => {
   try {
-    const res = await jwtFetch(`/api/post/unlike/${id}`, {
+    const res = await jwtFetch(`/api/posts/unlike/${id}`, {
       method: 'PUT'
     });
     dispatch({
@@ -153,7 +153,7 @@ export const composePost = (body, images, bikeName, price, query) => async dispa
   Array.from(images).forEach(image => formData.append("images", image));
   
   try {
-    const res = await jwtFetch('/api/post/', {
+    const res = await jwtFetch('/api/posts/', {
       method: 'POST',
       body: formData
     });

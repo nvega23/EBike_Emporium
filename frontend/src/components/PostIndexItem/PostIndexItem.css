@@ -101,6 +101,17 @@
     }
     .postImages{
         width: 25vh;
+        height: auto;
+    }
+    .content{
+        width: 5vw;
+    }
+    .content img{
+        width: auto;
+    }
+    .search-bar{
+        height: 1vw;
+        border: 3px solid red;
     }
 }
 

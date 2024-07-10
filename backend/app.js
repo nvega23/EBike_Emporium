@@ -2,90 +2,87 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-const cors = require("cors")
-const { isProduction } = require("./config/keys")
-const csurf = require("csurf")
-const debug = require("debug");
+const cors = require('cors');
+const { isProduction } = require('./config/keys');
+const csurf = require('csurf');
+const debug = require('debug');
 
-require('./models/User.js');
-require('./models/Review.js');
-require('./models/Post.js');
-require("./config/passport");
-require('./models/Cart.js');
+require('./models/User');
+require('./models/Review');
+require('./models/Post');
+require('./models/Cart');
+require('./config/passport');
 
-const passport = require("passport")
+const passport = require('passport');
 const usersRouter = require('./routes/api/users');
-const reviewsRouter = require("./routes/api/reviews");
-const postsRouter = require('./routes/api/posts')
-const csrfRouter = require("./routes/api/csrf")
+const reviewsRouter = require('./routes/api/reviews');
+const postsRouter = require('./routes/api/posts');
+const csrfRouter = require('./routes/api/csrf');
 
 const app = express();
 
+// Middleware setup
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(passport.initialize())
+app.use(passport.initialize());
 
 if (!isProduction) {
-    // Enable cors only in development b/c React will only be on React development server
-    // server will serve react files statically
-    app.use(cors());
+  app.use(cors());
 }
 
-//setup csrf token
-app.use(csurf({
-  cookie: {
+// CSRF setup
+app.use(
+  csurf({
+    cookie: {
       secure: isProduction,
-      sameSite: isProduction && "Lax",
-      httpOnly: true
-  }
-}))
+      sameSite: isProduction && 'Lax',
+      httpOnly: true,
+    },
+  })
+);
 
-app.use(express.static(path.resolve("./build")));
+// Static files setup
+app.use(express.static(path.resolve('./build')));
 app.use('/api/users', usersRouter);
-app.use('/api/posts', postsRouter)
-app.use('/api/csrf', csrfRouter)
-app.use("/api/reviews", reviewsRouter);
+app.use('/api/posts', postsRouter);
+app.use('/api/csrf', csrfRouter);
+app.use('/api/reviews', reviewsRouter);
 
 if (isProduction) {
-    const path = require('path');
-    // Serve the frontend's index.html file at the root route
-    app.get('/', (req, res) => {
-      res.cookie('CSRF-Token', req.csrfToken());
-      res.sendFile(
-        path.resolve(__dirname, 'build', 'index.html')
-      );
-    });
-    // Serve the static assets in the frontend's build folder
-    
-    // Serve the frontend's index.html file at all other routes NOT starting with /api
-    app.get(/^(?!\/?api).*/, (req, res) => {
-      res.cookie('CSRF-Token', req.csrfToken());
-      res.sendFile(
-        path.resolve(__dirname, 'build', 'index.html')
-      );
-    });
-  }
+  // Serve the frontend's index.html file at the root route
+  app.get('/', (req, res) => {
+    res.cookie('CSRF-Token', req.csrfToken());
+    res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
+  });
 
+  // Serve the frontend's index.html file at all other routes NOT starting with /api
+  app.get(/^(?!\/?api).*/, (req, res) => {
+    res.cookie('CSRF-Token', req.csrfToken());
+    res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
+  });
+}
 
+// 404 error handler
 app.use((req, res, next) => {
-    const err = new Error("not found")
-    err.statusCode = 404
-    next(err)
-})
+  const err = new Error('not found');
+  err.statusCode = 404;
+  next(err);
+});
 
-const serverErrorLogger = debug("backend:error");
+const serverErrorLogger = debug('backend:error');
 
+// General error handler
 app.use((err, req, res, next) => {
-    serverErrorLogger(err);
-    const statusCode = err.statusCode || 500;
-    res.status(statusCode)
-    res.json({
-        message: err.message,
-        statusCode,
-        errors: err.errors
-    })
-})
+  serverErrorLogger(err);
+  const statusCode = err.statusCode || 500;
+  res.status(statusCode);
+  res.json({
+    message: err.message,
+    statusCode,
+    errors: err.errors,
+  });
+});
 
 module.exports = app;

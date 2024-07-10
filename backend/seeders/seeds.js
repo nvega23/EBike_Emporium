@@ -17,7 +17,17 @@ users.push(
     email: 'demo@user.io',
     hashedPassword: bcrypt.hashSync('password', 10),
   })
-)
+);
+
+for (let i = 0; i < NUM_SEED_USERS; i++) {
+  users.push(
+    new User({
+      username: faker.internet.userName(),
+      email: faker.internet.email(),
+      hashedPassword: bcrypt.hashSync(faker.internet.password(), 10),
+    })
+  );
+}
 
 mongoose
   .connect(db, { useNewUrlParser: true })
@@ -29,17 +39,30 @@ mongoose
     process.exit(1);
   });
 
-  const insertSeeds = () => {
+const insertSeeds = async () => {
+  try {
+    const insertedUsers = await User.insertMany(users);
 
-    User.collection.drop()
-                   .then(() => Post.collection.drop())
-                   .then(() => User.insertMany(users))
-                  //  .then(() => Post.insertMany(posts))
-                   .then(() => {
-                     mongoose.disconnect();
-                   })
-                   .catch(err => {
-                     console.error(err.stack);
-                     process.exit(1);
-                   });
+    const posts = [];
+    for (let i = 0; i < NUM_SEED_POSTS; i++) {
+      const randomUser = insertedUsers[Math.floor(Math.random() * insertedUsers.length)];
+      posts.push(
+        new Post({
+          author: randomUser._id,
+          bikeName: faker.vehicle.bicycle(),
+          body: faker.lorem.paragraph(),
+          price: faker.commerce.price(),
+          imageUrls: [faker.image.transport(), faker.image.transport()],
+          likes: [],
+        })
+      );
+    }
+
+    await Post.insertMany(posts);
+    console.log("Seed data inserted successfully!");
+    mongoose.disconnect();
+  } catch (err) {
+    console.error(err.stack);
+    process.exit(1);
   }
+};

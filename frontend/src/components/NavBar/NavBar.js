@@ -16,6 +16,7 @@ import image2 from '../../assets/white_bike.png';
 function NavBar() {
   const [isActive, setIsActive] = useState(false);
   const [currentImage, setCurrentImage] = useState(image1);
+  const currentUser = useSelector(state => state.session.user);
   const navigate = useNavigate();
   const loggedIn = useSelector(state => !!state.session.user);
   const { cart } = useSelector(state => ({ ...state }));
@@ -87,7 +88,7 @@ function NavBar() {
 
   let navbar;
 
-  if (loggedIn) {
+  if (loggedIn || currentUserId) {
     navbar = (
       <>
         <div
@@ -112,6 +113,7 @@ function NavBar() {
                   <img className='dropDownImage' src={myImageCart} alt="Cart" />
                 </Badge>
               </Link>
+              <h1 className='loggedInAs'>Logged in as {currentUser?.username}</h1>
               <button onClick={logoutUser} id="logoutButton">Logout</button>
             </div>
           </div>
@@ -141,7 +143,7 @@ function NavBar() {
   return (
     <>
       <div id="navbarOuter">
-        <NavLink exact to="/posts" id="title">
+        <NavLink exact to={loggedIn ? '/posts' : '/'} id="title">
           <img className='content' src={currentImage} alt='bike' />
         </NavLink>
         <SearchBar />

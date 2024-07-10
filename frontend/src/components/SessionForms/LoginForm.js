@@ -112,7 +112,7 @@ function LoginForm () {
                 <label htmlFor="remember-me">Remember me</label>
               </div>
               <div className="pass-link">
-                <a href="/signup#/signup">Need an Account?</a>
+                <a href="/signup">Need an Account?</a>
               </div>
         </div>
 

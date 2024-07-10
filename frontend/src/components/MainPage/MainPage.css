@@ -36,7 +36,7 @@ body {
     text-align: center;
     flex-direction: column;
     background-image: url(
-'https://shop.m2sbikes.com/cdn/shop/files/HT_Sport.jpg?v=1667921479&width=900'
+      'https://images.unsplash.com/photo-1620802051782-725fa33db067?q=80&w=2768&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
         );
     background-size: cover;
     background-position: center; /* Center the background image within the container */
