@@ -8,7 +8,7 @@
     height: 60vh;
     width: 140vh;
     flex-direction: row;
-    /* padding: 5vh; */
+    margin-top: 10vh;
 }
 
 .handlePostFactor{

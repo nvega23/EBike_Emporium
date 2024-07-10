@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.d0ddec99.css",
-    "main.js": "/static/js/main.603a75e6.js",
+    "main.css": "/static/css/main.4179371b.css",
+    "main.js": "/static/js/main.0fc4c9da.js",
     "static/media/signUpBike.mp4": "/static/media/signUpBike.1a799789c9be69e910c7.mp4",
     "static/media/ebikeVid.mp4": "/static/media/ebikeVid.058cdfb5d4be8963b605.mp4",
     "static/media/heybike.jpeg": "/static/media/heybike.f70693152ad26973979d.jpeg",
@@ -15,11 +15,11 @@
     "static/media/fa-v4compatibility.ttf": "/static/media/fa-v4compatibility.0e3a648be390bd8cb094.ttf",
     "static/media/fa-v4compatibility.woff2": "/static/media/fa-v4compatibility.68577e40f3e70067b5da.woff2",
     "index.html": "/index.html",
-    "main.d0ddec99.css.map": "/static/css/main.d0ddec99.css.map",
-    "main.603a75e6.js.map": "/static/js/main.603a75e6.js.map"
+    "main.4179371b.css.map": "/static/css/main.4179371b.css.map",
+    "main.0fc4c9da.js.map": "/static/js/main.0fc4c9da.js.map"
   },
   "entrypoints": [
-    "static/css/main.d0ddec99.css",
-    "static/js/main.603a75e6.js"
+    "static/css/main.4179371b.css",
+    "static/js/main.0fc4c9da.js"
   ]
 }

@@ -35,7 +35,6 @@
 
 .review-rating{
     margin-left: 30px;
-
 }
 
 #profileLink{
@@ -67,10 +66,7 @@
 
 #ProfilePostsTitle{
     font-family: 'Poppins', sans-serif;
-    margin-bottom: -30px;
-    margin-left: 15px;
     font-size: 30px;
-    width: 5vh;
 }
 
 #user-button-group {
@@ -119,11 +115,9 @@
     cursor: pointer;
 }
 
-.editDeleteButtonProfilePage{
-    display: flex;
-    width: -webkit-fill-available;
-    margin: 5vh;
-}
+/* .editDeleteButtonProfilePage{
+
+} */
 
 .PostIndexItemProfilePage{
     display: flex;
@@ -131,11 +125,14 @@
 }
 
 .profilePostsProfilePage{
-    display: flex;
+    /* display: flex;
     justify-content: center;
     align-content: center;
     text-align: center;
+    flex-wrap: wrap; */
+    display: flex;
     flex-wrap: wrap;
+    gap: 5vh;
 }
 
 .profileNameContainer{
@@ -148,8 +145,25 @@
 }
 
 .profileContainerReviews{
-    /* border: 3px solid black; */
-    width: 100vh;
     display: flex;
     justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    margin-top: 25vh;
+}
+
+.reviewText{
+    width: max-content;
+}
+
+.containerAroundUserPosts{
+    border: 3px solid white;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column-reverse;
+    padding: 3vh;
 }

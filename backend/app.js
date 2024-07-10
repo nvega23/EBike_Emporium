@@ -44,7 +44,7 @@ app.use(csurf({
 
 app.use(express.static(path.resolve("./build")));
 app.use('/api/users', usersRouter);
-app.use('/api/post', postsRouter)
+app.use('/api/posts', postsRouter)
 app.use('/api/csrf', csrfRouter)
 app.use("/api/reviews", reviewsRouter);
 
