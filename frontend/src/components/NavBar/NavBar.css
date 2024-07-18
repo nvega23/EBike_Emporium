@@ -2,11 +2,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  z-index: 1;
   position: fixed;
   top: 0;
   left: 0;
-  /* background-color: white; */
   background-color: #1f2934;
   width: 100%;
   height: 5vw;
@@ -47,108 +45,96 @@
   width: -webkit-fill-available;
 }
 
-.menu a{
+.menu a {
   text-decoration: none;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   margin: 15px;
-  /* background: linear-gradient(-135deg, rgb(136, 0, 255), #c850c0); */
   background-color: white;
   color: rgb(255, 255, 255);
   border-radius: 10px;
   height: 5vh;
-  width: -webkit-fill-available;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: inherit;
+  width: inherit; /* Removed duplicate width property */
 }
 
-.menu a:hover{
+.menu a:hover {
   background-color: transparent;
   color: black;
 }
 
-  @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
-      transform: translateY(0);
-    }
-    40% {
-      transform: translateY(-10px);
-    }
-    60% {
-      transform: translateY(-5px);
-    }
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
   }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
 
-#navMenu{
+#navMenu {
   cursor: pointer;
 }
 
-#navMenu > span{
-    display: block;
-    width: 28px;
-    height: 2px;
-    border: 9999px;
-    background-color: black;
+#navMenu > span {
+  display: block;
+  width: 28px;
+  height: 2px;
+  background-color: black;
 }
 
-#navMenu > span:not(:last-child){
-    margin-bottom: 7px;
+#navMenu > span:not(:last-child) {
+  margin-bottom: 7px;
 }
 
-#navMenu, #navMenu > span{
-    transition: all .4s ease-in-out;
+#navMenu, #navMenu > span {
+  transition: all .4s ease-in-out;
 }
 
-#navMenu.active{
-    transition-delay: 0.8s;
-    transform: rotate(65deg);
+#navMenu.active {
+  transition-delay: 0.8s;
+  transform: rotate(65deg);
 }
-#navMenu.active > span:nth-child(2){
-    width: 0;
+
+#navMenu.active > span:nth-child(2) {
+  width: 0;
 }
+
 #navMenu.active > span:nth-child(1),
-#navMenu.active > span:nth-child(3){
-    transition-delay: .4s;
-}
-#navMenu.active > span:nth-child(1){
-    transform: translateY(9px) rotate(-30deg);
-}
-#navMenu.active > span:nth-child(3){
-    transform: translateY(-9px) rotate(80deg);
+#navMenu.active > span:nth-child(3) {
+  transition-delay: .4s;
 }
 
-.menu-span#span1.scrolled{
+#navMenu.active > span:nth-child(1) {
+  transform: translateY(9px) rotate(-30deg);
+}
+
+#navMenu.active > span:nth-child(3) {
+  transform: translateY(-9px) rotate(80deg);
+}
+
+.menu-span#span1.scrolled,
+.menu-span#span2.scrolled,
+.menu-span#span3.scrolled {
   background-color: white;
 }
-.menu-span#span2.scrolled{
-  background-color: white;
-}
-.menu-span#span3.scrolled{
-  background-color: white;
-}
 
-.menu-span#span1 {
-  background-color: #757575; 
-}
-
-.menu-span#span2 {
-  background-color: #757575; 
-}
-
+.menu-span#span1,
+.menu-span#span2,
 .menu-span#span3 {
   background-color: #757575;
 }
-
 
 #logoutButton {
   font-family: 'Poppins', sans-serif;
   padding: 3px 8px;
   border-radius: 10px;
-  /* background: linear-gradient(-135deg, red, #c850c0); */
   background: #1f2934;
   border: none;
-  /* color: #757575; */
   color: white;
   font-size: 20px;
   cursor: pointer;
@@ -160,19 +146,14 @@
 #logoutButton:hover {
   background-color: black;
   color: white;
-  /* background: linear-gradient(-135deg, red, #c850c0); */
-  /* background: #1f2934; */
-  /* width: 15vw; */
 }
 
-.rightNav{
-  /* margin-top: 10px; */
+.rightNav {
   margin-left: 10px;
   margin-right: 25px;
   font-family: 'Poppins', sans-serif;
   padding: 3px 8px;
   border-radius: 10px;
-  /* background: linear-gradient(-135deg, #9a50c8, rgb(255, 162, 0)); */
   background-color: transparent;
   color: white;
   font-size: 20px;
@@ -180,12 +161,12 @@
   text-decoration: none;
 }
 
-.mySpan{
+.mySpan {
   color: white;
   background-color: white;
 }
 
-.dropDownImage{
+.dropDownImage {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -193,7 +174,7 @@
   width: 1.5vw;
 }
 
-.dropDownImage:hover{
+.dropDownImage:hover {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -201,7 +182,7 @@
   width: 2.5vw;
 }
 
-.links-nav{
+.links-nav {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -226,9 +207,50 @@
 .scrollToTopButton:hover {
   background-color: white;
   color: black;
+}
+
+.loggedInAs {
   font-family: 'Poppins', sans-serif;
 }
 
-.loggedInAs{
-  font-family: 'Poppins', sans-serif;
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  #navMenu {
+    /* height: 2vh; */
+    width: 6vw;
+  }
+  
+  #navBarImage {
+    height: 2vh;
+    width: 2vh;
+  }
+  
+  #searchbar-wrapper {
+    width: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2vh;
+  }
+  
+  .search-bar {
+    border: 3px solid blue;
+    padding: 0;
+  }
+  
+  .menu-span {
+    background-color: blue;
+    width: 80%;
+    height: 0.2vh;
+    margin-bottom: 2px;
+  }
+  #navMenu > span:not(:last-child) {
+    margin-bottom: 3px;
+    width: auto;
+    height: 0.1dvh;
+  }
+
+  #navMenu > span{
+    width: auto;
+    height: 0.1dvh;
+  }
 }

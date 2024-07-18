@@ -99,15 +99,15 @@ const ItemDescription = ({ post }) => {
           <button onClick={() => navigate(`/review/new/${post?._id}/${post?.author._id}`)} className="reviewButton">Leave a Review</button>
         </div>
       </div>
-      <div>
-        {/* {specificReviews.length > 0 ? (
+      {/* <div>
+        {specificReviews.length > 0 ? (
           specificReviews.map((review) => (
             <ReviewIndexItem key={review._id} review={review} />
           ))
         ) : (
           <h1>No reviews for this item yet, Be the first!</h1>
-        )} */}
-      </div>
+        )}
+      </div> */}
     </div>
   );
 };

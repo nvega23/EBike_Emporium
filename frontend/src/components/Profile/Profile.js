@@ -18,7 +18,6 @@ function Profile({ key1 }) {
 
   useEffect(() => {
     if (userId) {
-    //   console.log(`Fetching profile for userId: ${userId}`);
       dispatch(fetchUserProfile(userId));
       dispatch(fetchUserPosts(userId));
       dispatch(fetchUsersReview(userId));
@@ -57,12 +56,13 @@ function Profile({ key1 }) {
 
   let profileContent;
   if (contentState === 'posts') {
+    const userPosts = posts.filter(post => post.author._id === userId);
     profileContent = (
       <div className='profileContainer'>
-        <h1 id="ProfilePostsTitle">{posts.length ? '' : 'This user does not have any posts.'}</h1>
+        <h1 id="ProfilePostsTitle">{userPosts.length ? '' : 'This user does not have any posts.'}</h1>
         <div className='profilePostsProfilePage'>
-          {posts.map((post, i) => (
-            <div className="containerAroundUserPosts">
+          {userPosts.map((post, i) => (
+            <div className="containerAroundUserPosts" key={`container-${i}`}>
               <React.Fragment key={`post-fragment-${i}`}>
                 <div className='editDeleteButtonProfilePage'>
                   {editDeleteButton(post)}
@@ -88,6 +88,7 @@ function Profile({ key1 }) {
       </div>
     );
   }
+
   return (
     <div id="outer">
       <div className='profileNameContainer'>

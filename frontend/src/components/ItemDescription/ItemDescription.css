@@ -142,3 +142,21 @@
 .bikeBioItem{
     font-family: 'Poppins', sans-serif;
 }
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    .itemDescriptionContainer{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: -webkit-fill-available;
+    }
+    .selectedPostImage{
+        width: 25dvh;
+        height: 25dvh;
+    }
+    .selectedBody{
+
+    }
+}

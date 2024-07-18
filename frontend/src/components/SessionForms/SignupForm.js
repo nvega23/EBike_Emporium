@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { signup, clearSessionErrors } from '../../store/session';
 import signUpBike from "../../assets/signUpBike.mp4";
+import signUpBikeImage from "../../assets/folded.avif";
 import './SessionForm.css';
 
 function SignupForm() {
@@ -38,7 +39,7 @@ function SignupForm() {
       <video autoPlay loop muted className="background-video" playbackRate={0.5}>
         <source src={signUpBike} />
       </video>
-
+      <img src={signUpBikeImage} alt="Bike" className="background-image" />
       <div className="wrapper">
         <div className="title">
           Signup Form

@@ -12,8 +12,6 @@ html,body{
   width: 100%;
   place-items: center;
   background: #f2f2f2;
-  /* background: orangered; */
-
 }
 ::selection{
   background: #4158d0;
@@ -21,9 +19,7 @@ html,body{
 }
 .wrapper{
   width: 380px;
-  /* background: #fff; */
   border-radius: 15px;
-  /* box-shadow: -10px 15px 20px rgba(0, 0, 0, 0.41); */
   margin-top: 70px;
 }
 .wrapper .title{
@@ -40,7 +36,6 @@ html,body{
 .wrapper form{
   padding: 5px 10px 0 10px;
   background-color: #1f2934;
-  /* background-color: white; */
   border-radius: 0 0 15px 15px;
 }
 
@@ -109,37 +104,6 @@ form .field input:valid ~ label{
   transition: all 0.3s ease;
 }
 
-/* .loginField{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-} */
-
-/* .wrapper form .loginField input:focus,
-form .loginField input:valid{
-  border-color: #4158d0;
-}
-.wrapper form .loginField label{
-  position: absolute;
-  top: 50%;
-  left: 20px;
-  color: #999999;
-  font-weight: 400;
-  font-size: 17px;
-  pointer-events: none;
-  transform: translateY(-50%);
-  transition: all 0.3s ease;
-}
-form .loginField input:focus ~ label,
-form .loginField input:valid ~ label{
-  top: 0%;
-  font-size: 16px;
-  color: #4158d0;
-  background: #fff;
-  transform: translateY(-50%);
-} */
-
 form .loginField {
   display: inline-block;
   padding: .3vh 20px;
@@ -203,7 +167,6 @@ form .content input{
 }
 form .content label{
   font-family: 'Poppins', sans-serif;
-  /* color: #262626; */
   color: white;
   user-select: none;
   padding-left: 5px;
@@ -336,4 +299,47 @@ form .buttonField:hover {
   align-items: center;
   position: relative;
   z-index: 1;
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .background-video {
+    display: none; /* Hide video on mobile devices */
+  }
+
+  .background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    z-index: -1;
+  }
+  .wrapper{
+    width: 35vh;
+    height: -webkit-fill-available;
+  }
+  .wrapper .title{
+    width: 10vh;
+    height: 10vh;
+    font-size: smaller;
+  }
+  .wrapper form {
+    width: fit-content;
+    height: 35vh;
+  }
+  .wrapper form .field {
+    height: 3vh;
+    margin-bottom: auto;
+  }
+  form .buttonField {
+    font-size: smaller;
+    display: flex;
+    margin-top: 2vh;
+    padding: 5px;
+  }
+  form .content{
+    display: flex;
+    margin-top: -2vh;
+  }
 }

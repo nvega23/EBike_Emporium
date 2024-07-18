@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 import { logout } from '../../store/session';
 import './NavBar.css';
 import { Badge } from 'antd';
-import SearchBar from '../SearchBar.js/SearchBar';
+import SearchBar from '../SearchBar/SearchBar';
 import myImageHome from '../../assets/home_icon.png';
 import myImageSell from '../../assets/sellIcon.png';
 import myImageProfile from '../../assets/windows_profile_pic.png';
@@ -50,8 +50,6 @@ function NavBar() {
     });
   };
 
-
-
   useEffect(() => {
     const handleScroll = () => {
       if (window.pageYOffset > 0) {
@@ -70,14 +68,13 @@ function NavBar() {
         setCurrentImage(image1);
       }
     };
-  
+
     window.addEventListener('scroll', handleScroll);
-  
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-  
 
   useEffect(() => {
     document.addEventListener('mousedown', handleOutsideClick);
@@ -123,9 +120,9 @@ function NavBar() {
   } else {
     navbar = (
       <div id='navMenu' className={showMenu ? 'active' : ''} onClick={toggleMenu}>
-        <span></span>
-        <span></span>
-        <span></span>
+        <span className='menu-span' id='span1'></span>
+        <span className='menu-span' id='span2'></span>
+        <span className='menu-span' id='span3'></span>
         {showMenu && (
           <div className={`menu ${showMenu ? 'active' : ''}`} ref={menuRef}>
             <Link to={'/login'} className="rightNav">
@@ -144,7 +141,7 @@ function NavBar() {
     <>
       <div id="navbarOuter">
         <NavLink exact to={loggedIn ? '/posts' : '/'} id="title">
-          <img className='content' src={currentImage} alt='bike' />
+          <img className='content' id='navBarImage' src={currentImage} alt='bike' />
         </NavLink>
         <SearchBar />
         {navbar}
