@@ -63,6 +63,9 @@
     text-decoration: none;
     display: flex;
     justify-content: center;
+    height: 5vh;
+    width: 15vh;
+    align-items: center;
 }
 
 .addToCart:hover{
@@ -83,7 +86,10 @@
     /* font-size: 20px; */
     cursor: pointer;
     text-decoration: none;
-    height: 50px;
+    height: 5vh;
+    width: 15vh;
+    padding: 5px 10px;
+    text-decoration: none;
 }
 
 .reviewButton:hover{
@@ -156,7 +162,5 @@
         width: 25dvh;
         height: 25dvh;
     }
-    .selectedBody{
 
-    }
 }

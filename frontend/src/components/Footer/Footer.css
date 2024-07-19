@@ -39,14 +39,14 @@
 
 .emailMeLink{
     /* border: 3px solid white; */
-    height: 35vh;
-    width: inherit;
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: column;
     align-items: center;
-    font-family: 'Poppins', sans-serif;
-    margin: -1vh;
+    display: flex;
+    flex-direction: column;
+    font-family: Poppins, sans-serif;
+    /* height: 35vh; */
+    justify-content: flex-start;
+    /* margin: -1vh; */
+    width: inherit;
 }
 
 .quickLinks{
