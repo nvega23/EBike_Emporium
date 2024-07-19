@@ -1,15 +1,7 @@
 const express = require('express');
 const router = express.Router();
-
-// Import the product model/schema
 const Product = require('../models/Product');
 
-// const logTime = (req, res, next) => {
-//   console.log("Current time: ", new Date().toISOString())
-//   next();
-// }
-
-// Create a new product
 router.post('/', async (req, res) => {
   try {
     const newProduct = await Product.create(req.body);

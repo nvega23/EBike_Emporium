@@ -24,17 +24,7 @@ function MainPage() {
                     </div>
                 </div>
                 <div className='rightTextPage'>
-                    {/* <h1>Ride the Future: Powering Your Pedals!</h1>
-                    <br/>
-                    <p className='smallText'>
-                        At our e-bike store, we strive to provide you with an unparalleled experience
-                        in electric mobility. With a passion for sustainability, adventure, and innovation,
-                        we offer a carefully curated selection of top-quality e-bikes that are designed to
-                        elevate your riding experience.
-                    </p> */}
                 </div>
-                {/* <div className='loginSomething'> */}
-                {/* </div> */}
             </div>
         </>
     )

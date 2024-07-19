@@ -7,6 +7,25 @@ const { requireUser } = require('../../config/passport');
 const validatePostInput = require('../../validations/post');
 const { multipleFilesUpload, multipleMulterUpload } = require('../../awsS3');
 
+router.get('/search-suggestions', async (req, res, next) => {
+  const query = req.query.query;
+  if (!query) {
+    return res.json([]);
+  }
+
+  try {
+    const posts = await Post.find({ bikeName: new RegExp(query, 'i') }).limit(10);
+    const suggestions = posts.map(post => ({
+      title: post.bikeName,
+      imageUrl: post.imageUrls[0]
+    }));
+    res.json(suggestions);
+  } catch (error) {
+    console.error('Error fetching suggestions:', error);
+    res.status(500).json([]);
+  }
+});
+
 router.get('/', async (req, res, next) => {
   try {
     let posts;

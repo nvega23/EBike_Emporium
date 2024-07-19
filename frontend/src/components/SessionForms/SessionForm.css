@@ -23,11 +23,12 @@ html,body{
   margin-top: 70px;
 }
 .wrapper .title{
-  font-size: 35px;
+  font-size: 21px;
   font-weight: 600;
   text-align: center;
-  line-height: 100px;
+  line-height: 70px;
   color: #fff;
+  -webkit-user-select: none;
   user-select: none;
   border-radius: 15px 15px 0 0;
   background: black;
@@ -43,7 +44,7 @@ html,body{
   height: 50px;
   width: 100%;
   position: relative;
-  margin-bottom: 5vh;
+  margin-bottom: 2vh;
 }
 
 .wrapper form .field input{
@@ -86,66 +87,6 @@ form .field input:valid ~ label{
   background: #fff;
   transform: translateY(-50%);
 }
-
-.wrapper form .loginField{
-  height: 50px;
-  width: 100%;
-  position: relative;
-}
-
-.wrapper form .loginField input{
-  height: 100%;
-  width: 100%;
-  outline: none;
-  font-size: 17px;
-  padding-left: 20px;
-  border: 1px solid lightgrey;
-  border-radius: 25px;
-  transition: all 0.3s ease;
-}
-
-form .loginField {
-  display: inline-block;
-  padding: .3vh 20px;
-  margin-bottom: 2vh;
-  font-size: 20px;
-  font-weight: 500;
-  cursor: text;
-  border: none;
-  border-radius: 5px;
-  /* background: linear-gradient(-135deg, #c850c0, red); */
-  /* background: black; */
-  border: 0.13vw solid black;
-  transition: all 0.3s ease;
-  width: 100%;
-}
-
-form .loginFields {
-  display: inline-block;
-  padding: 10px 20px;
-  margin-bottom: 2vh;
-  font-size: 20px;
-  font-weight: 500;
-  cursor: pointer;
-  border: none;
-  border-radius: 5px;
-  /* background: linear-gradient(-135deg, #c850c0, red); */
-  background: black;
-  color: #fff;
-  transition: all 0.3s ease;
-  width: 100%;
-}
-
-form .loginFields:active {
-  transform: scale(0.95);
-  color: white;
-}
-
-form .loginFields:hover {
-  background: white;
-  color: #262626;
-}
-
 
 form .content{
   display: flex;
@@ -301,6 +242,11 @@ form .buttonField:hover {
   z-index: 1;
 }
 
+.background-image{
+  display: none;
+}
+
+
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
   .background-video {
     display: none; /* Hide video on mobile devices */
@@ -315,7 +261,7 @@ form .buttonField:hover {
     object-fit: cover; 
     z-index: -1;
   }
-  .wrapper{
+  /* .wrapper{
     width: 35vh;
     height: -webkit-fill-available;
   }
@@ -341,5 +287,5 @@ form .buttonField:hover {
   form .content{
     display: flex;
     margin-top: -2vh;
-  }
+  } */
 }

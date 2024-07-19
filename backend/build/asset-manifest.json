@@ -1,27 +1,27 @@
 {
   "files": {
-    "main.css": "/static/css/main.29481155.css",
-    "main.js": "/static/js/main.c302bb67.js",
+    "main.css": "/static/css/main.5a57da97.css",
+    "main.js": "/static/js/main.eb925b7c.js",
     "static/media/signUpBike.mp4": "/static/media/signUpBike.1a799789c9be69e910c7.mp4",
     "static/media/ebikeVid.mp4": "/static/media/ebikeVid.058cdfb5d4be8963b605.mp4",
     "static/media/heybike.jpeg": "/static/media/heybike.f70693152ad26973979d.jpeg",
     "static/media/bikeImage.jpeg": "/static/media/bikeImage.249027c6d1c5b9afdadd.jpeg",
-    "static/media/fa-solid-900.ttf": "/static/media/fa-solid-900.4a2cd718d7031b732e76.ttf",
+    "static/media/fa-solid-900.ttf": "/static/media/fa-solid-900.07ed6d5fa32c1d54af0f.ttf",
+    "static/media/fa-brands-400.ttf": "/static/media/fa-brands-400.0ff70dcbf135d859ebf3.ttf",
     "static/media/bikes.avif": "/static/media/bikes.9ea82a783c3fd07e187d.avif",
-    "static/media/fa-brands-400.ttf": "/static/media/fa-brands-400.150de8eaa454d669c405.ttf",
     "static/media/folded.avif": "/static/media/folded.37f45f661ce722b58a52.avif",
-    "static/media/fa-solid-900.woff2": "/static/media/fa-solid-900.bb975c966c37455a1bc3.woff2",
-    "static/media/fa-brands-400.woff2": "/static/media/fa-brands-400.e033a13ee751afc1860c.woff2",
-    "static/media/fa-regular-400.ttf": "/static/media/fa-regular-400.d87474231f4192884802.ttf",
-    "static/media/fa-regular-400.woff2": "/static/media/fa-regular-400.3223dc79c1adee56370b.woff2",
-    "static/media/fa-v4compatibility.ttf": "/static/media/fa-v4compatibility.0e3a648be390bd8cb094.ttf",
-    "static/media/fa-v4compatibility.woff2": "/static/media/fa-v4compatibility.68577e40f3e70067b5da.woff2",
+    "static/media/fa-solid-900.woff2": "/static/media/fa-solid-900.93f719f4d62bfa3e748c.woff2",
+    "static/media/fa-brands-400.woff2": "/static/media/fa-brands-400.bb8d5a145e22822103fb.woff2",
+    "static/media/fa-regular-400.ttf": "/static/media/fa-regular-400.17a6e1aebccdbaa39e78.ttf",
+    "static/media/fa-regular-400.woff2": "/static/media/fa-regular-400.bc3722686635b5f86132.woff2",
+    "static/media/fa-v4compatibility.ttf": "/static/media/fa-v4compatibility.0f6cb412603527bda691.ttf",
+    "static/media/fa-v4compatibility.woff2": "/static/media/fa-v4compatibility.6cfec8414be20e2c3426.woff2",
     "index.html": "/index.html",
-    "main.29481155.css.map": "/static/css/main.29481155.css.map",
-    "main.c302bb67.js.map": "/static/js/main.c302bb67.js.map"
+    "main.5a57da97.css.map": "/static/css/main.5a57da97.css.map",
+    "main.eb925b7c.js.map": "/static/js/main.eb925b7c.js.map"
   },
   "entrypoints": [
-    "static/css/main.29481155.css",
-    "static/js/main.c302bb67.js"
+    "static/css/main.5a57da97.css",
+    "static/js/main.eb925b7c.js"
   ]
 }

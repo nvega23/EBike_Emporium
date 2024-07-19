@@ -4,8 +4,8 @@ body {
   }
 
   .mainpageContainer {
-    width: 100vw; /* Use viewport units to ensure the container takes up the entire width of the viewport */
-    height: 100vh; /* Use viewport units to ensure the container takes up the entire height of the viewport */
+    width: 100vw;
+    height: 100vh;
     display: flex;
     flex-direction: row;
     font-family: 'Poppins', sans-serif;
@@ -19,17 +19,17 @@ body {
   }
 
   .mainImage {
-    flex: 1; /* Use flexbox to make the image container expand to fill the available space */
+    flex: 1;
     background-image: url(
 'https://happyebikes.com/cdn/shop/files/Dan-Melody-Promo-SHot-Happy-Ebikes-Best-ebikes_1024x1024.jpg?v=1680715429'
     );
     background-size: cover;
-    background-position: center; /* Center the background image within the container */
+    background-position: center;
     font-family: 'Poppins', sans-serif;
   }
 
   .rightTextPage {
-    flex: 1; /* Use flexbox to make the text container expand to fill the available space */
+    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -39,7 +39,7 @@ body {
       'https://images.unsplash.com/photo-1620802051782-725fa33db067?q=80&w=2768&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
         );
     background-size: cover;
-    background-position: center; /* Center the background image within the container */
+    background-position: center;
     font-family: 'Poppins', sans-serif;
     font-size: 3vh;
     color: aliceblue;
@@ -57,17 +57,16 @@ body {
 }
 
 .loginDiv{
-  position: absolute; /* Position the login div absolutely within the parent container */
+  position: absolute;
   top: 150px;
   left: 50%;
   transform: translate(-50%);
-  z-index: 2; /* Increase the z-index to bring the login div above the background images */
+  z-index: 2;
   color: aliceblue;
   display: flex;
   justify-content: center;
   font-family: 'Poppins', sans-serif;
   font-size: 3vh;
-  /* border: 3px solid white; */
   border-radius: 1vh;
   height: 55vh;
   width: 70%;
@@ -76,8 +75,6 @@ body {
   flex-direction: column;
   padding: 5vh;
 }
-
-/* animation: bounce 2s ease-in; */
 
 @keyframes bounce {
   0%, 20%, 50%, 80%, 100% {

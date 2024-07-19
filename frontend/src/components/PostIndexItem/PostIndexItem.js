@@ -89,7 +89,7 @@ const PostIndexItem = ({ post, key1 }) => {
     navigate(`/item/${post._id}`, { state: { post, postId: post.id } });
   };
 
-  const fallbackImage = 'path/to/fallback/image.jpg'; // Replace with your fallback image path
+  const fallbackImage = 'path/to/fallback/image.jpg';
 
   return (
     <>

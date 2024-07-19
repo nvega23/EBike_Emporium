@@ -119,17 +119,17 @@ function NavBar() {
     );
   } else {
     navbar = (
-      <div id='navMenu' className={showMenu ? 'active' : ''} onClick={toggleMenu}>
+      <div id='navMenuSession' className={showMenu ? 'active' : ''} onClick={toggleMenu}>
         <span className='menu-span' id='span1'></span>
         <span className='menu-span' id='span2'></span>
         <span className='menu-span' id='span3'></span>
         {showMenu && (
-          <div className={`menu ${showMenu ? 'active' : ''}`} ref={menuRef}>
+          <div className={`menuSession ${showMenu ? 'active' : ''}`} ref={menuRef}>
             <Link to={'/login'} className="rightNav">
-              <i className="fas fa-regular fa-right-to-bracket">Login</i>
+              <i id='sessionNav' className="fas fa-regular fa-right-to-bracket">Login</i>
             </Link>
             <Link to={'/signup'} className="rightNav">
-              <i className="fas fa-regular fa-user-plus">Signup</i>
+              <i id='sessionNav' className="fas fa-regular fa-user-plus">Signup</i>
             </Link>
           </div>
         )}

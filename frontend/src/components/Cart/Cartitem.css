@@ -97,3 +97,41 @@
     justify-content: center;
     text-align: center;
 }
+
+.likedPostsCart {
+    margin-top: 20px;
+  }
+  
+  .likedPostsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .likedPostItem {
+    margin: 10px;
+    text-align: center;
+  }
+  
+  .likedPostImage {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  .emptyText {
+    text-align: center;
+    font-size: 24px;
+  }
+  
+  .emptyCartLink {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  .checkoutButton {
+    margin-top: 20px;
+  }
+  

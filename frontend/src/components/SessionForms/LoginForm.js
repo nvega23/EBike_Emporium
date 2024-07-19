@@ -3,10 +3,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { BiHide, BiShow } from "react-icons/bi";
 import bikeVideo from "../../assets/ebikeVid.mp4";
 import bikeImage from "../../assets/bikeImage.jpeg";
-import './SessionForm.css';
-
 import { login, clearSessionErrors } from '../../store/session';
 import { useNavigate } from 'react-router';
+import './login.css';
 
 function LoginForm () {
   const [email, setEmail] = useState('');

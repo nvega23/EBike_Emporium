@@ -11,23 +11,30 @@
 }
 
 .aboutMeDiv{
-    /* border: 3px solid white; */
-    /* height: 35vh; */
-    height: 43vh;
+    height: -webkit-fill-available;
     width: inherit;
     display: flex;
     gap: 1vh;
     flex-direction: column;
     font-size: 13px;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 
 .ReachMeLinks{
     /* border: 3px solid white; */
-    height: 35vh;
+    /* height: 35vh;
+    width: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; */
+    height: -webkit-fill-available;
     width: inherit;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    margin-top: 5vh;
+    gap: 1vh;
 }
 
 .emailMeLink{
@@ -49,17 +56,23 @@
 }
 
 .dropdownNoButton{
-    font-family: 'Poppins', sans-serif;
+    /* font-family: 'Poppins', sans-serif;
     padding: 5px 10px;
     border-radius: 25px;
     background: transparent;
     color: white;
     cursor: pointer;
     text-decoration: none;
-    /* height: 50px; */
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
+    font-family: 'Poppins', sans-serif;
+    padding: 5px 10px;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
 }
 
 .dropdownNoButton:hover{

@@ -56,10 +56,40 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: inherit; /* Removed duplicate width property */
+  width: inherit;
 }
 
 .menu a:hover {
+  background-color: transparent;
+  color: black;
+}
+
+.menuSession {
+  position: absolute;
+  top: 100%;
+  right: 0vh;
+  background-color: #1f2934;
+  box-shadow: -10px 15px 20px rgba(0, 0, 0, 0.261);
+  /* padding: 10px; */
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  margin: 15px;
+}
+
+.menuSession a {
+  text-decoration: none;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  margin: 15px;
+  border-radius: 10px;
+  height: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: inherit;
+}
+
+.menuSession a:hover {
   background-color: transparent;
   color: black;
 }
@@ -115,6 +145,47 @@
 
 #navMenu.active > span:nth-child(3) {
   transform: translateY(-9px) rotate(80deg);
+}
+
+#navMenuSession {
+  cursor: pointer;
+}
+
+#navMenuSession > span {
+  display: block;
+  width: 28px;
+  height: 2px;
+  background-color: black;
+}
+
+#navMenuSession > span:not(:last-child) {
+  margin-bottom: 7px;
+}
+
+#navMenuSession, #navMenu > span {
+  transition: all .4s ease-in-out;
+  margin-right: 3vh;
+}
+
+#navMenuSession.active {
+  transition-delay: 0.8s;
+}
+
+#navMenuSession.active > span:nth-child(2) {
+  width: 0;
+}
+
+#navMenuSession.active > span:nth-child(1),
+#navMenuSession.active > span:nth-child(3) {
+  transition-delay: .4s;
+}
+
+#navMenuSession.active > span:nth-child(1) {
+  transform: translateY(9px) rotate(-30deg);
+}
+
+#navMenuSession.active > span:nth-child(3) {
+  transform: translateY(-9px) rotate(30deg);
 }
 
 .menu-span#span1.scrolled,
@@ -213,6 +284,7 @@
   font-family: 'Poppins', sans-serif;
 }
 
+
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
   #navMenu {
     /* height: 2vh; */
@@ -254,3 +326,6 @@
     height: 0.1dvh;
   }
 }
+
+/* transform: translateY(9px) rotate(150deg); */
+/* transform: translateY(-9px) rotate(30deg); */

@@ -1,14 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, memo, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { fetchPosts } from '../../store/post';
-import { fetchPostReviews } from '../../store/review';
 import PostIndexItem from '../PostIndexItem/PostIndexItem';
-import SplashPage from '../../components/splashPage';
+import Footer from '../Footer/Footer';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 import bikeImg from '../../assets/bikes.avif';
 import bikeImg2 from '../../assets/heybike.jpeg';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 import './PostIndex.css';
-import Footer from '../Footer/Footer.js';
 
 const PostIndex = () => {
     const dispatch = useDispatch();
@@ -18,11 +18,9 @@ const PostIndex = () => {
     const location = useLocation();
     const query = location.search;
 
-    console.log(posts, 'I am the posts object')
-
     useEffect(() => {
         dispatch(fetchPosts({ query }));
-    }, [query]);
+    }, [query, dispatch]);
 
     const toggleSidebar = () => {
         setSideBarActive(!sidebarActive);
@@ -39,31 +37,41 @@ const PostIndex = () => {
                 <div id='post-index-container'>
                     <div className="containerAroundImages">
                         <div className='image-container'>
-                            <img className='splashPageImage' src={bikeImg} alt="Bike 1" />
+                            <LazyLoadImage
+                                className='splashPageImage'
+                                src={bikeImg}
+                                alt="Bike 1"
+                                effect="blur"
+                            />
                         </div>
                         <div className='image-container'>
-                            <img className='splashPageImage' src={bikeImg2} alt="Bike 2" />
+                            <LazyLoadImage
+                                className='splashPageImage'
+                                src={bikeImg2}
+                                alt="Bike 2"
+                                effect="blur"
+                            />
                         </div>
                     </div>
                     <ul id='post-item-list'>
                         {posts && posts.map((post, i) => (
-                            <PostIndexItem key={i} key1={i} post={post} updateSidebarContent={updateSidebarContent} />
+                            <MemoizedPostIndexItem key={i} post={post} updateSidebarContent={updateSidebarContent} />
                         ))}
                     </ul>
                 </div>
                 <div id={sidebarActive ? 'post-index-sidebar-active' : 'post-index-sidebar'}>
                     <div id='sidebar-content'>
-                        <i onClick={() => toggleSidebar()} id='x-icon'>x</i>
+                        <i onClick={toggleSidebar} id='x-icon'>x</i>
                         <h1 id='sidebar-title'>sidebar</h1>
-                        <p>
-                            {sidebarContent}
-                        </p>
+                        <p>{sidebarContent}</p>
                     </div>
                 </div>
             </div>
             <Footer />
         </>
     );
-}
+};
+
+const MemoizedPostIndexItem = memo(PostIndexItem);
 
 export default PostIndex;
