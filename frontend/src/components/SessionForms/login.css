@@ -56,7 +56,7 @@
     background: white;
     color: #262626;
   }
-@media only screen and (min-device-width: 320px) and (max-device-width: 580px) {
+@media only screen and (min-device-width: 320px) and (max-device-width: 780px) {
   .media-container .background-video {
     display: none;
   }
@@ -65,13 +65,19 @@
     display: block;
   }
 }
-  @media (min-width: 769px) {
-    .media-container .background-image {
-      display: none;
-    }
-  
-    .media-container .background-video {
-      display: block;
-    }
+@media only screen and (max-width: 780px) {
+  .background-video {
+    display: none; /* Hide video on mobile devices */
+  }
+
+  .background-image {
+    display: block; /* Show image on mobile devices */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+  }
 }
-  
