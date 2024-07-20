@@ -73,3 +73,34 @@
 .imagePreview{
     width: 50vh;
 }
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    #outerItem{
+        width: 35vh;
+        height: fit-content;
+    }
+    .postTitle{
+        font-size: 1.5vh;
+    }
+    .PostForm{
+        width: 20vh;
+    }
+    .sellItemInput{
+        width: min-content;
+        font-size: smaller;
+    }
+    .photoUpload{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        flex-direction: column;
+        margin-left: 10vh;
+    }
+    .entireUpload{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+}

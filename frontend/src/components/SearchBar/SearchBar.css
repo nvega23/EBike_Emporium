@@ -108,4 +108,13 @@
     .page-container{
         width: auto;
     }
+    .splashPageImage{
+        height: 20dvh;
+    }
+    #navMenu > span {
+        width: auto;
+    }
+    .links-nav{
+        font-size: xx-small;
+    }
 }

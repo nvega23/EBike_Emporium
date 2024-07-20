@@ -310,7 +310,7 @@
     margin-bottom: 2px;
   }
   #navMenu > span:not(:last-child) {
-    margin-bottom: 3px;
+    /* margin-bottom: 3px; */
     width: auto;
     height: 0.1dvh;
   }
@@ -323,5 +323,31 @@
   }
   #navMenuSession, #navMenuSession > span {
     margin-right: 0;
+  }
+  /* .rightNav{
+    border: 3px solid red;
+  } */
+  .dropDownImage {
+    width: 5vw;
+    height: auto;
+  }
+  .menu a{
+    margin: 0;
+  }
+  #logoutButton{
+    font-family: 'Poppins', sans-serif;
+    padding: 7px 10px;
+    border-radius: 10px;
+    background: #1f2934;
+    border: none;
+    color: white;
+    font-size: 12px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .loggedInAs{
+    margin-right: 1vh;
   }
 }

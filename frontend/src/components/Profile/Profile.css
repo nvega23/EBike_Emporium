@@ -125,14 +125,10 @@
 }
 
 .profilePostsProfilePage{
-    /* display: flex;
-    justify-content: center;
-    align-content: center;
-    text-align: center;
-    flex-wrap: wrap; */
     display: flex;
     flex-wrap: wrap;
     gap: 5vh;
+    justify-content: center;
 }
 
 .profileNameContainer{
@@ -166,4 +162,16 @@
     text-align: center;
     flex-direction: column-reverse;
     padding: 3vh;
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    #ProfileUsername{
+        width: -webkit-fill-available;
+    }
+    .reviewText{
+        width: auto;
+    }
+    .user-button-group-button{
+        width: -webkit-fill-available;
+    }
 }
