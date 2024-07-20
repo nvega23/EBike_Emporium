@@ -58,7 +58,8 @@
         font-size: large;
     }
     .cartText{
-        width: 45vh;
+        width: auto;
         font-size: 3vw;
+        margin-bottom: revert;
     }    
 }
