@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/static/css/main.fe0dd04a.css",
+    "main.css": "/static/css/main.cc8a4d53.css",
     "main.js": "/static/js/main.eb925b7c.js",
     "static/media/signUpBike.mp4": "/static/media/signUpBike.1a799789c9be69e910c7.mp4",
     "static/media/ebikeVid.mp4": "/static/media/ebikeVid.058cdfb5d4be8963b605.mp4",
@@ -17,11 +17,11 @@
     "static/media/fa-v4compatibility.ttf": "/static/media/fa-v4compatibility.0f6cb412603527bda691.ttf",
     "static/media/fa-v4compatibility.woff2": "/static/media/fa-v4compatibility.6cfec8414be20e2c3426.woff2",
     "index.html": "/index.html",
-    "main.fe0dd04a.css.map": "/static/css/main.fe0dd04a.css.map",
+    "main.cc8a4d53.css.map": "/static/css/main.cc8a4d53.css.map",
     "main.eb925b7c.js.map": "/static/js/main.eb925b7c.js.map"
   },
   "entrypoints": [
-    "static/css/main.fe0dd04a.css",
+    "static/css/main.cc8a4d53.css",
     "static/js/main.eb925b7c.js"
   ]
 }

@@ -56,7 +56,7 @@
     background: white;
     color: #262626;
   }
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+@media only screen and (min-device-width: 320px) and (max-device-width: 580px) {
   .media-container .background-video {
     display: none;
   }
@@ -65,8 +65,6 @@
     display: block;
   }
 }
-  /* @media (max-width: 768px) {
-  
   @media (min-width: 769px) {
     .media-container .background-image {
       display: none;
@@ -74,6 +72,6 @@
   
     .media-container .background-video {
       display: block;
-    } */
-  /* } */
+    }
+}
   
