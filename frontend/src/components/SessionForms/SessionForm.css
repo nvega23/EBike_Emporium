@@ -1,28 +1,32 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
-html,body{
+
+html, body {
   display: grid;
   height: 100%;
   width: 100%;
   place-items: center;
   background: #f2f2f2;
 }
-::selection{
+
+::selection {
   background: #4158d0;
   color: #fff;
 }
-.wrapper{
+
+.wrapper {
   width: 380px;
   border-radius: 15px;
   margin-top: 70px;
 }
-.wrapper .title{
+
+.wrapper .title {
   font-size: 21px;
   font-weight: 600;
   text-align: center;
@@ -34,20 +38,21 @@ html,body{
   background: black;
   font-family: 'Poppins', sans-serif;
 }
-.wrapper form{
+
+.wrapper form {
   padding: 5px 10px 0 10px;
   background-color: #1f2934;
   border-radius: 0 0 15px 15px;
 }
 
-.wrapper form .field{
+.wrapper form .field {
   height: 50px;
   width: 100%;
   position: relative;
   margin-bottom: 2vh;
 }
 
-.wrapper form .field input{
+.wrapper form .field input {
   height: 100%;
   width: 100%;
   outline: none;
@@ -58,17 +63,19 @@ html,body{
   transition: all 0.3s ease;
 }
 
-.field{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+.field {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
+
 .wrapper form .field input:focus,
-form .field input:valid{
+form .field input:valid {
   border-color: #4158d0;
 }
-.wrapper form .field label{
+
+.wrapper form .field label {
   position: absolute;
   top: 50%;
   left: 20px;
@@ -79,8 +86,9 @@ form .field input:valid{
   transform: translateY(-50%);
   transition: all 0.3s ease;
 }
+
 form .field input:focus ~ label,
-form .field input:valid ~ label{
+form .field input:valid ~ label {
   top: 0%;
   font-size: 16px;
   color: #4158d0;
@@ -88,7 +96,7 @@ form .field input:valid ~ label{
   transform: translateY(-50%);
 }
 
-form .content{
+form .content {
   display: flex;
   width: -webkit-fill-available;
   height: 50px;
@@ -96,27 +104,32 @@ form .content{
   align-items: center;
   justify-content: space-evenly;
 }
-form .content .checkbox{
+
+form .content .checkbox {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-form .content input{
+
+form .content input {
   width: 15px;
   height: 15px;
   background: red;
 }
-form .content label{
+
+form .content label {
   font-family: 'Poppins', sans-serif;
   color: white;
   user-select: none;
   padding-left: 5px;
   font-size: smaller;
 }
-form .content .pass-link{
+
+form .content .pass-link {
   color: "";
 }
-form .field input[type="submit"]{
+
+form .field input[type="submit"] {
   color: #fff;
   border: none;
   padding-left: 0;
@@ -127,62 +140,64 @@ form .field input[type="submit"]{
   background: linear-gradient(-135deg, #c850c0, #4158d0);
   transition: all 0.3s ease;
 }
-form .field input[type="submit"]:active{
+
+form .field input[type="submit"]:active {
   transform: scale(0.95);
 }
-form .signup-link{
+
+form .signup-link {
   color: #262626;
   margin-top: 20px;
   text-align: center;
 }
+
 form .pass-link a,
-form .signup-link a{
+form .signup-link a {
   color: #4158d0;
   font-family: Helvetica, sans-serif;
   text-decoration: none;
 }
+
 form .pass-link a:hover,
-form .signup-link a:hover{
+form .signup-link a:hover {
   text-decoration: underline;
 }
 
 form .field input[type="submit"] {
-    display: inline-block;
-    padding: 10px 20px;
-    margin-top: -10px;
-    font-size: 20px;
-    font-weight: 500;
-    cursor: pointer;
-    border: none;
-    border-radius: 5px;
-    /* background: linear-gradient(-135deg, #c850c0, red); */
-    background: black;
-    color: #fff;
-    transition: all 0.3s ease;
+  display: inline-block;
+  padding: 10px 20px;
+  margin-top: -10px;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background: black;
+  color: #fff;
+  transition: all 0.3s ease;
 }
 
 form .field input[type="submit"]:active {
-    transform: scale(0.95);
+  transform: scale(0.95);
 }
 
 form .buttonField {
-    display: inline-block;
-    padding: 10px 20px;
-    margin-bottom: 2vh;
-    font-size: 20px;
-    font-weight: 500;
-    cursor: pointer;
-    border: none;
-    border-radius: 5px;
-    /* background: linear-gradient(-135deg, #c850c0, red); */
-    background: black;
-    color: #fff;
-    transition: all 0.3s ease;
-    width: 100%;
+  display: inline-block;
+  padding: 10px 20px;
+  margin-bottom: 2vh;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background: black;
+  color: #fff;
+  transition: all 0.3s ease;
+  width: 100%;
 }
 
 form .buttonField:active {
-    transform: scale(0.95);
+  transform: scale(0.95);
 }
 
 form .buttonField:hover {
@@ -190,26 +205,26 @@ form .buttonField:hover {
   color: black;
 }
 
-#remember-me{
-    cursor: pointer;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 500;
+#remember-me {
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
 }
 
-.toggleButton{
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-    width: -webkit-fill-available;
-    display: flex;
-    margin-bottom: 2vh;
-    gap: 1vh;
-    align-items: center;
-    color: white;
+.toggleButton {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  width: -webkit-fill-available;
+  display: flex;
+  margin-bottom: 2vh;
+  gap: 1vh;
+  align-items: center;
+  color: white;
 }
 
-.passwordErrors{
-    color: red;
+.passwordErrors {
+  color: red;
 }
 
 #outer {
@@ -242,10 +257,9 @@ form .buttonField:hover {
   z-index: 1;
 }
 
-.background-image{
+.background-image {
   display: none;
 }
-
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
   .background-video {
@@ -253,39 +267,13 @@ form .buttonField:hover {
   }
 
   .background-image {
+    display: block; /* Show image on mobile devices */
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; 
+    object-fit: cover;
     z-index: -1;
   }
-  /* .wrapper{
-    width: 35vh;
-    height: -webkit-fill-available;
-  }
-  .wrapper .title{
-    width: 10vh;
-    height: 10vh;
-    font-size: smaller;
-  }
-  .wrapper form {
-    width: fit-content;
-    height: 35vh;
-  }
-  .wrapper form .field {
-    height: 3vh;
-    margin-bottom: auto;
-  }
-  form .buttonField {
-    font-size: smaller;
-    display: flex;
-    margin-top: 2vh;
-    padding: 5px;
-  }
-  form .content{
-    display: flex;
-    margin-top: -2vh;
-  } */
 }
