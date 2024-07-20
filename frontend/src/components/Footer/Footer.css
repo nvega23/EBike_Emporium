@@ -22,12 +22,6 @@
 }
 
 .ReachMeLinks{
-    /* border: 3px solid white; */
-    /* height: 35vh;
-    width: inherit;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start; */
     height: -webkit-fill-available;
     width: inherit;
     display: flex;
@@ -38,14 +32,11 @@
 }
 
 .emailMeLink{
-    /* border: 3px solid white; */
     align-items: center;
     display: flex;
     flex-direction: column;
     font-family: Poppins, sans-serif;
-    /* height: 35vh; */
     justify-content: flex-start;
-    /* margin: -1vh; */
     width: inherit;
 }
 
@@ -56,16 +47,6 @@
 }
 
 .dropdownNoButton{
-    /* font-family: 'Poppins', sans-serif;
-    padding: 5px 10px;
-    border-radius: 25px;
-    background: transparent;
-    color: white;
-    cursor: pointer;
-    text-decoration: none;
-    display: flex;
-    justify-content: center;
-    align-items: center; */
     font-family: 'Poppins', sans-serif;
     padding: 5px 10px;
     color: white;
@@ -103,22 +84,18 @@
     font-family: 'Poppins', sans-serif;
     padding: 5px 10px;
     border: none;
-    /* background: linear-gradient(-135deg, #c850c0, red); */
     background-color: white;
     color: #007185;
     font-size: 20px;
     cursor: pointer;
     text-decoration: none;
     height: 6vh;
-    /* z-index: 9999; */
 }
 
 .emailMeButton:hover{
     background: #007185;
     border: none;
     color: white;
-    /* height: 7vh; */
-    /* width: 50%; */
 }
 
 .emailMeButton:active {
@@ -135,4 +112,51 @@
     align-content: flex-start;
     text-align: start;
     font-size: 14px;
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    .footerContainer{
+        height: auto;
+    }
+    .aboutMeDiv{
+        font-size: 1vh;
+    }
+    .aboutMeText{
+        font-family: 'Poppins', sans-serif;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-direction: row;
+        font-size: larger;
+        margin-top: 0;
+    }
+    .smallAboutMe {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        font-size: smaller;
+        font-weight: 100;
+    }
+    .ReachMeLinks{
+        margin-top: 0;
+    }
+    .quickLinks{
+        font-size: 1.4vh;
+    }
+    .dropdownNoButton {
+        font-family: 'Poppins', sans-serif;
+        padding: 5px 10px;
+        justify-content: center;
+        font-size: xx-small;
+    }
+    .emailMeText{
+        font-size: 1vh;
+    }
+    .emailMeButton{
+        font-size: xx-small;
+        height: auto;
+    }
+    .scrollToTopButton{
+        margin-bottom: 3vh;
+    }
 }
