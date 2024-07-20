@@ -159,7 +159,7 @@
         width: -webkit-fill-available;
     }
     .selectedPostImage{
-        width: 25dvh;
+        /* width: 25dvh; */
         height: 25dvh;
     }
 

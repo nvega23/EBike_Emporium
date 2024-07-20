@@ -52,3 +52,13 @@
 .textCheckout{
     font-family: 'Poppins', sans-serif;
 }
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    .textCheckout{
+        font-size: large;
+    }
+    .cartText{
+        width: 45vh;
+        font-size: 3vw;
+    }    
+}

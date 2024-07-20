@@ -100,38 +100,73 @@
 
 .likedPostsCart {
     margin-top: 20px;
-  }
-  
-  .likedPostsContainer {
+}
+
+.likedPostsContainer {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-  }
-  
-  .likedPostItem {
+}
+
+.likedPostItem {
     margin: 10px;
     text-align: center;
-  }
-  
-  .likedPostImage {
+}
+
+.likedPostImage {
     width: 100px;
     height: 100px;
     object-fit: cover;
     border-radius: 8px;
-  }
-  
-  .emptyText {
+}
+
+.emptyText {
     text-align: center;
     font-size: 24px;
-  }
-  
-  .emptyCartLink {
+}
+
+.emptyCartLink {
     display: block;
     text-align: center;
     margin-top: 10px;
-  }
-  
-  .checkoutButton {
+}
+
+.checkoutButton {
     margin-top: 20px;
-  }
-  
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    .divAroundCartItem{
+        width: 40vh;
+        height: 50vh;
+    }
+    .cartImg{
+        width: 25dvh;
+    }
+    .cartContainerCheckout{
+        width: auto;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        height: 25vh;
+    }
+    /* .cart1Container{
+    } */
+    .cartDescription{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    .cartText{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        flex-direction: column;
+        width: 45vh;
+        font-size: 1vh;
+        display: flex;
+        gap: 1vh;
+    }
+}
