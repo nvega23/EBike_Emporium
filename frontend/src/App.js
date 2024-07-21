@@ -26,7 +26,11 @@ function App() {
     dispatch(fetchCurrentUser()).then(() => setLoaded(true));
   }, [dispatch]);
 
-  return loaded && (
+  if (!loaded) {
+    return <div>Loading...</div>;
+  }
+
+  return (
     <>
       <NavBar />
       <Routes>
@@ -42,7 +46,6 @@ function App() {
         <Route exact path="/review/update/:reviewId/:userId" element={<ReviewUpdate />} />
         <Route exact path="/cart" element={<Cart />} />
         <Route exact path="/checkout" element={<Checkout />} />
-        {/* <Route exact path="/item/:id" element={<ItemDescription />} /> */}
         <Route exact path="/item/:id" element={<Item />} />
       </Routes>
     </>

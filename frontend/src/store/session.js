@@ -36,8 +36,9 @@ const startSession = (userInfo, route) => async (dispatch) => {
             body: JSON.stringify(userInfo)
         });
 
-        const { user, token } = await res.json();
-        localStorage.setItem('jwtToken', token);
+        const { user, accessToken, refreshToken } = await res.json();
+        localStorage.setItem('JWTtoken', accessToken);
+        localStorage.setItem('refreshToken', refreshToken);
         return dispatch(receiveCurrentUser(user));
     } catch (err) {
         const res = await err.json();
@@ -49,13 +50,17 @@ const startSession = (userInfo, route) => async (dispatch) => {
 };
 
 export const fetchCurrentUser = () => async dispatch => {
-    const res = await jwtFetch("/api/users/current");
-
-    if (res.ok) {
+    try {
+      const res = await jwtFetch("/api/users/current");
+      if (res.ok) {
         const data = await res.json();
         return dispatch(receiveCurrentUser(data));
+      }
+    } catch (err) {
+      console.error("Failed to fetch current user:", err);
+      dispatch(logoutUser());
     }
-};
+  };  
 
 export const logout = () => dispatch => {
     localStorage.removeItem('jwtToken');
@@ -63,21 +68,26 @@ export const logout = () => dispatch => {
 };
 
 const initialState = {
-    user: undefined
-};
-
+    user: JSON.parse(localStorage.getItem('user')) || undefined
+  };
+  
 const sessionReducer = (state = initialState, action) => {
     switch (action.type) {
         case RECEIVE_CURRENT_USER:
-            return { user: action.currentUser };
+        localStorage.setItem('user', JSON.stringify(action.currentUser));
+        return { user: action.currentUser };
         case RECEIVE_USER_LOGOUT:
-            return initialState;
+        localStorage.removeItem('user');
+        localStorage.removeItem('JWTtoken');
+        localStorage.removeItem('refreshToken');
+        return initialState;
         default:
-            return state;
+        return state;
     }
 };
 
 export default sessionReducer;
+  
 
 const nullErrors = null;
 

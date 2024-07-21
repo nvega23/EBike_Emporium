@@ -138,7 +138,7 @@
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
     .divAroundCartItem{
         width: 40vh;
-        height: 50vh;
+        height: auto;
     }
     .cartImg{
         width: 25dvh;
@@ -172,5 +172,22 @@
     }
     .cartSub{
         margin-bottom: 0;
+    }
+    .removeCartItem{
+        padding: 10px 20px;
+        margin-bottom: 2vh;
+        font-size: 13px;
+        font-weight: 500;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        background-color: #1f2934;
+        transition: all 0.3s ease;
+        width: 100%;
+    }
+    .summaryContainer{
+        z-index: 1;
+        background-color: white;
     }
 }

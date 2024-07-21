@@ -5,6 +5,7 @@ import './Checkout.css'
 const Checkout = ({ setShowModal }) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    
 const emptyCart = () => {
     navigate("/posts");
     if (typeof window !== "undefined"){
@@ -15,6 +16,7 @@ const emptyCart = () => {
         payload: [],
     })
 }
+
     return (
         <div className="purchaseContainer">
             <br />

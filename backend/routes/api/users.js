@@ -1,8 +1,8 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const mongoose = require('mongoose');
-const User = mongoose.model('User');
 const passport = require('passport');
+const User = mongoose.model('User');
 const { loginUser, restoreUser } = require('../../config/passport');
 const { isProduction } = require('../../config/keys');
 const { singleFileUpload, singleMulterUpload } = require('../../awsS3');
@@ -36,18 +36,18 @@ router.get('/current', restoreUser, (req, res) => {
 
 router.post('/register', singleMulterUpload('image'), validateRegisterInput, async (req, res, next) => {
   try {
-    const user = await User.findOne({
+    const existingUser = await User.findOne({
       $or: [{ email: req.body.email }, { username: req.body.username }],
     });
 
-    if (user) {
+    if (existingUser) {
       const err = new Error('Validation Error');
       err.statusCode = 400;
       const errors = {};
-      if (user.email === req.body.email) {
+      if (existingUser.email === req.body.email) {
         errors.email = 'A user has already registered with this email';
       }
-      if (user.username === req.body.username) {
+      if (existingUser.username === req.body.username) {
         errors.username = 'A user has already registered with this username';
       }
       err.errors = errors;
@@ -69,8 +69,9 @@ router.post('/register', singleMulterUpload('image'), validateRegisterInput, asy
       bcrypt.hash(req.body.password, salt, async (err, hashedPassword) => {
         if (err) throw err;
         newUser.hashedPassword = hashedPassword;
-        const user = await newUser.save();
-        return res.json(await loginUser(user));
+        const savedUser = await newUser.save();
+        const tokens = await loginUser(savedUser);
+        return res.json(tokens);
       });
     });
   } catch (err) {
@@ -87,7 +88,8 @@ router.post('/login', validateLoginInput, async (req, res, next) => {
       err.errors = { email: 'Invalid credentials' };
       return next(err);
     }
-    return res.json(await loginUser(user));
+    const tokens = await loginUser(user);
+    return res.json(tokens);
   })(req, res, next);
 });
 
