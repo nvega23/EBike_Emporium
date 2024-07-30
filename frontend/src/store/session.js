@@ -60,7 +60,7 @@ export const fetchCurrentUser = () => async dispatch => {
       console.error("Failed to fetch current user:", err);
       dispatch(logoutUser());
     }
-  };  
+  };
 
 export const logout = () => dispatch => {
     localStorage.removeItem('jwtToken');
