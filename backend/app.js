@@ -29,8 +29,10 @@ app.use(cookieParser());
 app.use(passport.initialize());
 
 const corsOptions = {
-  origin: 'http://localhost:3000',
+  origin: ['http://localhost:3000', 'https://ebike-emporium.onrender.com'],
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
+  optionsSuccessStatus: 204,
 };
 
 if (!isProduction) {
