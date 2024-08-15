@@ -141,7 +141,7 @@ function NavBar() {
   return (
     <>
       <div id="navbarOuter">
-        <NavLink exact to={loggedIn ? '/posts' : '/'} id="title">
+        <NavLink to={loggedIn ? '/posts' : '/'} id="title">
           <img className='content' id='navBarImage' src={currentImage} alt='bike' />
         </NavLink>
         <SearchBar />

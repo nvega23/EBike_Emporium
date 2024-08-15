@@ -11,18 +11,18 @@ const API_URL = process.env.REACT_APP_API_URL;
 console.log(API_URL, 'API')
 
 const fetchCSRFToken = async () => {
-  console.log(API_URL, 'inside')
   try {
-    const response = await fetch(`${API_URL}/csrf/restore`);
-    if (!response.ok) {
-      throw new Error('Failed to fetch CSRF token');
-    }
-    const data = await response.json();
-    document.cookie = `CSRF-Token=${data['CSRF-Token']}; path=/`;
+      const response = await fetch(`${API_URL}/csrf/restore`);
+      if (!response.ok) {
+          throw new Error('Failed to fetch CSRF token');
+      }
+      const data = await response.json(); // Call json() only once
+      document.cookie = `CSRF-Token=${data['CSRF-Token']}; path=/`;
   } catch (error) {
-    console.error('Error fetching CSRF token:', error);
+      console.error('Error fetching CSRF token:', error);
   }
 };
+
 
 function LoginForm () {
   const [email, setEmail] = useState('');

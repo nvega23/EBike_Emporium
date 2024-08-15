@@ -97,7 +97,7 @@ export const fetchCurrentUser = () => async dispatch => {
     const token = localStorage.getItem('JWTtoken');
     if (token) {
         try {
-            const res = await jwtFetch("/api/users/current");
+            const res = await jwtFetch(`${API_URL}/users/current`);
             const data = await res.json();
             dispatch(receiveCurrentUser(data.user));
         } catch (err) {

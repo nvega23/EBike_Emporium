@@ -8,6 +8,11 @@ const { Strategy: JwtStrategy, ExtractJwt } = require('passport-jwt');
 
 const User = mongoose.model('User');
 
+if (!secretOrKey || !refreshSecretOrKey) {
+  throw new Error('SECRET_OR_KEY and REFRESH_SECRET_OR_KEY must be set');
+}
+
+
 passport.use(new LocalStrategy({
   session: false,
   usernameField: 'email',
@@ -55,9 +60,10 @@ exports.loginUser = async function (user) {
   }
 };
 
-const options = {};
-options.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
-options.secretOrKey = secretOrKey;
+const options = {
+  jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+  secretOrKey: secretOrKey
+};
 
 passport.use(new JwtStrategy(options, async (jwtPayload, done) => {
   try {
@@ -70,6 +76,7 @@ passport.use(new JwtStrategy(options, async (jwtPayload, done) => {
     done(err);
   }
 }));
+
 
 exports.requireUser = passport.authenticate('jwt', { session: false });
 

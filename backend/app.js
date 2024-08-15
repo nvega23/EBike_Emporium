@@ -12,6 +12,7 @@ require('./models/Review');
 require('./models/Post');
 require('./models/Cart');
 require('./config/passport');
+require('dotenv').config();
 
 const passport = require('passport');
 const usersRouter = require('./routes/api/users');
@@ -27,6 +28,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(passport.initialize());
+
+console.log('SECRET_OR_KEY:', process.env.SECRET_OR_KEY);
+console.log('REFRESH_SECRET_KEY:', process.env.REFRESH_SECRET_KEY);
+console.log('MONGODB_URI:', process.env.MONGODB_URI);
+
 
 const corsOptions = {
   origin: ['http://localhost:3000', 'https://ebike-emporium.onrender.com'],
