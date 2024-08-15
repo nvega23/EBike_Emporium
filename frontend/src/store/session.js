@@ -1,5 +1,7 @@
 import jwtFetch from './jwt';
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 const RECEIVE_CURRENT_USER = 'session/RECEIVE_CURRENT_USER';
 const RECEIVE_SESSION_ERRORS = 'session/RECEIVE_SESSION_ERRORS';
 const CLEAR_SESSION_ERRORS = 'session/CLEAR_SESSION_ERRORS';
@@ -29,24 +31,41 @@ export const clearSessionErrors = () => ({
 // export const signup = user => startSession(user, 'http://localhost:3000/api/users/register');
 export const signup = (user) => async (dispatch) => {
     try {
-      const res = await jwtFetch('http://localhost:3000/api/users/register', {
+      const res = await jwtFetch(`${API_URL}/users/register`, {
         method: 'POST',
         body: JSON.stringify(user),
       });
-  
+      
       const data = await res.json();
-      dispatch(receiveCurrentUser(data));
+      console.log(data, 'i am data')
+      dispatch(receiveCurrentUser(data.user)); // Pass only the user object
       return { success: true };
     } catch (err) {
-      const res = await err.json();
-      if (res.statusCode === 400) {
-        dispatch(receiveErrors(res.errors));
-        return { success: false, error: res.errors };
+      let errorDetail;
+      try {
+        const res = await err.json();
+        if (res.statusCode === 400) {
+          dispatch(receiveErrors(res.errors));
+          errorDetail = res.errors;
+        }
+      } catch (jsonError) {
+        errorDetail = err.message;
       }
-      return { success: false, error: err };
+      return { success: false, error: errorDetail || 'An unexpected error occurred.' };
     }
   };
-export const login = user => startSession(user, 'http://localhost:3000/api/users/login');
+
+
+// export const login = user => startSession(user, `${API_URL}/users/login`);
+export const login = (userData) => async (dispatch) => {
+    try {
+        await dispatch(startSession(userData, `${API_URL}/users/login`));
+    } catch (error) {
+        const res = await error.json();
+        dispatch(receiveErrors(res.errors));
+    }
+};
+
 
 const startSession = (userInfo, route) => async (dispatch) => {
     try {
@@ -58,7 +77,8 @@ const startSession = (userInfo, route) => async (dispatch) => {
         const { user, accessToken, refreshToken } = await res.json();
         localStorage.setItem('JWTtoken', accessToken);
         localStorage.setItem('refreshToken', refreshToken);
-        return dispatch(receiveCurrentUser(user));
+        localStorage.setItem('user', JSON.stringify(user)); // Persist user data
+        return dispatch(receiveCurrentUser(user)); // Pass only the user object
     } catch (err) {
         try {
             const res = await err.json();
@@ -72,18 +92,24 @@ const startSession = (userInfo, route) => async (dispatch) => {
     }    
 };
 
+
 export const fetchCurrentUser = () => async dispatch => {
-    try {
-      const res = await jwtFetch("/api/users/current");
-      if (res.ok) {
-        const data = await res.json();
-        return dispatch(receiveCurrentUser(data));
-      }
-    } catch (err) {
-      console.error("Failed to fetch current user:", err);
-      dispatch(logoutUser());
+    const token = localStorage.getItem('JWTtoken');
+    if (token) {
+        try {
+            const res = await jwtFetch("/api/users/current");
+            const data = await res.json();
+            dispatch(receiveCurrentUser(data.user));
+        } catch (err) {
+            console.error("Failed to fetch current user:", err);
+            dispatch(logoutUser());
+        }
+    } else {
+        dispatch(logoutUser());
     }
-  };
+};
+
+
 
   export const logout = () => dispatch => {
     localStorage.removeItem('JWTtoken');
@@ -94,20 +120,25 @@ export const fetchCurrentUser = () => async dispatch => {
 };
 
 const initialState = {
-    user: JSON.parse(localStorage.getItem('user')) || undefined
-  };
-  
+    user: JSON.parse(localStorage.getItem('user')) || null,
+    token: localStorage.getItem('JWTtoken') || null,
+};
+
 const sessionReducer = (state = initialState, action) => {
     switch (action.type) {
         case RECEIVE_CURRENT_USER:
             localStorage.setItem('user', JSON.stringify(action.currentUser));
-            return { user: action.currentUser };
+            localStorage.setItem('JWTtoken', action.currentUser.accessToken);
+            return { ...state, user: action.currentUser };
         case RECEIVE_USER_LOGOUT:
+            localStorage.removeItem('user');
+            localStorage.removeItem('JWTtoken');
             return initialState;
         default:
             return state;
     }
 };
+
 
 export default sessionReducer;
   

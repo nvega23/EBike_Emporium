@@ -16,10 +16,11 @@ import image2 from '../../assets/white_bike.png';
 function NavBar() {
   const [isActive, setIsActive] = useState(false);
   const [currentImage, setCurrentImage] = useState(image1);
-  const currentUser = useSelector(state => state.session.user);
   const navigate = useNavigate();
+  const currentUser = useSelector(state => state.session.user);
   const loggedIn = useSelector(state => !!state.session.user);
-  const { cart } = useSelector(state => ({ ...state }));
+  const cart = useSelector(state => state.cart);
+  const currentUserId = useSelector(state => state.session.user?._id);
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -29,7 +30,6 @@ function NavBar() {
     setShowMenu(!showMenu);
   };
 
-  const currentUserId = useSelector(state => state.session.user?._id);
 
   const logoutUser = (e) => {
     e.preventDefault();

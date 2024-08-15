@@ -8,8 +8,10 @@ import { useNavigate } from 'react-router';
 import './login.css';
 
 const API_URL = process.env.REACT_APP_API_URL;
+console.log(API_URL, 'API')
 
 const fetchCSRFToken = async () => {
+  console.log(API_URL, 'inside')
   try {
     const response = await fetch(`${API_URL}/csrf/restore`);
     if (!response.ok) {
@@ -21,6 +23,7 @@ const fetchCSRFToken = async () => {
     console.error('Error fetching CSRF token:', error);
   }
 };
+
 function LoginForm () {
   const [email, setEmail] = useState('');
   const [documentTitle, setDocumentTitle] = useState("EcoBike Emporium - Log in or Sign up");
