@@ -7,12 +7,20 @@ import { login, clearSessionErrors } from '../../store/session';
 import { useNavigate } from 'react-router';
 import './login.css';
 
-const fetchCSRFToken = async () => {
-  const response = await fetch("http://localhost:3000/api/csrf/restore");
-  const data = await response.json();
-  document.cookie = `CSRF-Token=${data['CSRF-Token']}; path=/`;
-};
+const API_URL = process.env.REACT_APP_API_URL;
 
+const fetchCSRFToken = async () => {
+  try {
+    const response = await fetch(`${API_URL}/csrf/restore`);
+    if (!response.ok) {
+      throw new Error('Failed to fetch CSRF token');
+    }
+    const data = await response.json();
+    document.cookie = `CSRF-Token=${data['CSRF-Token']}; path=/`;
+  } catch (error) {
+    console.error('Error fetching CSRF token:', error);
+  }
+};
 function LoginForm () {
   const [email, setEmail] = useState('');
   const [documentTitle, setDocumentTitle] = useState("EcoBike Emporium - Log in or Sign up");

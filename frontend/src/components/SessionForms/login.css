@@ -60,18 +60,24 @@
   .media-container .background-video {
     display: none;
   }
-  
-  .media-container .background-image {
+  .background-image {
     display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
   }
 }
-@media only screen and (max-width: 780px) {
+@media only screen and (max-width: 750px) {
   .background-video {
-    display: none; /* Hide video on mobile devices */
+    display: none;
   }
 
   .background-image {
-    display: block; /* Show image on mobile devices */
+    display: block;
     position: absolute;
     top: 0;
     left: 0;
