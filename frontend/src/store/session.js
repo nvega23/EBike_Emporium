@@ -26,8 +26,27 @@ export const clearSessionErrors = () => ({
     type: CLEAR_SESSION_ERRORS
 });
 
-export const signup = user => startSession(user, 'api/users/register');
-export const login = user => startSession(user, 'api/users/login');
+// export const signup = user => startSession(user, 'http://localhost:3000/api/users/register');
+export const signup = (user) => async (dispatch) => {
+    try {
+      const res = await jwtFetch('http://localhost:3000/api/users/register', {
+        method: 'POST',
+        body: JSON.stringify(user),
+      });
+  
+      const data = await res.json();
+      dispatch(receiveCurrentUser(data));
+      return { success: true };
+    } catch (err) {
+      const res = await err.json();
+      if (res.statusCode === 400) {
+        dispatch(receiveErrors(res.errors));
+        return { success: false, error: res.errors };
+      }
+      return { success: false, error: err };
+    }
+  };
+export const login = user => startSession(user, 'http://localhost:3000/api/users/login');
 
 const startSession = (userInfo, route) => async (dispatch) => {
     try {
@@ -35,18 +54,22 @@ const startSession = (userInfo, route) => async (dispatch) => {
             method: "POST",
             body: JSON.stringify(userInfo)
         });
-
+    
         const { user, accessToken, refreshToken } = await res.json();
         localStorage.setItem('JWTtoken', accessToken);
         localStorage.setItem('refreshToken', refreshToken);
         return dispatch(receiveCurrentUser(user));
     } catch (err) {
-        const res = await err.json();
-        if (res.statusCode === 400) {
-            return dispatch(receiveErrors(res.errors));
+        try {
+            const res = await err.json();
+            if (res.statusCode === 400) {
+                return dispatch(receiveErrors(res.errors));
+            }
+        } catch (jsonError) {
+            console.error("Failed to parse error response:", jsonError);
+            throw err;
         }
-        throw err; // This will ensure that the promise chain is correctly handled
-    }
+    }    
 };
 
 export const fetchCurrentUser = () => async dispatch => {
@@ -62,8 +85,11 @@ export const fetchCurrentUser = () => async dispatch => {
     }
   };
 
-export const logout = () => dispatch => {
-    localStorage.removeItem('jwtToken');
+  export const logout = () => dispatch => {
+    localStorage.removeItem('JWTtoken');
+    localStorage.removeItem('refreshToken');
+    localStorage.removeItem('user');
+
     dispatch(logoutUser());
 };
 
@@ -74,15 +100,12 @@ const initialState = {
 const sessionReducer = (state = initialState, action) => {
     switch (action.type) {
         case RECEIVE_CURRENT_USER:
-        localStorage.setItem('user', JSON.stringify(action.currentUser));
-        return { user: action.currentUser };
+            localStorage.setItem('user', JSON.stringify(action.currentUser));
+            return { user: action.currentUser };
         case RECEIVE_USER_LOGOUT:
-        localStorage.removeItem('user');
-        localStorage.removeItem('JWTtoken');
-        localStorage.removeItem('refreshToken');
-        return initialState;
+            return initialState;
         default:
-        return state;
+            return state;
     }
 };
 

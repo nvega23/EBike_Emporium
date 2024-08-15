@@ -11,10 +11,11 @@ function SignupForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
-  const navigate = useNavigate();
+  const [errors, setErrors] = useState({});
+  const [generalError, setGeneralError] = useState("");
 
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const errors = useSelector(state => state.errors.session);
 
   useEffect(() => {
     dispatch(clearSessionErrors());
@@ -22,15 +23,32 @@ function SignupForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setGeneralError("");
     const user = {
       email,
       username,
       password
     };
+
     dispatch(signup(user)).then((action) => {
       if (!action.error) {
+        console.log(action.error, 'I am the error')
         navigate('/posts');
+      } else {
+        if (action.error.response?.data?.errors) {
+          const backendErrors = {};
+          action.error.response.data.errors.forEach(error => {
+            backendErrors[error.param] = error.msg;
+          });
+          setErrors(backendErrors);
+          setGeneralError("There was a problem with your signup. Please correct the errors below.");
+        } else {
+          setGeneralError("An account with this email already exists!");
+        }
       }
+    }).catch((err) => {
+      console.error("Signup failed:", err);
+      setGeneralError("An unexpected error occurred. Please try again later.");
     });
   };
 
@@ -47,7 +65,7 @@ function SignupForm() {
         <div className="outerBox">
           <form className='session-form' onSubmit={handleSubmit}>
 
-            <div className='errors'>{errors?.username}</div>
+            <div className='errors'>{errors.username}</div>
             <label className="custom-field">
               <input
                 value={username}
@@ -57,7 +75,7 @@ function SignupForm() {
               />
             </label>
 
-            <div className='errors'>{errors?.email}</div>
+            <div className='errors'>{errors.email}</div>
             <label className="custom-field">
               <input
                 value={email}
@@ -67,7 +85,7 @@ function SignupForm() {
               />
             </label>
 
-            <div className='errors'>{errors?.password}</div>
+            <div className='errors'>{errors.password}</div>
             <label className="custom-field">
               <input
                 type="password"
@@ -78,7 +96,7 @@ function SignupForm() {
               />
             </label>
 
-            <div className='errors'>{password !== password2 && "Confirm Password must match"}</div>
+            <div className='errors'>{password !== password2 && "Passwords must match"}</div>
             <label className="custom-field">
               <input
                 type="password"
@@ -95,6 +113,7 @@ function SignupForm() {
               value="Sign Up"
               disabled={!email || !username || !password || password !== password2}
             />
+            {generalError && <div className="general-error">{generalError}</div>}
             <div className="content">
               <div className="pass-link">
                 <a href="/login">Have an account?</a>

@@ -10,13 +10,22 @@ function getCookie(cookieName) {
 async function jwtFetch(url, options = {}) {
   options.method = options.method || "GET";
   options.headers = options.headers || {};
+
+  // Attach JWT token
   options.headers["Authorization"] = "Bearer " + localStorage.getItem("JWTtoken");
 
   if (options.method.toUpperCase() !== "GET") {
+    // Ensure the Content-Type header is set correctly
     if (!options.headers["Content-Type"] && !(options.body instanceof FormData)) {
       options.headers["Content-Type"] = "application/json";
     }
-    options.headers["CSRF-Token"] = getCookie("CSRF-Token");
+    // Attach CSRF token
+    const csrfToken = getCookie("CSRF-Token");
+    if (csrfToken) {
+      options.headers["CSRF-Token"] = csrfToken;
+    } else {
+      console.error("CSRF token not found");
+    }
   }
 
   const res = await fetch(url, options);

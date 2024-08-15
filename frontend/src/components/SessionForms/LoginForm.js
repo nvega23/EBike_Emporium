@@ -7,6 +7,12 @@ import { login, clearSessionErrors } from '../../store/session';
 import { useNavigate } from 'react-router';
 import './login.css';
 
+const fetchCSRFToken = async () => {
+  const response = await fetch("http://localhost:3000/api/csrf/restore");
+  const data = await response.json();
+  document.cookie = `CSRF-Token=${data['CSRF-Token']}; path=/`;
+};
+
 function LoginForm () {
   const [email, setEmail] = useState('');
   const [documentTitle, setDocumentTitle] = useState("EcoBike Emporium - Log in or Sign up");
@@ -21,6 +27,7 @@ function LoginForm () {
   };
 
   useEffect(() => {
+    fetchCSRFToken();
     return () => {
       dispatch(clearSessionErrors());
       document.title = documentTitle;

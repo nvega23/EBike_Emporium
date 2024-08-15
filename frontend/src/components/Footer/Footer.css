@@ -38,7 +38,7 @@
     font-family: Poppins, sans-serif;
     justify-content: flex-start;
     width: inherit;
-    height: 5vh;
+    /* height: 5vh; */
 }
 
 .quickLinks{

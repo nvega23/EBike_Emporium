@@ -28,8 +28,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(passport.initialize());
 
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  credentials: true,
+};
+
 if (!isProduction) {
-  app.use(cors());
+  app.use(cors(corsOptions));
 }
 
 // CSRF setup
@@ -37,7 +42,7 @@ app.use(
   csurf({
     cookie: {
       secure: isProduction,
-      sameSite: isProduction && 'Lax',
+      sameSite: 'Lax',
       httpOnly: true,
     },
   })

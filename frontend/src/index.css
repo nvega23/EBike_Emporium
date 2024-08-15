@@ -55,4 +55,12 @@ form > .errors {
     height: 15px;
     display: flex;
     align-items: center;
+	color: red;
+    font-size: 0.875em;
+    height: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 2vh;
   }

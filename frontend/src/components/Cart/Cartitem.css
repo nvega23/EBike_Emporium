@@ -149,6 +149,7 @@
         justify-content: center;
         flex-direction: column;
         height: 25vh;
+        margin-top: 25vh;
     }
     /* .cart1Container{
     } */
@@ -189,5 +190,10 @@
     .summaryContainer{
         z-index: 1;
         background-color: white;
+        margin-top: inherit;
+        margin-bottom: 15vh;
+    }
+    .checkoutButton{
+        margin-top: 10vh;
     }
 }

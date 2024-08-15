@@ -261,13 +261,13 @@ form .buttonField:hover {
   display: none;
 }
 
-@media only screen and (max-width: 780px) {
+@media only screen and (min-device-width: 430px) and (max-device-width: 950px) {
   .background-video {
-    display: none; /* Hide video on mobile devices */
+    display: none;
   }
 
   .background-image {
-    display: block; /* Show image on mobile devices */
+    display: block;
     position: absolute;
     top: 0;
     left: 0;
@@ -276,4 +276,22 @@ form .buttonField:hover {
     object-fit: cover;
     z-index: -1;
   }
+  .postImages{
+    width: auto;
+    height: 14vh;
+  }
+  .postImages:hover{
+    width: auto;
+    height: 14vh;
+  }
+}
+.general-error {
+  color: red;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-wrap: pretty;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }

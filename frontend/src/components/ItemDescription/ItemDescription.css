@@ -149,7 +149,7 @@
     font-family: 'Poppins', sans-serif;
 }
 
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+@media only screen and (min-device-width: 430px) and (max-device-width: 740px) {
     .itemDescriptionContainer{
         display: flex;
         flex-direction: column;
@@ -157,6 +157,7 @@
         align-items: center;
         text-align: center;
         width: -webkit-fill-available;
+        height: 35vh;
     }
     .selectedPostImage{
         /* width: 25dvh; */

@@ -35,6 +35,7 @@ function NavBar() {
     e.preventDefault();
     dispatch(logout());
     navigate('/');
+    window.location.reload();
   };
 
   const handleOutsideClick = (e) => {
