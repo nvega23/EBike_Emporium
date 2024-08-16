@@ -80,7 +80,7 @@
 
 .postImages {
     width: -webkit-fill-available;
-    height: 20vh;
+    height: 35vh;
     object-fit: cover;
     border-radius: 10px;
     transition: transform 0.3s ease;
@@ -91,13 +91,15 @@
 } */
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
-    .post-container{
-        width: 17vh;
-        margin: auto;
-    }
-    .postImages{
+    /* .post-container{
         width: 25vh;
+        margin: inherit;
+    } */
+    .postImages{
+        width: auto;
         height: auto;
+        min-height: auto;
+        max-width: max-content;
     }
     .content{
         width: 5vw;

@@ -1,14 +1,13 @@
 .itemDescriptionContainer{
-    /* border: 1vh solid black; */
     font-family: 'Poppins', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
     height: 60vh;
     width: auto;
     flex-direction: row;
     margin-top: 10vh;
+    text-align: center;
 }
 
 .handlePostFactor{
@@ -126,6 +125,7 @@
     align-items: center;
     flex-direction: column;
     height: inherit;
+    width: 25vw;
     padding: inherit;
 }
 
@@ -164,5 +164,7 @@
         width: auto;
         height: 25dvh;
     }
-
+    .bikeBioItem{
+        overflow: auto;
+    }
 }

@@ -1,9 +1,10 @@
 .post-container {
     padding-bottom: 10px;
-    /* margin: 40px; */
+    /* margin: auto; */
     background-color: transparent;
     border-radius: 10px;
     font-family: 'Poppins', sans-serif;
+    /* width: 40vw; */
 }
 
 .post-body-text {

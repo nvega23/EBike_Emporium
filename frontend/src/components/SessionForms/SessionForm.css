@@ -277,7 +277,7 @@ form .buttonField:hover {
     z-index: -1;
   }
   .postImages{
-    width: 15vh;
+    width: auto;
     height: 14vh;
   }
   .postImages:hover{
@@ -286,6 +286,12 @@ form .buttonField:hover {
   }
   .reviewButton{
     width: -webkit-fill-available;
+  }
+}
+
+@media only screen and (min-device-width: 350px) and (max-device-width: 900px) {
+  .post-container{
+    margin: auto;
   }
 }
 .general-error {
