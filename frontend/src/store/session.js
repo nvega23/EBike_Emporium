@@ -92,22 +92,26 @@ const startSession = (userInfo, route) => async (dispatch) => {
     }    
 };
 
-
-export const fetchCurrentUser = () => async dispatch => {
+export const fetchCurrentUser = () => async (dispatch) => {
     const token = localStorage.getItem('JWTtoken');
+    console.log("Fetching current user with token:", token);
+    
     if (token) {
         try {
             const res = await jwtFetch(`${API_URL}/users/current`);
             const data = await res.json();
+            console.log("Fetched user data:", data);
             dispatch(receiveCurrentUser(data.user));
         } catch (err) {
             console.error("Failed to fetch current user:", err);
             dispatch(logoutUser());
         }
     } else {
+        console.log("No token found, logging out.");
         dispatch(logoutUser());
     }
 };
+
 
 
 
@@ -127,10 +131,15 @@ const initialState = {
 const sessionReducer = (state = initialState, action) => {
     switch (action.type) {
         case RECEIVE_CURRENT_USER:
+            console.log("Setting current user:", action.currentUser);
             localStorage.setItem('user', JSON.stringify(action.currentUser));
-            localStorage.setItem('JWTtoken', action.currentUser.accessToken);
+            // Assuming accessToken is part of the user object
+            if (action.currentUser.accessToken) {
+                localStorage.setItem('JWTtoken', action.currentUser.accessToken);
+            }
             return { ...state, user: action.currentUser };
         case RECEIVE_USER_LOGOUT:
+            console.log("Logging out user");
             localStorage.removeItem('user');
             localStorage.removeItem('JWTtoken');
             return initialState;
@@ -138,7 +147,6 @@ const sessionReducer = (state = initialState, action) => {
             return state;
     }
 };
-
 
 export default sessionReducer;
   

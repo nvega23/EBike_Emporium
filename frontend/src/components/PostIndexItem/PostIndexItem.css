@@ -1,13 +1,11 @@
 .post-container {
     padding-bottom: 10px;
-    /* margin: 40px; */
     margin: 15px;
     list-style: none;
     border: 2px solid transparent;
     background-color: #fff;
     border-radius: 10px;
     --fa-style-family-classic: "Font Awesome 6 Pro";
-    /* box-shadow: -10px 15px 20px rgba(0, 0, 0, 0.41); */
 }
 
 .divAroundReviewButton{
@@ -80,24 +78,22 @@
     color: white;
 }
 
-.postImages{
-    /* border-radius: 10px; */
-    width: 65vh;
+.postImages {
+    width: -webkit-fill-available;
+    height: 20vh;
     object-fit: cover;
-    height: 45vh;
-    display: flex;
-    margin-right: auto;
-    
+    border-radius: 10px;
+    transition: transform 0.3s ease;
 }
 
-.postImages:hover{
-    width: 65vh;
-    height: 50vh;
-}
+/* .post-container:hover{
+    box-shadow: -10px 15px 20px rgba(0, 0, 0, 0.261);
+} */
 
-@media only screen and (max-width: 500px) {
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
     .post-container{
-        width: 100%;
+        width: 17vh;
+        margin: auto;
     }
     .postImages{
         width: 25vh;
@@ -232,9 +228,10 @@
     /* padding: 5vh; */
 }
 
-.profilePosts{
-    display: flex;
-    flex-wrap: wrap;
+.profilePosts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    gap: 20px; /* Space between items */
     margin-top: 5vh;
 }
 

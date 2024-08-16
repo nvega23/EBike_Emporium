@@ -6,7 +6,7 @@
     align-items: center;
     flex-direction: column;
     height: 60vh;
-    width: 140vh;
+    width: auto;
     flex-direction: row;
     margin-top: 10vh;
 }
@@ -15,10 +15,10 @@
     margin-top: 15vh;
 }
 
-.borderAroundImage{
-    /* box-shadow: -5px 15px 20px rgba(0, 0, 0, 0.41); */
-    border-radius: 5vh ;
-    height: -webkit-fill-available;
+.borderAroundImage {
+    border-radius: 5vh;
+    min-height: 30vh; 
+    max-height: 40vh;
     width: inherit;
 }
 
@@ -58,13 +58,13 @@
     border: 3px solid transparent;
     background-color: black;
     color: white;
-    font-size: 2vh;
+    font-size: 1vh;
     cursor: pointer;
     text-decoration: none;
     display: flex;
     justify-content: center;
     height: 5vh;
-    width: 15vh;
+    width: -webkit-fill-available;
     align-items: center;
 }
 
@@ -87,9 +87,10 @@
     cursor: pointer;
     text-decoration: none;
     height: 5vh;
-    width: 15vh;
+    width: -webkit-fill-available;
     padding: 5px 10px;
     text-decoration: none;
+    font-size: 1vh;
 }
 
 .reviewButton:hover{
@@ -129,7 +130,7 @@
 }
 
 .selectedPostImage{
-    width: auto;
+    width: 40vw;
     height: inherit;
     margin: auto;
 }
@@ -149,7 +150,7 @@
     font-family: 'Poppins', sans-serif;
 }
 
-@media only screen and (min-device-width: 430px) and (max-device-width: 740px) {
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
     .itemDescriptionContainer{
         display: flex;
         flex-direction: column;
@@ -160,7 +161,7 @@
         height: 35vh;
     }
     .selectedPostImage{
-        /* width: 25dvh; */
+        width: auto;
         height: 25dvh;
     }
 

@@ -261,7 +261,7 @@ form .buttonField:hover {
   display: none;
 }
 
-@media only screen and (min-device-width: 430px) and (max-device-width: 950px) {
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
   .background-video {
     display: none;
   }
@@ -277,12 +277,15 @@ form .buttonField:hover {
     z-index: -1;
   }
   .postImages{
-    width: auto;
+    width: 15vh;
     height: 14vh;
   }
   .postImages:hover{
     width: auto;
     height: 14vh;
+  }
+  .reviewButton{
+    width: -webkit-fill-available;
   }
 }
 .general-error {
