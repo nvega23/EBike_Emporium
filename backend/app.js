@@ -3,22 +3,21 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors');
-const { isProduction } = require('./config/keys');
 const csurf = require('csurf');
 const debug = require('debug');
 
+require('dotenv').config();
 require('./models/User');
 require('./models/Review');
 require('./models/Post');
 require('./models/Cart');
 require('./config/passport');
-require('dotenv').config();
 
 const passport = require('passport');
+const { isProduction } = require('./config/keys');
 const usersRouter = require('./routes/api/users');
 const reviewsRouter = require('./routes/api/reviews');
 const postsRouter = require('./routes/api/posts');
-const csrfRouter = require('./routes/api/csrf');
 
 const app = express();
 
@@ -29,23 +28,17 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(passport.initialize());
 
-console.log('SECRET_OR_KEY:', process.env.SECRET_OR_KEY);
-console.log('REFRESH_SECRET_KEY:', process.env.REFRESH_SECRET_KEY);
-console.log('MONGODB_URI:', process.env.MONGODB_URI);
-
-
-const corsOptions = {
-  origin: ['http://localhost:3000', 'https://ebike-emporium.onrender.com'],
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  credentials: true,
-  optionsSuccessStatus: 204,
-};
-
+// CORS setup
 if (!isProduction) {
-  app.use(cors(corsOptions));
+  app.use(cors({
+    origin: ['http://localhost:3000', 'https://ebike-emporium.onrender.com'],
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+    optionsSuccessStatus: 204,
+  }));
 }
 
-// CSRF setup
+// CSRF protection setup
 app.use(
   csurf({
     cookie: {
@@ -56,21 +49,24 @@ app.use(
   })
 );
 
-// Static files setup
-app.use(express.static(path.resolve('./build')));
+// API routes
 app.use('/api/users', usersRouter);
-app.use('/api/posts', postsRouter);  // Ensure this is correctly set up
-app.use('/api/csrf', csrfRouter);
+app.use('/api/posts', postsRouter);
 app.use('/api/reviews', reviewsRouter);
 
+app.get('/api/csrf/restore', (req, res) => {
+  res.json({ 'CSRF-Token': req.csrfToken() });
+});
+
+// Serve static files
 if (isProduction) {
-  // Serve the frontend's index.html file at the root route
+  app.use(express.static(path.resolve('./build')));
+
   app.get('/', (req, res) => {
     res.cookie('CSRF-Token', req.csrfToken());
     res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
   });
 
-  // Serve the frontend's index.html file at all other routes NOT starting with /api
   app.get(/^(?!\/?api).*/, (req, res) => {
     res.cookie('CSRF-Token', req.csrfToken());
     res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
