@@ -18,69 +18,67 @@ function CreateReviews() {
 
         dispatch(composeReview(title, body, rating, postId, userId))
 
-        if(!errors){
-          // setBody("")
-          // setRating("")
-          // setTitle("")
+        if (!errors) {
           console.log("none")
-          // navigate.push('/posts')
         }
     }
 
-  useEffect(() => {
-      dispatch(clearReviewErrors());
-  }, [dispatch]);
+    const handleBackToItem = () => {
+        navigate(`/item/${postId}`);
+    }
 
+    useEffect(() => {
+        dispatch(clearReviewErrors());
+    }, [dispatch]);
 
-  return (
-    <>
-        <form  className = "reviewForm" onSubmit={handleClick}>
-            <div className='reviewInputs'>
-                <div className="errors">{errors?.title}</div>
-                <input
-                  className='reviewStyleInputs'
-                  type="text"
-                  value={title}
-                  onChange={(e)=> setTitle(e.target.value)}
-                  placeholder= "title"
-                  id='review-body'
-                />
+    return (
+        <>
+            <form className="reviewForm" onSubmit={handleClick}>
+                <div className='reviewInputs'>
+                    <div className="errors">{errors?.title}</div>
+                    <input
+                        className='reviewStyleInputs'
+                        type="text"
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                        placeholder="title"
+                        id='review-body'
+                    />
 
-                <div className="errors">{errors?.body}</div>
-                <input
-                    className='reviewStyleInputs'
-                    type="text"
-                    value={body}
-                    onChange={(e)=> setBody(e.target.value)}
-                    placeholder="body"
-                    id='review-body'
-                />
-                  {/* <label> Body </label> */}
+                    <div className="errors">{errors?.body}</div>
+                    <input
+                        className='reviewStyleInputs'
+                        type="text"
+                        value={body}
+                        onChange={(e) => setBody(e.target.value)}
+                        placeholder="body"
+                        id='review-body'
+                    />
 
+                    <div className="errors">{errors?.rating}</div>
+                    <input
+                        type="text"
+                        className='reviewStyleInputs'
+                        value={rating}
+                        onChange={(e) => setRating(e.target.value)}
+                        placeholder="rating"
+                        required
+                    />
 
-                 <div className="errors">{errors?.rating}</div>
-                <input
-                    type="text"
-                    className='reviewStyleInputs'
-                    value={rating}
-                    onChange={(e)=> setRating(e.target.value)}
-                    placeholder="rating"
-                    required
-                />
-                  {/* <label> Rating </label> */}
+                    <input
+                        type='submit'
+                        className='createReviewButton'
+                        value="Review"
+                        disabled={!body || !title || !rating}
+                    />
 
-
-              <input type='submit'
-                  className='createReviewButton'
-                  value="Review"
-                  disabled={!body || !title || !rating}
-              />
-
-              </div>
-
-        </form>
-    </>
-  )
+                </div>
+            </form>
+            <button className="backToItemButton" onClick={handleBackToItem}>
+                Back to Item
+            </button>
+        </>
+    )
 }
 
 export default CreateReviews

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { BiHide, BiShow } from "react-icons/bi";
-import bikeVideo from "../../assets/ebikeVid.mp4";
 import bikeImage from "../../assets/bikeImage.jpeg";
 import { login, clearSessionErrors } from '../../store/session';
 import { useNavigate } from 'react-router';
@@ -70,7 +69,7 @@ function LoginForm () {
   return (
     <div id="outer">
       <div className="media-container">
-        <video src={bikeVideo} autoPlay loop muted className="background-video"></video>
+        {/* <video src={bikeVideo} autoPlay loop muted className="background-video"></video> */}
         <img src={bikeImage} alt="Bike" className="background-image" />
       </div>
       <div className="wrapper">

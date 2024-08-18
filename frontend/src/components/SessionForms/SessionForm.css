@@ -256,16 +256,17 @@ form .buttonField:hover {
   position: relative;
   z-index: 1;
 }
-
 .background-image {
-  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  z-index: -1;
 }
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
-  .background-video {
-    display: none;
-  }
-
   .background-image {
     display: block;
     position: absolute;

@@ -28,11 +28,11 @@ const footer = () => {
                     </p>
                 </div>
                 <div className='ReachMeLinks'>
-                    <h1 className='quickLinks'>Quick Links</h1>
+                    {/* <h1 className='quickLinks'>Quick Links</h1> */}
                     <a className="dropdownNoButton" target="_blank" href="https://github.com/nvega23">Github</a>
                     <a className="dropdownNoButton" target="_blank" href="https://www.linkedin.com/in/nestor-vega-233b43238/">Linkedin</a>
                     <a className="dropdownNoButton" target="_blank" href="https://angel.co/u/nestorvega23">Wellfound</a>
-                    <a className="dropdownNoButton" target="_blank" href="https://twitter.com/nvega24">Twitter</a>
+                    {/* <a className="dropdownNoButton" target="_blank" href="https://twitter.com/nvega24">Twitter</a> */}
                 </div>
                 <div className='emailMeLink'>
                     <p className='emailMeText'>

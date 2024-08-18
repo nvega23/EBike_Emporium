@@ -54,9 +54,9 @@ function SignupForm() {
 
   return (
     <div id="outer">
-      <video autoPlay loop muted className="background-video" playbackRate={0.5}>
+      {/* <video autoPlay loop muted className="background-video" playbackRate={0.5}>
         <source src={signUpBike} />
-      </video>
+      </video> */}
       <img src={signUpBikeImage} alt="Bike" className="background-image" />
       <div className="wrapper">
         <div className="title">

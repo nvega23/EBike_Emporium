@@ -8,6 +8,7 @@
     flex-direction: row;
     margin-top: 10vh;
     text-align: center;
+    background-color: white;
 }
 
 .handlePostFactor{
@@ -19,6 +20,7 @@
     min-height: 30vh; 
     max-height: 40vh;
     width: inherit;
+    padding: 5vh;
 }
 
 .selectedBody{
@@ -130,9 +132,10 @@
 }
 
 .selectedPostImage{
-    width: 40vw;
+    width: fit-content;
     height: inherit;
     margin: auto;
+    max-width: 40vh;
 }
 
 .notWorking{
@@ -167,4 +170,43 @@
     .bikeBioItem{
         overflow: auto;
     }
+}
+.quantityLabel {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.quantityInput {
+    width: 50px;
+    padding: 5px;
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.cartItemDescription{
+    font-family: 'Poppins', sans-serif;
+    padding: 5px 10px;
+    border-radius: 15px;
+    border: 3px solid transparent;
+    background-color: black;
+    color: white;
+    /* font-size: 20px; */
+    cursor: pointer;
+    text-decoration: none;
+    height: 5vh;
+    width: -webkit-fill-available;
+    padding: 5px 10px;
+    text-decoration: none;
+    font-size: 1vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.cartItemDescription:hover{
+    /* background: linear-gradient(-135deg, #c850c0, red); */
+    background: white;
+    color: black;
+    border: 3px solid transparent;
 }
