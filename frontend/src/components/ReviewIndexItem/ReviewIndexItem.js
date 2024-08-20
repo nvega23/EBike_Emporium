@@ -28,6 +28,7 @@ function ReviewIndexItem({review, key}) {
     const handleDelete = (e) => {
         e.preventDefault()
         dispatch(deleteReview(review.id, userId, userId))
+        window.location.reload();
     }
 
     const handleClick = (e) => {
@@ -51,12 +52,11 @@ function ReviewIndexItem({review, key}) {
                   {convertDate(review.postedAt)}
               </span>
               <br />
-              <h1>{review.reviewer !== currentUser.id ? <h1>{review?.reviewer.username}</h1> : <div></div>}</h1>
+              <h1>{review.reviewer !== currentUser?.id ? <h1>{review?.reviewer.username}</h1> : <div></div>}</h1>
               {/* <h1>{review.reviewee?.username}</h1> */}
               <h1 className='review-title'>
                 <StarReview rating={review.rating} />
               <br/>
-              <div className='reviewRating'>Rating: {review.rating}</div>
                 {review.title}
               </h1>
               <div className='review-body'>
@@ -66,8 +66,8 @@ function ReviewIndexItem({review, key}) {
               </div>
               <br/>
               <div className='divAroundReviewButton'>
-                {review.reviewer === currentUser._id ?  <button  className='reviewButtonDelete' onClick={handleDelete}>Delete</button> : <div></div> }
-                {review.reviewer === currentUser._id ? <button onClick={handleClick} className="reviewButtonEditDelete" >Edit</button> : <></>}
+                {review.reviewer === currentUser?._id ?  <button  className='reviewButtonDelete' onClick={handleDelete}>Delete</button> : <div></div> }
+                {review.reviewer === currentUser?._id ? <button onClick={handleClick} className="reviewButtonEditDelete" >Edit</button> : <></>}
               </div>
           </div>
           <br />

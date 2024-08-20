@@ -29,7 +29,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-direction: column;
+    flex-direction: row;
     height: inherit;
     width: inherit;
     /* border-radius: 5vh; */
@@ -48,59 +48,49 @@
     display: flex;
     justify-content: space-between;
     padding: inherit;
-    flex-direction: row;
-    gap: 10px;
+    flex-direction: column;
+    gap: 5vh;
 }
 
 .addToCart{
-    font-family: 'Poppins', sans-serif;
-    padding: 15px 10px;
-    border-radius: 15px;
-    border: 3px solid transparent;
-    background-color: black;
+    background-color: #1f2934;
     color: white;
-    font-size: 1vh;
+    padding: 10px 16px;
+    border-radius: 1vh;
     cursor: pointer;
-    text-decoration: none;
-    display: flex;
-    justify-content: center;
-    height: 5vh;
-    width: -webkit-fill-available;
-    align-items: center;
 }
 
 .addToCart:hover{
-    /* background: linear-gradient(-135deg, #c850c0, red); */
-    /* background: linear-gradient(-135deg, #5333ed, #2cd4d9, #6E7076); */
-    background-color: white;
-    color: black;
-    border: 3px solid transparent;
+    background-color: #48a1ff;
 }
 
 .reviewButton{
-    font-family: 'Poppins', sans-serif;
-    padding: 5px 10px;
-    border-radius: 15px;
-    border: 3px solid transparent;
-    background-color: black;
+    background-color: #1f2934;
     color: white;
-    /* font-size: 20px; */
+    padding: 10px 16px;
+    border-radius: 1vh;
     cursor: pointer;
-    text-decoration: none;
-    height: 5vh;
-    width: -webkit-fill-available;
-    padding: 5px 10px;
-    text-decoration: none;
-    font-size: 1vh;
+    border: none;
 }
 
 .reviewButton:hover{
-    /* background: linear-gradient(-135deg, #c850c0, red); */
-    background: white;
-    color: black;
-    border: 3px solid transparent;
+    background-color: #ff6600;
 }
 
+.cartItemDescription{
+    background-color: #1f2934;
+    color: white;
+    padding: 10px 16px;
+    border-radius: 1vh;
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+}
+
+.cartItemDescription:hover{
+    background-color: #f5e6cc;
+    color: black;
+}
 
 .userProfilePageButton{
     border: none;
@@ -170,9 +160,11 @@
     .bikeBioItem{
         overflow: auto;
     }
+    .selectedBody{
+        flex-direction: column;
+    }
 }
 .quantityLabel {
-    font-weight: bold;
     margin-right: 10px;
 }
 
@@ -181,32 +173,4 @@
     padding: 5px;
     font-size: 1rem;
     margin-bottom: 10px;
-}
-
-.cartItemDescription{
-    font-family: 'Poppins', sans-serif;
-    padding: 5px 10px;
-    border-radius: 15px;
-    border: 3px solid transparent;
-    background-color: black;
-    color: white;
-    /* font-size: 20px; */
-    cursor: pointer;
-    text-decoration: none;
-    height: 5vh;
-    width: -webkit-fill-available;
-    padding: 5px 10px;
-    text-decoration: none;
-    font-size: 1vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-.cartItemDescription:hover{
-    /* background: linear-gradient(-135deg, #c850c0, red); */
-    background: white;
-    color: black;
-    border: 3px solid transparent;
 }

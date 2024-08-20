@@ -22,7 +22,6 @@ export const fetchUserProfile = (userId) => async (dispatch) => {
       console.error('Failed to fetch user profile:', err);
     }
   };
-  
 
 const profileReducer = (state = {}, action) => {
 switch (action.type) {

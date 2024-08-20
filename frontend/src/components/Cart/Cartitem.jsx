@@ -14,6 +14,12 @@ const Cart = () => {
     navigate("/checkout");
   };
 
+  const calculateTotalAmount = () => {
+    return cart.reduce((total, item) => {
+      return total + item.quantity * item.post.price;
+    }, 0).toFixed(2);
+  };
+
   const showCartitems = () => (
     <>
       <div className="divAroundCartItem">
@@ -35,9 +41,9 @@ const Cart = () => {
   return (
     <>
       <div className="cart1Container">
-        <div>
+        <div className="mainCartContainer">
           {!cart.length ? (
-            <div>
+            <div className="emptyCartContainer">
               <h1 className="emptyText">Your cart is Empty</h1>
               <br />
               <button className="emptyCartLink">
@@ -47,15 +53,23 @@ const Cart = () => {
               </button>
             </div>
           ) : (
-            showCartitems()
+            <>
+            <div className="sideWindowContainer">
+                {showCartitems()}
+                <div className="innerContainer">
+                  <div className="totalAmountContainer">
+                    <h2 className="totalAmount">Total: ${calculateTotalAmount()}</h2>
+                  </div>
+                  <button
+                    className="checkoutButton"
+                    onClick={emptyCart}
+                    >
+                    Proceed to Checkout
+                  </button>
+                </div>
+              </div>
+            </>
           )}
-          <button
-            disabled={!cart.length}
-            className="checkoutButton"
-            onClick={emptyCart}
-          >
-            Proceed to Checkout
-          </button>
         </div>
       </div>
     </>

@@ -32,7 +32,6 @@ function SignupForm() {
 
     dispatch(signup(user)).then((action) => {
       if (!action.error) {
-        console.log(action.error, 'I am the error')
         navigate('/posts');
       } else {
         if (action.error.response?.data?.errors) {

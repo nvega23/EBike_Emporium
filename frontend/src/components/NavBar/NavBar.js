@@ -147,9 +147,13 @@ function NavBar() {
         <SearchBar />
         {navbar}
       </div>
-    <button className="scrollToTopButton" onClick={handleScrollToTop}>
-        Scroll to Top
-    </button>
+    {loggedIn ? 
+      <button className="scrollToTopButton" onClick={handleScrollToTop}>
+          Scroll to Top
+      </button>
+      :
+      null
+    }
     </>
   );
 }

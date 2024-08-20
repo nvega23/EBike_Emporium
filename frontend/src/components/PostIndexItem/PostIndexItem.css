@@ -10,9 +10,11 @@
 
 .divAroundReviewButton{
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-evenly;
     align-items: center;
+    text-align: center;
     gap: 10px;
+    padding: 5vh;
 }
 
 #dateButtons {
@@ -91,12 +93,8 @@
 } */
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
-    /* .post-container{
-        width: 25vh;
-        margin: inherit;
-    } */
     .postImages{
-        width: auto;
+        width: 15vh;
         height: auto;
         min-height: auto;
         max-width: max-content;

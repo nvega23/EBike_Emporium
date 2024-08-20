@@ -4,10 +4,7 @@ import { useDispatch } from "react-redux";
 // import { useSelector } from "react-redux";
 
 const CartInCheckout = ({ p }) => {
-  // const { cart } = useSelector((state) => ({ ...state }));
   const dispatch = useDispatch();
-  console.log(p, 'I am the cart in checkout')
-
   const handleQuantityChange = (e) => {
     let quantity = e.target.value < 1 ? 1 : e.target.value;
     let cart = [];

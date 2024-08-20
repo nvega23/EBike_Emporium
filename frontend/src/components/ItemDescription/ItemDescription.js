@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 const ItemDescription = ({ post }) => {
   const { id } = useParams();
   const [isPurchased, setIsPurchased] = useState(false);
-  const [quantity, setQuantity] = useState(1); // Track quantity
+  const [quantity, setQuantity] = useState(1);
   const postUserId = post?.author?._id;
   const reviews = Object.values(useSelector(state => state.review));
   const specificReviews = reviews.filter(review => review.reviewer === postUserId);
@@ -36,23 +36,23 @@ const ItemDescription = ({ post }) => {
       cart.forEach(item => {
         if (item.post._id === post._id) {
           quantityChange = true;
-          item.quantity += quantity; // Adjust quantity
-          setQuantity(item.quantity); // Update the quantity state
+          item.quantity += 1;
+          setQuantity(item.quantity);
         }
       });
       if (!quantityChange) {
         cart.push({
           post,
-          quantity: quantity // Use current quantity
+          quantity: quantity
         });
-        setQuantity(quantity); // Initialize quantity
+        setQuantity(quantity);
       }
       localStorage.setItem('cart', JSON.stringify(cart));
       dispatch({
         type: "ADD_TO_CART",
         payload: cart,
       });
-      setIsPurchased(true); // Set the state to indicate the item has been purchased
+      setIsPurchased(true);
     }
   };
 
@@ -144,7 +144,6 @@ const ItemDescription = ({ post }) => {
             </>
           }
           <Link to="/cart" className="cartItemDescription">Go to Cart</Link>
-          <br />
           <button onClick={() => navigate(`/review/new/${post?._id}/${post?.author._id}`)} className="reviewButton">Leave a Review</button>
         </div>
       </div>

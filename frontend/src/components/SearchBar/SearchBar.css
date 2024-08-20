@@ -74,14 +74,20 @@
     position: absolute;
     background: white;
     width: 60vh;
-    margin-left: -12vh;
-    margin-top: 3vh;
+    margin-top: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    gap: 2vh;
+    border-radius: 1vh;
 }
 
 .suggestions-dropdown li {
     display: flex;
     align-items: center;
-    padding: 8px;
+    padding: 10px 16px;
     cursor: pointer;
 }
 
@@ -94,6 +100,10 @@
     height: 50px;
     object-fit: cover;
     margin-right: 10px;
+}
+
+.searchText{
+    font-size: x-small;
 }
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
@@ -116,5 +126,14 @@
     }
     .links-nav{
         font-size: xx-small;
+    }
+    .wrapper{
+        width: 280px;
+    }
+}
+
+@media only screen and (min-device-width: 420px) and (max-device-width: 780px) {
+    .wrapper{
+        width: 380px;
     }
 }

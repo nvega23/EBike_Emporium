@@ -80,15 +80,12 @@ router.post('/register', singleMulterUpload('image'), validateRegisterInput, asy
 });
 
 router.post('/login', validateLoginInput, async (req, res, next) => {
-  console.log('Starting authentication process...');
   passport.authenticate('local', async function (err, user) {
-    console.log('Inside passport authenticate');
     if (err) {
       console.error('Error during authentication:', err);
       return next(err);
     }
     if (!user) {
-      console.log('User not found or invalid credentials');
       const err = new Error('Invalid credentials');
       err.statusCode = 400;
       err.errors = { email: 'Invalid credentials' };

@@ -1,7 +1,10 @@
 .reviewForm{
-    margin-top: 200px;
-    width: 100vh;
-    height: auto;
+    width: auto;
+    margin-top: 10vh;
+    padding: 4vh;
+    background-color: rgba(255, 255, 255, 0.352);
+    border-radius: 10px;
+    box-shadow: -10px 15px 20px rgba(0, 0, 0, 0.261);
 }
 
 .reviewInputs{
@@ -23,7 +26,7 @@
     border: none;
     font-size: 22px;
     cursor: text;
-    margin: 5vh;
+    margin: 2vh;
     border: 3px solid rgba(211, 211, 211, 0.407);
 }
 
@@ -32,22 +35,16 @@
 }
 
 .createReviewButton{
-    font-family: 'Poppins', sans-serif;
-    padding: 5px 10px;
-    border-radius: 15px;
-    background-color: black;
+    background-color: #1f2934;
     color: white;
-    font-size: 20px;
+    padding: 10px 16px;
+    border-radius: 1vh;
     cursor: pointer;
-    text-decoration: none;
-    height: 50px;
+    border: none;
 }
 
 .createReviewButton:hover{
-    /* background: linear-gradient(-135deg, #c850c0, red); */
-    background-color: black;
-    color: white;
-    border: 3px solid transparent;
+    background-color: #ff6600;
 }
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {

@@ -24,6 +24,8 @@ html, body {
   width: 380px;
   border-radius: 15px;
   margin-top: 70px;
+  position: relative;
+  z-index: 2;
 }
 
 .wrapper .title {
@@ -43,6 +45,9 @@ html, body {
   padding: 5px 10px 0 10px;
   background-color: #1f2934;
   border-radius: 0 0 15px 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
 }
 
 .wrapper form .field {
@@ -50,6 +55,10 @@ html, body {
   width: 100%;
   position: relative;
   margin-bottom: 2vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .wrapper form .field input {
@@ -63,15 +72,8 @@ html, body {
   transition: all 0.3s ease;
 }
 
-.field {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
 .wrapper form .field input:focus,
-form .field input:valid {
+.wrapper form .field input:valid {
   border-color: #4158d0;
 }
 
@@ -87,8 +89,8 @@ form .field input:valid {
   transition: all 0.3s ease;
 }
 
-form .field input:focus ~ label,
-form .field input:valid ~ label {
+.wrapper form .field input:focus ~ label,
+.wrapper form .field input:valid ~ label {
   top: 0%;
   font-size: 16px;
   color: #4158d0;
@@ -96,59 +98,32 @@ form .field input:valid ~ label {
   transform: translateY(-50%);
 }
 
-form .content {
+.wrapper form .content {
   display: flex;
-  width: -webkit-fill-available;
+  width: 100%;
   height: 50px;
   font-size: 16px;
   align-items: center;
   justify-content: space-evenly;
 }
 
-form .content .checkbox {
+.wrapper form .content .checkbox {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-form .content input {
+.wrapper form .content input[type="checkbox"] {
   width: 15px;
   height: 15px;
-  background: red;
 }
 
-form .content label {
+.wrapper form .content label {
   font-family: 'Poppins', sans-serif;
   color: white;
   user-select: none;
   padding-left: 5px;
   font-size: smaller;
-}
-
-form .content .pass-link {
-  color: "";
-}
-
-form .field input[type="submit"] {
-  color: #fff;
-  border: none;
-  padding-left: 0;
-  margin-top: -10px;
-  font-size: 20px;
-  font-weight: 500;
-  cursor: pointer;
-  background: linear-gradient(-135deg, #c850c0, #4158d0);
-  transition: all 0.3s ease;
-}
-
-form .field input[type="submit"]:active {
-  transform: scale(0.95);
-}
-
-form .signup-link {
-  color: #262626;
-  margin-top: 20px;
-  text-align: center;
 }
 
 form .pass-link a,
@@ -163,7 +138,8 @@ form .signup-link a:hover {
   text-decoration: underline;
 }
 
-form .field input[type="submit"] {
+form .field input[type="submit"],
+form .buttonField {
   display: inline-block;
   padding: 10px 20px;
   margin-top: -10px;
@@ -175,34 +151,18 @@ form .field input[type="submit"] {
   background: black;
   color: #fff;
   transition: all 0.3s ease;
-}
-
-form .field input[type="submit"]:active {
-  transform: scale(0.95);
-}
-
-form .buttonField {
-  display: inline-block;
-  padding: 10px 20px;
-  margin-bottom: 2vh;
-  font-size: 20px;
-  font-weight: 500;
-  cursor: pointer;
-  border: none;
-  border-radius: 5px;
-  background: black;
-  color: #fff;
-  transition: all 0.3s ease;
   width: 100%;
 }
 
-form .buttonField:active {
-  transform: scale(0.95);
-}
-
+form .field input[type="submit"]:hover,
 form .buttonField:hover {
   background: white;
   color: black;
+}
+
+form .field input[type="submit"]:active,
+form .buttonField:active {
+  transform: scale(0.95);
 }
 
 #remember-me {
@@ -215,7 +175,7 @@ form .buttonField:hover {
   border: none;
   background-color: transparent;
   cursor: pointer;
-  width: -webkit-fill-available;
+  width: 100%;
   display: flex;
   margin-bottom: 2vh;
   gap: 1vh;
@@ -236,72 +196,23 @@ form .buttonField:hover {
   position: relative;
 }
 
-.background-video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover; 
-  z-index: -1;
-}
-
-.center-content {
-  background: rgba(0, 0, 0, 0.5);
-  padding: 20px;
-  border-radius: 15px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  z-index: 1;
-}
 .background-image {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover; 
-  z-index: -1;
+  object-fit: cover;
+  z-index: 1;
 }
 
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+@media only screen and (max-width: 780px) {
   .background-image {
-    display: block;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    z-index: -1;
   }
-  .postImages{
-    width: auto;
-    height: 14vh;
-  }
-  .postImages:hover{
-    width: auto;
-    height: 14vh;
-  }
-  .reviewButton{
-    width: -webkit-fill-available;
-  }
-}
-
-@media only screen and (min-device-width: 350px) and (max-device-width: 900px) {
-  .post-container{
-    margin: auto;
-  }
-}
-.general-error {
-  color: red;
-  font-weight: bold;
-  margin-bottom: 10px;
-  text-wrap: pretty;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
 }

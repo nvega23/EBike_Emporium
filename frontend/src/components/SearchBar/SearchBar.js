@@ -43,9 +43,13 @@ const SearchBar = () => {
     };
 
     const handleSuggestionClick = (suggestion) => {
-        setSearchValue(suggestion.title);
-        setShowSuggestions(false);
-        navigate(`/posts?search=${suggestion.title}`);
+        if (suggestion && suggestion?._id) {
+            setSearchValue(suggestion.title);
+            setShowSuggestions(false);
+            navigate(`/item/${suggestion?._id}`);  // Use _id to navigate
+        } else {
+            console.error('Invalid suggestion:', suggestion);
+        }
     };
 
     return (
@@ -64,7 +68,7 @@ const SearchBar = () => {
                         {suggestions.map((suggestion, index) => (
                             <li key={index} onClick={() => handleSuggestionClick(suggestion)}>
                                 {suggestion.imageUrl && <img src={suggestion.imageUrl} alt={suggestion.title} className='suggestion-image' />}
-                                <span>{suggestion.title}</span>
+                                <span className='searchText'>{suggestion.title}</span>
                             </li>
                         ))}
                     </ul>

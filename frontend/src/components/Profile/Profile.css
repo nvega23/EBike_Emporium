@@ -25,6 +25,7 @@
     display: flex;
     flex-direction: column;
     font-family: 'Poppins', sans-serif;
+    width: -webkit-fill-available;
 }
 
 .review-body{
@@ -112,10 +113,6 @@
     color: black;
 }
 
-.reviewButton:hover{
-    cursor: pointer;
-}
-
 /* .editDeleteButtonProfilePage{
 
 } */
@@ -147,7 +144,6 @@
     align-items: center;
     text-align: center;
     flex-direction: column;
-    margin-top: 25vh;
 }
 
 .reviewText{
