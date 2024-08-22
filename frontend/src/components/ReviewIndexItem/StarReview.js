@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import regularStarIcon from '../../assets/blackStar.png';
 import solidStarIcon from '../../assets/goldStar.png';
 import goldOutline from '../../assets/goldOutline.png';
@@ -6,17 +7,20 @@ import './StarReview.css';
 
 const StarReview = ({ rating, setRating }) => {
   const [hoverRating, setHoverRating] = useState(0);
+  const location = useLocation(); 
+
+  const isEditable = location.pathname.includes('/review/update') || location.pathname.includes('/review/new');
 
   const handleMouseEnter = (index) => {
-    setHoverRating(index + 1);
+    if (isEditable) setHoverRating(index + 1);
   };
 
   const handleMouseLeave = () => {
-    setHoverRating(0);
+    if (isEditable) setHoverRating(0);
   };
 
   const handleClick = (index) => {
-    setRating(index + 1);
+    if (isEditable) setRating(index + 1);
   };
 
   const renderStars = () => {
@@ -34,6 +38,7 @@ const StarReview = ({ rating, setRating }) => {
           onMouseEnter={() => handleMouseEnter(i)}
           onMouseLeave={handleMouseLeave}
           onClick={() => handleClick(i)}
+          style={{ cursor: isEditable ? 'pointer' : 'default' }}
         />
       );
     }

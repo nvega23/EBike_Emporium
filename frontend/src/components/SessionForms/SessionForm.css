@@ -206,6 +206,14 @@ form .buttonField:active {
   z-index: 1;
 }
 
+.general-error{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: red;
+  font-family: sans-serif;
+}
+
 @media only screen and (max-width: 780px) {
   .background-image {
     position: absolute;

@@ -133,10 +133,24 @@ export const removeLike = (id) => async dispatch => {
     const res = await jwtFetch(`/api/posts/unlike/${id}`, {
       method: 'PUT'
     });
-    dispatch({
-      type: UPDATE_LIKES,
-      payload: { id, likes: res.data }
-    });
+
+    if (res.ok) {
+      // Dispatch the update to the store
+      dispatch({
+        type: UPDATE_LIKES,
+        payload: { id, likes: await res.json() }
+      });
+
+      // Update localStorage to remove the liked post
+      const likedPosts = JSON.parse(localStorage.getItem('likedPosts')) || [];
+      const updatedLikedPosts = likedPosts.filter(postId => postId !== id);
+      localStorage.setItem('likedPosts', JSON.stringify(updatedLikedPosts));
+    } else {
+      const resBody = await res.json();
+      if (resBody.statusCode === 400) {
+        return dispatch(receiveErrors(resBody.errors));
+      }
+    }
   } catch (err) {
     const resBody = await err.json();
     if (resBody.statusCode === 400) {
@@ -144,6 +158,7 @@ export const removeLike = (id) => async dispatch => {
     }
   }
 };
+
 
 export const composePost = (body, images, bikeName, price, query) => async dispatch => {
   const formData = new FormData();

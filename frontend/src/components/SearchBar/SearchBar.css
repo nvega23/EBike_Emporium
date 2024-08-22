@@ -37,8 +37,9 @@
     align-items: center;
     border-radius: 60px;
     padding: 10px 20px;
-    height: 2.4vw;
     font-family: 'Poppins', sans-serif;
+    height: 2vh;
+    max-height: 3.5vh;
 }
 
 .search-bar input {

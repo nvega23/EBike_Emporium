@@ -15,6 +15,7 @@ function Profile({ key1 }) {
   const posts = Object.values(useSelector(state => state?.post || {}));
   const reviews = Object.values(useSelector(state => state?.review || {}));
   const [contentState, setContentState] = useState('reviews');
+  const [likedPosts, setLikedPosts] = useState([]);
 
   useEffect(() => {
     if (userId) {
@@ -25,8 +26,13 @@ function Profile({ key1 }) {
   }, [dispatch, userId]);
 
   useEffect(() => {
-    // console.log('currentProfileUser:', currentProfileUser);
-  }, [currentProfileUser]);
+    const likedPostsFromStorage = JSON.parse(localStorage.getItem('likedPosts')) || [];
+    const userLikedPosts = posts.filter(post => likedPostsFromStorage.includes(post._id));
+    if (JSON.stringify(userLikedPosts) !== JSON.stringify(likedPosts)) {
+      setLikedPosts(userLikedPosts);
+    }
+  }, [posts]);
+  
 
   const handleClick = (post) => {
     if (post && post._id) {
@@ -59,7 +65,7 @@ function Profile({ key1 }) {
     const userPosts = posts.filter(post => post.author._id === userId);
     profileContent = (
       <div className='profileContainer'>
-        <h1 id="ProfilePostsTitle">{userPosts.length ? '' : 'This user does not have any posts.'}</h1>
+        <h1 id="ProfilePostsTitle">{userPosts.length ? '' : <h1 className='noPosts'>This user does not have any posts</h1>}</h1>
         <div className='profilePostsProfilePage'>
           {userPosts.map((post, i) => (
             <div className="containerAroundUserPosts" key={`container-${i}`}>
@@ -87,6 +93,23 @@ function Profile({ key1 }) {
         </div>
       </div>
     );
+  } else if (contentState === 'likedPosts') {
+    profileContent = (
+      <div className='profileContainer'>
+        <h1 id="ProfilePostsTitle">{likedPosts.length ? '' : <h1 className="noLikes">This user hasn't liked any posts yet</h1>}</h1>
+        <div className='profilePostsProfilePage'>
+          {likedPosts.map((post, i) => (
+            <div className="containerAroundUserPosts" key={`container-liked-${i}`}>
+              <React.Fragment key={`liked-post-fragment-${i}`}>
+                <div className='PostIndexItemProfilePage'>
+                  <PostIndexItem key={`liked-post-${i}`} post={post} />
+                </div>
+              </React.Fragment>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
   }
 
   return (
@@ -96,6 +119,7 @@ function Profile({ key1 }) {
         <div id='user-button-group'>
           <div id='divAroundReviewButton' className='user-button-group-button' onClick={() => setContentState('reviews')}>Reviews</div>
           <div className='user-button-group-button' onClick={() => setContentState('posts')}>Posts</div>
+          <div className='user-button-group-button' onClick={() => setContentState('likedPosts')}>Liked Posts</div>
         </div>
         {profileContent}
       </div>

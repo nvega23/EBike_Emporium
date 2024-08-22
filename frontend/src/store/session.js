@@ -76,8 +76,8 @@ const startSession = (userInfo, route) => async (dispatch) => {
         if (user && accessToken) {
             localStorage.setItem('JWTtoken', accessToken);
             localStorage.setItem('refreshToken', refreshToken);
-            localStorage.setItem('user', JSON.stringify(user)); // Persist user data
-            return dispatch(receiveCurrentUser(user)); // Pass only the user object
+            localStorage.setItem('user', JSON.stringify(user));
+            return dispatch(receiveCurrentUser(user));
         } else {
             throw new Error('Invalid response from server');
         }
@@ -95,7 +95,6 @@ const startSession = (userInfo, route) => async (dispatch) => {
 };
 
 // Fetch the current user from the server
-// Example in your async action
 export const fetchCurrentUser = () => async (dispatch) => {
     const token = localStorage.getItem('JWTtoken');
     if (token) {

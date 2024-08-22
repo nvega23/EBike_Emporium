@@ -44,33 +44,82 @@
 }
 
 .divAroundCartReview{
-    font-family: 'Poppins', sans-serif;
     display: flex;
     justify-content: space-between;
-    padding: inherit;
     flex-direction: column;
-    gap: 5vh;
+    gap: 20px;
+    padding: 20px;
 }
 
 .addToCart{
     background-color: #1f2934;
     color: white;
-    padding: 10px 16px;
-    border-radius: 1vh;
+    padding: 12px 20px;
+    border-radius: 5px;
     cursor: pointer;
+    border: none;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
 }
 
 .addToCart:hover{
     background-color: #48a1ff;
 }
 
+.checkoutButtonItemIcon{
+    background-color: #1f2934;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 1vh;
+}
+
+.checkoutButtonItemIcon:hover{
+    background-color: #48a1ff;
+}
+
+.checkoutButtonItem{
+    background-color: darkred;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+}
+
+.checkoutButtonItem:hover{
+    background-color: #48a1ff;
+}
+
 .reviewButton{
     background-color: #1f2934;
     color: white;
-    padding: 10px 16px;
-    border-radius: 1vh;
+    padding: 12px 20px;
+    border-radius: 5px;
     cursor: pointer;
     border: none;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
 }
 
 .reviewButton:hover{
@@ -80,10 +129,14 @@
 .cartItemDescription{
     background-color: #1f2934;
     color: white;
-    padding: 10px 16px;
-    border-radius: 1vh;
+    padding: 12px 20px;
+    border-radius: 5px;
     cursor: pointer;
     border: none;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
     text-decoration: none;
 }
 
@@ -136,12 +189,30 @@
 .postPriceItem{
     font-family: system-ui;
     font-weight: 500;
-    /* margin-top: 15vh; */
 }
 
 .bikeBioItem{
     font-family: 'Poppins', sans-serif;
 }
+
+.backButtonItem{
+    background-color: #1f2934;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+}
+.backButtonItem:hover{
+    background-color: #ff6600;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: white;
+}
+
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
     .itemDescriptionContainer{
@@ -151,7 +222,8 @@
         align-items: center;
         text-align: center;
         width: -webkit-fill-available;
-        height: 35vh;
+        height: auto;
+        background: white;
     }
     .selectedPostImage{
         width: auto;
@@ -162,6 +234,9 @@
     }
     .selectedBody{
         flex-direction: column;
+    }
+    .containerAroundSelectedBody{
+        width: 75vw;
     }
 }
 .quantityLabel {

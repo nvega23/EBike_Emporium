@@ -1,10 +1,13 @@
 .post-container {
     padding-bottom: 10px;
-    /* margin: auto; */
     background-color: transparent;
     border-radius: 10px;
     font-family: 'Poppins', sans-serif;
-    /* width: 40vw; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
 }
 
 .post-body-text {
@@ -19,20 +22,13 @@
     border: 3px solid blue;
 }
 
-.review-title{
+.reviewTitle{
     /* margin-top: 20px; */
     font-size: 30px;
     display: flex;
     flex-direction: column;
     font-family: 'Poppins', sans-serif;
     width: -webkit-fill-available;
-}
-
-.review-body{
-    padding-top: 15px;
-    margin-left: 30px;
-    margin: 2vw;
-    font-family: 'Poppins', sans-serif;
 }
 
 .review-rating{
@@ -63,7 +59,6 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    margin-top: 5vh;
 }
 
 #ProfilePostsTitle{
@@ -94,6 +89,7 @@
     color: white;
     width: 15vw;
     cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
 }
 
 #user-button-group-button-left {
@@ -109,8 +105,8 @@
 
 .user-button-group-button:hover {
     /* box-shadow: -5px 12px 10px rgba(0, 0, 0, 0.41); */
-    background-color: white;
-    color: black;
+    background-color: #1f2934;
+    color: white;
 }
 
 /* .editDeleteButtonProfilePage{
@@ -146,10 +142,6 @@
     flex-direction: column;
 }
 
-.reviewText{
-    width: max-content;
-}
-
 .containerAroundUserPosts{
     border: 3px solid white;
     background-color: white;
@@ -161,6 +153,21 @@
     padding: 3vh;
 }
 
+.noLikes{
+    height: 60vh;
+    font-family: sans-serif;
+}
+
+.reviewText{
+    height: 60vh;
+    font-family: sans-serif;
+}
+
+.noPosts{
+    height: 60vh;
+    font-family: sans-serif;
+}
+
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
     #ProfileUsername{
         width: -webkit-fill-available;
@@ -170,5 +177,11 @@
     }
     .user-button-group-button{
         width: -webkit-fill-available;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        border-radius: 1vh;
+        font-size: x-small;
     }
 }

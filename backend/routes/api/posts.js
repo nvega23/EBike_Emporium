@@ -147,20 +147,32 @@ router.put('/like/:id', requireUser, async (req, res, next) => {
 
 router.put('/unlike/:id', requireUser, async (req, res, next) => {
   try {
+    // Find the post by ID
     const post = await Post.findById(req.params.id);
     if (!post) {
       return res.status(404).json({ notfound: 'Post not found' });
     }
+
+    // Find the index of the like by the current user
     const likeIndex = post.likes.findIndex(like => like.user.toString() === req.user.id.toString());
     if (likeIndex === -1) {
       return res.status(400).json({ msg: 'Post has not been liked' });
     }
+
+    // Remove the like by the user
     post.likes.splice(likeIndex, 1);
+
+    // Save the updated post to the database
     await post.save();
+
+    // Return the updated likes array
     res.json(post.likes);
   } catch (err) {
+    console.error('Error in unlike route:', err);
     next(err);
   }
 });
+
+
 
 module.exports = router;

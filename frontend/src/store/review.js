@@ -120,15 +120,18 @@ export const fetchUsersReview = (userId) => async (dispatch) =>  {
 }
 
 
-export const fetchPostReviews = (postId) => async (dispatch) =>{
-
-    const res = await jwtFetch(`api/reviews/post/${postId}`)
-
-    if(res.ok){
-        const reviews = await res.json()
-        return dispatch(receiveNewReview(reviews))
+export const fetchPostReviews = (postId) => async (dispatch) => {
+    try {
+      const res = await jwtFetch(`/api/reviews/post/${postId}`);
+      if (res.ok) {
+        const reviews = await res.json();
+        return dispatch(receiveNewReview(reviews));
+      }
+    } catch (err) {
+      console.error('Failed to fetch post reviews:', err);
     }
-}
+  };
+  
 
 export const fetchReview = (reviewId) => async (dispatch) => {
     const res = await jwtFetch(`/api/reviews/review/${reviewId}`)

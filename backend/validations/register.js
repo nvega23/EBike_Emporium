@@ -14,6 +14,8 @@ const validateRegisterInput = [
     check("password")
         .exists({ checkFalsy: true })
         .isLength({ min: 6, max: 30 })
+        .matches(/[^A-Za-z0-9]/)
+        .withMessage("Password must include at least one special character")
         .withMessage("Password has to be between 6-30 characters"),
     handleValidationErrors
 

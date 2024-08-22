@@ -69,6 +69,7 @@ function ReviewUpdate() {
                     />
                 </div>
             </form>
+            <button className='backProfile' onClick={()=> navigate(`/profile/${userId}`)}>back</button>
         </div>
     );
 }

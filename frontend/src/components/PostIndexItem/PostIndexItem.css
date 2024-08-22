@@ -81,8 +81,8 @@
 }
 
 .postImages {
-    width: -webkit-fill-available;
-    height: 35vh;
+    width: auto;
+    height: 20vh;
     object-fit: cover;
     border-radius: 10px;
     transition: transform 0.3s ease;
@@ -104,10 +104,6 @@
     }
     .content img{
         width: auto;
-    }
-    .search-bar{
-        height: 1vw;
-        border: 3px solid red;
     }
 }
 

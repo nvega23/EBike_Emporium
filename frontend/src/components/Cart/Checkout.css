@@ -63,4 +63,8 @@
         font-size: 3vw;
         margin-bottom: revert;
     }
+    .checkoutButton{
+        height: 5vh;
+        margin: 1vh;
+    }
 }

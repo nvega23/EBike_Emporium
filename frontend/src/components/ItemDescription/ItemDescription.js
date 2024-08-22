@@ -4,27 +4,41 @@ import './ItemDescription.css';
 import { useNavigate, useParams } from "react-router";
 import { ShoppingCartOutlined } from "@ant-design/icons";
 import { fetchPost } from "../../store/post";
-import ReviewIndexItem from "../ReviewIndexItem/ReviewIndexItem";
+import { fetchPostReviews } from "../../store/review"; // Import the fetchPostReviews action
+import ReviewIndexItem from "../ReviewIndexItem/ReviewIndexItem"; // Import the ReviewIndexItem component for displaying individual reviews
 import { Link } from "react-router-dom";
 
 const ItemDescription = ({ post }) => {
   const { id } = useParams();
   const [isPurchased, setIsPurchased] = useState(false);
   const [quantity, setQuantity] = useState(1);
-  const postUserId = post?.author?._id;
-  const reviews = Object.values(useSelector(state => state.review));
-  const specificReviews = reviews.filter(review => review.reviewer === postUserId);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const postPrice = post?.price?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   const totalPrice = post?.price ? (quantity * post.price).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : "0";
 
+  // Fetch the post details and reviews
   useEffect(() => {
     if (id) {
       dispatch(fetchPost(id));
+      dispatch(fetchPostReviews(id)); // Fetch reviews for this post
     }
   }, [dispatch, id]);
+
+  // Get the reviews from the Redux store
+  const reviews = useSelector((state) => state.review[id] || []);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined' && post) {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const itemInCart = cart.find(item => item.post._id === post._id);
+      if (itemInCart) {
+        setIsPurchased(true);
+        setQuantity(itemInCart.quantity);
+      }
+    }
+  }, [post]);
 
   const handleAddToCart = () => {
     let quantityChange = false;
@@ -52,7 +66,7 @@ const ItemDescription = ({ post }) => {
         type: "ADD_TO_CART",
         payload: cart,
       });
-      setIsPurchased(true);
+      setIsPurchased(true); // Set purchased state to true
     }
   };
 
@@ -75,10 +89,6 @@ const ItemDescription = ({ post }) => {
         payload: cart,
       });
     }
-  };
-
-  const handleAddMore = () => {
-    handleAddToCart();
   };
 
   const usersProfilePage = () => {
@@ -137,25 +147,33 @@ const ItemDescription = ({ post }) => {
         <div className="divAroundCartReview">
           {post?.price !== undefined &&
             <>
-              <a onClick={handleAddToCart} className='addToCart'>
-                <ShoppingCartOutlined className='addToCartButton' />
-                Add to Cart
-              </a>
+              {isPurchased ? (
+                <Link to="/cart" className='checkoutButtonItemIcon'>
+                  <ShoppingCartOutlined className='checkoutButtonItem' />
+                  Checkout Now
+                </Link>
+              ) : (
+                <a onClick={handleAddToCart} className='addToCart'>
+                  <ShoppingCartOutlined className='addToCartButton' />
+                  Add to Cart
+                </a>
+              )}
             </>
           }
-          <Link to="/cart" className="cartItemDescription">Go to Cart</Link>
           <button onClick={() => navigate(`/review/new/${post?._id}/${post?.author._id}`)} className="reviewButton">Leave a Review</button>
+          <button onClick={()=> navigate('/posts')} className="backButtonItem">Back</button>
         </div>
       </div>
-      {/* <div>
-        {specificReviews.length > 0 ? (
-          specificReviews.map((review) => (
+      <div className="reviewsContainer">
+        <h2>Customer Reviews</h2>
+        {reviews.length > 0 ? (
+          reviews.map((review) => (
             <ReviewIndexItem key={review._id} review={review} />
           ))
         ) : (
-          <h1>No reviews for this item yet, Be the first!</h1>
+          <p>No reviews yet for this item. Be the first to leave a review!</p>
         )}
-      </div> */}
+      </div>
     </div>
   );
 };
