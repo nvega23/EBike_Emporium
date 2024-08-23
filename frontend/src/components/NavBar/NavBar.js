@@ -144,7 +144,7 @@ function NavBar() {
         <NavLink to={loggedIn ? '/posts' : '/'} id="title">
           <img className='content' id='navBarImage' src={currentImage} alt='bike' />
         </NavLink>
-        <SearchBar />
+        {loggedIn ? <SearchBar /> : null}
         {navbar}
       </div>
     {loggedIn ? 

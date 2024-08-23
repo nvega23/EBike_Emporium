@@ -16,25 +16,52 @@ function CreatePost() {
     const location = useLocation();
     const query = location.search;
     const errors = useSelector(state => state.errors.post);
+    const [dragActive, setDragActive] = useState(false);
 
-    const updateFiles = useCallback(async (e) => {
-        const files = e.target.files;
-        setImages(files);
-        if (files.length !== 0) {
-            let filesLoaded = 0;
-            const urls = [];
-            Array.from(files).forEach((file, index) => {
-                const fileReader = new FileReader();
-                fileReader.readAsDataURL(file);
-                fileReader.onload = () => {
-                    urls[index] = fileReader.result;
-                    if (++filesLoaded === files.length)
-                        setImageUrls(urls);
-                };
-            });
+    const updateFiles = useCallback(async (files) => {
+        const fileArray = Array.from(files);
+        setImages(fileArray);
+        if (fileArray.length !== 0) {
+            const urls = await Promise.all(
+                fileArray.map(file => {
+                    return new Promise((resolve) => {
+                        const reader = new FileReader();
+                        reader.readAsDataURL(file);
+                        reader.onload = () => resolve(reader.result);
+                    });
+                })
+            );
+            setImageUrls(urls);
         } else {
             setImageUrls([]);
         }
+    }, []);
+
+    const handleFilesChange = useCallback((e) => {
+        const files = e.target.files;
+        updateFiles(files);
+    }, [updateFiles]);
+
+    const handleDrop = useCallback((e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        setDragActive(false);
+        if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+            updateFiles(e.dataTransfer.files);
+            e.dataTransfer.clearData();
+        }
+    }, [updateFiles]);
+
+    const handleDragOver = useCallback((e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        setDragActive(true);
+    }, []);
+
+    const handleDragLeave = useCallback((e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        setDragActive(false);
     }, []);
 
     const handleSubmit = useCallback((e) => {
@@ -44,11 +71,20 @@ function CreatePost() {
         });
     }, [body, images, bikeName, price, query, dispatch, navigate]);
 
+    const handleRemoveImage = useCallback((index) => {
+        const newImages = [...images];
+        const newImageUrls = [...imageUrls];
+        newImages.splice(index, 1);
+        newImageUrls.splice(index, 1);
+        setImages(newImages);
+        setImageUrls(newImageUrls);
+    }, [images, imageUrls]);
+
     useEffect(() => {
         dispatch(clearPostErrors());
     }, [dispatch]);
 
-    const imgUploadTxt = useMemo(() => (images.length > 0 ? images[0].name : ""), [images]);
+    const imgUploadTxt = useMemo(() => (images.length > 0 ? images[0].name : "Choose files or drag and drop here"), [images]);
 
     return (
         <div id="outerItem">
@@ -64,19 +100,31 @@ function CreatePost() {
                     cols="33"
                     className="sellItemInput"
                 />
-                <label className="entireUpload">
+                <label 
+                    className={`entireUpload ${dragActive ? 'drag-active' : ''}`} 
+                    onDragOver={handleDragOver} 
+                    onDragLeave={handleDragLeave} 
+                    onDrop={handleDrop}
+                >
                     {imgUploadTxt} &nbsp;
                     <input
                         type="file"
                         accept=".jpg, .jpeg, .png"
                         multiple
-                        onChange={updateFiles}
+                        onChange={handleFilesChange}
                         className="photoUpload"
                     />
                 </label>
 
                 {imageUrls.length > 0 && (
-                    <img src={imageUrls[0]} alt="Preview" className="imagePreview" />
+                    <div className="imagePreviewContainer">
+                        {imageUrls.map((url, index) => (
+                            <div key={index} className="imagePreviewWrapper">
+                                <img src={url} alt={`Preview ${index}`} className="imagePreview" />
+                                <button type="button" className="removeImageButton" onClick={() => handleRemoveImage(index)}>X</button>
+                            </div>
+                        ))}
+                    </div>
                 )}
 
                 <input

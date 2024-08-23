@@ -6,22 +6,31 @@ import { fetchUserProfile } from '../../store/profile';
 import StarReview from './StarReview.js';
 import './reviewIndexItem.css';
 
-function ReviewIndexItem({ review, key }) {
+function ReviewIndexItem({ review }) {
   const currentUser = useSelector(state => state.session.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const location = useLocation(); // Get current URL location
+  const location = useLocation();
   const { userId } = useParams();
 
   const reviewer = useSelector((state) => {
     const profile = state.profile[review.reviewer];
-    return profile ? profile.username : '';
+    return profile ? profile.username : null;
   });
 
   const reviewee = useSelector((state) => {
     const profile = state.profile[review.reviewee];
-    return profile ? profile.username : '';
+    return profile ? profile.username : null;
   });
+
+  useEffect(() => {
+    if (!reviewer) {
+      dispatch(fetchUserProfile(review.reviewer));
+    }
+    if (!reviewee) {
+      dispatch(fetchUserProfile(review.reviewee));
+    }
+  }, [dispatch, reviewer, review.reviewer, reviewee, review.reviewee]);
 
   const convertDate = (date) => {
     const d = new Date(date);
@@ -39,22 +48,13 @@ function ReviewIndexItem({ review, key }) {
     navigate(`/review/update/${review.id}/${userId}`);
   };
 
-  useEffect(() => {
-    if (!reviewer) {
-      dispatch(fetchUserProfile(review.reviewer));
-    }
-    if (!reviewee) {
-      dispatch(fetchUserProfile(review.reviewee));
-    }
-  }, [dispatch, reviewer, review.reviewer, reviewee, review.reviewee]);
-
   // Check if the current URL matches the specific edit URL
   const isEditable = location.pathname === `/review/update/${review.id}/${userId}`;
 
   return (
     <div className='reviewContainer'>
       <div className='reviewContent'>
-        <h1>{review.reviewer !== currentUser?.id ? <h1>{review?.reviewer.username}</h1> : <div></div>}</h1>
+        <h1>{reviewer && reviewer !== currentUser?.username ? reviewer : reviewee}</h1>
         <div className="containerAroundTimeStar">
           <h1>{review.title}</h1>
           <h5 className='reviewInfoSpan'>
@@ -70,8 +70,8 @@ function ReviewIndexItem({ review, key }) {
         </div>
         <br/>
         <div className='divAroundReviewButton'>
-          {review.reviewer === currentUser?._id ?  <button  className='reviewButtonDelete' onClick={handleDelete}>Delete</button> : <div></div> }
-          {review.reviewer === currentUser?._id ? <button onClick={handleClick} className="reviewButtonEditDelete" >Edit</button> : <></>}
+          {review.reviewer === currentUser?._id ?  <button  className='reviewButtonDelete' onClick={handleDelete}>Delete</button> : null }
+          {review.reviewer === currentUser?._id ? <button onClick={handleClick} className="reviewButtonEditDelete" >Edit</button> : null}
         </div>
       </div>
       <br />

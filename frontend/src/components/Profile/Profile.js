@@ -32,7 +32,6 @@ function Profile({ key1 }) {
       setLikedPosts(userLikedPosts);
     }
   }, [posts]);
-  
 
   const handleClick = (post) => {
     if (post && post._id) {
@@ -83,11 +82,12 @@ function Profile({ key1 }) {
       </div>
     );
   } else if (contentState === 'reviews') {
+    const userReviews = reviews.filter(review => review.reviewer === userId);
     profileContent = (
       <div className='profileContainerReviews'>
-        <h1 id="ProfilePostsTitle">{reviews.length ? '' : <h1 className='reviewText'>This user does not have any reviews</h1>}</h1>
+        <h1 id="ProfilePostsTitle">{userReviews.length ? '' : <h1 className='reviewText'>This user does not have any reviews</h1>}</h1>
         <div className='reviewDivs'>
-          {reviews.map((review, i) => review.rating ? (
+          {userReviews.map((review, i) => review.rating ? (
             <ReviewIndexItem key={`review-${i}`} review={review} />
           ) : null)}
         </div>

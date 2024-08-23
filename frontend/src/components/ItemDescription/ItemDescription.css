@@ -3,9 +3,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 60vh;
+    /* height: 60vh; */
     width: auto;
-    flex-direction: row;
+    flex-direction: column;
     margin-top: 10vh;
     text-align: center;
     background-color: white;
@@ -85,15 +85,16 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    gap: 1vh;
 }
 
 .checkoutButtonItemIcon:hover{
-    background-color: #48a1ff;
+    text-decoration: underline;
+    background-color: black;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
 }
 
+
 .checkoutButtonItem{
-    background-color: darkred;
     color: white;
     padding: 12px 20px;
     border-radius: 5px;
@@ -213,6 +214,28 @@
     color: white;
 }
 
+.reviewsContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    margin: 5vh;
+}
+
+.postItemContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: white;
+    margin-bottom: 15vh;
+    height: 55vh;
+}
+
+.itemNoReviews{
+    margin-top: 0;
+}
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
     .itemDescriptionContainer{

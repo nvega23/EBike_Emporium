@@ -24,7 +24,7 @@ const footer = () => {
                     <br/>
                     <p>
                         Powered by
-                        2023 @Nestor Vega
+                        2024 @Nestor Vega
                     </p>
                 </div>
                 <div className='ReachMeLinks'>

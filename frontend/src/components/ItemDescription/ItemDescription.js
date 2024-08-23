@@ -4,8 +4,8 @@ import './ItemDescription.css';
 import { useNavigate, useParams } from "react-router";
 import { ShoppingCartOutlined } from "@ant-design/icons";
 import { fetchPost } from "../../store/post";
-import { fetchPostReviews } from "../../store/review"; // Import the fetchPostReviews action
-import ReviewIndexItem from "../ReviewIndexItem/ReviewIndexItem"; // Import the ReviewIndexItem component for displaying individual reviews
+import { fetchPostReviews } from "../../store/review"; // Fetch reviews action
+import ReviewIndexItem from "../ReviewIndexItem/ReviewIndexItem"; // Component to display individual reviews
 import { Link } from "react-router-dom";
 
 const ItemDescription = ({ post }) => {
@@ -18,16 +18,16 @@ const ItemDescription = ({ post }) => {
 
   const totalPrice = post?.price ? (quantity * post.price).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : "0";
 
-  // Fetch the post details and reviews
+  // Fetch the post details and its reviews when the component mounts
   useEffect(() => {
     if (id) {
       dispatch(fetchPost(id));
-      dispatch(fetchPostReviews(id)); // Fetch reviews for this post
+      dispatch(fetchPostReviews(id)); // Fetch reviews for the specific post
     }
   }, [dispatch, id]);
 
-  // Get the reviews from the Redux store
-  const reviews = useSelector((state) => state.review[id] || []);
+  // Get the reviews for the specific post from Redux store
+  const reviews = useSelector((state) => Object.values(state.review).filter(review => review.post === id));
 
   useEffect(() => {
     if (typeof window !== 'undefined' && post) {
@@ -101,6 +101,8 @@ const ItemDescription = ({ post }) => {
 
   return (
     <div className="itemDescriptionContainer">
+      <div className="postItemContainer">
+
       <div className="borderAroundImage">
         <img className='selectedPostImage' loading='lazy' src={post?.imageUrls[0]} alt='post-image' />
       </div>
@@ -124,15 +126,15 @@ const ItemDescription = ({ post }) => {
           </div>
           <br />
           <div className="totalPrice">
-          <label className="quantityLabel">
-            Quantity:
-            <input
-              className="quantityInput"
-              type="number"
-              value={quantity}
-              onChange={handleQuantityChange}
-            />
-          </label>
+            <label className="quantityLabel">
+              Quantity:
+              <input
+                className="quantityInput"
+                type="number"
+                value={quantity}
+                onChange={handleQuantityChange}
+                />
+            </label>
             <p>Total Price: ${totalPrice}</p>
           </div>
           <div className="divAroundUsername">
@@ -164,6 +166,7 @@ const ItemDescription = ({ post }) => {
           <button onClick={()=> navigate('/posts')} className="backButtonItem">Back</button>
         </div>
       </div>
+          </div>
       <div className="reviewsContainer">
         <h2>Customer Reviews</h2>
         {reviews.length > 0 ? (
@@ -171,7 +174,7 @@ const ItemDescription = ({ post }) => {
             <ReviewIndexItem key={review._id} review={review} />
           ))
         ) : (
-          <p>No reviews yet for this item. Be the first to leave a review!</p>
+          <p className="itemNoReviews">No reviews yet for this item. Be the first to leave a review!</p>
         )}
       </div>
     </div>
